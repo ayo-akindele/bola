@@ -61,8 +61,9 @@ if results_df is not None and fixtures_df is not None:
             try:
                 valid = condition.dropna()
                 count = valid.sum()
-                if len(valid) > 0 and count / len(valid) >= 0.8:
-                    return f"{label} in {int(count)}/{len(valid)} games"
+                pct = count / len(valid)
+                if len(valid) > 0 and pct >= 0.8:
+                    return (pct, f"{label} in {int(count)}/{len(valid)} games")
             except Exception:
                 return None
             return None
@@ -102,12 +103,14 @@ if results_df is not None and fixtures_df is not None:
 
         for col, label in market_labels.items():
             if col in h2h.columns:
-                trend = trend_check(h2h[col], label)
-                if trend:
-                    trends.append((h2h[col].mean(), trend))
+                result = trend_check(h2h[col], label)
+                if result:
+                    trends.append(result)
 
-        top_trends = [text for _, text in sorted(trends, key=lambda x: x[0], reverse=True)[:3]]
+        top_trends = sorted(trends, key=lambda x: x[0], reverse=True)[:3]
         return top_trends
+
+    top_summary_pool = []
 
     for _, row in gw_fixtures.iterrows():
         home = row['home_team']
@@ -115,16 +118,22 @@ if results_df is not None and fixtures_df is not None:
         st.markdown(f"### {home} vs {away}")
         fixture_stats = generate_stats(home, away)
         if fixture_stats:
-            for s in fixture_stats:
-                st.markdown(f"- {s}")
-                summary_top_picks.append(f"{home} vs {away} → {s}")
+            for pct, text in fixture_stats:
+                st.markdown(f"- {text}")
+                top_summary_pool.append((pct, f"{home} vs {away} → {text}"))
         else:
             st.info("No strong trends to recommend for this game.")
 
-    if summary_top_picks:
+    if top_summary_pool:
         st.markdown("---")
         st.subheader("🔥 Top Picks Summary")
-        for item in summary_top_picks:
-            st.markdown(f"✅ {item}")
+        top_summary_pool.sort(reverse=True)
+        shown = 0
+        for pct, item in top_summary_pool:
+            if pct >= 0.9:
+                st.markdown(f"✅ {item}")
+                shown += 1
+            if shown >= 3:
+                break
 else:
     st.warning("Unable to fetch data from Google Sheets. Please check links or permissions.")
