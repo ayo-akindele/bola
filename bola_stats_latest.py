@@ -27,6 +27,7 @@ if results_df is not None and fixtures_df is not None:
     results_df.columns = [col.strip().lower().replace(" ", "_") for col in results_df.columns]
     fixtures_df.columns = [col.strip().lower().replace(" ", "_") for col in fixtures_df.columns]
     fixtures_df["date"] = pd.to_datetime(fixtures_df["date"], errors="coerce")
+    results_df["match_date"] = pd.to_datetime(results_df["match_date"], errors="coerce")
 
     today = pd.Timestamp.today().normalize()
     round_dates = fixtures_df.groupby("round_number")["date"].max().sort_index()
@@ -41,10 +42,12 @@ if results_df is not None and fixtures_df is not None:
         return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
 
     def generate_stats(home, away):
-        h2h = results_df[
+        three_seasons_ago = today.year - 3
+        h2h_all = results_df[
             ((results_df['home_team'] == home) & (results_df['away_team'] == away)) |
             ((results_df['home_team'] == away) & (results_df['away_team'] == home))
-        ].sort_values(by="match_date", ascending=False).head(10)
+        ]
+        h2h = h2h_all[h2h_all["match_date"].dt.year >= three_seasons_ago].sort_values(by="match_date", ascending=False).head(5)
 
         if h2h.empty:
             return []
@@ -72,7 +75,6 @@ if results_df is not None and fixtures_df is not None:
         if total > 0 and wins / total >= 0.8:
             trends.append((wins / total, f"{home} won {wins}/{total} recent meetings"))
 
-        # Normalize key market columns
         if 'both_teams_score' in h2h.columns:
             h2h['both_teams_score'] = normalize_boolean(h2h['both_teams_score'])
 
