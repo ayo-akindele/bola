@@ -50,9 +50,13 @@ if results_df is not None and fixtures_df is not None:
         trends = []
 
         def trend_check(condition, label):
-            count = condition.sum()
-            if count / total >= 0.8:
-                return f"{label} in {int(count)}/{total} games"
+            try:
+                if condition is not None and hasattr(condition, "sum"):
+                    count = condition.sum()
+                    if total > 0 and isinstance(count, (int, float)) and count / total >= 0.8:
+                        return f"{label} in {int(count)}/{total} games"
+            except Exception:
+                return None
             return None
 
         # Match winner logic
