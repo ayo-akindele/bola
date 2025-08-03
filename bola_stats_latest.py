@@ -23,6 +23,8 @@ def load_data():
 
 results_df, fixtures_df = load_data()
 
+summary_top_picks = []
+
 if results_df is not None and fixtures_df is not None:
     results_df.columns = [col.strip().lower().replace(" ", "_") for col in results_df.columns]
     fixtures_df.columns = [col.strip().lower().replace(" ", "_") for col in fixtures_df.columns]
@@ -115,7 +117,14 @@ if results_df is not None and fixtures_df is not None:
         if fixture_stats:
             for s in fixture_stats:
                 st.markdown(f"- {s}")
+                summary_top_picks.append(f"{home} vs {away} → {s}")
         else:
             st.info("No strong trends to recommend for this game.")
+
+    if summary_top_picks:
+        st.markdown("---")
+        st.subheader("🔥 Top Picks Summary")
+        for item in summary_top_picks:
+            st.markdown(f"✅ {item}")
 else:
     st.warning("Unable to fetch data from Google Sheets. Please check links or permissions.")
