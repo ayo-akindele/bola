@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-# URLs to fetch data from Google Sheets
+# Google Sheets CSV export URLs
 HISTORICAL_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=0"
 FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=1005360909"
 
@@ -37,13 +37,16 @@ if results_df is not None and fixtures_df is not None:
 
     st.subheader(f"📅 Gameweek {current_round} Predictions")
 
+    def normalize_boolean(col):
+        return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
+
     def generate_stats(home, away):
         h2h = results_df[
             ((results_df['home_team'] == home) & (results_df['away_team'] == away)) |
             ((results_df['home_team'] == away) & (results_df['away_team'] == home))
-        ].sort_values(by="match_date", ascending=False).head(5)
+        ].sort_values(by="match_date", ascending=False).head(10)
 
-        if len(h2h) < 5:
+        if h2h.empty:
             return []
 
         total = len(h2h)
@@ -51,10 +54,10 @@ if results_df is not None and fixtures_df is not None:
 
         def trend_check(condition, label):
             try:
-                if condition is not None and hasattr(condition, "sum"):
-                    count = condition.sum()
-                    if total > 0 and isinstance(count, (int, float)) and count / total >= 0.8:
-                        return f"{label} in {int(count)}/{total} games"
+                valid = condition.dropna()
+                count = valid.sum()
+                if len(valid) > 0 and count / len(valid) >= 0.8:
+                    return f"{label} in {int(count)}/{len(valid)} games"
             except Exception:
                 return None
             return None
@@ -66,10 +69,16 @@ if results_df is not None and fixtures_df is not None:
                 wins += 1
             elif row['away_team'] == home and row['away_score'] > row['home_score']:
                 wins += 1
-        if wins / total >= 0.8:
+        if total > 0 and wins / total >= 0.8:
             trends.append((wins / total, f"{home} won {wins}/{total} recent meetings"))
 
-        # Feature columns
+        # Normalize key market columns
+        if 'both_teams_score' in h2h.columns:
+            h2h['both_teams_score'] = normalize_boolean(h2h['both_teams_score'])
+
+        if 'over_2_5' in h2h.columns:
+            h2h['over_2_5'] = normalize_boolean(h2h['over_2_5'])
+
         try:
             h2h['Corners_Over_9.5'] = pd.to_numeric(h2h['total_corners'], errors='coerce') > 9.5
             h2h['Bookings_Over_3.5'] = (pd.to_numeric(h2h['home_yellow_cards'], errors='coerce') +
