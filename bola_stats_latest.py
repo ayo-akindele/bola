@@ -9,7 +9,8 @@ FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvL
 
 st.set_page_config(page_title="BolaStats", layout="centered")
 st.title("📊 BolaStats")
-st.caption("Quick stats for quick thinking ⚡")
+# Update caption to use new phrase requested by the user
+st.caption("Quick Stats That Matter ⚡")
 
 @st.cache_data
 def load_data():
@@ -38,7 +39,8 @@ if results_df is not None and fixtures_df is not None:
         current_round = round_dates.index.max()
     gw_fixtures = fixtures_df[fixtures_df["round_number"] == current_round]
 
-    st.subheader(f"📅 Gameweek {current_round} Predictions")
+    # Show current gameweek with updated wording: use a vertical bar and label the H2H snapshot
+    st.subheader(f"📅 Gameweek {current_round} | H2H Snapshot")
 
     def normalize_boolean(col):
         return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
