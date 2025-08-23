@@ -10,7 +10,8 @@ FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvL
 st.set_page_config(page_title="BolaStats", layout="centered")
 st.title("📊 BolaStats")
 # Update caption to use new phrase requested by the user
-st.caption("Quick Stats That Matter ⚡")
+# Display the caption larger and bolder with the emoji first for visual emphasis.
+st.markdown("<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>", unsafe_allow_html=True)
 
 @st.cache_data
 def load_data():
