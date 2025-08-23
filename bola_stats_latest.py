@@ -78,24 +78,23 @@ if results_df is not None and fixtures_df is not None:
         if total > 0 and wins / total >= 0.8:
             trends.append((wins / total, f"{home} won {wins}/{total} recent meetings"))
 
-        # If a BTTS column is present, normalize it and derive GG/NG indicators
+        # If a BTTS column is present, normalize it for consistency but derive GG/NG from actual scores.
         if 'both_teams_score' in h2h.columns:
-            # Convert common truthy strings/values into True and others into False.  Missing values
-            # remain as NaN/None and will be ignored when checking trends.
             h2h['both_teams_score'] = normalize_boolean(h2h['both_teams_score'])
-            # GG (Goal–Goal) is simply the normalized BTTS column; this aligns with the local
-            # terminology where "GG" means both teams scored.
-            h2h['gg'] = h2h['both_teams_score']
-            # NG (No Goal) is the complement of BTTS: True when one or both sides failed to score.
-            # We preserve missing values as None so they don't count towards the trend calculations.
-            def _compute_ng(val):
-                try:
-                    if pd.isna(val):
-                        return None
-                    return not bool(val)
-                except Exception:
-                    return None
-            h2h['ng'] = h2h['both_teams_score'].apply(_compute_ng)
+
+        # Compute GG (Goal–Goal) and NG (No Goal) from the actual match scores.  A fixture is GG when
+        # both teams scored at least one goal; it is NG when at least one team failed to score.  If
+        # either score is missing or cannot be parsed, we set the value to None to exclude it from
+        # trend calculations.
+        if {'home_score', 'away_score'}.issubset(h2h.columns):
+            home_goals = pd.to_numeric(h2h['home_score'], errors='coerce')
+            away_goals = pd.to_numeric(h2h['away_score'], errors='coerce')
+            gg = (home_goals > 0) & (away_goals > 0)
+            # Replace entries where either goal is NaN with None so dropna() will ignore them
+            gg = gg.where(~(home_goals.isna() | away_goals.isna()), None)
+            h2h['gg'] = gg
+            # NG is the complement of GG (True when one or both teams did not score)
+            h2h['ng'] = h2h['gg'].apply(lambda x: None if pd.isna(x) else not x)
 
         if 'over_2_5' in h2h.columns:
             h2h['over_2_5'] = normalize_boolean(h2h['over_2_5'])
