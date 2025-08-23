@@ -42,6 +42,18 @@ if results_df is not None and fixtures_df is not None:
     # Show current gameweek with updated wording: use a vertical bar and label the H2H snapshot
     st.subheader(f"📅 Gameweek {current_round} | H2H Snapshot")
 
+    # Define simple emoji icons for each type of trend to improve readability.  These icons will
+    # precede each trend in the output below and make the statistics easier to scan at a glance.
+    emoji_map = {
+        "Both teams scored": "⚽",
+        "Both teams failed to score": "🚫",
+        "Over 2.5 goals": "📈",
+        "Over 9.5 corners": "🏳️",  # using a flag to represent corners
+        "Over 3.5 bookings": "🟨",
+        "First-half goals": "⏱",
+        "won": "🏆"  # catch‑all for winner trends
+    }
+
     def normalize_boolean(col):
         return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
 
@@ -135,14 +147,22 @@ if results_df is not None and fixtures_df is not None:
     for _, row in gw_fixtures.iterrows():
         home = row['home_team']
         away = row['away_team']
-        st.markdown(f"### {home} vs {away}")
-        fixture_stats = generate_stats(home, away)
-        if fixture_stats:
-            for pct, text in fixture_stats:
-                st.markdown(f"- {text}")
-                top_summary_pool.append((pct, f"{home} vs {away} → {text}"))
-        else:
-            st.info("No strong trends to recommend for this game.")
+        # Wrap each fixture in an expander for better digestibility.  Users can collapse sections
+        # they're not interested in, keeping the page concise.
+        with st.expander(f"{home} vs {away}", expanded=True):
+            fixture_stats = generate_stats(home, away)
+            if fixture_stats:
+                for pct, text in fixture_stats:
+                    # Determine which emoji to use based on keywords in the trend description
+                    icon = "•"
+                    for key, symbol in emoji_map.items():
+                        if key in text:
+                            icon = symbol
+                            break
+                    st.markdown(f"{icon} {text}")
+                    top_summary_pool.append((pct, f"{home} vs {away} → {text}"))
+            else:
+                st.info("No strong trends to recommend for this game.")
 
     if top_summary_pool:
         st.markdown("---")
