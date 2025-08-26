@@ -54,10 +54,9 @@ if results_df is not None and fixtures_df is not None:
         "Under 9.5 corners": "🔻",
         "Over 3.5 bookings": "🟨",
         "Under 3.5 bookings": "🟩",
-        "Home bookings over 3.5": "🟨",
-        "Home bookings under 3.5": "🟩",
-        "Away bookings over 3.5": "🟨",
-        "Away bookings under 3.5": "🟩",
+        # Removed separate home/away booking icons at the user's request. Match‑level booking
+        # statistics remain (over/under 3.5), but individual team bookings were diluting the
+        # output impact.  Only the aggregate booking icons are retained.
         "more corners": "🔺",
         "First-half goals": "⏱",
         "won": "🏆"  # catch‑all for winner trends
@@ -140,7 +139,8 @@ if results_df is not None and fixtures_df is not None:
             h2h['Corners_Under_9.5'] = corners_num <= 9.5
             h2h.loc[corners_num.isna(), ['Corners_Over_9.5', 'Corners_Under_9.5']] = None
 
-            # Bookings: match-level over/under 3.5, and home/away over/under 3.5
+            # Bookings: match-level over/under 3.5.  We intentionally omit team‑specific
+            # bookings (home/away) per user feedback to avoid diluting the summary.
             home_yc = pd.to_numeric(h2h['home_yellow_cards'], errors='coerce')
             away_yc = pd.to_numeric(h2h['away_yellow_cards'], errors='coerce')
             total_bookings = home_yc + away_yc
@@ -148,13 +148,8 @@ if results_df is not None and fixtures_df is not None:
             h2h['Bookings_Under_3.5'] = total_bookings <= 3.5
             h2h.loc[total_bookings.isna(), ['Bookings_Over_3.5', 'Bookings_Under_3.5']] = None
 
-            h2h['Home_Bookings_Over_3.5'] = home_yc > 3.5
-            h2h['Home_Bookings_Under_3.5'] = home_yc <= 3.5
-            h2h.loc[home_yc.isna(), ['Home_Bookings_Over_3.5', 'Home_Bookings_Under_3.5']] = None
-
-            h2h['Away_Bookings_Over_3.5'] = away_yc > 3.5
-            h2h['Away_Bookings_Under_3.5'] = away_yc <= 3.5
-            h2h.loc[away_yc.isna(), ['Away_Bookings_Over_3.5', 'Away_Bookings_Under_3.5']] = None
+            # Removed computation of team‑specific booking trends at the user's request. Only
+            # match‑level bookings (over/under 3.5) are kept.
 
             # First half goals: at least one goal scored in the first half by either team
             h2h['First_Half_Goal'] = (pd.to_numeric(h2h['first_half_home'], errors='coerce') +
@@ -173,10 +168,8 @@ if results_df is not None and fixtures_df is not None:
             'Corners_Under_9.5': "Under 9.5 corners",
             'Bookings_Over_3.5': "Over 3.5 bookings",
             'Bookings_Under_3.5': "Under 3.5 bookings",
-            'Home_Bookings_Over_3.5': "Home bookings over 3.5",
-            'Home_Bookings_Under_3.5': "Home bookings under 3.5",
-            'Away_Bookings_Over_3.5': "Away bookings over 3.5",
-            'Away_Bookings_Under_3.5': "Away bookings under 3.5",
+            # Team‑specific booking labels removed per user request.  We retain only
+            # aggregate booking stats.
             'First_Half_Goal': "First-half goals"
         }
 
