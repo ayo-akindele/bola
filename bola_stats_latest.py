@@ -49,8 +49,15 @@ if results_df is not None and fixtures_df is not None:
         "Both teams scored": "⚽",
         "Both teams failed to score": "🚫",
         "Over 2.5 goals": "📈",
+        "Under 2.5 goals": "📉",
         "Over 9.5 corners": "🏳️",  # using a flag to represent corners
+        "Under 9.5 corners": "🔻",
         "Over 3.5 bookings": "🟨",
+        "Under 3.5 bookings": "🟩",
+        "Home bookings over 1.5": "🟨",
+        "Home bookings under 1.5": "🟩",
+        "Away bookings over 1.5": "🟨",
+        "Away bookings under 1.5": "🟩",
         "First-half goals": "⏱",
         "won": "🏆"  # catch‑all for winner trends
     }
@@ -111,16 +118,55 @@ if results_df is not None and fixtures_df is not None:
             # NG is the complement of GG (True when one or both teams did not score)
             h2h['ng'] = h2h['gg'].apply(lambda x: None if pd.isna(x) else not x)
 
-        if 'over_2_5' in h2h.columns:
+        # Compute Over/Under 2.5 goals. Prefer computing from actual scores when available;
+        # otherwise normalise the existing `over_2_5` column and derive the under flag as its
+        # complement.  Missing values are marked as None to exclude them from trend calculations.
+        if {'home_score', 'away_score'}.issubset(h2h.columns):
+            home_goals_num = pd.to_numeric(h2h['home_score'], errors='coerce')
+            away_goals_num = pd.to_numeric(h2h['away_score'], errors='coerce')
+            total_goals = home_goals_num + away_goals_num
+            h2h['over_2_5'] = total_goals > 2.5
+            h2h['under_2_5'] = total_goals <= 2.5
+            # Mark missing score entries as None so they don't count towards trends
+            h2h.loc[total_goals.isna(), ['over_2_5', 'under_2_5']] = None
+        elif 'over_2_5' in h2h.columns:
             h2h['over_2_5'] = normalize_boolean(h2h['over_2_5'])
+            # Derive the under flag from the normalised over flag.  Use None for missing
+            # values to exclude them from trend calculations.
+            h2h['under_2_5'] = h2h['over_2_5'].apply(lambda x: None if pd.isna(x) else not x)
 
         try:
-            h2h['Corners_Over_9.5'] = pd.to_numeric(h2h['total_corners'], errors='coerce') > 9.5
-            h2h['Bookings_Over_3.5'] = (pd.to_numeric(h2h['home_yellow_cards'], errors='coerce') +
-                                        pd.to_numeric(h2h['away_yellow_cards'], errors='coerce')) > 3.5
+            # Total corners: compute numeric values and derive over/under 9.5 flags.  Treat
+            # NaN as None so they don't influence trend percentages.
+            corners_num = pd.to_numeric(h2h['total_corners'], errors='coerce')
+            h2h['Corners_Over_9.5'] = corners_num > 9.5
+            h2h['Corners_Under_9.5'] = corners_num <= 9.5
+            h2h.loc[corners_num.isna(), ['Corners_Over_9.5', 'Corners_Under_9.5']] = None
+
+            # Bookings: total match bookings and team-specific bookings.  Compute numeric
+            # values and derive over/under flags.  Use >3.5 for match level (i.e. at least
+            # four bookings) and >1.5 for home/away individually (at least two bookings).
+            home_yc = pd.to_numeric(h2h['home_yellow_cards'], errors='coerce')
+            away_yc = pd.to_numeric(h2h['away_yellow_cards'], errors='coerce')
+            total_bookings = home_yc + away_yc
+            h2h['Bookings_Over_3.5'] = total_bookings > 3.5
+            h2h['Bookings_Under_3.5'] = total_bookings <= 3.5
+            h2h.loc[total_bookings.isna(), ['Bookings_Over_3.5', 'Bookings_Under_3.5']] = None
+
+            # Home bookings: over when >1.5 cards (2+), under when ≤1.5
+            h2h['Home_Bookings_Over_1.5'] = home_yc > 1.5
+            h2h['Home_Bookings_Under_1.5'] = home_yc <= 1.5
+            h2h.loc[home_yc.isna(), ['Home_Bookings_Over_1.5', 'Home_Bookings_Under_1.5']] = None
+
+            # Away bookings: over when >1.5 cards (2+), under when ≤1.5
+            h2h['Away_Bookings_Over_1.5'] = away_yc > 1.5
+            h2h['Away_Bookings_Under_1.5'] = away_yc <= 1.5
+            h2h.loc[away_yc.isna(), ['Away_Bookings_Over_1.5', 'Away_Bookings_Under_1.5']] = None
+
+            # First half goals: at least one goal scored in the first half by either team
             h2h['First_Half_Goal'] = (pd.to_numeric(h2h['first_half_home'], errors='coerce') +
                                       pd.to_numeric(h2h['first_half_away'], errors='coerce')) > 0
-        except:
+        except Exception:
             pass
 
         # Market labels map indicator columns to human‑friendly descriptions.  We standardize on
@@ -129,8 +175,15 @@ if results_df is not None and fixtures_df is not None:
             'gg': "Both teams scored (GG)",
             'ng': "Both teams failed to score (NG)",
             'over_2_5': "Over 2.5 goals",
+            'under_2_5': "Under 2.5 goals",
             'Corners_Over_9.5': "Over 9.5 corners",
+            'Corners_Under_9.5': "Under 9.5 corners",
             'Bookings_Over_3.5': "Over 3.5 bookings",
+            'Bookings_Under_3.5': "Under 3.5 bookings",
+            'Home_Bookings_Over_1.5': "Home bookings over 1.5",
+            'Home_Bookings_Under_1.5': "Home bookings under 1.5",
+            'Away_Bookings_Over_1.5': "Away bookings over 1.5",
+            'Away_Bookings_Under_1.5': "Away bookings under 1.5",
             'First_Half_Goal': "First-half goals"
         }
 
