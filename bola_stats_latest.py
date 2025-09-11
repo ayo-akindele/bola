@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import numpy as np  # Needed for vectorized operations when mapping corner counts to the correct team
 
 # Google Sheets CSV export URLs
 HISTORICAL_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=0"
@@ -179,8 +180,10 @@ if results_df is not None and fixtures_df is not None:
                 if result:
                     trends.append(result)
 
-        # Corner dominance trends (which team won the corner count in head-to-head).  Identify common
-        # home/away corner column names and compute dynamic trends with team names in the label.
+        # Corner dominance trends. Rather than blindly comparing the historic match's
+        # "home" and "away" corner counts, map each row's corner totals to the current
+        # fixture's home and away team names. This avoids mis‑classifying matches where
+        # the venue flips between historic games and the upcoming fixture.
         corner_pairs = [
             ('home_corners', 'away_corners'),
             ('home_corner', 'away_corner'),
@@ -189,25 +192,49 @@ if results_df is not None and fixtures_df is not None:
         ]
         for h_col, a_col in corner_pairs:
             if {h_col, a_col}.issubset(h2h.columns):
-                home_corners_num = pd.to_numeric(h2h[h_col], errors='coerce')
-                away_corners_num = pd.to_numeric(h2h[a_col], errors='coerce')
-                # Home more corners: require home corners > away corners; ignore ties and NaNs
-                home_more = home_corners_num > away_corners_num
-                mask_missing_or_equal = (
-                    home_corners_num.isna() |
-                    away_corners_num.isna() |
-                    (home_corners_num == away_corners_num)
+                # Convert corner counts to numeric, coercing invalids to NaN
+                hc = pd.to_numeric(h2h[h_col], errors='coerce')
+                ac = pd.to_numeric(h2h[a_col], errors='coerce')
+
+                # Map each historic row's corner totals to the upcoming fixture's home team
+                # and away team. If the historic row involves a different pairing, assign NaN.
+                # We use numpy.where for vectorized conditional selection.
+                home_team_corners = np.where(
+                    h2h['home_team'] == home, hc,
+                    np.where(h2h['away_team'] == home, ac, np.nan)
                 )
-                home_more = home_more.where(~mask_missing_or_equal, None)
+                away_team_corners = np.where(
+                    h2h['home_team'] == away, hc,
+                    np.where(h2h['away_team'] == away, ac, np.nan)
+                )
+
+                # Ensure numeric dtype and handle possible strings/objects
+                home_team_corners = pd.to_numeric(home_team_corners, errors='coerce')
+                away_team_corners = pd.to_numeric(away_team_corners, errors='coerce')
+
+                # Identify rows where either side has missing corners or equal corners; these
+                # rows should not count towards dominance statistics.
+                mask_bad = (
+                    pd.isna(home_team_corners) |
+                    pd.isna(away_team_corners) |
+                    (home_team_corners == away_team_corners)
+                )
+
+                # Determine if the current fixture's home team had more corners than the away
+                # team in each historic match
+                home_more = pd.Series(home_team_corners > away_team_corners)
+                home_more = home_more.where(~mask_bad, None)
                 res_home = trend_check(home_more, f"{home} more corners than {away}")
                 if res_home:
                     trends.append(res_home)
-                # Away more corners: require away corners > home corners
-                away_more = away_corners_num > home_corners_num
-                away_more = away_more.where(~mask_missing_or_equal, None)
+
+                # And vice versa: determine if the away team dominated corners
+                away_more = pd.Series(away_team_corners > home_team_corners)
+                away_more = away_more.where(~mask_bad, None)
                 res_away = trend_check(away_more, f"{away} more corners than {home}")
                 if res_away:
                     trends.append(res_away)
+                # Break after the first matching pair to prevent checking other synonyms
                 break
 
         top_trends = sorted(trends, key=lambda x: x[0], reverse=True)[:3]
