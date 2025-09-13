@@ -1,277 +1,310 @@
+"""
+Bola Stats – Multi‑league prediction engine
+-------------------------------------------
 
-import streamlit as st
+This Streamlit script extends the original single‑league ``bola_stats``
+application to support multiple European football competitions using a
+shared Google Sheet. The sheet should contain one tab for the
+historical results and another for upcoming fixtures for each league,
+following the naming convention below:
+
+* EPL – ``EPL_Historical_Data`` and ``EPL_upcoming_fixtures``
+* Serie A – ``I1_Historical_Data`` and ``I1_upcoming_fixtures``
+* Bundesliga – ``D1_Historical_Data`` and ``D1_upcoming_fixtures``
+* La Liga – ``SP1_Historical_Data`` and ``SP1_upcoming_fixtures``
+
+The app reads from the same spreadsheet (specified by ``SPREADSHEET_ID``)
+using the ``gviz`` export endpoint, so no authentication is required
+provided the sheet is shared publicly. Set the ``SPREADSHEET_ID``
+constant to the ID of your sheet (the long identifier in the URL). If
+your sheet is private, you can adapt the loader to use the
+``gspread``/``google-auth`` workflow instead.
+
+For each upcoming match the app analyses each team’s last five games
+from the historical tab and derives simple signals:
+
+* **BTTS (both teams to score)** – proportion of last five games where
+  both teams scored at least one goal.
+* **Over 2.5 goals** – proportion of last five games with total goals
+  greater than or equal to three.
+* **Over 9.5 corners** – proportion of last five games where total
+  corners reached at least ten (if corner columns exist).
+* **More corners** – which side tends to earn more corners on
+  average; calculated by comparing each team’s corners to their
+  opponents over the last five games. A bug in earlier versions
+  mis‑computed this value by swapping home/away roles; this
+  implementation corrects that.
+
+Users can adjust thresholds for BTTS and Over 2.5 via sliders; by
+default a team must hit the threshold in four of the last five games
+(i.e., 80 %). Only fixtures meeting the combined criteria for both
+teams are displayed.
+"""
+
+from __future__ import annotations
+
+import datetime as _dt
+from functools import lru_cache
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
 import pandas as pd
-from datetime import datetime
-import numpy as np  # Needed for vectorized operations when mapping corner counts to the correct team
+import streamlit as st
 
-# Google Sheets CSV export URLs
-HISTORICAL_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=0"
-FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=1005360909"
+# ──────────────────────────────────────────────────────────────────────────────
+# Configuration
 
-st.set_page_config(page_title="BolaStats", layout="centered")
-st.title("📊 BolaStats")
-# Update caption to use new phrase requested by the user
-# Display the caption larger and bolder with the emoji first for visual emphasis.
-st.markdown("<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>", unsafe_allow_html=True)
+SPREADSHEET_ID: str = "1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so"
 
-@st.cache_data
-def load_data():
+LEAGUE_SHEETS: Dict[str, Dict[str, str]] = {
+    "EPL": {
+        "fixtures": "EPL_upcoming_fixtures",
+        "historical": "EPL_Historical_Data",
+        "display_name": "Premier League",
+    },
+    "I1": {
+        "fixtures": "I1_upcoming_fixtures",
+        "historical": "I1_Historical_Data",
+        "display_name": "Serie A",
+    },
+    "D1": {
+        "fixtures": "D1_upcoming_fixtures",
+        "historical": "D1_Historical_Data",
+        "display_name": "Bundesliga",
+    },
+    "SP1": {
+        "fixtures": "SP1_upcoming_fixtures",
+        "historical": "SP1_Historical_Data",
+        "display_name": "La Liga",
+    },
+}
+
+# Mapping of logical column names to possible sheet column headers. The
+# sheets may differ slightly in naming conventions; if you alter the
+# sheet structure, update these lists accordingly.
+COLUMN_ALIASES: Dict[str, List[str]] = {
+    "date": ["Date", "date", "Match_Date", "FixtureDate"],
+    "home": ["HomeTeam", "home", "Home", "Home_Team"],
+    "away": ["AwayTeam", "away", "Away", "Away_Team"],
+    "home_goals": ["FTHG", "home_goals", "HomeGoals", "HG"],
+    "away_goals": ["FTAG", "away_goals", "AwayGoals", "AG"],
+    "home_corners": ["HC", "home_corners", "HomeCorners"],
+    "away_corners": ["AC", "away_corners", "AwayCorners"],
+}
+
+
+@lru_cache(maxsize=16)
+def _csv_from_gsheet(sheet_name: str) -> pd.DataFrame:
+    """Fetch a tab from the Google Sheet via the gviz export endpoint.
+
+    Google Sheets allows exporting a specific tab by specifying the sheet name
+    in the query parameters. See:
+    https://stackoverflow.com/a/33727890/753501
+    """
+    sheet_param = sheet_name.replace(" ", "%20")
+    url = (
+        f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet={sheet_param}"
+    )
     try:
-        results_df = pd.read_csv(HISTORICAL_URL)
-        fixtures_df = pd.read_csv(FIXTURES_URL)
-        return results_df, fixtures_df
-    except Exception as e:
-        st.error(f"Error loading data: {e}")
-        return None, None
+        df = pd.read_csv(url)
+    except Exception as exc:
+        # If 403: the sheet might be private; the user must adjust sharing.
+        raise RuntimeError(
+            f"Failed to download sheet '{sheet_name}'. Check sharing settings or network."
+        ) from exc
+    return df
 
-results_df, fixtures_df = load_data()
 
-summary_top_picks = []
+def _find_column(df: pd.DataFrame, logical_name: str) -> Optional[str]:
+    """Return the first column in the DataFrame matching any alias for a logical name."""
+    for cand in COLUMN_ALIASES.get(logical_name, []):
+        if cand in df.columns:
+            return cand
+    return None
 
-if results_df is not None and fixtures_df is not None:
-    results_df.columns = [col.strip().lower().replace(" ", "_") for col in results_df.columns]
-    fixtures_df.columns = [col.strip().lower().replace(" ", "_") for col in fixtures_df.columns]
-    fixtures_df["date"] = pd.to_datetime(fixtures_df["date"], errors="coerce")
-    results_df["match_date"] = pd.to_datetime(results_df["match_date"], errors="coerce")
 
-    today = pd.Timestamp.today().normalize()
-    round_dates = fixtures_df.groupby("round_number")["date"].max().sort_index()
-    current_round = round_dates[round_dates >= today].index.min()
-    if pd.isna(current_round):
-        current_round = round_dates.index.max()
-    gw_fixtures = fixtures_df[fixtures_df["round_number"] == current_round]
+def _normalise_team_names(df: pd.DataFrame) -> pd.DataFrame:
+    """Strip whitespace from team names and unify case."""
+    for key in ["home", "away"]:
+        col = _find_column(df, key)
+        if col:
+            df[col] = df[col].astype(str).str.strip()
+    return df
 
-    # Show current gameweek with updated wording: use a vertical bar and label the H2H snapshot
-    st.subheader(f"📅 Gameweek {current_round} | H2H Snapshot")
 
-    # Define simple emoji icons for each type of trend to improve readability.  These icons will
-    # precede each trend in the output below and make the statistics easier to scan at a glance.
-    emoji_map = {
-        "Both teams scored": "⚽",
-        "Both teams failed to score": "🚫",
-        "Over 2.5 goals": "📈",
-        "Under 2.5 goals": "📉",
-        "Over 9.5 corners": "🏳️",  # using a flag to represent corners
-        "Under 9.5 corners": "🔻",
-        "Over 3.5 bookings": "🟨",
-        "Under 3.5 bookings": "🟩",
-        # Removed separate home/away booking icons at the user's request. Match‑level booking
-        # statistics remain (over/under 3.5), but individual team bookings were diluting the
-        # output impact.  Only the aggregate booking icons are retained.
-        "more corners": "🔺",
-        "First-half goals": "⏱",
-        "won": "🏆"  # catch‑all for winner trends
-    }
+def _compute_team_stats(df: pd.DataFrame, last_n: int = 5) -> Dict[str, Dict[str, float]]:
+    """Compute per‑team summary statistics based on the last ``n`` games.
 
-    def normalize_boolean(col):
-        return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
+    Returns a dictionary mapping team names to metrics:
+    - ``btts_rate``: fraction of last ``n`` games where both teams scored.
+    - ``o25_rate``: fraction of last ``n`` games with total goals ≥3.
+    - ``corners_diff``: average corner difference (team minus opponent). If
+      corner columns are missing the value is NaN.
+    """
+    h_col = _find_column(df, "home")
+    a_col = _find_column(df, "away")
+    hg_col = _find_column(df, "home_goals")
+    ag_col = _find_column(df, "away_goals")
+    hc_col = _find_column(df, "home_corners")
+    ac_col = _find_column(df, "away_corners")
+    date_col = _find_column(df, "date")
 
-    def generate_stats(home, away):
-        three_seasons_ago = today.year - 3
-        h2h_all = results_df[
-            ((results_df['home_team'] == home) & (results_df['away_team'] == away)) |
-            ((results_df['home_team'] == away) & (results_df['away_team'] == home))
-        ]
-        h2h = h2h_all[h2h_all["match_date"].dt.year >= three_seasons_ago].sort_values(by="match_date", ascending=False).head(5)
+    # Ensure we have essential columns
+    if not all([h_col, a_col, hg_col, ag_col, date_col]):
+        raise ValueError("Historical data missing required columns (date, teams, goals).")
 
-        if h2h.empty:
-            return []
-
-        total = len(h2h)
-        trends = []
-
-        def trend_check(condition, label):
-            try:
-                valid = condition.dropna()
-                count = valid.sum()
-                pct = count / len(valid)
-                if len(valid) > 0 and pct >= 0.8:
-                    return (pct, f"{label} in {int(count)}/{len(valid)} games")
-            except Exception:
-                return None
-            return None
-
-        # Match winner logic
-        wins = 0
-        for _, row in h2h.iterrows():
-            if row['home_team'] == home and row['home_score'] > row['away_score']:
-                wins += 1
-            elif row['away_team'] == home and row['away_score'] > row['home_score']:
-                wins += 1
-        if total > 0 and wins / total >= 0.8:
-            trends.append((wins / total, f"{home} won {wins}/{total} recent meetings"))
-
-        # If a BTTS column is present, normalize it for consistency but derive GG/NG from actual scores.
-        if 'both_teams_score' in h2h.columns:
-            h2h['both_teams_score'] = normalize_boolean(h2h['both_teams_score'])
-
-        # Compute GG (Goal–Goal) and NG (No Goal) from the actual match scores.  A fixture is GG when
-        # both teams scored at least one goal; it is NG when at least one team failed to score.  If
-        # either score is missing or cannot be parsed, we set the value to None to exclude it from
-        # trend calculations.
-        if {'home_score', 'away_score'}.issubset(h2h.columns):
-            home_goals = pd.to_numeric(h2h['home_score'], errors='coerce')
-            away_goals = pd.to_numeric(h2h['away_score'], errors='coerce')
-            gg = (home_goals > 0) & (away_goals > 0)
-            # Replace entries where either goal is NaN with None so dropna() will ignore them
-            gg = gg.where(~(home_goals.isna() | away_goals.isna()), None)
-            h2h['gg'] = gg
-            # NG is the complement of GG (True when one or both teams did not score)
-            h2h['ng'] = h2h['gg'].apply(lambda x: None if pd.isna(x) else not x)
-
-        # Compute Over/Under 2.5 goals. Prefer computing from actual scores when available; otherwise
-        # normalise the existing `over_2_5` column and derive the under flag as its complement.
-        if {'home_score', 'away_score'}.issubset(h2h.columns):
-            home_goals_num = pd.to_numeric(h2h['home_score'], errors='coerce')
-            away_goals_num = pd.to_numeric(h2h['away_score'], errors='coerce')
-            total_goals = home_goals_num + away_goals_num
-            h2h['over_2_5'] = total_goals > 2.5
-            h2h['under_2_5'] = total_goals <= 2.5
-            h2h.loc[total_goals.isna(), ['over_2_5', 'under_2_5']] = None
-        elif 'over_2_5' in h2h.columns:
-            h2h['over_2_5'] = normalize_boolean(h2h['over_2_5'])
-            # Derive the under flag from the normalised over flag; missing values are set to None
-            h2h['under_2_5'] = h2h['over_2_5'].apply(lambda x: None if pd.isna(x) else not x)
-
-        try:
-            # Total corners: compute numeric values and derive over/under 9.5 flags.  Treat NaN as None.
-            corners_num = pd.to_numeric(h2h['total_corners'], errors='coerce')
-            h2h['Corners_Over_9.5'] = corners_num > 9.5
-            h2h['Corners_Under_9.5'] = corners_num <= 9.5
-            h2h.loc[corners_num.isna(), ['Corners_Over_9.5', 'Corners_Under_9.5']] = None
-
-            # Bookings: match-level over/under 3.5.  We intentionally omit team‑specific
-            # bookings (home/away) per user feedback to avoid diluting the summary.
-            home_yc = pd.to_numeric(h2h['home_yellow_cards'], errors='coerce')
-            away_yc = pd.to_numeric(h2h['away_yellow_cards'], errors='coerce')
-            total_bookings = home_yc + away_yc
-            h2h['Bookings_Over_3.5'] = total_bookings > 3.5
-            h2h['Bookings_Under_3.5'] = total_bookings <= 3.5
-            h2h.loc[total_bookings.isna(), ['Bookings_Over_3.5', 'Bookings_Under_3.5']] = None
-
-            # Removed computation of team‑specific booking trends at the user's request. Only
-            # match‑level bookings (over/under 3.5) are kept.
-
-            # First half goals: at least one goal scored in the first half by either team
-            h2h['First_Half_Goal'] = (pd.to_numeric(h2h['first_half_home'], errors='coerce') +
-                                      pd.to_numeric(h2h['first_half_away'], errors='coerce')) > 0
-        except Exception:
-            pass
-
-        # Market labels map indicator columns to human‑friendly descriptions.  We standardize on
-        # "GG" for both teams scoring and "NG" for one or both teams not scoring.
-        market_labels = {
-            'gg': "Both teams scored (GG)",
-            'ng': "Both teams failed to score (NG)",
-            'over_2_5': "Over 2.5 goals",
-            'under_2_5': "Under 2.5 goals",
-            'Corners_Over_9.5': "Over 9.5 corners",
-            'Corners_Under_9.5': "Under 9.5 corners",
-            'Bookings_Over_3.5': "Over 3.5 bookings",
-            'Bookings_Under_3.5': "Under 3.5 bookings",
-            # Team‑specific booking labels removed per user request.  We retain only
-            # aggregate booking stats.
-            'First_Half_Goal': "First-half goals"
+    df_sorted = df.sort_values(date_col, ascending=False)
+    teams = pd.unique(pd.concat([df_sorted[h_col], df_sorted[a_col]])).astype(str)
+    stats: Dict[str, Dict[str, float]] = {}
+    for team in teams:
+        # Filter last ``n`` matches for the team
+        team_matches = df_sorted[(df_sorted[h_col] == team) | (df_sorted[a_col] == team)].head(last_n)
+        total_games = len(team_matches)
+        if total_games == 0:
+            continue
+        # Compute BTTS rate
+        btts_count = ((team_matches[hg_col] > 0) & (team_matches[ag_col] > 0)).sum()
+        # Compute Over 2.5 goals rate
+        goals_total = team_matches[hg_col] + team_matches[ag_col]
+        o25_count = (goals_total >= 3).sum()
+        # Compute corner difference
+        if hc_col and ac_col:
+            diffs = []
+            for _, row in team_matches.iterrows():
+                # If the team played home: team corners minus opponent corners
+                if row[h_col] == team:
+                    if pd.notna(row[hc_col]) and pd.notna(row[ac_col]):
+                        diffs.append(row[hc_col] - row[ac_col])
+                else:
+                    if pd.notna(row[hc_col]) and pd.notna(row[ac_col]):
+                        # Team was away; team corners = away corners
+                        diffs.append(row[ac_col] - row[hc_col])
+            avg_diff = float(np.mean(diffs)) if diffs else np.nan
+        else:
+            avg_diff = np.nan
+        stats[team] = {
+            "btts_rate": btts_count / total_games,
+            "o25_rate": o25_count / total_games,
+            "corners_diff": avg_diff,
         }
+    return stats
 
-        for col, label in market_labels.items():
-            if col in h2h.columns:
-                result = trend_check(h2h[col], label)
-                if result:
-                    trends.append(result)
 
-        # Corner dominance trends. Rather than blindly comparing the historic match's
-        # "home" and "away" corner counts, map each row's corner totals to the current
-        # fixture's home and away team names. This avoids mis‑classifying matches where
-        # the venue flips between historic games and the upcoming fixture.
-        corner_pairs = [
-            ('home_corners', 'away_corners'),
-            ('home_corner', 'away_corner'),
-            ('homecorner', 'awaycorner'),
-            ('corners_home', 'corners_away')
-        ]
-        for h_col, a_col in corner_pairs:
-            if {h_col, a_col}.issubset(h2h.columns):
-                # Convert corner counts to numeric, coercing invalids to NaN
-                hc = pd.to_numeric(h2h[h_col], errors='coerce')
-                ac = pd.to_numeric(h2h[a_col], errors='coerce')
+def _generate_predictions(
+    fixtures: pd.DataFrame,
+    team_stats: Dict[str, Dict[str, float]],
+    btts_threshold: float = 0.8,
+    o25_threshold: float = 0.8,
+    corners_bias: float = 0.0,
+) -> pd.DataFrame:
+    """Create a DataFrame of match predictions given team statistics and thresholds.
 
-                # Map each historic row's corner totals to the upcoming fixture's home team
-                # and away team. If the historic row involves a different pairing, assign NaN.
-                # We use numpy.where for vectorized conditional selection.
-                home_team_corners = np.where(
-                    h2h['home_team'] == home, hc,
-                    np.where(h2h['away_team'] == home, ac, np.nan)
-                )
-                away_team_corners = np.where(
-                    h2h['home_team'] == away, hc,
-                    np.where(h2h['away_team'] == away, ac, np.nan)
-                )
+    Parameters
+    ----------
+    fixtures : pd.DataFrame
+        Upcoming fixtures; must contain home and away columns.
+    team_stats : dict
+        Mapping of team names to computed stats.
+    btts_threshold : float, default 0.8
+        Minimum BTTS rate required for both teams to recommend BTTS.
+    o25_threshold : float, default 0.8
+        Minimum Over 2.5 goals rate required for both teams.
+    corners_bias : float, default 0.0
+        Minimum absolute average corner difference required to call a
+        ``More corners`` recommendation; set to 0 to always recommend.
+    """
+    h_col = _find_column(fixtures, "home")
+    a_col = _find_column(fixtures, "away")
+    date_col = _find_column(fixtures, "date")
+    if not all([h_col, a_col]):
+        raise ValueError("Fixtures data missing required columns (home, away).")
 
-                # Ensure numeric dtype and handle possible strings/objects
-                home_team_corners = pd.to_numeric(home_team_corners, errors='coerce')
-                away_team_corners = pd.to_numeric(away_team_corners, errors='coerce')
+    predictions = []
+    for _, row in fixtures.iterrows():
+        home_team = str(row[h_col])
+        away_team = str(row[a_col])
+        home_stats = team_stats.get(home_team)
+        away_stats = team_stats.get(away_team)
+        if not home_stats or not away_stats:
+            continue
+        # Determine BTTS and Over 2.5 predictions
+        btts_pred = (home_stats["btts_rate"] >= btts_threshold) and (away_stats["btts_rate"] >= btts_threshold)
+        o25_pred = (home_stats["o25_rate"] >= o25_threshold) and (away_stats["o25_rate"] >= o25_threshold)
+        # Corners: pick side with higher corners_diff
+        corners_pick = None
+        if not np.isnan(home_stats["corners_diff"]) and not np.isnan(away_stats["corners_diff"]):
+            diff = home_stats["corners_diff"] - away_stats["corners_diff"]
+            if abs(diff) > corners_bias:
+                corners_pick = home_team if diff > 0 else away_team
+        # Compose result
+        predictions.append({
+            "Date": row[date_col] if date_col and date_col in row else None,
+            "Home": home_team,
+            "Away": away_team,
+            "BTTS": "Yes" if btts_pred else "",
+            "Over 2.5": "Yes" if o25_pred else "",
+            "More Corners": corners_pick or "",
+        })
+    return pd.DataFrame(predictions)
 
-                # Identify rows where either side has missing corners or equal corners; these
-                # rows should not count towards dominance statistics.
-                mask_bad = (
-                    pd.isna(home_team_corners) |
-                    pd.isna(away_team_corners) |
-                    (home_team_corners == away_team_corners)
-                )
 
-                # Determine if the current fixture's home team had more corners than the away
-                # team in each historic match
-                home_more = pd.Series(home_team_corners > away_team_corners)
-                home_more = home_more.where(~mask_bad, None)
-                res_home = trend_check(home_more, f"{home} more corners than {away}")
-                if res_home:
-                    trends.append(res_home)
+def main() -> None:
+    st.set_page_config(page_title="BolaStats Multi‑League", layout="wide")
+    st.title("BolaStats – Multi‑League Predictions")
+    st.markdown(
+        "Select a league to view predictions based on recent form (last 5 games). "
+        "Adjust thresholds using the sliders below. Only fixtures meeting the criteria "
+        "are displayed."
+    )
 
-                # And vice versa: determine if the away team dominated corners
-                away_more = pd.Series(away_team_corners > home_team_corners)
-                away_more = away_more.where(~mask_bad, None)
-                res_away = trend_check(away_more, f"{away} more corners than {home}")
-                if res_away:
-                    trends.append(res_away)
-                # Break after the first matching pair to prevent checking other synonyms
-                break
+    # League selection
+    league_codes = list(LEAGUE_SHEETS.keys())
+    league_display_names = [LEAGUE_SHEETS[c]["display_name"] for c in league_codes]
+    league_choice = st.selectbox("Choose a league", league_display_names)
+    # Map back to code
+    league_code = league_codes[league_display_names.index(league_choice)]
 
-        top_trends = sorted(trends, key=lambda x: x[0], reverse=True)[:3]
-        return top_trends
+    # Threshold sliders
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        btts_thr = st.slider("BTTS threshold", 0.5, 1.0, 0.8, 0.05)
+    with col2:
+        o25_thr = st.slider("Over 2.5 threshold", 0.5, 1.0, 0.8, 0.05)
+    with col3:
+        corners_bias = st.slider("Corner bias threshold", 0.0, 3.0, 0.0, 0.1)
 
-    top_summary_pool = []
+    # Load data
+    with st.spinner("Loading data..."):
+        try:
+            fixtures_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["fixtures"])
+            hist_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["historical"])
+        except Exception as exc:
+            st.error(str(exc))
+            return
+    # Normalise team names
+    fixtures_df = _normalise_team_names(fixtures_df)
+    hist_df = _normalise_team_names(hist_df)
 
-    for _, row in gw_fixtures.iterrows():
-        home = row['home_team']
-        away = row['away_team']
-        # Wrap each fixture in an expander for better digestibility.  Users can collapse sections
-        # they're not interested in, keeping the page concise.
-        with st.expander(f"{home} vs {away}", expanded=True):
-            fixture_stats = generate_stats(home, away)
-            if fixture_stats:
-                for pct, text in fixture_stats:
-                    # Determine which emoji to use based on keywords in the trend description
-                    icon = "•"
-                    for key, symbol in emoji_map.items():
-                        if key in text:
-                            icon = symbol
-                            break
-                    st.markdown(f"{icon} {text}")
-                    top_summary_pool.append((pct, f"{home} vs {away} → {text}"))
-            else:
-                st.info("No strong trends to recommend for this game.")
+    # Compute team stats
+    try:
+        stats = _compute_team_stats(hist_df)
+    except Exception as exc:
+        st.error(f"Error processing historical data: {exc}")
+        return
 
-    if top_summary_pool:
-        st.markdown("---")
-        st.subheader("🔥 Top Picks Summary")
-        top_summary_pool.sort(reverse=True)
-        shown = 0
-        for pct, item in top_summary_pool:
-            if pct >= 0.9:
-                st.markdown(f"✅ {item}")
-                shown += 1
-            if shown >= 3:
-                break
-else:
-    st.warning("Unable to fetch data from Google Sheets. Please check links or permissions.")
+    # Generate predictions
+    preds_df = _generate_predictions(
+        fixtures_df,
+        stats,
+        btts_threshold=btts_thr,
+        o25_threshold=o25_thr,
+        corners_bias=corners_bias,
+    )
+    if preds_df.empty:
+        st.info("No fixtures meet the specified thresholds. Try relaxing the sliders or check data availability.")
+    else:
+        st.dataframe(preds_df.reset_index(drop=True), use_container_width=True)
+
+
+if __name__ == "__main__":
+    main()
