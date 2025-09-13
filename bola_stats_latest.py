@@ -82,14 +82,82 @@ LEAGUE_SHEETS: Dict[str, Dict[str, str]] = {
 # Mapping of logical column names to possible sheet column headers. The
 # sheets may differ slightly in naming conventions; if you alter the
 # sheet structure, update these lists accordingly.
+# Aliases for columns. If your sheet uses other names, add them here. The
+# inference logic below will attempt to use the first matching header.
 COLUMN_ALIASES: Dict[str, List[str]] = {
-    "date": ["Date", "date", "Match_Date", "FixtureDate"],
-    "home": ["HomeTeam", "home", "Home", "Home_Team"],
-    "away": ["AwayTeam", "away", "Away", "Away_Team"],
-    "home_goals": ["FTHG", "home_goals", "HomeGoals", "HG"],
-    "away_goals": ["FTAG", "away_goals", "AwayGoals", "AG"],
-    "home_corners": ["HC", "home_corners", "HomeCorners"],
-    "away_corners": ["AC", "away_corners", "AwayCorners"],
+    # Date/time of the fixture (historical or upcoming)
+    "date": [
+        "Date",
+        "date",
+        "Match_Date",
+        "FixtureDate",
+        "Datetime",
+        "MatchDate",
+        "GameDate",
+        "match_date",
+    ],
+    # Home team name
+    "home": [
+        "HomeTeam",
+        "home",
+        "Home",
+        "Home_Team",
+        "Home Team",
+        "Team1",
+        "home_team",
+    ],
+    # Away team name
+    "away": [
+        "AwayTeam",
+        "away",
+        "Away",
+        "Away_Team",
+        "Away Team",
+        "Team2",
+        "away_team",
+    ],
+    # Full time home goals
+    "home_goals": [
+        "FTHG",
+        "home_goals",
+        "HomeGoals",
+        "HG",
+        "Home Score",
+        "Home_Score",
+        "Home Score FT",
+        "Goals_Home",
+        "home_score",
+    ],
+    # Full time away goals
+    "away_goals": [
+        "FTAG",
+        "away_goals",
+        "AwayGoals",
+        "AG",
+        "Away Score",
+        "Away_Score",
+        "Away Score FT",
+        "Goals_Away",
+        "away_score",
+    ],
+    # Home team corners
+    "home_corners": [
+        "HC",
+        "home_corners",
+        "HomeCorners",
+        "CornersForHomeTeam",
+        "Home Corners",
+        "Corners_Home",
+    ],
+    # Away team corners
+    "away_corners": [
+        "AC",
+        "away_corners",
+        "AwayCorners",
+        "CornersForAwayTeam",
+        "Away Corners",
+        "Corners_Away",
+    ],
 }
 
 
@@ -190,12 +258,124 @@ def _compute_team_stats(df: pd.DataFrame, last_n: int = 5) -> Dict[str, Dict[str
     return stats
 
 
+def _get_h2h_corners_trend(
+    hist_df: pd.DataFrame,
+    home_team: str,
+    away_team: str,
+    *,
+    last_n: int = 5,
+    over_threshold: float = 9.5,
+    min_games: int = 5,
+    rate_threshold: float = 0.8,
+) -> Tuple[str, str]:
+    """Compute corner trends for head‑to‑head meetings.
+
+    Parameters
+    ----------
+    hist_df : DataFrame
+        Historical match data including at least date, home/away team, and corner counts.
+    home_team, away_team : str
+        Names of the teams in the upcoming fixture.
+    last_n : int, default 5
+        Number of recent H2H games to consider.
+    over_threshold : float, default 9.5
+        Corner count threshold for determining over/under.
+    min_games : int, default 5
+        Minimum number of H2H matches required to form a trend. If fewer
+        than ``min_games`` exist, no trend is returned.
+    rate_threshold : float, default 0.8
+        Proportion of games (e.g. 80 %) required to highlight a trend.
+
+    Returns
+    -------
+    Tuple[str, str]
+        Two strings: the first denotes whether Over 9.5 corners is a
+        noteworthy trend ("Yes", "No", or empty); the second denotes
+        which team tends to have more corners (home team name, away team name, or empty).
+    """
+    h_col = _find_column(hist_df, "home")
+    a_col = _find_column(hist_df, "away")
+    hc_col = _find_column(hist_df, "home_corners")
+    ac_col = _find_column(hist_df, "away_corners")
+    total_c_col = None
+    # Use total corners if present (case‑insensitive, ignore underscores/spaces)
+    for col in hist_df.columns:
+        key = col.lower().replace("_", "").replace(" ", "")
+        if key == "totalcorners":
+            total_c_col = col
+            break
+    date_col = _find_column(hist_df, "date")
+    if not all([h_col, a_col, date_col]) or not (hc_col or total_c_col):
+        return "", ""
+    # Filter head‑to‑head matches regardless of home/away orientation
+    mask = (
+        (hist_df[h_col] == home_team) & (hist_df[a_col] == away_team)
+    ) | (
+        (hist_df[h_col] == away_team) & (hist_df[a_col] == home_team)
+    )
+    h2h = hist_df.loc[mask].copy()
+    if h2h.empty:
+        return "", ""
+    # Sort by date descending and take the most recent ``last_n``
+    h2h[date_col] = pd.to_datetime(h2h[date_col], errors="coerce")
+    h2h = h2h.sort_values(date_col, ascending=False)
+    h2h = h2h.head(last_n)
+    if len(h2h) < min_games:
+        return "", ""
+    # Compute total corners for each match
+    if total_c_col and total_c_col in h2h.columns:
+        total_c = pd.to_numeric(h2h[total_c_col], errors="coerce")
+    else:
+        # Fallback to sum of home and away corners
+        if hc_col and ac_col:
+            total_c = pd.to_numeric(h2h[hc_col], errors="coerce") + pd.to_numeric(h2h[ac_col], errors="coerce")
+        else:
+            return "", ""
+    # Determine over/under trend
+    over_count = (total_c > over_threshold).sum()
+    under_count = (total_c <= over_threshold).sum()
+    over_trend = ""
+    # If at least 80% of games are over, mark "Yes"; if at least 80% are under, mark "No"
+    if over_count / len(h2h) >= rate_threshold:
+        over_trend = "Yes"  # Over 9.5 is common
+    elif under_count / len(h2h) >= rate_threshold:
+        over_trend = "No"  # Under 9.5 is common
+    # Determine which team tends to win corners
+    if hc_col and ac_col:
+        # Count how many times the home team (relative to upcoming fixture) wins the corner battle
+        home_corner_wins = 0
+        away_corner_wins = 0
+        for _, r in h2h.iterrows():
+            if pd.isna(r[hc_col]) or pd.isna(r[ac_col]):
+                continue
+            # If r's home team matches upcoming home_team
+            if r[h_col] == home_team:
+                diff = r[hc_col] - r[ac_col]
+            else:
+                # upcoming home team was away in this historical match
+                diff = r[ac_col] - r[hc_col]
+            if diff > 0:
+                home_corner_wins += 1
+            elif diff < 0:
+                away_corner_wins += 1
+        corners_team = ""
+        if home_corner_wins / len(h2h) >= rate_threshold:
+            corners_team = home_team
+        elif away_corner_wins / len(h2h) >= rate_threshold:
+            corners_team = away_team
+    else:
+        corners_team = ""
+    return over_trend, corners_team
+
+
 def _generate_predictions(
     fixtures: pd.DataFrame,
     team_stats: Dict[str, Dict[str, float]],
-    btts_threshold: float = 0.8,
-    o25_threshold: float = 0.8,
-    corners_bias: float = 0.0,
+    *,
+    hist_df: Optional[pd.DataFrame] = None,
+    btts_threshold: float,
+    o25_threshold: float,
+    corners_bias: float,
 ) -> pd.DataFrame:
     """Create a DataFrame of match predictions given team statistics and thresholds.
 
@@ -227,23 +407,41 @@ def _generate_predictions(
         away_stats = team_stats.get(away_team)
         if not home_stats or not away_stats:
             continue
-        # Determine BTTS and Over 2.5 predictions
-        btts_pred = (home_stats["btts_rate"] >= btts_threshold) and (away_stats["btts_rate"] >= btts_threshold)
-        o25_pred = (home_stats["o25_rate"] >= o25_threshold) and (away_stats["o25_rate"] >= o25_threshold)
-        # Corners: pick side with higher corners_diff
-        corners_pick = None
-        if not np.isnan(home_stats["corners_diff"]) and not np.isnan(away_stats["corners_diff"]):
+        # Determine BTTS and Over 2.5 predictions based on team form
+        btts_pred = (
+            home_stats.get("btts_rate", 0) >= btts_threshold
+            and away_stats.get("btts_rate", 0) >= btts_threshold
+        )
+        o25_pred = (
+            home_stats.get("o25_rate", 0) >= o25_threshold
+            and away_stats.get("o25_rate", 0) >= o25_threshold
+        )
+        # Corners: pick side with higher corners_diff across teams
+        corners_pick = ""
+        if not np.isnan(home_stats.get("corners_diff", np.nan)) and not np.isnan(away_stats.get("corners_diff", np.nan)):
             diff = home_stats["corners_diff"] - away_stats["corners_diff"]
             if abs(diff) > corners_bias:
                 corners_pick = home_team if diff > 0 else away_team
-        # Compose result
+        # H2H corner trend: Over 9.5 and corner winner
+        over9_trend = ""
+        corners_team = corners_pick
+        if hist_df is not None:
+            try:
+                over9_trend, h2h_corners_team = _get_h2h_corners_trend(hist_df, home_team, away_team)
+                # If h2h_corners_team is available, override corners_pick
+                if h2h_corners_team:
+                    corners_team = h2h_corners_team
+            except Exception:
+                # If something goes wrong, leave trends blank
+                pass
         predictions.append({
             "Date": row[date_col] if date_col and date_col in row else None,
             "Home": home_team,
             "Away": away_team,
             "BTTS": "Yes" if btts_pred else "",
             "Over 2.5": "Yes" if o25_pred else "",
-            "More Corners": corners_pick or "",
+            "Over 9.5 Corners": over9_trend,
+            "More Corners": corners_team or "",
         })
     return pd.DataFrame(predictions)
 
@@ -252,26 +450,29 @@ def main() -> None:
     st.set_page_config(page_title="BolaStats Multi‑League", layout="wide")
     st.title("BolaStats – Multi‑League Predictions")
     st.markdown(
-        "Select a league to view predictions based on recent form (last 5 games). "
-        "Adjust thresholds using the sliders below. Only fixtures meeting the criteria "
-        "are displayed."
+        """
+        The landing page defaults to the **Premier League**, showing quick stats based on each team's last five
+        matches. You can switch to other leagues using the drop‑down below. Predictions are based on fixed
+        thresholds (80 % BTTS and over 2.5 goals rates) and recommend matches that meet both sides’ criteria.
+        """
     )
 
-    # League selection
+    # League selection. Default to Premier League (first entry).
     league_codes = list(LEAGUE_SHEETS.keys())
     league_display_names = [LEAGUE_SHEETS[c]["display_name"] for c in league_codes]
-    league_choice = st.selectbox("Choose a league", league_display_names)
-    # Map back to code
+    default_index = 0  # ensure EPL appears first for landing page
+    league_choice = st.selectbox(
+        "Choose a league",
+        league_display_names,
+        index=default_index,
+        help="Select which league's stats and predictions to display.",
+    )
     league_code = league_codes[league_display_names.index(league_choice)]
 
-    # Threshold sliders
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        btts_thr = st.slider("BTTS threshold", 0.5, 1.0, 0.8, 0.05)
-    with col2:
-        o25_thr = st.slider("Over 2.5 threshold", 0.5, 1.0, 0.8, 0.05)
-    with col3:
-        corners_bias = st.slider("Corner bias threshold", 0.0, 3.0, 0.0, 0.1)
+    # Fixed thresholds; adjust these values in code if needed.
+    BTTS_THRESHOLD = 0.8  # 4/5 games must have BTTS
+    O25_THRESHOLD = 0.8   # 4/5 games must exceed 2.5 goals
+    CORNERS_BIAS = 0.0    # Always pick a more corners recommendation if a side has higher average
 
     # Load data
     with st.spinner("Loading data..."):
@@ -281,6 +482,7 @@ def main() -> None:
         except Exception as exc:
             st.error(str(exc))
             return
+
     # Normalise team names
     fixtures_df = _normalise_team_names(fixtures_df)
     hist_df = _normalise_team_names(hist_df)
@@ -292,16 +494,20 @@ def main() -> None:
         st.error(f"Error processing historical data: {exc}")
         return
 
-    # Generate predictions
+    # Generate predictions using fixed thresholds
     preds_df = _generate_predictions(
         fixtures_df,
         stats,
-        btts_threshold=btts_thr,
-        o25_threshold=o25_thr,
-        corners_bias=corners_bias,
+        hist_df=hist_df,
+        btts_threshold=BTTS_THRESHOLD,
+        o25_threshold=O25_THRESHOLD,
+        corners_bias=CORNERS_BIAS,
     )
     if preds_df.empty:
-        st.info("No fixtures meet the specified thresholds. Try relaxing the sliders or check data availability.")
+        st.info(
+            "No fixtures meet the specified criteria based on current team form. "
+            "If this seems incorrect, verify that your historical data contains at least five recent matches per team."
+        )
     else:
         st.dataframe(preds_df.reset_index(drop=True), use_container_width=True)
 
