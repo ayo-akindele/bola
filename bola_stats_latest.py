@@ -308,6 +308,153 @@ def _compute_team_stats(df: pd.DataFrame, last_n: int = 5) -> Dict[str, Dict[str
         }
     return stats
 
+# -----------------------------------------------------------------------------
+# Additional helper functions for trend counts
+#
+def _team_btts_o25_counts(df: pd.DataFrame, team: str, last_n: int = 5) -> Tuple[int, int, int]:
+    """Return counts of BTTS and Over 2.5 goals for a single team.
+
+    Parameters
+    ----------
+    df : DataFrame
+        Historical match data.
+    team : str
+        Team name.
+    last_n : int
+        Number of most recent matches to consider.
+
+    Returns
+    -------
+    Tuple[int, int, int]
+        (btts_count, o25_count, total_games) representing how many of
+        the last ``n`` games featured both teams scoring and how many had
+        three or more total goals. ``total_games`` is the number of matches
+        considered (may be fewer than ``n`` if data is limited).
+    """
+    h_col = _find_column(df, "home")
+    a_col = _find_column(df, "away")
+    hg_col = _find_column(df, "home_goals")
+    ag_col = _find_column(df, "away_goals")
+    date_col = _find_column(df, "date")
+    if not all([h_col, a_col, hg_col, ag_col, date_col]):
+        return (0, 0, 0)
+    df_sorted = df.sort_values(date_col, ascending=False)
+    team_matches = df_sorted[(df_sorted[h_col] == team) | (df_sorted[a_col] == team)].head(last_n)
+    total_games = len(team_matches)
+    if total_games == 0:
+        return (0, 0, 0)
+    btts_count = 0
+    o25_count = 0
+    for _, row in team_matches.iterrows():
+        hg = row[hg_col]
+        ag = row[ag_col]
+        # numeric conversion
+        try:
+            hg_val = float(hg) if pd.notna(hg) else 0.0
+            ag_val = float(ag) if pd.notna(ag) else 0.0
+        except Exception:
+            hg_val = pd.to_numeric(hg, errors="coerce")
+            ag_val = pd.to_numeric(ag, errors="coerce")
+        if pd.notna(hg_val) and pd.notna(ag_val):
+            if hg_val > 0 and ag_val > 0:
+                btts_count += 1
+            if (hg_val + ag_val) >= 3:
+                o25_count += 1
+    return (btts_count, o25_count, total_games)
+
+
+def _h2h_corners_counts(
+    hist_df: pd.DataFrame,
+    home_team: str,
+    away_team: str,
+    last_n: int = 5,
+    over_threshold: float = 9.5,
+) -> Optional[Tuple[int, int, int, int, int]]:
+    """Compute head‑to‑head corner counts for the last ``n`` meetings.
+
+    Parameters
+    ----------
+    hist_df : DataFrame
+        Historical match data containing corner statistics.
+    home_team, away_team : str
+        Names of the teams in the upcoming fixture.
+    last_n : int
+        Number of most recent H2H games to consider.
+    over_threshold : float
+        Corner count threshold for determining over/under (default 9.5).
+
+    Returns
+    -------
+    Optional[Tuple[int, int, int, int, int]]
+        (over_count, under_count, home_corner_wins, away_corner_wins, total_games)
+        where ``total_games`` is the number of H2H matches considered. If
+        fewer than two H2H matches exist, returns None.
+    """
+    h_col = _find_column(hist_df, "home")
+    a_col = _find_column(hist_df, "away")
+    hc_col = _find_column(hist_df, "home_corners")
+    ac_col = _find_column(hist_df, "away_corners")
+    date_col = _find_column(hist_df, "date")
+    # Determine column for total corners if present
+    total_c_col = None
+    for col in hist_df.columns:
+        key = col.lower().replace("_", "").replace(" ", "")
+        if key == "totalcorners":
+            total_c_col = col
+            break
+    if not all([h_col, a_col, date_col]) or not (hc_col or total_c_col):
+        return None
+    # Filter H2H matches
+    mask = (
+        (hist_df[h_col] == home_team) & (hist_df[a_col] == away_team)
+    ) | (
+        (hist_df[h_col] == away_team) & (hist_df[a_col] == home_team)
+    )
+    h2h = hist_df.loc[mask].copy()
+    if h2h.empty:
+        return None
+    h2h[date_col] = pd.to_datetime(h2h[date_col], errors="coerce")
+    h2h = h2h.sort_values(date_col, ascending=False).head(last_n)
+    total_games = len(h2h)
+    if total_games == 0:
+        return None
+    over_count = 0
+    under_count = 0
+    home_corner_wins = 0
+    away_corner_wins = 0
+    for _, row in h2h.iterrows():
+        # total corners
+        if total_c_col and total_c_col in h2h.columns:
+            total_c = pd.to_numeric(row[total_c_col], errors="coerce")
+        else:
+            # sum of home and away corners
+            hc = pd.to_numeric(row[hc_col], errors="coerce")
+            ac = pd.to_numeric(row[ac_col], errors="coerce")
+            if pd.isna(hc) or pd.isna(ac):
+                continue
+            total_c = hc + ac
+        if pd.notna(total_c):
+            if total_c > over_threshold:
+                over_count += 1
+            else:
+                under_count += 1
+        # determine corner winner relative to upcoming fixture
+        if hc_col and ac_col:
+            hc = pd.to_numeric(row[hc_col], errors="coerce")
+            ac = pd.to_numeric(row[ac_col], errors="coerce")
+            if pd.isna(hc) or pd.isna(ac):
+                continue
+            # If historical match home team matches upcoming home_team
+            if row[h_col] == home_team:
+                diff = hc - ac
+            else:
+                diff = ac - hc
+            if diff > 0:
+                home_corner_wins += 1
+            elif diff < 0:
+                away_corner_wins += 1
+    return (over_count, under_count, home_corner_wins, away_corner_wins, total_games)
+
 
 def _get_h2h_corners_trend(
     hist_df: pd.DataFrame,
@@ -543,11 +690,58 @@ def main() -> None:
     # Normalise team names and parse dates
     fixtures_df = _normalise_team_names(fixtures_df)
     hist_df = _normalise_team_names(hist_df)
-    # Ensure date columns are parsed
+    # Ensure date columns are parsed and filter fixtures to upcoming dates
+    # Convert any detected date columns to datetime objects.  For fixtures
+    # this allows us to drop games that have already been played.
     for df in (fixtures_df, hist_df):
         date_col = _find_column(df, "date")
         if date_col:
             df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+
+    # Determine the upcoming game week using the Round_Number column if
+    # available.  We identify the round with the earliest fixture date
+    # that is on or after today.  Only fixtures from that round will be shown.
+    fx_date_col = _find_column(fixtures_df, "date")
+    if fx_date_col:
+        # Use a timezone‑naive date for comparison; otherwise pandas will
+        # raise an error when comparing tz‑aware and tz‑naive timestamps.
+        today = pd.Timestamp.utcnow().normalize().tz_localize(None)
+        # parse round number if present
+        round_col = None
+        for cand in ["Round_Number", "Round", "Gameweek", "GW", "RoundNumber"]:
+            if cand in fixtures_df.columns:
+                round_col = cand
+                break
+        if round_col:
+            try:
+                # Convert round numbers to numeric if possible
+                r_series = pd.to_numeric(fixtures_df[round_col], errors="coerce")
+                # Combine round and date into a DataFrame
+                round_dates = fixtures_df[[round_col, fx_date_col]].copy()
+                round_dates[round_col] = r_series
+                round_dates[fx_date_col] = pd.to_datetime(round_dates[fx_date_col], errors="coerce")
+                # Drop NaT
+                round_dates = round_dates.dropna(subset=[round_col, fx_date_col])
+                # For each round, get the earliest fixture date
+                rd = round_dates.groupby(round_col)[fx_date_col].min().sort_index()
+                # Find the smallest round with date >= today
+                upcoming_rounds = rd[rd >= today]
+                if not upcoming_rounds.empty:
+                    next_round = upcoming_rounds.index[0]
+                    # Filter fixtures to that round
+                    fixtures_df = fixtures_df[pd.to_numeric(fixtures_df[round_col], errors="coerce") == next_round].copy()
+                else:
+                    # If no rounds are upcoming, keep fixtures on or after today
+                    fixtures_df = fixtures_df[fixtures_df[fx_date_col] >= today].copy()
+            except Exception:
+                # Fallback to filtering by date
+                fixtures_df = fixtures_df[fixtures_df[fx_date_col] >= today].copy()
+        else:
+            # Fallback: filter by date only
+            try:
+                fixtures_df = fixtures_df[fixtures_df[fx_date_col] >= today].copy()
+            except Exception:
+                pass
 
     # Compute team statistics
     try:
@@ -573,45 +767,61 @@ def main() -> None:
             "If this seems incorrect, verify that your historical data contains at least five recent matches per team."
         )
     else:
-        # Iterate through predictions and display them with emojis
+        # For each fixture, derive simple one-line trend summaries
         for _, r in preds_df.iterrows():
             home = r.get("Home", "")
             away = r.get("Away", "")
             date_val = r.get("Date", None)
+            # Format date for display
             if pd.notna(date_val):
                 try:
-                    # Support both datetime and string
                     dt = pd.to_datetime(date_val, errors="coerce")
                     date_str = dt.strftime("%d %b %Y") if not pd.isna(dt) else str(date_val)
                 except Exception:
                     date_str = str(date_val)
             else:
                 date_str = ""
-            # BTTS icon
-            btts_icon = "✅" if r.get("BTTS", "") == "Yes" else ""
-            # Over 2.5 icon
-            o25_icon = "⚽" if r.get("Over 2.5", "") == "Yes" else ""
-            # Over 9.5 corners icon
-            over9 = r.get("Over 9.5 Corners", "")
-            if over9 == "Yes":
-                corners_icon = "🔼"
-            elif over9 == "No":
-                corners_icon = "🔽"
+            # Compute team counts for BTTS and Over 2.5
+            hbtts, ho25, htotal = _team_btts_o25_counts(hist_df, home, last_n=5)
+            abtts, ao25, atotal = _team_btts_o25_counts(hist_df, away, last_n=5)
+            # Head‑to‑head corner counts
+            h2h_counts = _h2h_corners_counts(hist_df, home, away, last_n=5)
+            trend_lines = []
+            # BTTS trend: show if either team has at least one BTTS in the last 5
+            if htotal > 0:
+                trend_lines.append(f"BTTS or GG: {hbtts}/{htotal} ({home})")
+            if atotal > 0:
+                trend_lines.append(f"BTTS or GG: {abtts}/{atotal} ({away})")
+            # Over 2.5 trend
+            if htotal > 0:
+                trend_lines.append(f"Over 2.5: {ho25}/{htotal} ({home})")
+            if atotal > 0:
+                trend_lines.append(f"Over 2.5: {ao25}/{atotal} ({away})")
+            # Corners trends
+            if h2h_counts:
+                oc, uc, hc_win, ac_win, total_h2h = h2h_counts
+                # Over/under corners
+                if oc >= 1 or uc >= 1:
+                    # Choose whichever is more prevalent
+                    if oc >= uc:
+                        trend_lines.append(f"Over 9.5 corners: {oc}/{total_h2h}")
+                    else:
+                        trend_lines.append(f"Under 9.5 corners: {uc}/{total_h2h}")
+                # Corner winner
+                if hc_win > 0:
+                    trend_lines.append(f"{home} more corners: {hc_win}/{total_h2h}")
+                if ac_win > 0:
+                    trend_lines.append(f"{away} more corners: {ac_win}/{total_h2h}")
+            # Compose display: match header and trends separated by commas
+            match_header = f"**{home} vs {away}** — {date_str}"
+            if trend_lines:
+                details = "; ".join(trend_lines)
             else:
-                corners_icon = ""
-            # More corners icon
-            mc_team = r.get("More Corners", "")
-            if mc_team and mc_team == home:
-                mc_icon = "🏠"
-            elif mc_team and mc_team == away:
-                mc_icon = "🚌"
-            else:
-                mc_icon = ""
-            # Compose line
+                details = "No recent trends found"
             st.markdown(
-                f"<div style='padding:4px 0;'>"
-                f"<strong>{home} vs {away}</strong> — {date_str}<br>"
-                f"{btts_icon} {o25_icon} {corners_icon} {mc_icon}"
+                f"<div style='margin-bottom:8px;'>"
+                f"{match_header}<br>"
+                f"{details}"
                 f"</div>",
                 unsafe_allow_html=True,
             )
