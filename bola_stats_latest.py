@@ -50,12 +50,18 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 import streamlit as st
+import os
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Configuration
 
 SPREADSHEET_ID: str = "1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so"
 
+# Each league entry contains the sheet/tab names used when pulling from
+# Google Sheets along with a human‑friendly display name.  If you
+# provide corresponding local CSV files in ``LOCAL_DATA`` below then
+# those files will be used instead of the remote sheet.  This allows
+# offline analysis or private data while retaining the same API.
 LEAGUE_SHEETS: Dict[str, Dict[str, str]] = {
     "EPL": {
         "fixtures": "EPL_upcoming_fixtures",
@@ -77,6 +83,27 @@ LEAGUE_SHEETS: Dict[str, Dict[str, str]] = {
         "historical": "SP1_Historical_Data",
         "display_name": "La Liga",
     },
+}
+
+# Local CSV files for historical results and upcoming fixtures. When a league code
+# appears in this mapping the loader will read from the corresponding local
+# files rather than Google Sheets. This supports offline analysis and tests
+# without requiring the sheet to be publicly shared. File paths are relative
+# to the project root ("/home/oai/share").
+LOCAL_DATA: Dict[str, Dict[str, str]] = {
+    "I1": {
+        "fixtures": "I1_upcoming_fixtures.csv",
+        "historical": "I1 Historical Data.csv",
+    },
+    "D1": {
+        "fixtures": "D1_upcoming_fixtures.csv",
+        "historical": "D1 Historical Data.csv",
+    },
+    "SP1": {
+        "fixtures": "SP1_upcoming_fixtures.csv",
+        "historical": "SP1 Historical Data.csv",
+    },
+    # Add EPL if you have CSVs available locally
 }
 
 # Mapping of logical column names to possible sheet column headers. The
@@ -105,6 +132,8 @@ COLUMN_ALIASES: Dict[str, List[str]] = {
         "Home Team",
         "Team1",
         "home_team",
+        "Home Team",
+        "home team",
     ],
     # Away team name
     "away": [
@@ -115,6 +144,8 @@ COLUMN_ALIASES: Dict[str, List[str]] = {
         "Away Team",
         "Team2",
         "away_team",
+        "Away Team",
+        "away team",
     ],
     # Full time home goals
     "home_goals": [
@@ -148,6 +179,10 @@ COLUMN_ALIASES: Dict[str, List[str]] = {
         "CornersForHomeTeam",
         "Home Corners",
         "Corners_Home",
+        "home_corners",
+        "Home_Corners",
+        "Home Corners",
+        "home corners",
     ],
     # Away team corners
     "away_corners": [
@@ -157,6 +192,22 @@ COLUMN_ALIASES: Dict[str, List[str]] = {
         "CornersForAwayTeam",
         "Away Corners",
         "Corners_Away",
+        "away_corners",
+        "Away_Corners",
+        "Away Corners",
+        "away corners",
+    ],
+    # Optional flags for BTTS and over 2.5 if present in dataset
+    "btts_flag": [
+        "both_teams_score",
+        "BTTS",
+        "btts",
+    ],
+    "o25_flag": [
+        "over_2_5",
+        "Over2.5",
+        "over25",
+        "O2.5",
     ],
 }
 
@@ -447,54 +498,65 @@ def _generate_predictions(
 
 
 def main() -> None:
-    st.set_page_config(page_title="BolaStats Multi‑League", layout="wide")
+    st.set_page_config(page_title="BolaStats", layout="wide")
     st.title("BolaStats – Multi‑League Predictions")
-    st.markdown(
-        """
-        The landing page defaults to the **Premier League**, showing quick stats based on each team's last five
-        matches. You can switch to other leagues using the drop‑down below. Predictions are based on fixed
-        thresholds (80 % BTTS and over 2.5 goals rates) and recommend matches that meet both sides’ criteria.
-        """
+    st.caption(
+        "Select a league below to view predictions for upcoming fixtures. Each match is listed with emojis to "
+        "indicate the recommended markets: ✅ for BTTS (both teams to score), ⚽ for Over 2.5 goals, 🔼 for over 9.5 "
+        "corners, 🔽 for under 9.5 corners, 🏠 for the home team to win more corners and 🚌 for the away team to win "
+        "more corners. Only matches where both sides meet the form thresholds (80 %) are shown."
     )
 
-    # League selection. Default to Premier League (first entry).
+    # League selection. Display names derived from LEAGUE_SHEETS; default to Premier League
     league_codes = list(LEAGUE_SHEETS.keys())
-    league_display_names = [LEAGUE_SHEETS[c]["display_name"] for c in league_codes]
-    default_index = 0  # ensure EPL appears first for landing page
-    league_choice = st.selectbox(
+    league_names = [LEAGUE_SHEETS[c]["display_name"] for c in league_codes]
+    default_index = 0
+    league_name = st.selectbox(
         "Choose a league",
-        league_display_names,
+        league_names,
         index=default_index,
-        help="Select which league's stats and predictions to display.",
     )
-    league_code = league_codes[league_display_names.index(league_choice)]
+    league_code = league_codes[league_names.index(league_name)]
 
-    # Fixed thresholds; adjust these values in code if needed.
+    # Fixed thresholds
     BTTS_THRESHOLD = 0.8  # 4/5 games must have BTTS
     O25_THRESHOLD = 0.8   # 4/5 games must exceed 2.5 goals
     CORNERS_BIAS = 0.0    # Always pick a more corners recommendation if a side has higher average
 
-    # Load data
+    # Load fixtures and historical data from local CSV if available, otherwise via Google Sheets
     with st.spinner("Loading data..."):
         try:
-            fixtures_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["fixtures"])
-            hist_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["historical"])
+            if league_code in LOCAL_DATA:
+                # Resolve file paths relative to the script directory
+                base_path = os.path.dirname(os.path.abspath(__file__))
+                fx_path = os.path.join(base_path, LOCAL_DATA[league_code]["fixtures"])
+                hist_path = os.path.join(base_path, LOCAL_DATA[league_code]["historical"])
+                fixtures_df = pd.read_csv(fx_path)
+                hist_df = pd.read_csv(hist_path)
+            else:
+                fixtures_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["fixtures"])
+                hist_df = _csv_from_gsheet(LEAGUE_SHEETS[league_code]["historical"])
         except Exception as exc:
             st.error(str(exc))
             return
 
-    # Normalise team names
+    # Normalise team names and parse dates
     fixtures_df = _normalise_team_names(fixtures_df)
     hist_df = _normalise_team_names(hist_df)
+    # Ensure date columns are parsed
+    for df in (fixtures_df, hist_df):
+        date_col = _find_column(df, "date")
+        if date_col:
+            df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
 
-    # Compute team stats
+    # Compute team statistics
     try:
         stats = _compute_team_stats(hist_df)
     except Exception as exc:
         st.error(f"Error processing historical data: {exc}")
         return
 
-    # Generate predictions using fixed thresholds
+    # Generate predictions
     preds_df = _generate_predictions(
         fixtures_df,
         stats,
@@ -503,13 +565,56 @@ def main() -> None:
         o25_threshold=O25_THRESHOLD,
         corners_bias=CORNERS_BIAS,
     )
+
+    st.subheader(f"Upcoming fixtures – {league_name}")
     if preds_df.empty:
         st.info(
             "No fixtures meet the specified criteria based on current team form. "
             "If this seems incorrect, verify that your historical data contains at least five recent matches per team."
         )
     else:
-        st.dataframe(preds_df.reset_index(drop=True), use_container_width=True)
+        # Iterate through predictions and display them with emojis
+        for _, r in preds_df.iterrows():
+            home = r.get("Home", "")
+            away = r.get("Away", "")
+            date_val = r.get("Date", None)
+            if pd.notna(date_val):
+                try:
+                    # Support both datetime and string
+                    dt = pd.to_datetime(date_val, errors="coerce")
+                    date_str = dt.strftime("%d %b %Y") if not pd.isna(dt) else str(date_val)
+                except Exception:
+                    date_str = str(date_val)
+            else:
+                date_str = ""
+            # BTTS icon
+            btts_icon = "✅" if r.get("BTTS", "") == "Yes" else ""
+            # Over 2.5 icon
+            o25_icon = "⚽" if r.get("Over 2.5", "") == "Yes" else ""
+            # Over 9.5 corners icon
+            over9 = r.get("Over 9.5 Corners", "")
+            if over9 == "Yes":
+                corners_icon = "🔼"
+            elif over9 == "No":
+                corners_icon = "🔽"
+            else:
+                corners_icon = ""
+            # More corners icon
+            mc_team = r.get("More Corners", "")
+            if mc_team and mc_team == home:
+                mc_icon = "🏠"
+            elif mc_team and mc_team == away:
+                mc_icon = "🚌"
+            else:
+                mc_icon = ""
+            # Compose line
+            st.markdown(
+                f"<div style='padding:4px 0;'>"
+                f"<strong>{home} vs {away}</strong> — {date_str}<br>"
+                f"{btts_icon} {o25_icon} {corners_icon} {mc_icon}"
+                f"</div>",
+                unsafe_allow_html=True,
+            )
 
 
 if __name__ == "__main__":
