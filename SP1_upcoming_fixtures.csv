@@ -1,0 +1,381 @@
+Round_Number,Date,Home Team,Away_Team
+1,15/08/2025 17:00,Girona,Vallecano
+1,15/08/2025 19:30,Villarreal,Real Oviedo
+1,16/08/2025 17:30,Mallorca,Barcelona
+1,16/08/2025 19:30,Alaves,Levante
+1,16/08/2025 19:30,Valencia,Sociedad
+1,17/08/2025 15:00,Celta,Getafe
+1,17/08/2025 17:30,Ath Bilbao,Sevilla
+1,17/08/2025 19:30,Espanol,Ath Madrid
+1,18/08/2025 19:00,Elche,Betis
+1,19/08/2025 19:00,Real Madrid,Osasuna
+2,22/08/2025 19:30,Betis,Alaves
+2,23/08/2025 15:00,Mallorca,Celta
+2,23/08/2025 17:30,Ath Madrid,Elche
+2,23/08/2025 19:30,Levante,Barcelona
+2,24/08/2025 15:00,Osasuna,Valencia
+2,24/08/2025 17:30,Sociedad,Espanol
+2,24/08/2025 17:30,Villarreal,Girona
+2,24/08/2025 19:30,Real Oviedo,Real Madrid
+2,25/08/2025 17:30,Ath Bilbao,Vallecano
+2,25/08/2025 19:30,Sevilla,Getafe
+3,29/08/2025 17:30,Elche,Levante
+3,29/08/2025 19:30,Valencia,Getafe
+3,30/08/2025 15:00,Alaves,Ath Madrid
+3,30/08/2025 17:00,Real Oviedo,Sociedad
+3,30/08/2025 17:30,Girona,Sevilla
+3,30/08/2025 19:30,Real Madrid,Mallorca
+3,31/08/2025 15:00,Celta,Villarreal
+3,31/08/2025 17:00,Betis,Ath Bilbao
+3,31/08/2025 17:30,Espanol,Osasuna
+3,31/08/2025 19:30,Vallecano,Barcelona
+4,12/09/2025 19:00,Sevilla,Elche
+4,13/09/2025 12:00,Getafe,Real Oviedo
+4,13/09/2025 14:15,Sociedad,Real Madrid
+4,13/09/2025 16:30,Ath Bilbao,Alaves
+4,13/09/2025 19:00,Ath Madrid,Villarreal
+4,14/09/2025 12:00,Celta,Girona
+4,14/09/2025 14:15,Levante,Betis
+4,14/09/2025 16:30,Osasuna,Vallecano
+4,14/09/2025 19:00,Barcelona,Valencia
+4,15/09/2025 19:00,Espanol,Mallorca
+5,19/09/2025 19:00,Betis,Sociedad
+5,20/09/2025 12:00,Girona,Levante
+5,20/09/2025 14:15,Real Madrid,Espanol
+5,20/09/2025 16:30,Alaves,Sevilla
+5,20/09/2025 16:30,Villarreal,Osasuna
+5,20/09/2025 19:00,Valencia,Ath Bilbao
+5,21/09/2025 12:00,Vallecano,Celta
+5,21/09/2025 14:15,Mallorca,Ath Madrid
+5,21/09/2025 16:15,Elche,Real Oviedo
+5,21/09/2025 19:00,Barcelona,Getafe
+6,27/08/2025 19:00,Celta,Betis
+6,23/09/2025 17:00,Ath Bilbao,Girona
+6,23/09/2025 17:00,Espanol,Valencia
+6,23/09/2025 19:30,Levante,Real Madrid
+6,23/09/2025 19:30,Sevilla,Villarreal
+6,24/09/2025 17:00,Getafe,Alaves
+6,24/09/2025 19:30,Ath Madrid,Vallecano
+6,24/09/2025 19:30,Sociedad,Mallorca
+6,25/09/2025 17:30,Osasuna,Elche
+6,25/09/2025 19:30,Real Oviedo,Barcelona
+7,26/09/2025 19:00,Girona,Espanol
+7,27/09/2025 12:00,Getafe,Levante
+7,27/09/2025 14:15,Ath Madrid,Real Madrid
+7,27/09/2025 16:30,Mallorca,Alaves
+7,27/09/2025 19:00,Villarreal,Ath Bilbao
+7,28/09/2025 12:00,Vallecano,Sevilla
+7,28/09/2025 14:15,Elche,Celta
+7,28/09/2025 16:30,Betis,Osasuna
+7,28/09/2025 19:00,Barcelona,Sociedad
+7,29/09/2025 19:00,Valencia,Real Oviedo
+8,05/10/2025 19:00,Alaves,Elche
+8,05/10/2025 19:00,Ath Bilbao,Mallorca
+8,05/10/2025 19:00,Girona,Valencia
+8,05/10/2025 19:00,Real Madrid,Villarreal
+8,05/10/2025 19:00,Celta,Ath Madrid
+8,05/10/2025 19:00,Sevilla,Barcelona
+8,05/10/2025 19:00,Espanol,Betis
+8,05/10/2025 19:00,Osasuna,Getafe
+8,05/10/2025 19:00,Real Oviedo,Levante
+8,05/10/2025 19:00,Sociedad,Vallecano
+9,19/10/2025 19:00,Alaves,Valencia
+9,19/10/2025 19:00,Ath Madrid,Osasuna
+9,19/10/2025 19:00,Barcelona,Girona
+9,19/10/2025 19:00,Celta,Sociedad
+9,19/10/2025 19:00,Getafe,Real Madrid
+9,19/10/2025 19:00,Levante,Vallecano
+9,19/10/2025 19:00,Elche,Ath Bilbao
+9,19/10/2025 19:00,Villarreal,Betis
+9,19/10/2025 19:00,Real Oviedo,Espanol
+9,19/10/2025 19:00,Sevilla,Mallorca
+10,26/10/2025 20:00,Ath Bilbao,Getafe
+10,26/10/2025 20:00,Girona,Real Oviedo
+10,26/10/2025 20:00,Sociedad,Sevilla
+10,26/10/2025 20:00,Valencia,Villarreal
+10,26/10/2025 20:00,Vallecano,Alaves
+10,26/10/2025 20:00,Betis,Ath Madrid
+10,26/10/2025 20:00,Real Madrid,Barcelona
+10,26/10/2025 20:00,Osasuna,Celta
+10,26/10/2025 20:00,Espanol,Elche
+10,26/10/2025 20:00,Mallorca,Levante
+11,02/11/2025 20:00,Alaves,Espanol
+11,02/11/2025 20:00,Ath Madrid,Sevilla
+11,02/11/2025 20:00,Barcelona,Elche
+11,02/11/2025 20:00,Betis,Mallorca
+11,02/11/2025 20:00,Getafe,Girona
+11,02/11/2025 20:00,Real Madrid,Valencia
+11,02/11/2025 20:00,Sociedad,Ath Bilbao
+11,02/11/2025 20:00,Levante,Celta
+11,02/11/2025 20:00,Real Oviedo,Osasuna
+11,02/11/2025 20:00,Villarreal,Vallecano
+12,09/11/2025 20:00,Ath Bilbao,Real Oviedo
+12,09/11/2025 20:00,Ath Madrid,Levante
+12,09/11/2025 20:00,Elche,Sociedad
+12,09/11/2025 20:00,Espanol,Villarreal
+12,09/11/2025 20:00,Vallecano,Real Madrid
+12,09/11/2025 20:00,Girona,Alaves
+12,09/11/2025 20:00,Celta,Barcelona
+12,09/11/2025 20:00,Valencia,Betis
+12,09/11/2025 20:00,Mallorca,Getafe
+12,09/11/2025 20:00,Sevilla,Osasuna
+13,23/11/2025 20:00,Alaves,Celta
+13,23/11/2025 20:00,Betis,Girona
+13,23/11/2025 20:00,Elche,Real Madrid
+13,23/11/2025 20:00,Espanol,Sevilla
+13,23/11/2025 20:00,Osasuna,Sociedad
+13,23/11/2025 20:00,Real Oviedo,Vallecano
+13,23/11/2025 20:00,Barcelona,Ath Bilbao
+13,23/11/2025 20:00,Getafe,Ath Madrid
+13,23/11/2025 20:00,Valencia,Levante
+13,23/11/2025 20:00,Villarreal,Mallorca
+14,30/11/2025 20:00,Ath Madrid,Real Oviedo
+14,30/11/2025 20:00,Celta,Espanol
+14,30/11/2025 20:00,Girona,Real Madrid
+14,30/11/2025 20:00,Mallorca,Osasuna
+14,30/11/2025 20:00,Vallecano,Valencia
+14,30/11/2025 20:00,Sociedad,Villarreal
+14,30/11/2025 20:00,Barcelona,Alaves
+14,30/11/2025 20:00,Levante,Ath Bilbao
+14,30/11/2025 20:00,Sevilla,Betis
+14,30/11/2025 20:00,Getafe,Elche
+15,07/12/2025 20:00,Alaves,Sociedad
+15,07/12/2025 20:00,Ath Bilbao,Ath Madrid
+15,07/12/2025 20:00,Elche,Girona
+15,07/12/2025 20:00,Espanol,Vallecano
+15,07/12/2025 20:00,Betis,Barcelona
+15,07/12/2025 20:00,Real Madrid,Celta
+15,07/12/2025 20:00,Villarreal,Getafe
+15,07/12/2025 20:00,Osasuna,Levante
+15,07/12/2025 20:00,Real Oviedo,Mallorca
+15,07/12/2025 20:00,Valencia,Sevilla
+16,14/12/2025 20:00,Alaves,Real Madrid
+16,14/12/2025 20:00,Ath Madrid,Valencia
+16,14/12/2025 20:00,Barcelona,Osasuna
+16,14/12/2025 20:00,Levante,Villarreal
+16,14/12/2025 20:00,Celta,Ath Bilbao
+16,14/12/2025 20:00,Vallecano,Betis
+16,14/12/2025 20:00,Mallorca,Elche
+16,14/12/2025 20:00,Getafe,Espanol
+16,14/12/2025 20:00,Sociedad,Girona
+16,14/12/2025 20:00,Sevilla,Real Oviedo
+17,21/12/2025 20:00,Ath Bilbao,Espanol
+17,21/12/2025 20:00,Betis,Getafe
+17,21/12/2025 20:00,Elche,Vallecano
+17,21/12/2025 20:00,Levante,Sociedad
+17,21/12/2025 20:00,Real Madrid,Sevilla
+17,21/12/2025 20:00,Osasuna,Alaves
+17,21/12/2025 20:00,Girona,Ath Madrid
+17,21/12/2025 20:00,Villarreal,Barcelona
+17,21/12/2025 20:00,Real Oviedo,Celta
+17,21/12/2025 20:00,Valencia,Mallorca
+18,04/01/2026 20:00,Alaves,Real Oviedo
+18,04/01/2026 20:00,Celta,Valencia
+18,04/01/2026 20:00,Elche,Villarreal
+18,04/01/2026 20:00,Osasuna,Ath Bilbao
+18,04/01/2026 20:00,Sociedad,Ath Madrid
+18,04/01/2026 20:00,Espanol,Barcelona
+18,04/01/2026 20:00,Real Madrid,Betis
+18,04/01/2026 20:00,Vallecano,Getafe
+18,04/01/2026 20:00,Mallorca,Girona
+18,04/01/2026 20:00,Sevilla,Levante
+19,11/01/2026 20:00,Ath Bilbao,Real Madrid
+19,11/01/2026 20:00,Getafe,Sociedad
+19,11/01/2026 20:00,Girona,Osasuna
+19,11/01/2026 20:00,Villarreal,Alaves
+19,11/01/2026 20:00,Barcelona,Ath Madrid
+19,11/01/2026 20:00,Real Oviedo,Betis
+19,11/01/2026 20:00,Sevilla,Celta
+19,11/01/2026 20:00,Valencia,Elche
+19,11/01/2026 20:00,Levante,Espanol
+19,11/01/2026 20:00,Vallecano,Mallorca
+20,18/01/2026 20:00,Betis,Villarreal
+20,18/01/2026 20:00,Celta,Vallecano
+20,18/01/2026 20:00,Elche,Sevilla
+20,18/01/2026 20:00,Espanol,Girona
+20,18/01/2026 20:00,Getafe,Valencia
+20,18/01/2026 20:00,Osasuna,Real Oviedo
+20,18/01/2026 20:00,Ath Madrid,Alaves
+20,18/01/2026 20:00,Mallorca,Ath Bilbao
+20,18/01/2026 20:00,Sociedad,Barcelona
+20,18/01/2026 20:00,Real Madrid,Levante
+21,25/01/2026 20:00,Alaves,Betis
+21,25/01/2026 20:00,Ath Madrid,Mallorca
+21,25/01/2026 20:00,Barcelona,Real Oviedo
+21,25/01/2026 20:00,Sevilla,Ath Bilbao
+21,25/01/2026 20:00,Sociedad,Celta
+21,25/01/2026 20:00,Levante,Elche
+21,25/01/2026 20:00,Valencia,Espanol
+21,25/01/2026 20:00,Girona,Getafe
+21,25/01/2026 20:00,Vallecano,Osasuna
+21,25/01/2026 20:00,Villarreal,Real Madrid
+22,01/02/2026 20:00,Ath Bilbao,Sociedad
+22,01/02/2026 20:00,Betis,Valencia
+22,01/02/2026 20:00,Mallorca,Sevilla
+22,01/02/2026 20:00,Osasuna,Villarreal
+22,01/02/2026 20:00,Espanol,Alaves
+22,01/02/2026 20:00,Levante,Ath Madrid
+22,01/02/2026 20:00,Elche,Barcelona
+22,01/02/2026 20:00,Getafe,Celta
+22,01/02/2026 20:00,Real Oviedo,Girona
+22,01/02/2026 20:00,Real Madrid,Vallecano
+23,08/02/2026 20:00,Alaves,Getafe
+23,08/02/2026 20:00,Ath Bilbao,Levante
+23,08/02/2026 20:00,Ath Madrid,Betis
+23,08/02/2026 20:00,Barcelona,Mallorca
+23,08/02/2026 20:00,Celta,Osasuna
+23,08/02/2026 20:00,Sociedad,Elche
+23,08/02/2026 20:00,Villarreal,Espanol
+23,08/02/2026 20:00,Sevilla,Girona
+23,08/02/2026 20:00,Valencia,Real Madrid
+23,08/02/2026 20:00,Vallecano,Real Oviedo
+24,15/02/2026 20:00,Elche,Osasuna
+24,15/02/2026 20:00,Getafe,Villarreal
+24,15/02/2026 20:00,Levante,Valencia
+24,15/02/2026 20:00,Real Madrid,Sociedad
+24,15/02/2026 20:00,Sevilla,Alaves
+24,15/02/2026 20:00,Real Oviedo,Ath Bilbao
+24,15/02/2026 20:00,Vallecano,Ath Madrid
+24,15/02/2026 20:00,Girona,Barcelona
+24,15/02/2026 20:00,Mallorca,Betis
+24,15/02/2026 20:00,Espanol,Celta
+25,22/02/2026 20:00,Alaves,Girona
+25,22/02/2026 20:00,Ath Bilbao,Elche
+25,22/02/2026 20:00,Ath Madrid,Espanol
+25,22/02/2026 20:00,Barcelona,Levante
+25,22/02/2026 20:00,Betis,Vallecano
+25,22/02/2026 20:00,Celta,Mallorca
+25,22/02/2026 20:00,Getafe,Sevilla
+25,22/02/2026 20:00,Osasuna,Real Madrid
+25,22/02/2026 20:00,Villarreal,Valencia
+25,22/02/2026 20:00,Sociedad,Real Oviedo
+26,01/03/2026 20:00,Barcelona,Villarreal
+26,01/03/2026 20:00,Betis,Sevilla
+26,01/03/2026 20:00,Elche,Espanol
+26,01/03/2026 20:00,Mallorca,Sociedad
+26,01/03/2026 20:00,Levante,Alaves
+26,01/03/2026 20:00,Vallecano,Ath Bilbao
+26,01/03/2026 20:00,Real Oviedo,Ath Madrid
+26,01/03/2026 20:00,Girona,Celta
+26,01/03/2026 20:00,Real Madrid,Getafe
+26,01/03/2026 20:00,Valencia,Osasuna
+27,08/03/2026 20:00,Ath Bilbao,Barcelona
+27,08/03/2026 20:00,Ath Madrid,Sociedad
+27,08/03/2026 20:00,Celta,Real Madrid
+27,08/03/2026 20:00,Espanol,Real Oviedo
+27,08/03/2026 20:00,Valencia,Alaves
+27,08/03/2026 20:00,Getafe,Betis
+27,08/03/2026 20:00,Villarreal,Elche
+27,08/03/2026 20:00,Levante,Girona
+27,08/03/2026 20:00,Osasuna,Mallorca
+27,08/03/2026 20:00,Sevilla,Vallecano
+28,15/03/2026 20:00,Alaves,Villarreal
+28,15/03/2026 20:00,Ath Madrid,Getafe
+28,15/03/2026 20:00,Barcelona,Sevilla
+28,15/03/2026 20:00,Betis,Celta
+28,15/03/2026 20:00,Real Oviedo,Valencia
+28,15/03/2026 20:00,Girona,Ath Bilbao
+28,15/03/2026 20:00,Real Madrid,Elche
+28,15/03/2026 20:00,Mallorca,Espanol
+28,15/03/2026 20:00,Vallecano,Levante
+28,15/03/2026 20:00,Sociedad,Osasuna
+29,22/03/2026 20:00,Ath Bilbao,Betis
+29,22/03/2026 20:00,Barcelona,Vallecano
+29,22/03/2026 20:00,Elche,Mallorca
+29,22/03/2026 20:00,Espanol,Getafe
+29,22/03/2026 20:00,Levante,Real Oviedo
+29,22/03/2026 20:00,Sevilla,Valencia
+29,22/03/2026 20:00,Celta,Alaves
+29,22/03/2026 20:00,Real Madrid,Ath Madrid
+29,22/03/2026 20:00,Osasuna,Girona
+29,22/03/2026 20:00,Villarreal,Sociedad
+30,05/04/2026 19:00,Alaves,Osasuna
+30,05/04/2026 19:00,Ath Madrid,Barcelona
+30,05/04/2026 19:00,Betis,Espanol
+30,05/04/2026 19:00,Girona,Villarreal
+30,05/04/2026 19:00,Mallorca,Real Madrid
+30,05/04/2026 19:00,Real Oviedo,Sevilla
+30,05/04/2026 19:00,Getafe,Ath Bilbao
+30,05/04/2026 19:00,Valencia,Celta
+30,05/04/2026 19:00,Vallecano,Elche
+30,05/04/2026 19:00,Sociedad,Levante
+31,12/04/2026 19:00,Ath Bilbao,Villarreal
+31,12/04/2026 19:00,Barcelona,Espanol
+31,12/04/2026 19:00,Celta,Real Oviedo
+31,12/04/2026 19:00,Elche,Valencia
+31,12/04/2026 19:00,Mallorca,Vallecano
+31,12/04/2026 19:00,Sociedad,Alaves
+31,12/04/2026 19:00,Sevilla,Ath Madrid
+31,12/04/2026 19:00,Osasuna,Betis
+31,12/04/2026 19:00,Levante,Getafe
+31,12/04/2026 19:00,Real Madrid,Girona
+32,19/04/2026 19:00,Alaves,Mallorca
+32,19/04/2026 19:00,Betis,Real Madrid
+32,19/04/2026 19:00,Espanol,Levante
+32,19/04/2026 19:00,Osasuna,Sevilla
+32,19/04/2026 19:00,Vallecano,Sociedad
+32,19/04/2026 19:00,Ath Madrid,Ath Bilbao
+32,19/04/2026 19:00,Getafe,Barcelona
+32,19/04/2026 19:00,Villarreal,Celta
+32,19/04/2026 19:00,Real Oviedo,Elche
+32,19/04/2026 19:00,Valencia,Girona
+33,22/04/2026 19:00,Ath Bilbao,Osasuna
+33,22/04/2026 19:00,Barcelona,Celta
+33,22/04/2026 19:00,Levante,Sevilla
+33,22/04/2026 19:00,Mallorca,Valencia
+33,22/04/2026 19:00,Real Oviedo,Villarreal
+33,22/04/2026 19:00,Real Madrid,Alaves
+33,22/04/2026 19:00,Elche,Ath Madrid
+33,22/04/2026 19:00,Girona,Betis
+33,22/04/2026 19:00,Vallecano,Espanol
+33,22/04/2026 19:00,Sociedad,Getafe
+34,03/05/2026 19:00,Alaves,Ath Bilbao
+34,03/05/2026 19:00,Betis,Real Oviedo
+34,03/05/2026 19:00,Celta,Elche
+34,03/05/2026 19:00,Espanol,Real Madrid
+34,03/05/2026 19:00,Getafe,Vallecano
+34,03/05/2026 19:00,Girona,Mallorca
+34,03/05/2026 19:00,Valencia,Ath Madrid
+34,03/05/2026 19:00,Osasuna,Barcelona
+34,03/05/2026 19:00,Villarreal,Levante
+34,03/05/2026 19:00,Sevilla,Sociedad
+35,10/05/2026 19:00,Ath Bilbao,Valencia
+35,10/05/2026 19:00,Ath Madrid,Celta
+35,10/05/2026 19:00,Barcelona,Real Madrid
+35,10/05/2026 19:00,Levante,Osasuna
+35,10/05/2026 19:00,Mallorca,Villarreal
+35,10/05/2026 19:00,Elche,Alaves
+35,10/05/2026 19:00,Sociedad,Betis
+35,10/05/2026 19:00,Sevilla,Espanol
+35,10/05/2026 19:00,Real Oviedo,Getafe
+35,10/05/2026 19:00,Vallecano,Girona
+36,13/05/2026 19:00,Alaves,Barcelona
+36,13/05/2026 19:00,Betis,Elche
+36,13/05/2026 19:00,Celta,Levante
+36,13/05/2026 19:00,Getafe,Mallorca
+36,13/05/2026 19:00,Girona,Sociedad
+36,13/05/2026 19:00,Espanol,Ath Bilbao
+36,13/05/2026 19:00,Osasuna,Ath Madrid
+36,13/05/2026 19:00,Valencia,Vallecano
+36,13/05/2026 19:00,Villarreal,Sevilla
+36,13/05/2026 19:00,Real Madrid,Real Oviedo
+37,17/05/2026 19:00,Ath Bilbao,Celta
+37,17/05/2026 19:00,Ath Madrid,Girona
+37,17/05/2026 19:00,Barcelona,Betis
+37,17/05/2026 19:00,Elche,Getafe
+37,17/05/2026 19:00,Levante,Mallorca
+37,17/05/2026 19:00,Vallecano,Villarreal
+37,17/05/2026 19:00,Sociedad,Valencia
+37,17/05/2026 19:00,Real Oviedo,Alaves
+37,17/05/2026 19:00,Osasuna,Espanol
+37,17/05/2026 19:00,Sevilla,Real Madrid
+38,24/05/2026 19:00,Alaves,Vallecano
+38,24/05/2026 19:00,Betis,Levante
+38,24/05/2026 19:00,Celta,Sevilla
+38,24/05/2026 19:00,Espanol,Sociedad
+38,24/05/2026 19:00,Getafe,Osasuna
+38,24/05/2026 19:00,Mallorca,Real Oviedo
+38,24/05/2026 19:00,Real Madrid,Ath Bilbao
+38,24/05/2026 19:00,Villarreal,Ath Madrid
+38,24/05/2026 19:00,Valencia,Barcelona
+38,24/05/2026 19:00,Girona,Elche

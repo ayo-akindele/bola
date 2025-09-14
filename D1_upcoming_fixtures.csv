@@ -1,0 +1,307 @@
+Round_Number,Date,Home Team,Away_Team
+1,22/08/2025 18:30,Bayern Munich,RB Leipzig
+1,23/08/2025 13:30,Heidenheim,Wolfsburg
+1,23/08/2025 13:30,Union Berlin,Stuttgart
+1,23/08/2025 13:30,Freiburg,Augsburg
+1,23/08/2025 13:30,Ein Frankfurt,Werder Bremen
+1,23/08/2025 13:30,Leverkusen,Hoffenheim
+1,23/08/2025 16:30,St. Pauli,Dortmund
+1,24/08/2025 13:30,Mainz,FC Koln
+1,24/08/2025 15:30,M'gladbach,Hamburg
+2,29/08/2025 18:30,Hamburg,St. Pauli
+2,30/08/2025 13:30,Hoffenheim,Ein Frankfurt
+2,30/08/2025 13:30,Stuttgart,M'gladbach
+2,30/08/2025 13:30,Werder Bremen,Leverkusen
+2,30/08/2025 13:30,RB Leipzig,Heidenheim
+2,30/08/2025 16:30,Augsburg,Bayern Munich
+2,31/08/2025 13:30,Wolfsburg,Mainz
+2,31/08/2025 15:30,Dortmund,Union Berlin
+2,31/08/2025 17:30,FC Koln,Freiburg
+3,12/09/2025 18:30,Leverkusen,Ein Frankfurt
+3,13/09/2025 13:30,Heidenheim,Dortmund
+3,13/09/2025 13:30,Union Berlin,Hoffenheim
+3,13/09/2025 13:30,Wolfsburg,FC Koln
+3,13/09/2025 13:30,Mainz,RB Leipzig
+3,13/09/2025 13:30,Freiburg,Stuttgart
+3,13/09/2025 16:30,Bayern Munich,Hamburg
+3,14/09/2025 13:30,St. Pauli,Augsburg
+3,14/09/2025 15:30,M'gladbach,Werder Bremen
+4,19/09/2025 18:30,Stuttgart,St. Pauli
+4,20/09/2025 13:30,Hamburg,Heidenheim
+4,20/09/2025 13:30,Hoffenheim,Bayern Munich
+4,20/09/2025 13:30,Augsburg,Mainz
+4,20/09/2025 13:30,Werder Bremen,Freiburg
+4,20/09/2025 16:30,RB Leipzig,FC Koln
+4,21/09/2025 13:30,Ein Frankfurt,Union Berlin
+4,21/09/2025 15:30,Leverkusen,M'gladbach
+4,21/09/2025 17:30,Dortmund,Wolfsburg
+5,26/09/2025 18:30,Bayern Munich,Werder Bremen
+5,27/09/2025 13:30,Heidenheim,Augsburg
+5,27/09/2025 13:30,St. Pauli,Leverkusen
+5,27/09/2025 13:30,Wolfsburg,RB Leipzig
+5,27/09/2025 13:30,Mainz,Dortmund
+5,27/09/2025 16:30,M'gladbach,Ein Frankfurt
+5,28/09/2025 13:30,Freiburg,Hoffenheim
+5,28/09/2025 15:30,FC Koln,Stuttgart
+5,28/09/2025 17:30,Union Berlin,Hamburg
+6,03/10/2025 18:30,Hoffenheim,FC Koln
+6,04/10/2025 13:30,Augsburg,Wolfsburg
+6,04/10/2025 13:30,Werder Bremen,St. Pauli
+6,04/10/2025 13:30,Dortmund,RB Leipzig
+6,04/10/2025 13:30,Leverkusen,Union Berlin
+6,04/10/2025 16:30,Ein Frankfurt,Bayern Munich
+6,05/10/2025 13:30,Stuttgart,Heidenheim
+6,05/10/2025 15:30,Hamburg,Mainz
+6,05/10/2025 17:30,M'gladbach,Freiburg
+7,17/10/2025 18:30,Union Berlin,M'gladbach
+7,18/10/2025 13:30,FC Koln,Augsburg
+7,18/10/2025 13:30,Heidenheim,Werder Bremen
+7,18/10/2025 13:30,Wolfsburg,Stuttgart
+7,18/10/2025 13:30,RB Leipzig,Hamburg
+7,18/10/2025 13:30,Mainz,Leverkusen
+7,18/10/2025 16:30,Bayern Munich,Dortmund
+7,19/10/2025 13:30,Freiburg,Ein Frankfurt
+7,19/10/2025 15:30,St. Pauli,Hoffenheim
+8,24/10/2025 18:30,Werder Bremen,Union Berlin
+8,25/10/2025 13:30,Hamburg,Wolfsburg
+8,25/10/2025 13:30,Hoffenheim,Heidenheim
+8,25/10/2025 13:30,Augsburg,RB Leipzig
+8,25/10/2025 13:30,M'gladbach,Bayern Munich
+8,25/10/2025 13:30,Ein Frankfurt,St. Pauli
+8,25/10/2025 16:30,Dortmund,FC Koln
+8,26/10/2025 14:30,Leverkusen,Freiburg
+8,26/10/2025 16:30,Stuttgart,Mainz
+9,31/10/2025 19:30,Augsburg,Dortmund
+9,01/11/2025 14:30,Heidenheim,Ein Frankfurt
+9,01/11/2025 14:30,St. Pauli,M'gladbach
+9,01/11/2025 14:30,Union Berlin,Freiburg
+9,01/11/2025 14:30,RB Leipzig,Stuttgart
+9,01/11/2025 14:30,Mainz,Werder Bremen
+9,01/11/2025 17:30,Bayern Munich,Leverkusen
+9,02/11/2025 14:30,FC Koln,Hamburg
+9,02/11/2025 16:30,Wolfsburg,Hoffenheim
+10,07/11/2025 19:30,Werder Bremen,Wolfsburg
+10,08/11/2025 14:30,Hamburg,Dortmund
+10,08/11/2025 14:30,Hoffenheim,RB Leipzig
+10,08/11/2025 14:30,Union Berlin,Bayern Munich
+10,08/11/2025 14:30,Leverkusen,Heidenheim
+10,08/11/2025 17:30,M'gladbach,FC Koln
+10,09/11/2025 14:30,Freiburg,St. Pauli
+10,09/11/2025 16:30,Stuttgart,Augsburg
+10,09/11/2025 18:30,Ein Frankfurt,Mainz
+11,21/11/2025 19:30,Mainz,Hoffenheim
+11,22/11/2025 14:30,Heidenheim,M'gladbach
+11,22/11/2025 14:30,Augsburg,Hamburg
+11,22/11/2025 14:30,Wolfsburg,Leverkusen
+11,22/11/2025 14:30,Dortmund,Stuttgart
+11,22/11/2025 14:30,Bayern Munich,Freiburg
+11,22/11/2025 17:30,FC Koln,Ein Frankfurt
+11,23/11/2025 14:30,RB Leipzig,Werder Bremen
+11,23/11/2025 16:30,St. Pauli,Union Berlin
+12,28/11/2025 19:30,M'gladbach,RB Leipzig
+12,29/11/2025 14:30,Hoffenheim,Augsburg
+12,29/11/2025 14:30,Union Berlin,Heidenheim
+12,29/11/2025 14:30,Werder Bremen,FC Koln
+12,29/11/2025 14:30,Bayern Munich,St. Pauli
+12,29/11/2025 17:30,Leverkusen,Dortmund
+12,30/11/2025 14:30,Hamburg,Stuttgart
+12,30/11/2025 16:30,Ein Frankfurt,Wolfsburg
+12,30/11/2025 18:30,Freiburg,Mainz
+13,06/12/2025 14:30,Hamburg,Werder Bremen
+13,06/12/2025 14:30,FC Koln,St. Pauli
+13,06/12/2025 14:30,Heidenheim,Freiburg
+13,06/12/2025 14:30,Augsburg,Leverkusen
+13,06/12/2025 14:30,Wolfsburg,Union Berlin
+13,06/12/2025 14:30,Stuttgart,Bayern Munich
+13,06/12/2025 14:30,RB Leipzig,Ein Frankfurt
+13,06/12/2025 14:30,Mainz,M'gladbach
+13,06/12/2025 14:30,Dortmund,Hoffenheim
+14,13/12/2025 14:30,Hoffenheim,Hamburg
+14,13/12/2025 14:30,St. Pauli,Heidenheim
+14,13/12/2025 14:30,Union Berlin,RB Leipzig
+14,13/12/2025 14:30,M'gladbach,Wolfsburg
+14,13/12/2025 14:30,Werder Bremen,Stuttgart
+14,13/12/2025 14:30,Freiburg,Dortmund
+14,13/12/2025 14:30,Ein Frankfurt,Augsburg
+14,13/12/2025 14:30,Leverkusen,FC Koln
+14,13/12/2025 14:30,Bayern Munich,Mainz
+15,20/12/2025 14:30,Hamburg,Ein Frankfurt
+15,20/12/2025 14:30,FC Koln,Union Berlin
+15,20/12/2025 14:30,Heidenheim,Bayern Munich
+15,20/12/2025 14:30,Augsburg,Werder Bremen
+15,20/12/2025 14:30,Wolfsburg,Freiburg
+15,20/12/2025 14:30,Stuttgart,Hoffenheim
+15,20/12/2025 14:30,RB Leipzig,Leverkusen
+15,20/12/2025 14:30,Mainz,St. Pauli
+15,20/12/2025 14:30,Dortmund,M'gladbach
+16,10/01/2026 14:30,Heidenheim,FC Koln
+16,10/01/2026 14:30,St. Pauli,RB Leipzig
+16,10/01/2026 14:30,Union Berlin,Mainz
+16,10/01/2026 14:30,M'gladbach,Augsburg
+16,10/01/2026 14:30,Werder Bremen,Hoffenheim
+16,10/01/2026 14:30,Freiburg,Hamburg
+16,10/01/2026 14:30,Ein Frankfurt,Dortmund
+16,10/01/2026 14:30,Leverkusen,Stuttgart
+16,10/01/2026 14:30,Bayern Munich,Wolfsburg
+17,13/01/2026 19:30,Hamburg,Leverkusen
+17,13/01/2026 19:30,FC Koln,Bayern Munich
+17,13/01/2026 19:30,Hoffenheim,M'gladbach
+17,13/01/2026 19:30,Augsburg,Union Berlin
+17,13/01/2026 19:30,Wolfsburg,St. Pauli
+17,13/01/2026 19:30,Stuttgart,Ein Frankfurt
+17,13/01/2026 19:30,RB Leipzig,Freiburg
+17,13/01/2026 19:30,Mainz,Heidenheim
+17,13/01/2026 19:30,Dortmund,Werder Bremen
+18,17/01/2026 14:30,Hamburg,M'gladbach
+18,17/01/2026 14:30,FC Koln,Mainz
+18,17/01/2026 14:30,Hoffenheim,Leverkusen
+18,17/01/2026 14:30,Augsburg,Freiburg
+18,17/01/2026 14:30,Wolfsburg,Heidenheim
+18,17/01/2026 14:30,Stuttgart,Union Berlin
+18,17/01/2026 14:30,Werder Bremen,Ein Frankfurt
+18,17/01/2026 14:30,RB Leipzig,Bayern Munich
+18,17/01/2026 14:30,Dortmund,St. Pauli
+19,24/01/2026 14:30,Heidenheim,RB Leipzig
+19,24/01/2026 14:30,St. Pauli,Hamburg
+19,24/01/2026 14:30,Union Berlin,Dortmund
+19,24/01/2026 14:30,M'gladbach,Stuttgart
+19,24/01/2026 14:30,Mainz,Wolfsburg
+19,24/01/2026 14:30,Freiburg,FC Koln
+19,24/01/2026 14:30,Ein Frankfurt,Hoffenheim
+19,24/01/2026 14:30,Leverkusen,Werder Bremen
+19,24/01/2026 14:30,Bayern Munich,Augsburg
+20,31/01/2026 14:30,Hamburg,Bayern Munich
+20,31/01/2026 14:30,FC Koln,Wolfsburg
+20,31/01/2026 14:30,Hoffenheim,Union Berlin
+20,31/01/2026 14:30,Augsburg,St. Pauli
+20,31/01/2026 14:30,Stuttgart,Freiburg
+20,31/01/2026 14:30,Werder Bremen,M'gladbach
+20,31/01/2026 14:30,RB Leipzig,Mainz
+20,31/01/2026 14:30,Dortmund,Heidenheim
+20,31/01/2026 14:30,Ein Frankfurt,Leverkusen
+21,07/02/2026 14:30,FC Koln,RB Leipzig
+21,07/02/2026 14:30,Heidenheim,Hamburg
+21,07/02/2026 14:30,St. Pauli,Stuttgart
+21,07/02/2026 14:30,Union Berlin,Ein Frankfurt
+21,07/02/2026 14:30,Wolfsburg,Dortmund
+21,07/02/2026 14:30,M'gladbach,Leverkusen
+21,07/02/2026 14:30,Mainz,Augsburg
+21,07/02/2026 14:30,Freiburg,Werder Bremen
+21,07/02/2026 14:30,Bayern Munich,Hoffenheim
+22,14/02/2026 14:30,Hamburg,Union Berlin
+22,14/02/2026 14:30,Hoffenheim,Freiburg
+22,14/02/2026 14:30,Augsburg,Heidenheim
+22,14/02/2026 14:30,Stuttgart,FC Koln
+22,14/02/2026 14:30,Werder Bremen,Bayern Munich
+22,14/02/2026 14:30,RB Leipzig,Wolfsburg
+22,14/02/2026 14:30,Dortmund,Mainz
+22,14/02/2026 14:30,Ein Frankfurt,M'gladbach
+22,14/02/2026 14:30,Leverkusen,St. Pauli
+23,21/02/2026 14:30,FC Koln,Hoffenheim
+23,21/02/2026 14:30,Heidenheim,Stuttgart
+23,21/02/2026 14:30,St. Pauli,Werder Bremen
+23,21/02/2026 14:30,Union Berlin,Leverkusen
+23,21/02/2026 14:30,Wolfsburg,Augsburg
+23,21/02/2026 14:30,RB Leipzig,Dortmund
+23,21/02/2026 14:30,Mainz,Hamburg
+23,21/02/2026 14:30,Freiburg,M'gladbach
+23,21/02/2026 14:30,Bayern Munich,Ein Frankfurt
+24,28/02/2026 14:30,Hamburg,RB Leipzig
+24,28/02/2026 14:30,Hoffenheim,St. Pauli
+24,28/02/2026 14:30,Augsburg,FC Koln
+24,28/02/2026 14:30,M'gladbach,Union Berlin
+24,28/02/2026 14:30,Stuttgart,Wolfsburg
+24,28/02/2026 14:30,Werder Bremen,Heidenheim
+24,28/02/2026 14:30,Dortmund,Bayern Munich
+24,28/02/2026 14:30,Ein Frankfurt,Freiburg
+24,28/02/2026 14:30,Leverkusen,Mainz
+25,07/03/2026 14:30,FC Koln,Dortmund
+25,07/03/2026 14:30,Heidenheim,Hoffenheim
+25,07/03/2026 14:30,St. Pauli,Ein Frankfurt
+25,07/03/2026 14:30,Union Berlin,Werder Bremen
+25,07/03/2026 14:30,Wolfsburg,Hamburg
+25,07/03/2026 14:30,RB Leipzig,Augsburg
+25,07/03/2026 14:30,Mainz,Stuttgart
+25,07/03/2026 14:30,Freiburg,Leverkusen
+25,07/03/2026 14:30,Bayern Munich,M'gladbach
+26,14/03/2026 14:30,Hamburg,FC Koln
+26,14/03/2026 14:30,Hoffenheim,Wolfsburg
+26,14/03/2026 14:30,M'gladbach,St. Pauli
+26,14/03/2026 14:30,Stuttgart,RB Leipzig
+26,14/03/2026 14:30,Werder Bremen,Mainz
+26,14/03/2026 14:30,Freiburg,Union Berlin
+26,14/03/2026 14:30,Dortmund,Augsburg
+26,14/03/2026 14:30,Ein Frankfurt,Heidenheim
+26,14/03/2026 14:30,Leverkusen,Bayern Munich
+27,21/03/2026 14:30,FC Koln,M'gladbach
+27,21/03/2026 14:30,Heidenheim,Leverkusen
+27,21/03/2026 14:30,St. Pauli,Freiburg
+27,21/03/2026 14:30,Augsburg,Stuttgart
+27,21/03/2026 14:30,Wolfsburg,Werder Bremen
+27,21/03/2026 14:30,RB Leipzig,Hoffenheim
+27,21/03/2026 14:30,Mainz,Ein Frankfurt
+27,21/03/2026 14:30,Dortmund,Hamburg
+27,21/03/2026 14:30,Bayern Munich,Union Berlin
+28,04/04/2026 13:30,Hamburg,Augsburg
+28,04/04/2026 13:30,Hoffenheim,Mainz
+28,04/04/2026 13:30,Union Berlin,St. Pauli
+28,04/04/2026 13:30,M'gladbach,Heidenheim
+28,04/04/2026 13:30,Stuttgart,Dortmund
+28,04/04/2026 13:30,Werder Bremen,RB Leipzig
+28,04/04/2026 13:30,Freiburg,Bayern Munich
+28,04/04/2026 13:30,Ein Frankfurt,FC Koln
+28,04/04/2026 13:30,Leverkusen,Wolfsburg
+29,11/04/2026 13:30,FC Koln,Werder Bremen
+29,11/04/2026 13:30,Heidenheim,Union Berlin
+29,11/04/2026 13:30,St. Pauli,Bayern Munich
+29,11/04/2026 13:30,Augsburg,Hoffenheim
+29,11/04/2026 13:30,Wolfsburg,Ein Frankfurt
+29,11/04/2026 13:30,Stuttgart,Hamburg
+29,11/04/2026 13:30,RB Leipzig,M'gladbach
+29,11/04/2026 13:30,Mainz,Freiburg
+29,11/04/2026 13:30,Dortmund,Leverkusen
+30,18/04/2026 13:30,Hoffenheim,Dortmund
+30,18/04/2026 13:30,St. Pauli,FC Koln
+30,18/04/2026 13:30,Union Berlin,Wolfsburg
+30,18/04/2026 13:30,M'gladbach,Mainz
+30,18/04/2026 13:30,Werder Bremen,Hamburg
+30,18/04/2026 13:30,Freiburg,Heidenheim
+30,18/04/2026 13:30,Ein Frankfurt,RB Leipzig
+30,18/04/2026 13:30,Leverkusen,Augsburg
+30,18/04/2026 13:30,Bayern Munich,Stuttgart
+31,25/04/2026 13:30,Hamburg,Hoffenheim
+31,25/04/2026 13:30,FC Koln,Leverkusen
+31,25/04/2026 13:30,Heidenheim,St. Pauli
+31,25/04/2026 13:30,Augsburg,Ein Frankfurt
+31,25/04/2026 13:30,Wolfsburg,M'gladbach
+31,25/04/2026 13:30,Stuttgart,Werder Bremen
+31,25/04/2026 13:30,RB Leipzig,Union Berlin
+31,25/04/2026 13:30,Mainz,Bayern Munich
+31,25/04/2026 13:30,Dortmund,Freiburg
+32,02/05/2026 13:30,Hoffenheim,Stuttgart
+32,02/05/2026 13:30,St. Pauli,Mainz
+32,02/05/2026 13:30,Union Berlin,FC Koln
+32,02/05/2026 13:30,M'gladbach,Dortmund
+32,02/05/2026 13:30,Werder Bremen,Augsburg
+32,02/05/2026 13:30,Freiburg,Wolfsburg
+32,02/05/2026 13:30,Ein Frankfurt,Hamburg
+32,02/05/2026 13:30,Leverkusen,RB Leipzig
+32,02/05/2026 13:30,Bayern Munich,Heidenheim
+33,09/05/2026 13:30,Hamburg,Freiburg
+33,09/05/2026 13:30,FC Koln,Heidenheim
+33,09/05/2026 13:30,Hoffenheim,Werder Bremen
+33,09/05/2026 13:30,Augsburg,M'gladbach
+33,09/05/2026 13:30,Wolfsburg,Bayern Munich
+33,09/05/2026 13:30,Stuttgart,Leverkusen
+33,09/05/2026 13:30,RB Leipzig,St. Pauli
+33,09/05/2026 13:30,Mainz,Union Berlin
+33,09/05/2026 13:30,Dortmund,Ein Frankfurt
+34,16/05/2026 13:30,Heidenheim,Mainz
+34,16/05/2026 13:30,St. Pauli,Wolfsburg
+34,16/05/2026 13:30,Union Berlin,Augsburg
+34,16/05/2026 13:30,M'gladbach,Hoffenheim
+34,16/05/2026 13:30,Werder Bremen,Dortmund
+34,16/05/2026 13:30,Freiburg,RB Leipzig
+34,16/05/2026 13:30,Ein Frankfurt,Stuttgart
+34,16/05/2026 13:30,Leverkusen,Hamburg
+34,16/05/2026 13:30,Bayern Munich,FC Koln
