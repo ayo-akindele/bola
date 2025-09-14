@@ -3,108 +3,27 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-# Mapping of leagues to their corresponding local CSV files.  The user has provided
-# local copies of the historical and upcoming fixtures for each league.  These
-# files live in the `/home/oai/share` directory.  When adding new leagues or
-# changing file names, update this dictionary accordingly.  Using local files
-# avoids relying on remote Google Sheet access which may be blocked in the
-# deployment environment.
-LEAGUE_FILES = {
-    "EPL": {
-        "results": "/home/oai/share/EPL Historical Data.csv",
-        "fixtures": "/home/oai/share/EPL_upcoming_fixtures.csv",
-    },
-    "Serie A": {
-        "results": "/home/oai/share/I1 Historical Data.csv",
-        "fixtures": "/home/oai/share/I1_upcoming_fixtures.csv",
-    },
-    "Bundesliga": {
-        "results": "/home/oai/share/D1 Historical Data.csv",
-        "fixtures": "/home/oai/share/D1_upcoming_fixtures.csv",
-    },
-    "La Liga": {
-        "results": "/home/oai/share/SP1 Historical Data.csv",
-        "fixtures": "/home/oai/share/SP1_upcoming_fixtures.csv",
-    },
-}
+# Google Sheets CSV export URLs
+HISTORICAL_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=0"
+FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=1005360909"
 
-# Configure the page.  We use a centred layout so the content reads well on
-# mobile devices.  A concise title and subtitle are displayed at the top.
 st.set_page_config(page_title="BolaStats", layout="centered")
 st.title("📊 BolaStats")
-st.markdown(
-    "<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>",
-    unsafe_allow_html=True,
-)
-
-# Select the league.  This dropdown appears near the top of the page.  It
-# defaults to the first league (EPL) and allows users to switch among EPL,
-# Serie A, Bundesliga and La Liga.  This control is intentionally simple to
-# maintain the clean layout of the original site.
-league = st.selectbox(
-    "Select League",
-    list(LEAGUE_FILES.keys()),
-    index=0,
-    help="Choose which league's fixtures and stats to view.",
-)
+# Update caption to use new phrase requested by the user
+# Display the caption larger and bolder with the emoji first for visual emphasis.
+st.markdown("<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>", unsafe_allow_html=True)
 
 @st.cache_data
-def load_data(league_name: str):
-    """
-    Load historical results and upcoming fixtures for a given league from local CSV
-    files.  The columns are normalised to lowercase with underscores.  If the
-    expected files are missing or cannot be read, the function returns
-    (None, None) and an error message is displayed.
-
-    Parameters
-    ----------
-    league_name : str
-        The human‑friendly league name used as a key in LEAGUE_FILES.
-
-    Returns
-    -------
-    tuple[pandas.DataFrame | None, pandas.DataFrame | None]
-        Historical results and upcoming fixtures dataframes.
-    """
-    files = LEAGUE_FILES.get(league_name)
-    if not files:
-        st.error(f"No configuration found for league: {league_name}")
-        return None, None
+def load_data():
     try:
-        # Read the historical results and upcoming fixtures from the provided
-        # file paths.  Reading only the necessary number of rows is handled
-        # elsewhere; here we load the entire datasets.
-        results_df = pd.read_csv(files["results"])
-        fixtures_df = pd.read_csv(files["fixtures"])
-    except FileNotFoundError as e:
-        st.error(f"Error loading data for {league_name}: {e}")
-        return None, None
+        results_df = pd.read_csv(HISTORICAL_URL)
+        fixtures_df = pd.read_csv(FIXTURES_URL)
+        return results_df, fixtures_df
     except Exception as e:
-        st.error(f"Unexpected error loading data for {league_name}: {e}")
+        st.error(f"Error loading data: {e}")
         return None, None
-    # Normalise column names: lowercase, strip whitespace, replace spaces with underscores.
-    results_df.columns = [c.strip().lower().replace(" ", "_") for c in results_df.columns]
-    fixtures_df.columns = [c.strip().lower().replace(" ", "_") for c in fixtures_df.columns]
-    # Ensure date columns are parsed to datetime
-    # Historical results use 'match_date'; fixtures use 'date'.  Convert
-    # non‑conforming variations as needed.
-    if 'match_date' in results_df.columns:
-        results_df['match_date'] = pd.to_datetime(results_df['match_date'], errors='coerce')
-    if 'date' in fixtures_df.columns:
-        fixtures_df['date'] = pd.to_datetime(fixtures_df['date'], errors='coerce')
-    # Normalise team column names: unify 'home team', 'away team' to 'home_team', 'away_team'.
-    for df in (fixtures_df, results_df):
-        rename_dict = {}
-        for col in df.columns:
-            if col.lower() in { 'home_team', 'home team', 'hometeam' }:
-                rename_dict[col] = 'home_team'
-            if col.lower() in { 'away_team', 'away team', 'awayteam', 'away_team' }:
-                rename_dict[col] = 'away_team'
-        if rename_dict:
-            df.rename(columns=rename_dict, inplace=True)
-    return results_df, fixtures_df
 
-results_df, fixtures_df = load_data(league)
+results_df, fixtures_df = load_data()
 
 summary_top_picks = []
 
