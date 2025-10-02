@@ -1,388 +1,339 @@
 
 import streamlit as st
 import pandas as pd
-import numpy as np
-from datetime import timedelta
-from pathlib import Path
+from datetime import datetime
+import numpy as np  # Needed for vectorized operations when mapping corner counts to the correct team
 
-APP_TITLE = "⚽ BolaPredict — Fixtures & Trends (v2)"
+# ------------------------------------------------------------------
+# DATA SOURCES
+# ------------------------------------------------------------------
+# If you have moved these to GitHub CSVs, replace the URLs below with your raw GitHub links.
+# The only requirement for fixtures is that Column B (header typically "Date") contains date+time.
+HISTORICAL_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=0"
+FIXTURES_URL = "https://docs.google.com/spreadsheets/d/1oZJlXF6tpLLaEDNfduHzYFvLKDw7rnyzZY17CQNl1so/gviz/tq?tqx=out:csv&gid=1005360909"
+
 LOCAL_TZ = "Africa/Lagos"
 
-st.set_page_config(page_title="BolaPredict", layout="centered")
-st.title(APP_TITLE)
-st.caption("Fixtures are sorted by actual kick-off time. If a league file has only dates (no times), we still sort correctly by date; leagues with times get true time-order. Strength Trends shows games with any 100% trend (excluding First-half goals).")
+st.set_page_config(page_title="BolaStats", layout="centered")
+st.title("📊 BolaStats")
+st.markdown("<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>", unsafe_allow_html=True)
 
-# ----------------------
-# Data loading helpers
-# ----------------------
-def normalize_cols(df: pd.DataFrame) -> pd.DataFrame:
+# ------------------------------------------------------------------
+# LOADERS & HELPERS
+# ------------------------------------------------------------------
+@st.cache_data(show_spinner=False)
+def load_data():
+    try:
+        results_df = pd.read_csv(HISTORICAL_URL)
+        fixtures_df = pd.read_csv(FIXTURES_URL)
+        return results_df, fixtures_df
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return None, None
+
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
     return df
 
-def parse_datetime_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Create tz-aware kickoff_dt from either a single 'date' string containing time or separate date/time columns."""
-    df = df.copy()
-    # Normalize potential columns
-    candidates_full = [c for c in ["date", "datetime", "fixture_date", "kickoff"] if c in df.columns]
-    time_candidates = [c for c in ["kickoff_time", "kick_off_time", "kickoff", "kick_off", "time", "ko"] if c in df.columns]
-    date_candidates = [c for c in ["date", "match_date", "fixture_date"] if c in df.columns]
-
-    kickoff = None
-
-    if candidates_full:
-        s = df[candidates_full[0]].astype(str).str.strip()
-        kickoff = pd.to_datetime(s, errors="coerce", dayfirst=True, infer_datetime_format=True)
-    elif date_candidates:
-        d = pd.to_datetime(df[date_candidates[0]].astype(str).str.strip(), errors="coerce", dayfirst=True, infer_datetime_format=True)
-        if time_candidates:
-            t = df[time_candidates[0]].astype(str).str.strip()
-            # Combine naive
-            combo = pd.to_datetime(d.dt.strftime("%Y-%m-%d") + " " + t, errors="coerce")
-            kickoff = combo
-        else:
-            kickoff = d
-    else:
+def _build_kickoff_dt(fixtures_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create a tz-aware kickoff_dt from the fixtures' date/time field.
+    Expectation: Column B 'Date' includes both date and time for all leagues (e.g. 'Fri 04 Oct 20:00' or '15/08/2025 16:30').
+    If your header isn't exactly 'date', we try common variants.
+    """
+    df = fixtures_df.copy()
+    # Try common column names for the combined date+time
+    dt_col = next((c for c in ["date", "datetime", "fixture_date", "kickoff"] if c in df.columns), None)
+    if dt_col is None:
+        # Fall back gracefully
         df["kickoff_dt"] = pd.NaT
         return df
 
-    # Localize/convert to Africa/Lagos
-    try:
-        kickoff = kickoff.dt.tz_localize(LOCAL_TZ)
-    except TypeError:
-        kickoff = kickoff.dt.tz_convert(LOCAL_TZ)
+    parsed = pd.to_datetime(df[dt_col].astype(str).str.strip(), errors="coerce", dayfirst=True, infer_datetime_format=True)
 
-    df["kickoff_dt"] = kickoff
+    # Localize to Africa/Lagos (if naive), else convert
+    try:
+        parsed = parsed.dt.tz_localize(LOCAL_TZ)
+    except TypeError:
+        parsed = parsed.dt.tz_convert(LOCAL_TZ)
+
+    df["kickoff_dt"] = parsed
     return df
 
-def pick_upcoming_slice(fixtures: pd.DataFrame) -> pd.DataFrame:
-    """Return fixtures for the next 'round':
-       - If round_number exists, pick the next round by date.
-       - Otherwise, pick fixtures within the next 8 days starting today.
-    """
-    df = fixtures.copy()
-    now = pd.Timestamp.now(tz=LOCAL_TZ).normalize()
+# ------------------------------------------------------------------
+# MAIN
+# ------------------------------------------------------------------
+results_df, fixtures_df = load_data()
 
-    # Ensure a date column for grouping logic
-    if "kickoff_dt" in df.columns:
-        df["date_only"] = df["kickoff_dt"].dt.date
-    else:
-        # try parsing date
-        if "date" in df.columns:
-            tmp = pd.to_datetime(df["date"], errors="coerce", dayfirst=True, infer_datetime_format=True)
-        else:
-            tmp = pd.to_datetime(pd.NaT)
-        df["date_only"] = tmp.dt.date
+summary_top_picks = []
 
-    if "round_number" in df.columns and df["round_number"].notna().any():
-        # choose round with max date >= today
-        grp = df.groupby("round_number")["date_only"].max().dropna()
-        upcoming = [r for r in grp.index if pd.to_datetime(grp.loc[r]) >= pd.to_datetime(now.date())]
-        target_round = upcoming[0] if upcoming else (grp.index.max() if len(grp) else None)
-        return df[df["round_number"] == target_round].copy() if target_round is not None else df.iloc[0:0].copy()
-    else:
-        # 8-day window around this weekend
-        window_end = now + timedelta(days=8)
-        mask = (df["kickoff_dt"].notna()) & (df["kickoff_dt"] >= now) & (df["kickoff_dt"] <= window_end)
-        subset = df[mask].copy()
-        if subset.empty:
-            # fallback: future fixtures
-            subset = df[df["kickoff_dt"] >= now].copy()
-        return subset
+if results_df is not None and fixtures_df is not None:
+    results_df = _normalize_columns(results_df)
+    fixtures_df = _normalize_columns(fixtures_df)
 
-# ----------------------
-# Trend logic (H2H, last 5, threshold)
-# ----------------------
-def compute_h2h_trends(results_df: pd.DataFrame, home: str, away: str, today_ts: pd.Timestamp) -> list:
-    """Return list of (pct, label) trends for last 5 H2H in the last 3 seasons, with >=80% threshold.
-       Markets covered: GG/NG, O2.5/U2.5, Over/Under 9.5 corners, Over/Under 3.5 bookings, First-half goal>0, Corner dominance.
-    """
-    three_seasons_ago = today_ts.year - 3
-    h2h_all = results_df[
-        ((results_df['home_team'] == home) & (results_df['away_team'] == away)) |
-        ((results_df['home_team'] == away) & (results_df['away_team'] == home))
-    ].copy()
+    # Parse dates
+    fixtures_df = _build_kickoff_dt(fixtures_df)
+    # Keep a naive parsed date for any legacy logic
+    if "date" in fixtures_df.columns:
+        fixtures_df["date_parsed"] = pd.to_datetime(fixtures_df["date"], errors="coerce", dayfirst=True, infer_datetime_format=True)
+    results_df["match_date"] = pd.to_datetime(results_df.get("match_date"), errors="coerce")
 
-    h2h = h2h_all[h2h_all["match_date"].dt.year >= three_seasons_ago].sort_values(by="match_date", ascending=False).head(5)
-    if h2h.empty:
-        return []
+    # --- Pick current round by upcoming date ---
+    today = pd.Timestamp.now(tz=LOCAL_TZ).normalize()
+    tmp = fixtures_df.copy()
+    tmp["date_only"] = fixtures_df["kickoff_dt"].dt.date if "kickoff_dt" in fixtures_df.columns else fixtures_df["date_parsed"].dt.date
+    round_dates = tmp.groupby("round_number")["date_only"].max().sort_index()
+    current_round = None
+    if len(round_dates):
+        upcoming = [r for r in round_dates.index if pd.to_datetime(round_dates.loc[r]) >= pd.to_datetime(today.date())]
+        current_round = upcoming[0] if upcoming else round_dates.index.max()
 
-    trends = []
-
-    def trend_check(series_bool, label):
-        try:
-            valid = series_bool.dropna()
-            if len(valid) == 0:
-                return None
-            count = valid.sum()
-            pct = float(count) / float(len(valid))
-            if pct >= 0.80:
-                return (pct, f"{label} in {int(count)}/{len(valid)} games")
-        except Exception:
-            return None
-        return None
-
-    # Scores to build GG/NG
-    if {'home_score', 'away_score'}.issubset(h2h.columns):
-        h = pd.to_numeric(h2h['home_score'], errors='coerce')
-        a = pd.to_numeric(h2h['away_score'], errors='coerce')
-        gg = (h > 0) & (a > 0)
-        gg = gg.where(~(h.isna() | a.isna()), None)
-        ng = gg.apply(lambda x: None if pd.isna(x) else not x)
-        res = trend_check(gg, "Both teams scored (GG)")
-        if res: trends.append(res)
-        res = trend_check(ng, "Both teams failed to score (NG)")
-        if res: trends.append(res)
-
-        total_goals = h + a
-        over_2_5 = total_goals > 2.5
-        under_2_5 = total_goals <= 2.5
-        over_2_5 = over_2_5.where(~total_goals.isna(), None)
-        under_2_5 = under_2_5.where(~total_goals.isna(), None)
-        res = trend_check(over_2_5, "Over 2.5 goals")
-        if res: trends.append(res)
-        res = trend_check(under_2_5, "Under 2.5 goals")
-        if res: trends.append(res)
-
-    # Corners thresholds (total)
-    for corners_col in ["total_corners", "corners_total", "totalcorner"]:
-        if corners_col in h2h.columns:
-            c = pd.to_numeric(h2h[corners_col], errors='coerce')
-            over = (c > 9.5).where(~c.isna(), None)
-            under = (c <= 9.5).where(~c.isna(), None)
-            res = trend_check(over, "Over 9.5 corners")
-            if res: trends.append(res)
-            res = trend_check(under, "Under 9.5 corners")
-            if res: trends.append(res)
-            break
-
-    # Bookings thresholds (yellow cards sum)
-    home_yc_col = next((c for c in ["home_yellow_cards", "home_yellows", "yc_home"] if c in h2h.columns), None)
-    away_yc_col = next((c for c in ["away_yellow_cards", "away_yellows", "yc_away"] if c in h2h.columns), None)
-    if home_yc_col and away_yc_col:
-        yc = pd.to_numeric(h2h[home_yc_col], errors='coerce') + pd.to_numeric(h2h[away_yc_col], errors='coerce')
-        over = (yc > 3.5).where(~yc.isna(), None)
-        under = (yc <= 3.5).where(~yc.isna(), None)
-        res = trend_check(over, "Over 3.5 bookings")
-        if res: trends.append(res)
-        res = trend_check(under, "Under 3.5 bookings")
-        if res: trends.append(res)
-
-    # First-half goal > 0
-    fh_home = next((c for c in ["first_half_home", "fh_home", "home_ht_goals"] if c in h2h.columns), None)
-    fh_away = next((c for c in ["first_half_away", "fh_away", "away_ht_goals"] if c in h2h.columns), None)
-    if fh_home and fh_away:
-        fh = pd.to_numeric(h2h[fh_home], errors='coerce') + pd.to_numeric(h2h[fh_away], errors='coerce')
-        fh_goal = (fh > 0).where(~fh.isna(), None)
-        res = trend_check(fh_goal, "First-half goals")
-        if res: trends.append(res)
-
-    # Corner dominance (map to current fixture home/away logically)
-    corner_pairs = [
-        ('home_corners', 'away_corners'),
-        ('home_corner', 'away_corner'),
-        ('homecorner', 'awaycorner'),
-        ('corners_home', 'corners_away')
-    ]
-    for h_col, a_col in corner_pairs:
-        if {h_col, a_col}.issubset(h2h.columns):
-            hc = pd.to_numeric(h2h[h_col], errors='coerce')
-            ac = pd.to_numeric(h2h[a_col], errors='coerce')
-
-            # Map corners to the side labels for this specific fixture
-            home_team_corners = np.where(
-                h2h['home_team'] == home, hc,
-                np.where(h2h['away_team'] == home, ac, np.nan)
-            )
-            away_team_corners = np.where(
-                h2h['home_team'] == away, hc,
-                np.where(h2h['away_team'] == away, ac, np.nan)
-            )
-
-            home_team_corners = pd.to_numeric(home_team_corners, errors='coerce')
-            away_team_corners = pd.to_numeric(away_team_corners, errors='coerce')
-
-            mask_bad = (
-                pd.isna(home_team_corners) |
-                pd.isna(away_team_corners) |
-                (home_team_corners == away_team_corners)
-            )
-
-            home_more = pd.Series(home_team_corners > away_team_corners).where(~mask_bad, None)
-            away_more = pd.Series(away_team_corners > home_team_corners).where(~mask_bad, None)
-
-            res = trend_check(home_more, f"{home} more corners than {away}")
-            if res: trends.append(res)
-            res = trend_check(away_more, f"{away} more corners than {home}")
-            if res: trends.append(res)
-            break
-
-    # Sort strongest first and cap display to top 3
-    trends = sorted(trends, key=lambda x: x[0], reverse=True)[:3]
-    return trends
-
-# ----------------------
-# Inputs
-# ----------------------
-st.sidebar.header("Data Sources")
-
-upload_mode = st.sidebar.radio("Fixtures source", ["Upload multiple CSVs", "Single URL"], index=0)
-
-fixtures_all = []
-if upload_mode == "Upload multiple CSVs":
-    fx_files = st.sidebar.file_uploader("Upload one or more FIXTURES CSVs", type=["csv"], accept_multiple_files=True, key="fx_multi")
-    if fx_files:
-        for f in fx_files:
-            try:
-                df = pd.read_csv(f)
-                df = normalize_cols(df)
-                df = parse_datetime_columns(df)
-                # League tagging
-                if "league" not in df.columns or df["league"].isna().all():
-                    league_name = Path(f.name).stem.split("_")[0]  # e.g., "EPL_upcoming_fixtures" -> "EPL"
-                    df["league"] = league_name
-                fixtures_all.append(df)
-            except Exception as e:
-                st.error(f"Error reading {f.name}: {e}")
-else:
-    fixtures_url = st.sidebar.text_input("Fixtures CSV URL (single)")
-    if fixtures_url:
-        try:
-            df = pd.read_csv(fixtures_url)
-            df = normalize_cols(df)
-            df = parse_datetime_columns(df)
-            if "league" not in df.columns or df["league"].isna().all():
-                df["league"] = "League"
-            fixtures_all.append(df)
-        except Exception as e:
-            st.error(f"Error reading fixtures URL: {e}")
-
-if not fixtures_all:
-    st.warning("Load at least one fixtures CSV to continue.")
-    st.stop()
-
-# Concatenate all fixtures
-fixtures_df = pd.concat(fixtures_all, ignore_index=True)
-
-# Minimal required columns
-for must in ["home_team", "away_team"]:
-    if must not in fixtures_df.columns:
-        st.error(f"Missing required column in fixtures: '{must}'")
+    if current_round is None:
+        st.warning("No rounds found in fixtures.")
         st.stop()
 
-# Optional results (for trends)
-results_df = None
-rs_mode = st.sidebar.radio("Historical results source (for trends)", ["Skip", "Upload CSV", "URL"], index=0)
-if rs_mode == "Upload CSV":
-    rs = st.sidebar.file_uploader("Upload HISTORICAL RESULTS CSV", type=["csv"], key="rs1")
-    if rs is not None:
-        results_df = normalize_cols(pd.read_csv(rs))
-elif rs_mode == "URL":
-    results_url  = st.sidebar.text_input("Historical Results CSV URL")
-    if results_url:
-        results_df = normalize_cols(pd.read_csv(results_url))
+    gw_fixtures = fixtures_df[fixtures_df["round_number"] == current_round].copy()
 
-# Prepare results date if present
-if results_df is not None and "match_date" in results_df.columns:
-    results_df["match_date"] = pd.to_datetime(results_df["match_date"], errors="coerce", dayfirst=True, infer_datetime_format=True)
+    # ------------------------------------------------------------------
+    # NEW: ORDER BY KICK-OFF TIME (chronological)
+    # ------------------------------------------------------------------
+    sort_cols = []
+    if "kickoff_dt" in gw_fixtures.columns:
+        sort_cols.append("kickoff_dt")  # strict KO order (earliest at top)
+    elif "date_parsed" in gw_fixtures.columns:
+        sort_cols.append("date_parsed")
+    # add stable tiebreakers
+    for extra in ["home_team", "away_team"]:
+        if extra in gw_fixtures.columns and extra not in sort_cols:
+            sort_cols.append(extra)
 
-# Prepare fixtures
-today_lagos = pd.Timestamp.now(tz=LOCAL_TZ)
-upcoming = pick_upcoming_slice(fixtures_df)
+    if sort_cols:
+        gw_fixtures = gw_fixtures.sort_values(by=sort_cols, ascending=True, kind="mergesort")
 
-# League filter
-league_col = "league" if "league" in upcoming.columns else None
-if league_col:
-    leagues = ["All"] + sorted([x for x in upcoming[league_col].dropna().unique().tolist() if str(x).strip() != ""])
-    selected = st.selectbox("Filter by league (optional)", leagues, index=0)
-    if selected != "All":
-        upcoming = upcoming[upcoming[league_col] == selected]
+    st.subheader(f"📅 Gameweek {current_round} | H2H Snapshot (sorted by kick-off time)")
 
-# Sort strictly by kickoff time, with stable tie-breakers
-sort_cols = ["kickoff_dt"]
-for c in ["date", "home_team", "away_team"]:
-    if c in upcoming.columns and c not in sort_cols:
-        sort_cols.append(c)
-upcoming_sorted = upcoming.sort_values(by=sort_cols, ascending=True, kind="mergesort")
+    emoji_map = {
+        "Both teams scored": "⚽",
+        "Both teams failed to score": "🚫",
+        "Over 2.5 goals": "📈",
+        "Under 2.5 goals": "📉",
+        "Over 9.5 corners": "🏳️",
+        "Under 9.5 corners": "🔻",
+        "Over 3.5 bookings": "🟨",
+        "Under 3.5 bookings": "🟩",
+        "more corners": "🔺",
+        "First-half goals": "⏱",
+        "won": "🏆"
+    }
 
-# Tabs for views
-tab_fixtures, tab_strength = st.tabs(["📅 Fixtures (by kick-off time)", "💪 Strength Trends (100%)"])
+    def normalize_boolean(col):
+        return col.astype(str).str.lower().isin(["1", "true", "yes", "y"])
 
-with tab_fixtures:
-    st.subheader("Upcoming Fixtures")
-    for _, row in upcoming_sorted.iterrows():
-        home = row.get("home_team", "")
-        away = row.get("away_team", "")
-        league = row.get("league", "")
-        ko = row.get("kickoff_dt")
-        ko_label = ko.strftime("%a %d %b · %H:%M") if pd.notna(ko) else ""
+    def generate_stats(home, away):
+        three_seasons_ago = today.year - 3
+        h2h_all = results_df[
+            ((results_df['home_team'] == home) & (results_df['away_team'] == away)) |
+            ((results_df['home_team'] == away) & (results_df['away_team'] == home))
+        ]
+        h2h = h2h_all[h2h_all["match_date"].dt.year >= three_seasons_ago].sort_values(by="match_date", ascending=False).head(5)
 
-        header = f"{ko_label} — {home} vs {away}" if ko_label else f"{home} vs {away}"
-        suffix = f"  ·  {league}" if str(league).strip() else ""
-        with st.expander(header + suffix, expanded=True):
-            st.markdown(f"- **Match**: {home} vs {away}")
-            if ko_label:
-                st.markdown(f"- **Kick-off**: {ko_label} (Africa/Lagos)")
-            if league:
-                st.markdown(f"- **League**: {league}")
+        if h2h.empty:
+            return []
 
-            # Trend callouts
-            if results_df is not None:
-                trends = compute_h2h_trends(results_df, home, away, today_lagos)
-                if trends:
-                    st.markdown("**Top trends (last 5 H2H, ≥80%)**")
-                    emoji_map = {
-                        "Both teams scored": "⚽",
-                        "Both teams failed to score": "🚫",
-                        "Over 2.5 goals": "📈",
-                        "Under 2.5 goals": "📉",
-                        "Over 9.5 corners": "🏳️",
-                        "Under 9.5 corners": "🔻",
-                        "Over 3.5 bookings": "🟨",
-                        "Under 3.5 bookings": "🟩",
-                        "more corners": "🔺",
-                        "First-half goals": "⏱"
-                    }
-                    for pct, text in trends:
-                        icon = "•"
-                        for key, symbol in emoji_map.items():
-                            if key in text:
-                                icon = symbol
-                                break
-                        st.markdown(f"{icon} {text}")
-                else:
-                    st.info("No strong H2H trends (≥80%) found.")
-            else:
-                st.info("Upload/enter historical results to see trend callouts.")
+        total = len(h2h)
+        trends = []
 
-with tab_strength:
-    st.subheader("100% Strength Trends (excluding First-half goals)")
-    if results_df is None:
-        st.info("Upload/enter historical results to evaluate Strength Trends.")
-    else:
-        strong_rows = []
-        for _, row in upcoming_sorted.iterrows():
-            home = row.get("home_team", "")
-            away = row.get("away_team", "")
-            league = row.get("league", "")
-            trends = compute_h2h_trends(results_df, home, away, today_lagos)
-            # Pick only trends with pct == 1.0 and NOT first-half goals
-            t100 = [(pct, label) for (pct, label) in trends if (pct >= 0.9999) and ("First-half goals" not in label)]
-            if t100:
-                strong_rows.append((row.get("kickoff_dt"), home, away, league, t100))
+        def trend_check(condition, label):
+            try:
+                valid = condition.dropna()
+                count = valid.sum()
+                pct = count / len(valid)
+                if len(valid) > 0 and pct >= 0.8:
+                    return (pct, f"{label} in {int(count)}/{len(valid)} games")
+            except Exception:
+                return None
+            return None
 
-        if not strong_rows:
-            st.info("No matches hit a 100% trend (excluding First-half goals) in the selected window.")
+        # Match winner logic
+        wins = 0
+        for _, row in h2h.iterrows():
+            if row['home_team'] == home and row['home_score'] > row['away_score']:
+                wins += 1
+            elif row['away_team'] == home and row['away_score'] > row['home_score']:
+                wins += 1
+        if total > 0 and wins / total >= 0.8:
+            trends.append((wins / total, f"{home} won {wins}/{total} recent meetings"))
+
+        # GG/NG
+        if {'home_score', 'away_score'}.issubset(h2h.columns):
+            home_goals = pd.to_numeric(h2h['home_score'], errors='coerce')
+            away_goals = pd.to_numeric(h2h['away_score'], errors='coerce')
+            gg = (home_goals > 0) & (away_goals > 0)
+            gg = gg.where(~(home_goals.isna() | away_goals.isna()), None)
+            h2h['gg'] = gg
+            h2h['ng'] = h2h['gg'].apply(lambda x: None if pd.isna(x) else not x)
+
+        # O/U 2.5
+        if {'home_score', 'away_score'}.issubset(h2h.columns):
+            home_goals_num = pd.to_numeric(h2h['home_score'], errors='coerce')
+            away_goals_num = pd.to_numeric(h2h['away_score'], errors='coerce')
+            total_goals = home_goals_num + away_goals_num
+            h2h['over_2_5'] = total_goals > 2.5
+            h2h['under_2_5'] = total_goals <= 2.5
+            h2h.loc[total_goals.isna(), ['over_2_5', 'under_2_5']] = None
+        elif 'over_2_5' in h2h.columns:
+            h2h['over_2_5'] = normalize_boolean(h2h['over_2_5'])
+            h2h['under_2_5'] = h2h['over_2_5'].apply(lambda x: None if pd.isna(x) else not x)
+
+        try:
+            # Corners O/U 9.5
+            corners_num = pd.to_numeric(h2h['total_corners'], errors='coerce')
+            h2h['Corners_Over_9.5'] = corners_num > 9.5
+            h2h['Corners_Under_9.5'] = corners_num <= 9.5
+            h2h.loc[corners_num.isna(), ['Corners_Over_9.5', 'Corners_Under_9.5']] = None
+
+            # Bookings O/U 3.5
+            home_yc = pd.to_numeric(h2h['home_yellow_cards'], errors='coerce')
+            away_yc = pd.to_numeric(h2h['away_yellow_cards'], errors='coerce')
+            total_bookings = home_yc + away_yc
+            h2h['Bookings_Over_3.5'] = total_bookings > 3.5
+            h2h['Bookings_Under_3.5'] = total_bookings <= 3.5
+            h2h.loc[total_bookings.isna(), ['Bookings_Over_3.5', 'Bookings_Under_3.5']] = None
+
+            # First-half goal > 0
+            h2h['First_Half_Goal'] = (pd.to_numeric(h2h['first_half_home'], errors='coerce') +
+                                      pd.to_numeric(h2h['first_half_away'], errors='coerce')) > 0
+        except Exception:
+            pass
+
+        market_labels = {
+            'gg': "Both teams scored (GG)",
+            'ng': "Both teams failed to score (NG)",
+            'over_2_5': "Over 2.5 goals",
+            'under_2_5': "Under 2.5 goals",
+            'Corners_Over_9.5': "Over 9.5 corners",
+            'Corners_Under_9.5': "Under 9.5 corners",
+            'Bookings_Over_3.5': "Over 3.5 bookings",
+            'Bookings_Under_3.5': "Under 3.5 bookings",
+            'First_Half_Goal': "First-half goals"
+        }
+
+        for col, label in market_labels.items():
+            if col in h2h.columns:
+                result = trend_check(h2h[col], label)
+                if result:
+                    trends.append(result)
+
+        # Corner dominance trends with correct team mapping
+        corner_pairs = [
+            ('home_corners', 'away_corners'),
+            ('home_corner', 'away_corner'),
+            ('homecorner', 'awaycorner'),
+            ('corners_home', 'corners_away')
+        ]
+        for h_col, a_col in corner_pairs:
+            if {h_col, a_col}.issubset(h2h.columns):
+                hc = pd.to_numeric(h2h[h_col], errors='coerce')
+                ac = pd.to_numeric(h2h[a_col], errors='coerce')
+
+                home_team_corners = np.where(
+                    h2h['home_team'] == home, hc,
+                    np.where(h2h['away_team'] == home, ac, np.nan)
+                )
+                away_team_corners = np.where(
+                    h2h['home_team'] == away, hc,
+                    np.where(h2h['away_team'] == away, ac, np.nan)
+                )
+
+                home_team_corners = pd.to_numeric(home_team_corners, errors='coerce')
+                away_team_corners = pd.to_numeric(away_team_corners, errors='coerce')
+
+                mask_bad = (
+                    pd.isna(home_team_corners) |
+                    pd.isna(away_team_corners) |
+                    (home_team_corners == away_team_corners)
+                )
+
+                home_more = pd.Series(home_team_corners > away_team_corners).where(~mask_bad, None)
+                away_more = pd.Series(away_team_corners > home_team_corners).where(~mask_bad, None)
+
+                res_home = trend_check(home_more, f"{home} more corners than {away}")
+                if res_home:
+                    trends.append(res_home)
+                res_away = trend_check(away_more, f"{away} more corners than {home}")
+                if res_away:
+                    trends.append(res_away)
+                break
+
+        top_trends = sorted(trends, key=lambda x: x[0], reverse=True)[:3]
+        return top_trends
+
+    top_summary_pool = []
+
+    # ----------------- FIXTURE LIST (by kick-off time) -----------------
+    for _, row in gw_fixtures.iterrows():
+        home = row['home_team']
+        away = row['away_team']
+
+        # Header with formatted KO time
+        if 'kickoff_dt' in gw_fixtures.columns and pd.notna(row.get("kickoff_dt")):
+            ko_str = row["kickoff_dt"].strftime("%a %d %b · %H:%M")
+            header = f"{ko_str} — {home} vs {away}"
+        elif pd.notna(row.get("date_parsed")):
+            date_str = pd.to_datetime(row["date_parsed"]).strftime("%a %d %b")
+            header = f"{date_str} — {home} vs {away}"
         else:
-            # Sort by KO just in case
-            strong_rows.sort(key=lambda x: (pd.Timestamp.min if pd.isna(x[0]) else x[0]))
-            for ko, home, away, league, tlist in strong_rows:
-                ko_label = ko.strftime("%a %d %b · %H:%M") if pd.notna(ko) else ""
-                title = f"{home} vs {away}"
-                if league:
-                    title += f"  ·  {league}"
-                if ko_label:
-                    title += f"  ·  {ko_label}"
-                st.markdown(f"### {title}")
-                for pct, label in tlist:
-                    st.markdown(f"✅ {label}")
+            header = f"{home} vs {away}"
+
+        with st.expander(header, expanded=True):
+            fixture_stats = generate_stats(home, away)
+            if fixture_stats:
+                for pct, text in fixture_stats:
+                    icon = "•"
+                    for key, symbol in emoji_map.items():
+                        if key in text:
+                            icon = symbol
+                            break
+                    st.markdown(f"{icon} {text}")
+                    top_summary_pool.append((pct, f"{home} vs {away} → {text}"))
+            else:
+                st.info("No strong trends to recommend for this game.")
+
+    # ----------------- TOP PICKS (90%+) -----------------
+    if top_summary_pool:
+        st.markdown("---")
+        st.subheader("🔥 Top Picks Summary (≥90%)")
+        top_summary_pool.sort(reverse=True)
+        shown = 0
+        for pct, item in top_summary_pool:
+            if pct >= 0.9:
+                st.markdown(f"✅ {item}")
+                shown += 1
+            if shown >= 3:
+                break
+
+    # ----------------- NEW: MAX TRENDS (100%) -----------------
+    # Exclude "First-half goals" from the qualifying trends.
+    st.markdown("---")
+    st.subheader("💪 Max Trends (100%) — excluding First‑half goals")
+    any_max = False
+    for _, row in gw_fixtures.iterrows():
+        home = row['home_team']
+        away = row['away_team']
+        trends = generate_stats(home, away)
+        max_trends = [(p, t) for (p, t) in trends if p >= 0.9999 and "First-half goals" not in t]
+        if max_trends:
+            any_max = True
+            if 'kickoff_dt' in gw_fixtures.columns and pd.notna(row.get("kickoff_dt")):
+                ko_str = row["kickoff_dt"].strftime("%a %d %b · %H:%M")
+                st.markdown(f"**{home} vs {away}** · {ko_str}")
+            else:
+                st.markdown(f"**{home} vs {away}**")
+            for _, text in max_trends:
+                st.markdown(f"✅ {text}")
+    if not any_max:
+        st.info("No fixtures hit a 100% trend (excluding First‑half goals) this gameweek.")
+
+else:
+    st.warning("Unable to fetch data. Please check your CSV links or permissions.")
