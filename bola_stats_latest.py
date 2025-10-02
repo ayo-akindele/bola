@@ -1,9 +1,11 @@
 
 """
-Multi‑league BolaStats Streamlit App (updated)
-- Chronological fixture ordering by kick-off
-- "Strongest observations (100%)" replaces "Top picks"
-- Per fixture, at most one 100% stat shown (priority: GG > Over 2.5 > others), excluding First-half goals
+BolaStats (multi‑league) — Chronological fixtures + Strongest observations (100%)
+-------------------------------------------------------------------------------
+- Builds kickoff_dt from 'Date' (Column B) + 'Time' (Column E).
+- Sorts fixtures by kickoff_dt (earliest first) within each league/round.
+- Replaces "Top picks" with "Strongest observations (100%)" (GG > Over 2.5 > others; excludes First‑half goals).
+- Keeps the multi‑league structure and CSV filenames mapping.
 """
 
 import os
@@ -13,7 +15,9 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import streamlit as st
 
-# Mapping of league names to their historical and fixtures CSV filenames.
+# -----------------------------
+# League CSV mapping (local)
+# -----------------------------
 LEAGUE_FILES: Dict[str, Dict[str, str]] = {
     "EPL": {
         "results": "EPL Historical Data.csv",
@@ -33,56 +37,135 @@ LEAGUE_FILES: Dict[str, Dict[str, str]] = {
     },
 }
 
-# Configure Streamlit
+LOCAL_TZ = "Africa/Lagos"
+
+# -----------------------------
+# Streamlit chrome
+# -----------------------------
 st.set_page_config(page_title="BolaStats", layout="centered")
 st.title("📊 BolaStats")
 st.markdown("<h4 style='margin-bottom:0; font-weight:bold;'>⚡ Quick Stats That Matter</h4>", unsafe_allow_html=True)
 
+# -----------------------------
+# Helpers
+# -----------------------------
+def _load_csv_nearby(filename: str) -> pd.DataFrame:
+    """Try to read a CSV by name or next to this file."""
+    candidates = [filename, os.path.join(os.path.dirname(__file__), filename)]
+    for path in candidates:
+        if os.path.exists(path):
+            return pd.read_csv(path)
+    raise FileNotFoundError(f"File not found: {filename}")
+
+def _normalize(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
+    return df
+
+def _parse_fixtures_datetime(fixtures_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build tz-aware 'kickoff_dt' from fixtures using:
+    - 'date' (Column B; may be date-only or date+time string), and
+    - 'time' (Column E; 'HH:MM' or 'HH:MM:SS').
+
+    Rules:
+      * If 'date' already includes a time, we use it.
+      * Otherwise, if 'time' exists, combine date + time.
+      * Fallback: use date at 00:00.
+    """
+    df = fixtures_df.copy()
+
+    # Parse 'date' first (dayfirst True for formats like 15/08/2025 or 22/08/2025 18:30)
+    if "date" in df.columns:
+        date_parsed = pd.to_datetime(df["date"].astype(str).str.strip(),
+                                     errors="coerce", dayfirst=True, infer_datetime_format=True)
+    else:
+        date_parsed = pd.to_datetime(pd.NaT)
+
+    # Parse 'time' if present (normalize to string "HH:MM:SS")
+    time_col = None
+    for c in ["time", "kickoff_time", "kick_off_time", "ko", "kickoff"]:
+        if c in df.columns:
+            time_col = c
+            break
+
+    if time_col is not None:
+        # Keep original string; we'll combine via string concat to avoid locale issues
+        time_str = df[time_col].astype(str).str.strip()
+        # Some CSVs store times like '18:30' or '18:30:00'; keep as-is
+        combo = pd.to_datetime(
+            date_parsed.dt.strftime("%Y-%m-%d") + " " + time_str,
+            errors="coerce",
+            infer_datetime_format=True,
+        )
+        kickoff = combo
+        # Where combo failed but date has a non-midnight time (i.e., original 'date' had time), fall back to date_parsed
+        need_fallback = kickoff.isna() & date_parsed.notna()
+        kickoff = kickoff.where(~need_fallback, date_parsed)
+    else:
+        kickoff = date_parsed
+
+    # Localize to Africa/Lagos (if naive), else convert
+    try:
+        kickoff = kickoff.dt.tz_localize(LOCAL_TZ)
+    except TypeError:
+        kickoff = kickoff.dt.tz_convert(LOCAL_TZ)
+
+    df["kickoff_dt"] = kickoff
+    return df
+
 def load_data(league: str) -> Tuple[Optional[pd.DataFrame], Optional[pd.DataFrame]]:
-    """Load historical and fixtures data for a league from local CSV files. Returns (results_df, fixtures_df)."""
-    config = LEAGUE_FILES.get(league)
-    if not config:
+    """Load and normalize results + fixtures for a league, and build kickoff_dt."""
+    conf = LEAGUE_FILES.get(league)
+    if not conf:
         st.error(f"No configuration for league: {league}")
         return None, None
 
-    def _load_csv(filename: str) -> pd.DataFrame:
-        candidates = [filename, os.path.join(os.path.dirname(__file__), filename)]
-        for path in candidates:
-            if os.path.exists(path):
-                return pd.read_csv(path)
-        raise FileNotFoundError(f"File not found: {filename}")
-
     try:
-        results_df = _load_csv(config["results"])
-        fixtures_df = _load_csv(config["fixtures"])
+        results_df = _load_csv_nearby(conf["results"])
+        fixtures_df = _load_csv_nearby(conf["fixtures"])
     except Exception as exc:
         st.error(f"Error reading CSVs for {league}: {exc}")
         return None, None
 
-    # Normalise column names
-    results_df.columns = [c.strip().lower().replace(" ", "_") for c in results_df.columns]
-    fixtures_df.columns = [c.strip().lower().replace(" ", "_") for c in fixtures_df.columns]
+    results_df = _normalize(results_df)
+    fixtures_df = _normalize(fixtures_df)
 
-    # Parse dates (fixtures 'date' includes date+time)
+    # Common header fixes
+    fixtures_df = fixtures_df.rename(columns={
+        "home_team": "home_team",
+        "home_team_": "home_team",
+        "home_team__": "home_team",
+        "home_team___": "home_team",
+        "home_team____": "home_team",
+        "home_team_____": "home_team",
+        "home_team______": "home_team",
+        "away_team": "away_team",
+        "away_team_": "away_team",
+        "away_team__": "away_team",
+        "round_number": "round_number",
+        "round_no": "round_number",
+        "rnd": "round_number",
+    })
+    # Also capture variants from the uploads
+    for col in list(fixtures_df.columns):
+        if col.lower() in {"home team"}:
+            fixtures_df = fixtures_df.rename(columns={col: "home_team"})
+        if col.lower() in {"away team"}:
+            fixtures_df = fixtures_df.rename(columns={col: "away_team"})
+        if col.lower() in {"round_number"}:
+            fixtures_df = fixtures_df.rename(columns={col: "round_number"})
+        if col.lower() in {"date"}:
+            fixtures_df = fixtures_df.rename(columns={col: "date"})
+        if col.lower() in {"time"}:
+            fixtures_df = fixtures_df.rename(columns={col: "time"})
+
+    # Results dates
     if "match_date" in results_df.columns:
         results_df["match_date"] = pd.to_datetime(results_df["match_date"], errors="coerce")
-    if "date" in fixtures_df.columns:
-        fixtures_df["date"] = pd.to_datetime(
-            fixtures_df["date"].astype(str).str.strip(),
-            errors="coerce",
-            dayfirst=True,
-            infer_datetime_format=True,
-        )
 
-    # Unify team column names in fixtures
-    rename_map = {}
-    for col in fixtures_df.columns:
-        if col.lower() in {"home team", "home_team", "hometeam"}:
-            rename_map[col] = "home_team"
-        if col.lower() in {"away team", "away_team", "awayteam"}:
-            rename_map[col] = "away_team"
-    if rename_map:
-        fixtures_df = fixtures_df.rename(columns=rename_map)
+    # Build kickoff_dt from Date + Time
+    fixtures_df = _parse_fixtures_datetime(fixtures_df)
 
     return results_df, fixtures_df
 
@@ -115,7 +198,7 @@ def generate_trends(home: str, away: str, results_df: pd.DataFrame) -> List[Tupl
         if pct >= 0.80:
             trends.append((pct, f"{label} in {int(count)}/{len(valid)} games"))
 
-    # Win trend for home team
+    # Win trend for the selected home team
     wins = 0
     for _, row in h2h.iterrows():
         r_home = row["home_team"]
@@ -175,7 +258,7 @@ def generate_trends(home: str, away: str, results_df: pd.DataFrame) -> List[Tupl
         if pct_a >= 0.8:
             trends.append((pct_a, f"{away} kept a clean sheet in {count_a}/{len(away_cs)} games"))
 
-    # Corners totals
+    # Corner totals
     total_corners = pd.to_numeric(h2h.get("total_corners"), errors="coerce")
     if total_corners.notna().any():
         over_c = total_corners > 9.5
@@ -183,7 +266,7 @@ def generate_trends(home: str, away: str, results_df: pd.DataFrame) -> List[Tupl
         add_trend(over_c.where(~total_corners.isna(), pd.NA), "Over 9.5 corners")
         add_trend(under_c.where(~total_corners.isna(), pd.NA), "Under 9.5 corners")
 
-    # First-half goals (we will exclude this from "Strongest observations" later)
+    # First-half goals (we exclude this later from 100% observations)
     fh_home = pd.to_numeric(h2h.get("first_half_home"), errors="coerce")
     fh_away = pd.to_numeric(h2h.get("first_half_away"), errors="coerce")
     if not fh_home.empty or not fh_away.empty:
@@ -226,7 +309,9 @@ def generate_trends(home: str, away: str, results_df: pd.DataFrame) -> List[Tupl
 
     return sorted(trends, key=lambda x: x[0], reverse=True)[:3]
 
-# Emoji icons for trend bullets
+# -----------------------------
+# UI
+# -----------------------------
 EMOJI_MAP = {
     "both teams scored": "⚽",
     "over 2.5 goals": "📈",
@@ -238,10 +323,8 @@ EMOJI_MAP = {
     "more corners": "🔺",
 }
 
-# League selector
 league_options = ["All"] + list(LEAGUE_FILES.keys())
 selected = st.selectbox("Select league", league_options, index=0, help="View all leagues or choose one")
-
 leagues_to_show = list(LEAGUE_FILES.keys()) if selected == "All" else [selected]
 
 for league in leagues_to_show:
@@ -249,23 +332,26 @@ for league in leagues_to_show:
     if results_df is None or fixtures_df is None:
         continue
 
-    # Determine current round and slice fixtures
-    if "date" in fixtures_df.columns and "round_number" in fixtures_df.columns:
-        today = pd.Timestamp.today().normalize()
-        round_dates = fixtures_df.groupby("round_number")["date"].max().sort_index()
-        current_round = round_dates[round_dates >= today].index.min()
-        if pd.isna(current_round):
-            current_round = round_dates.index.max()
+    # Choose current/next round and slice fixtures
+    if {"round_number","kickoff_dt"}.issubset(fixtures_df.columns):
+        today = pd.Timestamp.now(tz=LOCAL_TZ).normalize()
+        # Group by round and take max date to find next
+        round_dates = fixtures_df.groupby("round_number")["kickoff_dt"].max().sort_index()
+        # find first round with max >= today
+        upcoming = [r for r in round_dates.index if round_dates.loc[r].tz_convert(LOCAL_TZ) >= today]
+        current_round = upcoming[0] if upcoming else round_dates.index.max()
         display_fixtures = fixtures_df[fixtures_df["round_number"] == current_round].copy()
     else:
-        display_fixtures = fixtures_df[fixtures_df.get("date") >= pd.Timestamp.today().normalize()].copy()
+        display_fixtures = fixtures_df.copy()
         current_round = None
 
-    # NEW: sort chronologically by kickoff time/date
-    if "date" in display_fixtures.columns:
-        display_fixtures = display_fixtures.sort_values(by=["date","home_team","away_team"], ascending=[True, True, True], kind="mergesort")
+    # Chronological order by kickoff_dt
+    if "kickoff_dt" in display_fixtures.columns:
+        display_fixtures = display_fixtures.sort_values(by=["kickoff_dt","home_team","away_team"], ascending=[True,True,True], kind="mergesort")
+    elif "date" in display_fixtures.columns:
+        display_fixtures = display_fixtures.sort_values(by=["date","home_team","away_team"], ascending=[True,True,True], kind="mergesort")
 
-    # League header
+    # Header
     if current_round is not None:
         st.subheader(f"{league} – Gameweek {current_round}")
     else:
@@ -275,23 +361,24 @@ for league in leagues_to_show:
         st.info("No upcoming fixtures available for this league.")
         continue
 
-    # Show fixtures with their own trends as before
-    chosen_obs: List[Tuple[pd.Timestamp, str]] = []  # (kickoff_ts, text) for Strongest observations section
+    # Collect per-match "Strongest observation (100%)"
+    strongest_obs: List[Tuple[pd.Timestamp, str]] = []
+
+    # Show fixtures + trends
     for _, fix in display_fixtures.iterrows():
-        home_team = fix.get("home_team")
-        away_team = fix.get("away_team")
-        if pd.isna(home_team) or pd.isna(away_team):
+        home_team = str(fix.get("home_team", "")).strip()
+        away_team = str(fix.get("away_team", "")).strip()
+        if not home_team or not away_team:
             continue
-        home_team = str(home_team)
-        away_team = str(away_team)
-        kickoff = fix.get("date")
+
+        ko = fix.get("kickoff_dt", pd.NaT)
         ko_label = ""
-        if pd.notna(kickoff):
-            # Format like "Fri 04 Oct · 20:00"
+        if pd.notna(ko):
             try:
-                ko_label = pd.to_datetime(kickoff).strftime("%a %d %b · %H:%M")
+                ko_label = pd.to_datetime(ko).tz_convert(LOCAL_TZ).strftime("%a %d %b · %H:%M")
             except Exception:
-                ko_label = str(kickoff)
+                ko_label = str(ko)
+
         match_label = f"{home_team} vs {away_team}"
         header = f"{ko_label} — {match_label}" if ko_label else match_label
 
@@ -309,38 +396,36 @@ for league in leagues_to_show:
             else:
                 st.info("No strong trends to recommend for this game.")
 
-        # Build the "Strongest observations (100%)" pick for this match (one per fixture)
+        # Build strongest observation (100%) for this fixture
         if 'trends' not in locals():
             trends = generate_trends(home_team, away_team, results_df)
-        # Keep only 100% and exclude First-half goals
         t100 = [(p, d) for (p, d) in trends if p >= 0.9999 and "First-half goals" not in d]
-        # Priority order: GG, Over 2.5, then anything else
         pick = None
+        # Priority: GG -> Over 2.5 -> any other
         for key in ["Both teams scored (GG)", "Over 2.5 goals"]:
             for p, d in t100:
                 if key in d:
-                    pick = (kickoff, f"**{match_label}** → {d}")
+                    pick = (ko, f"**{match_label}** → {d}")
                     break
             if pick:
                 break
         if not pick and t100:
-            pick = (kickoff, f"**{match_label}** → {t100[0][1]}")
+            pick = (ko, f"**{match_label}** → {t100[0][1]}")
         if pick:
-            chosen_obs.append(pick)
+            strongest_obs.append(pick)
 
-    # REPLACED: Instead of "Top picks", show Strongest observations (100%)
+    # Strongest observations (per league), replacing Top picks
     st.markdown("---")
     st.markdown(f"**Strongest observations (100%) — {league}**")
-    if not chosen_obs:
+    if not strongest_obs:
         st.info("No fixtures have a 100% observation (excluding First‑half goals).")
     else:
-        # sort chosen observations by kickoff for consistency
-        chosen_obs.sort(key=lambda x: (pd.Timestamp.min if pd.isna(x[0]) else x[0]))
-        for ko, text in chosen_obs:
+        strongest_obs.sort(key=lambda x: (pd.Timestamp.min if pd.isna(x[0]) else x[0]))
+        for ko, text in strongest_obs:
             ko_str = ""
             if pd.notna(ko):
                 try:
-                    ko_str = pd.to_datetime(ko).strftime("%a %d %b · %H:%M")
+                    ko_str = pd.to_datetime(ko).tz_convert(LOCAL_TZ).strftime("%a %d %b · %H:%M")
                 except Exception:
                     ko_str = str(ko)
             st.markdown(f"✅ {text}" + (f"  ·  {ko_str}" if ko_str else ""))
