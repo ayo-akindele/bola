@@ -1,13 +1,13 @@
 
 """
-BolaPredict — Fixtures (enhanced per‑fixture trends)
-----------------------------------------------------
-Adds to the per‑game bullets (>=80% over last up to 5 H2H in last 3 seasons):
-- Home/Away **win dominance**
-- Home/Away **more corners** (correctly mapped; ignores ties/NaNs)
-- Home/Away **clean sheets**
-Also keeps: GG/NG, Over/Under 2.5, Over/Under 9.5 corners, First‑half goals.
-No "Strongest observations" list.
+BolaPredict — Fixtures (enhanced per‑fixture trends, bugfix)
+------------------------------------------------------------------
+- Filters: Today / Tomorrow / Weekend (Fri–Mon) / All in round
+- Chronological sort via kickoff_dt built from 'Date' (col B) + 'Time' (col E), Africa/Lagos
+- Per‑fixture trend bullets (>=80%): GG/NG, O/U 2.5, O/U 9.5 corners, Win dominance,
+  Corner dominance (venue‑aware), Clean sheets, First‑half goals
+- NO aggregated "Strongest observations" list
+- Dark‑mode friendly chip styling
 """
 
 import os
@@ -29,7 +29,7 @@ LEAGUE_FILES: Dict[str, Dict[str, str]] = {
 
 st.set_page_config(page_title="BolaPredict — Fixtures", layout="centered")
 st.title("📅 BolaPredict Fixtures")
-st.caption("⚡ Quick stats that matter. Fixtures are listed strictly by kick‑off time (Africa/Lagos). Each game shows recent H2H trends (no 'strongest list').")
+st.caption("⚡ Quick stats that matter. Trends in the most recent H2H meetings across EPL, La Liga, Bundesliga & Serie A. Fixtures are listed strictly by kick‑off time (Africa/Lagos).")
 
 # High-contrast radio "chips" (dark & light)
 st.markdown(
@@ -181,16 +181,14 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     add_bool((total > 2.5).where(~total.isna(), pd.NA), "Over 2.5 goals")
     add_bool((total <= 2.5).where(~total.isna(), pd.NA), "Under 2.5 goals")
 
-    # Win dominance
+    # Win dominance (venue-aware winner mapping)
     wins_home_team = []
     wins_away_team = []
     for _, row in h2h.iterrows():
         rh, ra = row["home_team"], row["away_team"]
         hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
         asc = pd.to_numeric(row.get("away_score"), errors="coerce")
-        if pd.isna(hsc) or pd.isna(asc):
-            continue
-        if hsc == asc:
+        if pd.isna(hsc) or pd.isna(asc) or hsc == asc:
             continue
         winner = rh if hsc > asc else ra
         wins_home_team.append(winner == home)
@@ -222,22 +220,19 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
             hc = pd.to_numeric(h2h[hc_col], errors="coerce")
             ac = pd.to_numeric(h2h[ac_col], errors="coerce")
 
-            # Map corners to the current fixture teams regardless of venue in the historical row
-            home_corners_series = np.where(h2h["home_team"] == home, hc,
-                                           np.where(h2h["away_team"] == home, ac, np.nan))
-            away_corners_series = np.where(h2h["home_team"] == away, hc,
-                                           np.where(h2h["away_team"] == away, ac, np.nan))
+            # Map corners to THIS fixture's teams regardless of venue in historical row
+            home_arr = np.where(h2h["home_team"] == home, hc, np.where(h2h["away_team"] == home, ac, np.nan))
+            away_arr = np.where(h2h["home_team"] == away, hc, np.where(h2h["away_team"] == away, ac, np.nan))
 
-            home_corners_series = pd.to_numeric(home_corners_series, errors="coerce")
-            away_corners_series = pd.to_numeric(away_corners_series, errors="coerce")
+            # Convert to Series so we can use .notna() safely (bugfix from ndarray)
+            home_ser = pd.to_numeric(pd.Series(home_arr), errors="coerce")
+            away_ser = pd.to_numeric(pd.Series(away_arr), errors="coerce")
 
-            mask_valid = (~home_corners_series.isna()) & (~away_corners_series.isna()) & (home_corners_series != away_corners_series)
+            mask_valid = home_ser.notna() & away_ser.notna() & (home_ser != away_ser)
             if mask_valid.any():
-                home_more = (home_corners_series > away_corners_series)[mask_valid]
-                away_more = (away_corners_series > home_corners_series)[mask_valid]
-                add_bool(home_more, f"{home} more corners than {away}")
-                add_bool(away_more, f"{away} more corners than {home}")
-            break  # use the first valid pair
+                add_bool((home_ser > away_ser)[mask_valid], f"{home} more corners than {away}")
+                add_bool((away_ser > home_ser)[mask_valid], f"{away} more corners than {home}")
+            break  # use first valid pair
 
     # Clean sheets (team‑specific, venue‑aware)
     cs_home = []  # home team kept opp = 0
@@ -314,7 +309,6 @@ for lg in leagues:
         header = f"{format_ko(ko)} — {home} vs {away}" if ko is not None else f"{home} vs {away}"
         with st.expander(header, expanded=True):
             trends = compute_trends(res_df, home, away)
-            # show up to 5 bullets to surface new categories without clutter
             shown = 0
             for _, text in trends:
                 st.markdown(f"• {text}")
