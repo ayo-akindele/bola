@@ -1,12 +1,21 @@
 
 """
-BolaPredict — Fixtures (dark-mode chip fix + tagline)
+BolaPredict — Fixtures (enhanced per‑fixture trends)
+----------------------------------------------------
+Adds to the per‑game bullets (>=80% over last up to 5 H2H in last 3 seasons):
+- Home/Away **win dominance**
+- Home/Away **more corners** (correctly mapped; ignores ties/NaNs)
+- Home/Away **clean sheets**
+Also keeps: GG/NG, Over/Under 2.5, Over/Under 9.5 corners, First‑half goals.
+No "Strongest observations" list.
 """
+
 import os
 from datetime import datetime, timedelta, time as dtime
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+import numpy as np
 import streamlit as st
 
 LOCAL_TZ = "Africa/Lagos"
@@ -20,44 +29,37 @@ LEAGUE_FILES: Dict[str, Dict[str, str]] = {
 
 st.set_page_config(page_title="BolaPredict — Fixtures", layout="centered")
 st.title("📅 BolaPredict Fixtures")
-st.caption("⚡ Quick stats that matter. Fixtures are listed strictly by kick‑off time (Africa/Lagos). Each game shows the strongest recent H2H trends (no 'strongest list').")
+st.caption("⚡ Quick stats that matter. Fixtures are listed strictly by kick‑off time (Africa/Lagos). Each game shows recent H2H trends (no 'strongest list').")
 
-# High-contrast radio "chips" (works for dark & light)
+# High-contrast radio "chips" (dark & light)
 st.markdown(
     """
     <style>
-    /* Base chip */
     div[role="radiogroup"] > label {
-        border: 1px solid rgba(239,68,68,0.45); /* red-500 */
+        border: 1px solid rgba(239,68,68,0.45);
         padding: 10px 14px;
         border-radius: 10px;
         margin-right: 8px;
         margin-bottom: 8px;
         background: rgba(239,68,68,0.08);
-        color: #ef4444; /* red-500 */
+        color: #ef4444;
         cursor: pointer;
         font-weight: 600;
     }
-    /* Selected */
     div[role="radiogroup"] > label[data-checked="true"] {
         background: rgba(239,68,68,0.18);
         border-color: #ef4444;
         color: #ef4444;
         box-shadow: inset 0 0 0 1px #ef4444;
     }
-    /* Make sure inner radio glyph (dot) stays visible against dark bg */
-    div[role="radiogroup"] svg {
-        stroke: #ef4444 !important;
-        fill: #ef4444 !important;
-    }
-    /* Section headers */
+    div[role="radiogroup"] svg { stroke: #ef4444 !important; fill: #ef4444 !important; }
     .league-header { margin-top: 18px; margin-bottom: 6px; font-weight: 700; }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ---- helpers (same as previous build) ----
+# ------------- helpers -------------
 def _load_csv_nearby(filename: str) -> pd.DataFrame:
     for path in [filename, os.path.join(os.path.dirname(__file__), filename)]:
         if os.path.exists(path):
@@ -144,20 +146,154 @@ def format_ko(ts: Optional[pd.Timestamp]) -> str:
     except Exception:
         return str(ts)
 
-# ---- Controls ----
+# ------------- trends -------------
+def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple[float, str]]:
+    """Return list of (pct, text) trends (>=0.80), sorted desc. Uses last up to 5 H2H in past 3 seasons."""
+    trends: List[Tuple[float, str]] = []
+    if results_df is None or results_df.empty:
+        return trends
+
+    three_years_ago = datetime.today().year - 3
+    h2h = results_df[((results_df["home_team"] == home) & (results_df["away_team"] == away)) |
+                     ((results_df["home_team"] == away) & (results_df["away_team"] == home))].copy()
+    if "match_date" in h2h.columns:
+        h2h = h2h[h2h["match_date"].dt.year >= three_years_ago].sort_values("match_date", ascending=False).head(5)
+    if h2h.empty:
+        return trends
+
+    def add_bool(series: pd.Series, label: str):
+        valid = series.dropna()
+        if valid.empty:
+            return
+        pct = float(valid.mean())
+        if pct >= 0.80:
+            trends.append((pct, f"{label} in {int(pct*len(valid))}/{len(valid)} games"))
+
+    # Goals
+    hs = pd.to_numeric(h2h.get("home_score"), errors="coerce")
+    as_ = pd.to_numeric(h2h.get("away_score"), errors="coerce")
+    gg = (hs > 0) & (as_ > 0)
+    gg = gg.where(~(hs.isna() | as_.isna()), pd.NA)
+    add_bool(gg, "Both teams scored (GG)")
+    add_bool(gg.apply(lambda x: None if pd.isna(x) else not x), "Both teams failed to score (NG)")
+
+    total = hs + as_
+    add_bool((total > 2.5).where(~total.isna(), pd.NA), "Over 2.5 goals")
+    add_bool((total <= 2.5).where(~total.isna(), pd.NA), "Under 2.5 goals")
+
+    # Win dominance
+    wins_home_team = []
+    wins_away_team = []
+    for _, row in h2h.iterrows():
+        rh, ra = row["home_team"], row["away_team"]
+        hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
+        asc = pd.to_numeric(row.get("away_score"), errors="coerce")
+        if pd.isna(hsc) or pd.isna(asc):
+            continue
+        if hsc == asc:
+            continue
+        winner = rh if hsc > asc else ra
+        wins_home_team.append(winner == home)
+        wins_away_team.append(winner == away)
+    if wins_home_team:
+        pct = sum(bool(x) for x in wins_home_team) / len(wins_home_team)
+        if pct >= 0.80:
+            trends.append((pct, f"{home} won {int(pct*len(wins_home_team))}/{len(wins_home_team)} recent meetings"))
+    if wins_away_team:
+        pct = sum(bool(x) for x in wins_away_team) / len(wins_away_team)
+        if pct >= 0.80:
+            trends.append((pct, f"{away} won {int(pct*len(wins_away_team))}/{len(wins_away_team)} recent meetings"))
+
+    # Corners total O/U 9.5
+    tc = pd.to_numeric(h2h.get("total_corners"), errors="coerce")
+    if tc.notna().any():
+        add_bool((tc > 9.5).where(~tc.isna(), pd.NA), "Over 9.5 corners")
+        add_bool((tc <= 9.5).where(~tc.isna(), pd.NA), "Under 9.5 corners")
+
+    # Corner dominance (venue-aware; ignore ties & NaNs)
+    corner_pairs = [
+        ("home_corners","away_corners"),
+        ("home_corner","away_corner"),
+        ("homecorner","awaycorner"),
+        ("corners_home","corners_away"),
+    ]
+    for hc_col, ac_col in corner_pairs:
+        if {hc_col, ac_col}.issubset(h2h.columns):
+            hc = pd.to_numeric(h2h[hc_col], errors="coerce")
+            ac = pd.to_numeric(h2h[ac_col], errors="coerce")
+
+            # Map corners to the current fixture teams regardless of venue in the historical row
+            home_corners_series = np.where(h2h["home_team"] == home, hc,
+                                           np.where(h2h["away_team"] == home, ac, np.nan))
+            away_corners_series = np.where(h2h["home_team"] == away, hc,
+                                           np.where(h2h["away_team"] == away, ac, np.nan))
+
+            home_corners_series = pd.to_numeric(home_corners_series, errors="coerce")
+            away_corners_series = pd.to_numeric(away_corners_series, errors="coerce")
+
+            mask_valid = (~home_corners_series.isna()) & (~away_corners_series.isna()) & (home_corners_series != away_corners_series)
+            if mask_valid.any():
+                home_more = (home_corners_series > away_corners_series)[mask_valid]
+                away_more = (away_corners_series > home_corners_series)[mask_valid]
+                add_bool(home_more, f"{home} more corners than {away}")
+                add_bool(away_more, f"{away} more corners than {home}")
+            break  # use the first valid pair
+
+    # Clean sheets (team‑specific, venue‑aware)
+    cs_home = []  # home team kept opp = 0
+    cs_away = []  # away team kept opp = 0
+    for _, row in h2h.iterrows():
+        rh, ra = row["home_team"], row["away_team"]
+        hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
+        asc = pd.to_numeric(row.get("away_score"), errors="coerce")
+        if pd.isna(hsc) or pd.isna(asc):
+            continue
+        if rh == home:
+            cs_home.append(asc == 0)
+        elif ra == home:
+            cs_home.append(hsc == 0)
+        if rh == away:
+            cs_away.append(asc == 0)
+        elif ra == away:
+            cs_away.append(hsc == 0)
+    if cs_home:
+        pct = sum(bool(x) for x in cs_home) / len(cs_home)
+        if pct >= 0.80:
+            trends.append((pct, f"{home} kept a clean sheet in {int(pct*len(cs_home))}/{len(cs_home)} games"))
+    if cs_away:
+        pct = sum(bool(x) for x in cs_away) / len(cs_away)
+        if pct >= 0.80:
+            trends.append((pct, f"{away} kept a clean sheet in {int(pct*len(cs_away))}/{len(cs_away)} games"))
+
+    # First‑half goals (informational)
+    fh_home = pd.to_numeric(h2h.get("first_half_home"), errors="coerce")
+    fh_away = pd.to_numeric(h2h.get("first_half_away"), errors="coerce")
+    if not fh_home.empty or not fh_away.empty:
+        fh_any = ((fh_home + fh_away) > 0).where(~(fh_home.isna() | fh_away.isna()), pd.NA)
+        add_bool(fh_any, "First-half goals")
+
+    return sorted(trends, key=lambda x: x[0], reverse=True)
+
+# ------------- controls -------------
 league_choice = st.selectbox("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
 time_window = st.radio("Time window", ["Today", "Tomorrow", "Weekend (Fri–Mon)", "All in round"], horizontal=True, index=3)
 
 now = pd.Timestamp.now(tz=LOCAL_TZ)
 leagues = list(LEAGUE_FILES.keys()) if league_choice == "All" else [league_choice]
 
-# ---- Content ----
+def header_text(lg: str, rnd: Optional[int]) -> str:
+    return f"{lg} — {'Gameweek ' + str(rnd) if time_window == 'All in round' and rnd is not None else time_window}"
+
+def pick_round(fixtures: pd.DataFrame) -> Optional[int]:
+    return pick_current_round(fixtures)
+
+# ------------- content -------------
 for lg in leagues:
     res_df, fx_df = load_league(lg)
     if res_df is None or fx_df is None or fx_df.empty:
         continue
 
-    round_id = pick_current_round(fx_df)
+    round_id = pick_round(fx_df)
     view = fx_df.copy()
     if time_window == "All in round" and round_id is not None:
         view = view[view["round_number"] == round_id].copy()
@@ -169,8 +305,7 @@ for lg in leagues:
 
     view = view.sort_values(by=["kickoff_dt","home_team","away_team"], ascending=[True,True,True], kind="mergesort")
 
-    hdr = f"{lg} — {'Gameweek ' + str(round_id) if time_window == 'All in round' and round_id is not None else time_window}"
-    st.markdown(f"<div class='league-header'>{hdr}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='league-header'>{header_text(lg, round_id)}</div>", unsafe_allow_html=True)
 
     for _, r in view.iterrows():
         home = str(r.get("home_team","")).strip()
@@ -178,36 +313,13 @@ for lg in leagues:
         ko   = r.get("kickoff_dt")
         header = f"{format_ko(ko)} — {home} vs {away}" if ko is not None else f"{home} vs {away}"
         with st.expander(header, expanded=True):
-            # trend bullets (unchanged)
-            three_years_ago = datetime.today().year - 3
-            h2h = res_df[((res_df["home_team"] == home) & (res_df["away_team"] == away)) |
-                         ((res_df["home_team"] == away) & (res_df["away_team"] == home))].copy()
-            if "match_date" in h2h.columns:
-                h2h = h2h[h2h["match_date"].dt.year >= three_years_ago].sort_values("match_date", ascending=False).head(5)
-            if h2h.empty:
+            trends = compute_trends(res_df, home, away)
+            # show up to 5 bullets to surface new categories without clutter
+            shown = 0
+            for _, text in trends:
+                st.markdown(f"• {text}")
+                shown += 1
+                if shown >= 5:
+                    break
+            if shown == 0:
                 st.info("No strong trends to show for this fixture.")
-            else:
-                # compute minimal set
-                hs = pd.to_numeric(h2h.get("home_score"), errors="coerce")
-                as_ = pd.to_numeric(h2h.get("away_score"), errors="coerce")
-                gg = (hs > 0) & (as_ > 0)
-                gg = gg.where(~(hs.isna() | as_.isna()), pd.NA)
-                total = hs + as_
-                over25 = (total > 2.5).where(~total.isna(), pd.NA)
-                under25 = (total <= 2.5).where(~total.isna(), pd.NA)
-                tc = pd.to_numeric(h2h.get("total_corners"), errors="coerce")
-                items = []
-                for s, label in [(gg,"Both teams scored (GG)"),
-                                 (over25,"Over 2.5 goals"),
-                                 (under25,"Under 2.5 goals")]:
-                    v = s.dropna()
-                    if not v.empty:
-                        pct = float(v.mean())
-                        if pct >= 0.80:
-                            items.append((pct, f"{label} in {int(pct*len(v))}/{len(v)} games"))
-                items = sorted(items, key=lambda x: x[0], reverse=True)[:3]
-                if not items:
-                    st.info("No strong trends to show for this fixture.")
-                else:
-                    for _, text in items:
-                        st.markdown(f"• {text}")
