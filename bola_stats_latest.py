@@ -1,13 +1,9 @@
 
 """
-BolaPredict — Fixtures (enhanced per‑fixture trends, bugfix)
-------------------------------------------------------------------
-- Filters: Today / Tomorrow / Weekend (Fri–Mon) / All in round
-- Chronological sort via kickoff_dt built from 'Date' (col B) + 'Time' (col E), Africa/Lagos
-- Per‑fixture trend bullets (>=80%): GG/NG, O/U 2.5, O/U 9.5 corners, Win dominance,
-  Corner dominance (venue‑aware), Clean sheets, First‑half goals
-- NO aggregated "Strongest observations" list
-- Dark‑mode friendly chip styling
+BolaPredict — Fixtures (min H2H threshold for trends)
+-----------------------------------------------------
+- MIN_H2H = 4 (set to 5 if you want stricter). Any metric needs at least MIN_H2H valid games.
+- Everything else unchanged from previous build.
 """
 
 import os
@@ -19,6 +15,7 @@ import numpy as np
 import streamlit as st
 
 LOCAL_TZ = "Africa/Lagos"
+MIN_H2H = 4  # <-- change to 5 for stricter requirement
 
 LEAGUE_FILES: Dict[str, Dict[str, str]] = {
     "EPL": {"results": "EPL Historical Data.csv", "fixtures": "EPL_upcoming_fixtures.csv"},
@@ -31,7 +28,7 @@ st.set_page_config(page_title="BolaPredict — Fixtures", layout="centered")
 st.title("📅 BolaPredict Fixtures")
 st.caption("⚡ Quick stats that matter. Trends in the most recent H2H meetings across EPL, La Liga, Bundesliga & Serie A. Fixtures are listed strictly by kick‑off time (Africa/Lagos).")
 
-# High-contrast radio "chips" (dark & light)
+# Chip styling
 st.markdown(
     """
     <style>
@@ -59,7 +56,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ------------- helpers -------------
 def _load_csv_nearby(filename: str) -> pd.DataFrame:
     for path in [filename, os.path.join(os.path.dirname(__file__), filename)]:
         if os.path.exists(path):
@@ -146,9 +142,11 @@ def format_ko(ts: Optional[pd.Timestamp]) -> str:
     except Exception:
         return str(ts)
 
-# ------------- trends -------------
+# --------- trends ---------
 def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple[float, str]]:
-    """Return list of (pct, text) trends (>=0.80), sorted desc. Uses last up to 5 H2H in past 3 seasons."""
+    """Return list of (pct, text) trends (>=0.80), sorted desc. Uses last up to 5 H2H in past 3 seasons.
+       Any metric needs at least MIN_H2H valid games to be considered.
+    """
     trends: List[Tuple[float, str]] = []
     if results_df is None or results_df.empty:
         return trends
@@ -158,16 +156,16 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
                      ((results_df["home_team"] == away) & (results_df["away_team"] == home))].copy()
     if "match_date" in h2h.columns:
         h2h = h2h[h2h["match_date"].dt.year >= three_years_ago].sort_values("match_date", ascending=False).head(5)
-    if h2h.empty:
+    if len(h2h) < MIN_H2H:
         return trends
 
     def add_bool(series: pd.Series, label: str):
         valid = series.dropna()
-        if valid.empty:
+        if len(valid) < MIN_H2H:
             return
         pct = float(valid.mean())
         if pct >= 0.80:
-            trends.append((pct, f"{label} in {int(pct*len(valid))}/{len(valid)} games"))
+            trends.append((pct, f"{label} in {int(round(pct*len(valid)))}/{len(valid)} games"))
 
     # Goals
     hs = pd.to_numeric(h2h.get("home_score"), errors="coerce")
@@ -181,7 +179,7 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     add_bool((total > 2.5).where(~total.isna(), pd.NA), "Over 2.5 goals")
     add_bool((total <= 2.5).where(~total.isna(), pd.NA), "Under 2.5 goals")
 
-    # Win dominance (venue-aware winner mapping)
+    # Win dominance
     wins_home_team = []
     wins_away_team = []
     for _, row in h2h.iterrows():
@@ -193,18 +191,18 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
         winner = rh if hsc > asc else ra
         wins_home_team.append(winner == home)
         wins_away_team.append(winner == away)
-    if wins_home_team:
+    if len(wins_home_team) >= MIN_H2H:
         pct = sum(bool(x) for x in wins_home_team) / len(wins_home_team)
         if pct >= 0.80:
-            trends.append((pct, f"{home} won {int(pct*len(wins_home_team))}/{len(wins_home_team)} recent meetings"))
-    if wins_away_team:
+            trends.append((pct, f"{home} won {int(round(pct*len(wins_home_team)))}/{len(wins_home_team)} recent meetings"))
+    if len(wins_away_team) >= MIN_H2H:
         pct = sum(bool(x) for x in wins_away_team) / len(wins_away_team)
         if pct >= 0.80:
-            trends.append((pct, f"{away} won {int(pct*len(wins_away_team))}/{len(wins_away_team)} recent meetings"))
+            trends.append((pct, f"{away} won {int(round(pct*len(wins_away_team)))}/{len(wins_away_team)} recent meetings"))
 
     # Corners total O/U 9.5
     tc = pd.to_numeric(h2h.get("total_corners"), errors="coerce")
-    if tc.notna().any():
+    if tc.notna().sum() >= MIN_H2H:
         add_bool((tc > 9.5).where(~tc.isna(), pd.NA), "Over 9.5 corners")
         add_bool((tc <= 9.5).where(~tc.isna(), pd.NA), "Under 9.5 corners")
 
@@ -220,23 +218,21 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
             hc = pd.to_numeric(h2h[hc_col], errors="coerce")
             ac = pd.to_numeric(h2h[ac_col], errors="coerce")
 
-            # Map corners to THIS fixture's teams regardless of venue in historical row
             home_arr = np.where(h2h["home_team"] == home, hc, np.where(h2h["away_team"] == home, ac, np.nan))
             away_arr = np.where(h2h["home_team"] == away, hc, np.where(h2h["away_team"] == away, ac, np.nan))
 
-            # Convert to Series so we can use .notna() safely (bugfix from ndarray)
             home_ser = pd.to_numeric(pd.Series(home_arr), errors="coerce")
             away_ser = pd.to_numeric(pd.Series(away_arr), errors="coerce")
 
             mask_valid = home_ser.notna() & away_ser.notna() & (home_ser != away_ser)
-            if mask_valid.any():
+            if mask_valid.sum() >= MIN_H2H:
                 add_bool((home_ser > away_ser)[mask_valid], f"{home} more corners than {away}")
                 add_bool((away_ser > home_ser)[mask_valid], f"{away} more corners than {home}")
-            break  # use first valid pair
+            break  # first valid pair only
 
     # Clean sheets (team‑specific, venue‑aware)
-    cs_home = []  # home team kept opp = 0
-    cs_away = []  # away team kept opp = 0
+    cs_home = []
+    cs_away = []
     for _, row in h2h.iterrows():
         rh, ra = row["home_team"], row["away_team"]
         hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
@@ -251,25 +247,26 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
             cs_away.append(asc == 0)
         elif ra == away:
             cs_away.append(hsc == 0)
-    if cs_home:
+    if len(cs_home) >= MIN_H2H:
         pct = sum(bool(x) for x in cs_home) / len(cs_home)
         if pct >= 0.80:
-            trends.append((pct, f"{home} kept a clean sheet in {int(pct*len(cs_home))}/{len(cs_home)} games"))
-    if cs_away:
+            trends.append((pct, f"{home} kept a clean sheet in {int(round(pct*len(cs_home)))}/{len(cs_home)} games"))
+    if len(cs_away) >= MIN_H2H:
         pct = sum(bool(x) for x in cs_away) / len(cs_away)
         if pct >= 0.80:
-            trends.append((pct, f"{away} kept a clean sheet in {int(pct*len(cs_away))}/{len(cs_away)} games"))
+            trends.append((pct, f"{away} kept a clean sheet in {int(round(pct*len(cs_away)))}/{len(cs_away)} games"))
 
     # First‑half goals (informational)
     fh_home = pd.to_numeric(h2h.get("first_half_home"), errors="coerce")
     fh_away = pd.to_numeric(h2h.get("first_half_away"), errors="coerce")
-    if not fh_home.empty or not fh_away.empty:
-        fh_any = ((fh_home + fh_away) > 0).where(~(fh_home.isna() | fh_away.isna()), pd.NA)
+    fh_valid = (~fh_home.isna()) & (~fh_away.isna())
+    if fh_valid.sum() >= MIN_H2H:
+        fh_any = ((fh_home + fh_away) > 0).where(fh_valid, pd.NA)
         add_bool(fh_any, "First-half goals")
 
     return sorted(trends, key=lambda x: x[0], reverse=True)
 
-# ------------- controls -------------
+# --------- controls ---------
 league_choice = st.selectbox("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
 time_window = st.radio("Time window", ["Today", "Tomorrow", "Weekend (Fri–Mon)", "All in round"], horizontal=True, index=3)
 
@@ -282,7 +279,7 @@ def header_text(lg: str, rnd: Optional[int]) -> str:
 def pick_round(fixtures: pd.DataFrame) -> Optional[int]:
     return pick_current_round(fixtures)
 
-# ------------- content -------------
+# --------- content ---------
 for lg in leagues:
     res_df, fx_df = load_league(lg)
     if res_df is None or fx_df is None or fx_df.empty:
