@@ -2,7 +2,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 1,15/08/2025,Liverpool,Bournemouth,20:00:00
 1,16/08/2025,Aston Villa,Newcastle,12:30:00
 1,16/08/2025,Brighton,Fulham,15:00:00
-1,16/08/2025,Sunderland,West Ham,15:00:00
+1,16/08/2025,Nott'm Forest,West Ham,15:00:00
 1,16/08/2025,Tottenham,Burnley,15:00:00
 1,16/08/2025,Wolves,Man City,17:30:00
 1,17/08/2025,Nott'm Forest,Brentford,14:00:00
@@ -13,7 +13,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 2,23/08/2025,Man City,Tottenham,12:30:00
 2,23/08/2025,Bournemouth,Wolves,15:00:00
 2,23/08/2025,Brentford,Aston Villa,15:00:00
-2,23/08/2025,Burnley,Sunderland,15:00:00
+2,23/08/2025,Burnley,Nott'm Forest,15:00:00
 2,23/08/2025,Arsenal,Leeds,17:30:00
 2,24/08/2025,Crystal Palace,Nott'm Forest,14:00:00
 2,24/08/2025,Everton,Brighton,14:00:00
@@ -21,7 +21,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 2,25/08/2025,Newcastle,Liverpool,20:00:00
 3,30/08/2025,Chelsea,Fulham,12:30:00
 3,30/08/2025,Man United,Burnley,15:00:00
-3,30/08/2025,Sunderland,Brentford,15:00:00
+3,30/08/2025,Nott'm Forest,Brentford,15:00:00
 3,30/08/2025,Tottenham,Bournemouth,15:00:00
 3,30/08/2025,Wolves,Everton,15:00:00
 3,30/08/2025,Leeds,Newcastle,17:30:00
@@ -31,7 +31,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 3,31/08/2025,Aston Villa,Crystal Palace,19:00:00
 4,13/09/2025,Arsenal,Nott'm Forest,12:30:00
 4,13/09/2025,Bournemouth,Brighton,15:00:00
-4,13/09/2025,Crystal Palace,Sunderland,15:00:00
+4,13/09/2025,Crystal Palace,Nott'm Forest,15:00:00
 4,13/09/2025,Everton,Aston Villa,15:00:00
 4,13/09/2025,Fulham,Leeds,15:00:00
 4,13/09/2025,Newcastle,Wolves,15:00:00
@@ -47,22 +47,22 @@ Round_Number,Date,Home Team,Away_Team,Time
 5,20/09/2025,Man United,Chelsea,17:30:00
 5,20/09/2025,Fulham,Brentford,20:00:00
 5,21/09/2025,Bournemouth,Newcastle,14:00:00
-5,21/09/2025,Sunderland,Aston Villa,14:00:00
+5,21/09/2025,Nott'm Forest,Aston Villa,14:00:00
 5,21/09/2025,Arsenal,Man City,16:30:00
 6,27/09/2025,Brentford,Man United,12:30:00
 6,27/09/2025,Chelsea,Brighton,15:00:00
 6,27/09/2025,Crystal Palace,Liverpool,15:00:00
 6,27/09/2025,Leeds,Bournemouth,15:00:00
 6,27/09/2025,Man City,Burnley,15:00:00
-6,27/09/2025,Nott'm Forest,Sunderland,17:30:00
+6,27/09/2025,Nott'm Forest,Nott'm Forest,17:30:00
 6,27/09/2025,Tottenham,Wolves,20:00:00
 6,28/09/2025,Aston Villa,Fulham,14:00:00
 6,28/09/2025,Newcastle,Arsenal,16:30:00
 6,29/09/2025,Everton,West Ham,20:00:00
 7,03/10/2025,Bournemouth,Fulham,20:00:00
-7,04/10/2025,Leeds,Sunderland,12:30:00
+7,04/10/2025,Leeds,Tottenham,12:30:00
 7,04/10/2025,Arsenal,West Ham,15:00:00
-7,04/10/2025,Man City,Sunderland,15:00:00
+7,04/10/2025,Man City,Nott'm Forest,15:00:00
 7,04/10/2025,Chelsea,Liverpool,17:30:00
 7,05/10/2025,Aston Villa,Burnley,14:00:00
 7,05/10/2025,Everton,Crystal Palace,14:00:00
@@ -74,13 +74,13 @@ Round_Number,Date,Home Team,Away_Team,Time
 8,18/10/2025,Burnley,Leeds,15:00:00
 8,18/10/2025,Crystal Palace,Bournemouth,15:00:00
 8,18/10/2025,Man City,Everton,15:00:00
-8,18/10/2025,Sunderland,Wolves,15:00:00
+8,18/10/2025,Nott'm Forest,Wolves,15:00:00
 8,18/10/2025,Fulham,Arsenal,17:30:00
-8,19/10/2025,Sunderland,Aston Villa,14:00:00
+8,19/10/2025,Tottenham,Aston Villa,14:00:00
 8,19/10/2025,Liverpool,Man City,16:30:00
 8,20/10/2025,West Ham,Brentford,20:00:00
 9,24/10/2025,Leeds,West Ham,20:00:00
-9,25/10/2025,Chelsea,Sunderland,15:00:00
+9,25/10/2025,Chelsea,Nott'm Forest,15:00:00
 9,25/10/2025,Newcastle,Fulham,15:00:00
 9,25/10/2025,Man City,Brighton,17:30:00
 9,25/10/2025,Brentford,Liverpool,20:00:00
@@ -88,21 +88,21 @@ Round_Number,Date,Home Team,Away_Team,Time
 9,26/10/2025,Aston Villa,Man City,14:00:00
 9,26/10/2025,Wolves,Burnley,14:00:00
 9,26/10/2025,Bournemouth,Nott'm Forest,16:00:00
-9,26/10/2025,Everton,Sunderland,16:30:00
+9,26/10/2025,Everton,Tottenham,16:30:00
 10,01/11/2025,Brighton,Leeds,15:00:00
 10,01/11/2025,Burnley,Arsenal,15:00:00
 10,01/11/2025,Crystal Palace,Brentford,15:00:00
 10,01/11/2025,Fulham,Wolves,15:00:00
 10,01/11/2025,Nott'm Forest,Man City,15:00:00
-10,01/11/2025,Sunderland,Chelsea,17:30:00
+10,01/11/2025,Tottenham,Chelsea,17:30:00
 10,01/11/2025,Liverpool,Aston Villa,20:00:00
 10,02/11/2025,West Ham,Newcastle,14:00:00
 10,02/11/2025,Man City,Bournemouth,16:30:00
-10,03/11/2025,Sunderland,Everton,20:00:00
-11,08/11/2025,Sunderland,Man City,12:30:00
+10,03/11/2025,Nott'm Forest,Everton,20:00:00
+11,08/11/2025,Tottenham,Man City,12:30:00
 11,08/11/2025,Everton,Fulham,15:00:00
 11,08/11/2025,West Ham,Burnley,15:00:00
-11,08/11/2025,Sunderland,Arsenal,17:30:00
+11,08/11/2025,Nott'm Forest,Arsenal,17:30:00
 11,08/11/2025,Chelsea,Wolves,20:00:00
 11,09/11/2025,Aston Villa,Bournemouth,14:00:00
 11,09/11/2025,Brentford,Newcastle,14:00:00
@@ -112,18 +112,18 @@ Round_Number,Date,Home Team,Away_Team,Time
 12,22/11/2025,Burnley,Chelsea,12:30:00
 12,22/11/2025,Bournemouth,West Ham,15:00:00
 12,22/11/2025,Brighton,Brentford,15:00:00
-12,22/11/2025,Fulham,Sunderland,15:00:00
+12,22/11/2025,Fulham,Nott'm Forest,15:00:00
 12,22/11/2025,Liverpool,Nott'm Forest,15:00:00
 12,22/11/2025,Wolves,Crystal Palace,15:00:00
 12,22/11/2025,Newcastle,Man City,17:30:00
 12,23/11/2025,Leeds,Aston Villa,14:00:00
-12,23/11/2025,Arsenal,Sunderland,16:30:00
+12,23/11/2025,Arsenal,Tottenham,16:30:00
 12,24/11/2025,Man City,Everton,20:00:00
 13,29/11/2025,Brentford,Burnley,15:00:00
 13,29/11/2025,Man City,Leeds,15:00:00
-13,29/11/2025,Sunderland,Bournemouth,15:00:00
+13,29/11/2025,Nott'm Forest,Bournemouth,15:00:00
 13,29/11/2025,Everton,Newcastle,17:30:00
-13,29/11/2025,Sunderland,Fulham,20:00:00
+13,29/11/2025,Tottenham,Fulham,20:00:00
 13,30/11/2025,Crystal Palace,Man City,12:00:00
 13,30/11/2025,Aston Villa,Wolves,14:05:00
 13,30/11/2025,Nott'm Forest,Brighton,14:05:00
@@ -135,9 +135,9 @@ Round_Number,Date,Home Team,Away_Team,Time
 14,03/12/2025,Burnley,Crystal Palace,20:00:00
 14,03/12/2025,Fulham,Man City,20:00:00
 14,03/12/2025,Leeds,Chelsea,20:00:00
-14,03/12/2025,Liverpool,Sunderland,20:00:00
+14,03/12/2025,Liverpool,Nott'm Forest,20:00:00
 14,03/12/2025,Man City,West Ham,20:00:00
-14,03/12/2025,Newcastle,Sunderland,20:00:00
+14,03/12/2025,Newcastle,Tottenham,20:00:00
 14,03/12/2025,Wolves,Nott'm Forest,20:00:00
 15,06/12/2025,Aston Villa,Arsenal,15:00:00
 15,06/12/2025,Bournemouth,Chelsea,15:00:00
@@ -145,9 +145,9 @@ Round_Number,Date,Home Team,Away_Team,Time
 15,06/12/2025,Everton,Nott'm Forest,15:00:00
 15,06/12/2025,Fulham,Crystal Palace,15:00:00
 15,06/12/2025,Leeds,Liverpool,15:00:00
-15,06/12/2025,Man City,Sunderland,15:00:00
+15,06/12/2025,Man City,Nott'm Forest,15:00:00
 15,06/12/2025,Newcastle,Burnley,15:00:00
-15,06/12/2025,Sunderland,Brentford,15:00:00
+15,06/12/2025,Tottenham,Brentford,15:00:00
 15,06/12/2025,Wolves,Man City,15:00:00
 16,13/12/2025,Arsenal,Wolves,15:00:00
 16,13/12/2025,Brentford,Leeds,15:00:00
@@ -156,38 +156,38 @@ Round_Number,Date,Home Team,Away_Team,Time
 16,13/12/2025,Crystal Palace,Man City,15:00:00
 16,13/12/2025,Liverpool,Brighton,15:00:00
 16,13/12/2025,Man City,Bournemouth,15:00:00
-16,13/12/2025,Nott'm Forest,Sunderland,15:00:00
-16,13/12/2025,Sunderland,Newcastle,15:00:00
+16,13/12/2025,Nott'm Forest,Tottenham,15:00:00
+16,13/12/2025,Nott'm Forest,Newcastle,15:00:00
 16,13/12/2025,West Ham,Aston Villa,15:00:00
 17,20/12/2025,Aston Villa,Man City,15:00:00
 17,20/12/2025,Bournemouth,Burnley,15:00:00
-17,20/12/2025,Brighton,Sunderland,15:00:00
+17,20/12/2025,Brighton,Nott'm Forest,15:00:00
 17,20/12/2025,Everton,Arsenal,15:00:00
 17,20/12/2025,Fulham,Nott'm Forest,15:00:00
 17,20/12/2025,Leeds,Crystal Palace,15:00:00
 17,20/12/2025,Man City,West Ham,15:00:00
 17,20/12/2025,Newcastle,Chelsea,15:00:00
-17,20/12/2025,Sunderland,Liverpool,15:00:00
+17,20/12/2025,Tottenham,Liverpool,15:00:00
 17,20/12/2025,Wolves,Brentford,15:00:00
 18,27/12/2025,Arsenal,Brighton,15:00:00
 18,27/12/2025,Brentford,Bournemouth,15:00:00
 18,27/12/2025,Burnley,Everton,15:00:00
 18,27/12/2025,Chelsea,Aston Villa,15:00:00
-18,27/12/2025,Crystal Palace,Sunderland,15:00:00
+18,27/12/2025,Crystal Palace,Tottenham,15:00:00
 18,27/12/2025,Liverpool,Wolves,15:00:00
 18,27/12/2025,Man City,Newcastle,15:00:00
 18,27/12/2025,Nott'm Forest,Man City,15:00:00
-18,27/12/2025,Sunderland,Leeds,15:00:00
+18,27/12/2025,Nott'm Forest,Leeds,15:00:00
 18,27/12/2025,West Ham,Fulham,15:00:00
 19,30/12/2025,Arsenal,Aston Villa,20:00:00
-19,30/12/2025,Brentford,Sunderland,20:00:00
+19,30/12/2025,Brentford,Tottenham,20:00:00
 19,30/12/2025,Burnley,Newcastle,20:00:00
 19,30/12/2025,Chelsea,Bournemouth,20:00:00
 19,30/12/2025,Crystal Palace,Fulham,20:00:00
 19,30/12/2025,Liverpool,Leeds,20:00:00
 19,30/12/2025,Man City,Wolves,20:00:00
 19,30/12/2025,Nott'm Forest,Everton,20:00:00
-19,30/12/2025,Sunderland,Man City,20:00:00
+19,30/12/2025,Nott'm Forest,Man City,20:00:00
 19,30/12/2025,West Ham,Brighton,20:00:00
 20,03/01/2026,Aston Villa,Nott'm Forest,15:00:00
 20,03/01/2026,Bournemouth,Arsenal,15:00:00
@@ -197,11 +197,11 @@ Round_Number,Date,Home Team,Away_Team,Time
 20,03/01/2026,Leeds,Man City,15:00:00
 20,03/01/2026,Man City,Chelsea,15:00:00
 20,03/01/2026,Newcastle,Crystal Palace,15:00:00
-20,03/01/2026,Sunderland,Sunderland,15:00:00
+20,03/01/2026,Tottenham,Nott'm Forest,15:00:00
 20,03/01/2026,Wolves,West Ham,15:00:00
 21,07/01/2026,Arsenal,Liverpool,20:00:00
-21,07/01/2026,Bournemouth,Sunderland,20:00:00
-21,07/01/2026,Brentford,Sunderland,20:00:00
+21,07/01/2026,Bournemouth,Tottenham,20:00:00
+21,07/01/2026,Brentford,Nott'm Forest,20:00:00
 21,07/01/2026,Burnley,Man City,20:00:00
 21,07/01/2026,Crystal Palace,Aston Villa,20:00:00
 21,07/01/2026,Everton,Wolves,20:00:00
@@ -216,19 +216,19 @@ Round_Number,Date,Home Team,Away_Team,Time
 22,17/01/2026,Liverpool,Burnley,15:00:00
 22,17/01/2026,Man City,Man City,15:00:00
 22,17/01/2026,Nott'm Forest,Arsenal,15:00:00
-22,17/01/2026,Sunderland,Crystal Palace,15:00:00
-22,17/01/2026,Sunderland,West Ham,15:00:00
+22,17/01/2026,Nott'm Forest,Crystal Palace,15:00:00
+22,17/01/2026,Tottenham,West Ham,15:00:00
 22,17/01/2026,Wolves,Newcastle,15:00:00
 23,24/01/2026,Arsenal,Man City,15:00:00
 23,24/01/2026,Bournemouth,Liverpool,15:00:00
 23,24/01/2026,Brentford,Nott'm Forest,15:00:00
-23,24/01/2026,Burnley,Sunderland,15:00:00
+23,24/01/2026,Burnley,Tottenham,15:00:00
 23,24/01/2026,Crystal Palace,Chelsea,15:00:00
 23,24/01/2026,Everton,Leeds,15:00:00
 23,24/01/2026,Fulham,Brighton,15:00:00
 23,24/01/2026,Man City,Wolves,15:00:00
 23,24/01/2026,Newcastle,Aston Villa,15:00:00
-23,24/01/2026,West Ham,Sunderland,15:00:00
+23,24/01/2026,West Ham,Nott'm Forest,15:00:00
 24,31/01/2026,Aston Villa,Brentford,15:00:00
 24,31/01/2026,Brighton,Everton,15:00:00
 24,31/01/2026,Chelsea,West Ham,15:00:00
@@ -236,17 +236,17 @@ Round_Number,Date,Home Team,Away_Team,Time
 24,31/01/2026,Liverpool,Newcastle,15:00:00
 24,31/01/2026,Man City,Fulham,15:00:00
 24,31/01/2026,Nott'm Forest,Crystal Palace,15:00:00
-24,31/01/2026,Sunderland,Burnley,15:00:00
-24,31/01/2026,Sunderland,Man City,15:00:00
+24,31/01/2026,Nott'm Forest,Burnley,15:00:00
+24,31/01/2026,Tottenham,Man City,15:00:00
 24,31/01/2026,Wolves,Bournemouth,15:00:00
-25,07/02/2026,Arsenal,Sunderland,15:00:00
+25,07/02/2026,Arsenal,Nott'm Forest,15:00:00
 25,07/02/2026,Bournemouth,Aston Villa,15:00:00
 25,07/02/2026,Brighton,Crystal Palace,15:00:00
 25,07/02/2026,Burnley,West Ham,15:00:00
 25,07/02/2026,Fulham,Everton,15:00:00
 25,07/02/2026,Leeds,Nott'm Forest,15:00:00
 25,07/02/2026,Liverpool,Man City,15:00:00
-25,07/02/2026,Man City,Sunderland,15:00:00
+25,07/02/2026,Man City,Tottenham,15:00:00
 25,07/02/2026,Newcastle,Brentford,15:00:00
 25,07/02/2026,Wolves,Chelsea,15:00:00
 26,11/02/2026,Aston Villa,Brighton,20:00:00
@@ -256,8 +256,8 @@ Round_Number,Date,Home Team,Away_Team,Time
 26,11/02/2026,Everton,Bournemouth,20:00:00
 26,11/02/2026,Man City,Fulham,20:00:00
 26,11/02/2026,Nott'm Forest,Wolves,20:00:00
-26,11/02/2026,Sunderland,Liverpool,20:00:00
-26,11/02/2026,Sunderland,Newcastle,20:00:00
+26,11/02/2026,Nott'm Forest,Liverpool,20:00:00
+26,11/02/2026,Tottenham,Newcastle,20:00:00
 26,11/02/2026,West Ham,Man City,20:00:00
 27,21/02/2026,Aston Villa,Leeds,15:00:00
 27,21/02/2026,Brentford,Brighton,15:00:00
@@ -266,14 +266,14 @@ Round_Number,Date,Home Team,Away_Team,Time
 27,21/02/2026,Everton,Man City,15:00:00
 27,21/02/2026,Man City,Newcastle,15:00:00
 27,21/02/2026,Nott'm Forest,Liverpool,15:00:00
-27,21/02/2026,Sunderland,Fulham,15:00:00
-27,21/02/2026,Sunderland,Arsenal,15:00:00
+27,21/02/2026,Nott'm Forest,Fulham,15:00:00
+27,21/02/2026,Tottenham,Arsenal,15:00:00
 27,21/02/2026,West Ham,Bournemouth,15:00:00
 28,28/02/2026,Arsenal,Chelsea,15:00:00
-28,28/02/2026,Bournemouth,Sunderland,15:00:00
+28,28/02/2026,Bournemouth,Nott'm Forest,15:00:00
 28,28/02/2026,Brighton,Nott'm Forest,15:00:00
 28,28/02/2026,Burnley,Brentford,15:00:00
-28,28/02/2026,Fulham,Sunderland,15:00:00
+28,28/02/2026,Fulham,Tottenham,15:00:00
 28,28/02/2026,Leeds,Man City,15:00:00
 28,28/02/2026,Liverpool,West Ham,15:00:00
 28,28/02/2026,Man City,Crystal Palace,15:00:00
@@ -284,20 +284,20 @@ Round_Number,Date,Home Team,Away_Team,Time
 29,04/03/2026,Brighton,Arsenal,20:00:00
 29,04/03/2026,Everton,Burnley,20:00:00
 29,04/03/2026,Fulham,West Ham,20:00:00
-29,04/03/2026,Leeds,Sunderland,20:00:00
+29,04/03/2026,Leeds,Nott'm Forest,20:00:00
 29,04/03/2026,Man City,Nott'm Forest,20:00:00
 29,04/03/2026,Newcastle,Man City,20:00:00
-29,04/03/2026,Sunderland,Crystal Palace,20:00:00
+29,04/03/2026,Tottenham,Crystal Palace,20:00:00
 29,04/03/2026,Wolves,Liverpool,20:00:00
 30,14/03/2026,Arsenal,Everton,15:00:00
 30,14/03/2026,Brentford,Wolves,15:00:00
 30,14/03/2026,Burnley,Bournemouth,15:00:00
 30,14/03/2026,Chelsea,Newcastle,15:00:00
 30,14/03/2026,Crystal Palace,Leeds,15:00:00
-30,14/03/2026,Liverpool,Sunderland,15:00:00
+30,14/03/2026,Liverpool,Tottenham,15:00:00
 30,14/03/2026,Man City,Aston Villa,15:00:00
 30,14/03/2026,Nott'm Forest,Fulham,15:00:00
-30,14/03/2026,Sunderland,Brighton,15:00:00
+30,14/03/2026,Nott'm Forest,Brighton,15:00:00
 30,14/03/2026,West Ham,Man City,15:00:00
 31,21/03/2026,Aston Villa,West Ham,15:00:00
 31,21/03/2026,Bournemouth,Man City,15:00:00
@@ -306,8 +306,8 @@ Round_Number,Date,Home Team,Away_Team,Time
 31,21/03/2026,Fulham,Burnley,15:00:00
 31,21/03/2026,Leeds,Brentford,15:00:00
 31,21/03/2026,Man City,Crystal Palace,15:00:00
-31,21/03/2026,Newcastle,Sunderland,15:00:00
-31,21/03/2026,Sunderland,Nott'm Forest,15:00:00
+31,21/03/2026,Newcastle,Nott'm Forest,15:00:00
+31,21/03/2026,Tottenham,Nott'm Forest,15:00:00
 31,21/03/2026,Wolves,Arsenal,15:00:00
 32,11/04/2026,Arsenal,Bournemouth,15:00:00
 32,11/04/2026,Brentford,Everton,15:00:00
@@ -317,9 +317,9 @@ Round_Number,Date,Home Team,Away_Team,Time
 32,11/04/2026,Liverpool,Fulham,15:00:00
 32,11/04/2026,Man City,Leeds,15:00:00
 32,11/04/2026,Nott'm Forest,Aston Villa,15:00:00
-32,11/04/2026,Sunderland,Sunderland,15:00:00
+32,11/04/2026,Nott'm Forest,Tottenham,15:00:00
 32,11/04/2026,West Ham,Wolves,15:00:00
-33,18/04/2026,Aston Villa,Sunderland,15:00:00
+33,18/04/2026,Aston Villa,Nott'm Forest,15:00:00
 33,18/04/2026,Brentford,Fulham,15:00:00
 33,18/04/2026,Chelsea,Man City,15:00:00
 33,18/04/2026,Crystal Palace,West Ham,15:00:00
@@ -328,7 +328,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 33,18/04/2026,Man City,Arsenal,15:00:00
 33,18/04/2026,Newcastle,Bournemouth,15:00:00
 33,18/04/2026,Nott'm Forest,Burnley,15:00:00
-33,18/04/2026,Sunderland,Brighton,15:00:00
+33,18/04/2026,Tottenham,Brighton,15:00:00
 34,25/04/2026,Arsenal,Newcastle,15:00:00
 34,25/04/2026,Bournemouth,Leeds,15:00:00
 34,25/04/2026,Brighton,Chelsea,15:00:00
@@ -336,11 +336,11 @@ Round_Number,Date,Home Team,Away_Team,Time
 34,25/04/2026,Fulham,Aston Villa,15:00:00
 34,25/04/2026,Liverpool,Crystal Palace,15:00:00
 34,25/04/2026,Man City,Brentford,15:00:00
-34,25/04/2026,Sunderland,Nott'm Forest,15:00:00
+34,25/04/2026,Nott'm Forest,Nott'm Forest,15:00:00
 34,25/04/2026,West Ham,Everton,15:00:00
-34,25/04/2026,Wolves,Sunderland,15:00:00
+34,25/04/2026,Wolves,Tottenham,15:00:00
 35,02/05/2026,Arsenal,Fulham,15:00:00
-35,02/05/2026,Aston Villa,Sunderland,15:00:00
+35,02/05/2026,Aston Villa,Tottenham,15:00:00
 35,02/05/2026,Bournemouth,Crystal Palace,15:00:00
 35,02/05/2026,Brentford,West Ham,15:00:00
 35,02/05/2026,Chelsea,Nott'm Forest,15:00:00
@@ -348,7 +348,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 35,02/05/2026,Leeds,Burnley,15:00:00
 35,02/05/2026,Man City,Liverpool,15:00:00
 35,02/05/2026,Newcastle,Brighton,15:00:00
-35,02/05/2026,Wolves,Sunderland,15:00:00
+35,02/05/2026,Wolves,Nott'm Forest,15:00:00
 36,09/05/2026,Brighton,Wolves,15:00:00
 36,09/05/2026,Burnley,Aston Villa,15:00:00
 36,09/05/2026,Crystal Palace,Everton,15:00:00
@@ -356,15 +356,15 @@ Round_Number,Date,Home Team,Away_Team,Time
 36,09/05/2026,Liverpool,Chelsea,15:00:00
 36,09/05/2026,Man City,Brentford,15:00:00
 36,09/05/2026,Nott'm Forest,Newcastle,15:00:00
-36,09/05/2026,Sunderland,Man City,15:00:00
-36,09/05/2026,Sunderland,Leeds,15:00:00
+36,09/05/2026,Nott'm Forest,Man City,15:00:00
+36,09/05/2026,Tottenham,Leeds,15:00:00
 36,09/05/2026,West Ham,Arsenal,15:00:00
 37,17/05/2026,Arsenal,Burnley,15:00:00
 37,17/05/2026,Aston Villa,Liverpool,15:00:00
 37,17/05/2026,Bournemouth,Man City,15:00:00
 37,17/05/2026,Brentford,Crystal Palace,15:00:00
-37,17/05/2026,Chelsea,Sunderland,15:00:00
-37,17/05/2026,Everton,Sunderland,15:00:00
+37,17/05/2026,Chelsea,Tottenham,15:00:00
+37,17/05/2026,Everton,Nott'm Forest,15:00:00
 37,17/05/2026,Leeds,Brighton,15:00:00
 37,17/05/2026,Man City,Nott'm Forest,15:00:00
 37,17/05/2026,Newcastle,West Ham,15:00:00
@@ -376,6 +376,6 @@ Round_Number,Date,Home Team,Away_Team,Time
 38,24/05/2026,Liverpool,Brentford,16:00:00
 38,24/05/2026,Man City,Aston Villa,16:00:00
 38,24/05/2026,Nott'm Forest,Bournemouth,16:00:00
-38,24/05/2026,Sunderland,Chelsea,16:00:00
-38,24/05/2026,Sunderland,Everton,16:00:00
+38,24/05/2026,Nott'm Forest,Chelsea,16:00:00
+38,24/05/2026,Tottenham,Everton,16:00:00
 38,24/05/2026,West Ham,Leeds,16:00:00
