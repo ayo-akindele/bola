@@ -1,0 +1,1373 @@
+﻿match_date,league,home_team,away_team,home_score,away_score,both_teams_score,over_2_5,first_half_home,first_half_away,first_half_result,home_corners,away_corners,Total_corners,Corners_result,home_yellow_cards,away_yellow_cards,Card_result
+06/08/2021,F1,Monaco,Nantes,1,1,GG,No,1,1,Draw,5,2,7,Home Win,0,0,Draw
+07/08/2021,F1,Lyon,Brest,1,1,GG,No,0,1,Away Win,9,4,13,Home Win,1,1,Draw
+07/08/2021,F1,Troyes,PSG,1,2,GG,Yes,1,2,Away Win,9,1,10,Home Win,1,4,Away Win
+08/08/2021,F1,Rennes,Lens,1,1,GG,No,1,1,Draw,3,9,12,Away Win,0,2,Away Win
+08/08/2021,F1,Bordeaux,Clermont,0,2,NG,No,0,0,Draw,5,10,15,Away Win,1,0,Home Win
+08/08/2021,F1,Nice,Reims,0,0,NG,No,0,0,Draw,4,2,6,Home Win,1,1,Draw
+08/08/2021,F1,St Etienne,Lorient,1,1,GG,No,0,0,Draw,8,4,12,Home Win,2,3,Away Win
+08/08/2021,F1,Strasbourg,Angers,0,2,NG,No,0,0,Draw,5,4,9,Home Win,2,3,Away Win
+08/08/2021,F1,Metz,Lille,3,3,GG,Yes,2,1,Home Win,4,5,9,Away Win,1,2,Away Win
+08/08/2021,F1,Montpellier,Marseille,2,3,GG,Yes,2,0,Home Win,6,11,17,Away Win,0,1,Away Win
+13/08/2021,F1,Lorient,Monaco,1,0,NG,No,1,0,Home Win,0,6,6,Away Win,3,2,Home Win
+14/08/2021,F1,Lille,Nice,0,4,NG,Yes,0,3,Away Win,8,7,15,Home Win,3,1,Home Win
+14/08/2021,F1,PSG,Strasbourg,4,2,GG,Yes,3,0,Home Win,4,4,8,Draw,1,4,Away Win
+15/08/2021,F1,Angers,Lyon,3,0,NG,Yes,1,0,Home Win,6,4,10,Home Win,1,5,Away Win
+15/08/2021,F1,Brest,Rennes,1,1,GG,No,0,0,Draw,6,11,17,Away Win,2,3,Away Win
+15/08/2021,F1,Clermont,Troyes,2,0,NG,No,0,0,Draw,9,2,11,Home Win,1,3,Away Win
+15/08/2021,F1,Nantes,Metz,2,0,NG,No,1,0,Home Win,6,6,12,Draw,2,0,Home Win
+15/08/2021,F1,Reims,Montpellier,3,3,GG,Yes,2,3,Away Win,8,7,15,Home Win,2,1,Home Win
+15/08/2021,F1,Lens,St Etienne,2,2,GG,Yes,1,1,Draw,7,2,9,Home Win,1,6,Away Win
+15/08/2021,F1,Marseille,Bordeaux,2,2,GG,Yes,2,0,Home Win,3,4,7,Away Win,2,2,Draw
+20/08/2021,F1,Brest,PSG,2,4,GG,Yes,1,2,Away Win,3,9,12,Away Win,1,2,Away Win
+21/08/2021,F1,Monaco,Lens,0,2,NG,No,0,0,Draw,13,3,16,Home Win,1,1,Draw
+21/08/2021,F1,St Etienne,Lille,1,1,GG,No,0,1,Away Win,5,3,8,Home Win,1,3,Away Win
+22/08/2021,F1,Lyon,Clermont,3,3,GG,Yes,3,1,Home Win,5,8,13,Away Win,2,2,Draw
+22/08/2021,F1,Bordeaux,Angers,1,1,GG,No,1,1,Draw,3,3,6,Draw,2,0,Home Win
+22/08/2021,F1,Metz,Reims,1,1,GG,No,1,1,Draw,5,8,13,Away Win,4,2,Home Win
+22/08/2021,F1,Montpellier,Lorient,3,1,GG,Yes,0,1,Away Win,5,1,6,Home Win,0,6,Away Win
+22/08/2021,F1,Strasbourg,Troyes,1,1,GG,No,0,1,Away Win,6,3,9,Home Win,3,1,Home Win
+22/08/2021,F1,Rennes,Nantes,1,0,NG,No,0,0,Draw,6,2,8,Home Win,2,2,Draw
+27/08/2021,F1,Nantes,Lyon,0,1,NG,No,0,1,Away Win,6,6,12,Draw,2,2,Draw
+28/08/2021,F1,Nice,Bordeaux,4,0,NG,Yes,3,0,Home Win,3,0,3,Home Win,3,2,Home Win
+28/08/2021,F1,Marseille,St Etienne,3,1,GG,Yes,1,1,Draw,5,4,9,Home Win,1,3,Away Win
+29/08/2021,F1,Troyes,Monaco,1,2,GG,Yes,0,1,Away Win,5,3,8,Home Win,1,2,Away Win
+29/08/2021,F1,Angers,Rennes,2,0,NG,No,0,0,Draw,3,1,4,Home Win,1,2,Away Win
+29/08/2021,F1,Clermont,Metz,2,2,GG,Yes,1,2,Away Win,6,3,9,Home Win,1,2,Away Win
+29/08/2021,F1,Lens,Lorient,2,2,GG,Yes,1,2,Away Win,8,4,12,Home Win,2,4,Away Win
+29/08/2021,F1,Strasbourg,Brest,3,1,GG,Yes,2,1,Home Win,1,9,10,Away Win,1,1,Draw
+29/08/2021,F1,Lille,Montpellier,2,1,GG,Yes,1,1,Draw,3,4,7,Away Win,3,7,Away Win
+29/08/2021,F1,Reims,PSG,0,2,NG,No,0,1,Away Win,3,3,6,Draw,1,3,Away Win
+10/09/2021,F1,Lorient,Lille,2,1,GG,Yes,1,1,Draw,2,5,7,Away Win,2,2,Draw
+11/09/2021,F1,PSG,Clermont,4,0,NG,Yes,2,0,Home Win,4,4,8,Draw,0,1,Away Win
+11/09/2021,F1,Monaco,Marseille,0,2,NG,No,0,1,Away Win,3,2,5,Home Win,4,1,Home Win
+12/09/2021,F1,Montpellier,St Etienne,2,0,NG,No,1,0,Home Win,7,6,13,Home Win,1,4,Away Win
+12/09/2021,F1,Bordeaux,Lens,2,3,GG,Yes,0,2,Away Win,2,7,9,Away Win,3,2,Home Win
+12/09/2021,F1,Brest,Angers,1,1,GG,No,0,0,Draw,5,3,8,Home Win,3,2,Home Win
+12/09/2021,F1,Metz,Troyes,0,2,NG,No,0,0,Draw,2,1,3,Home Win,2,1,Home Win
+12/09/2021,F1,Rennes,Reims,0,2,NG,No,0,1,Away Win,4,6,10,Away Win,1,2,Away Win
+12/09/2021,F1,Nantes,Nice,0,2,NG,No,0,0,Draw,8,3,11,Home Win,2,3,Away Win
+12/09/2021,F1,Lyon,Strasbourg,3,1,GG,Yes,1,0,Home Win,4,6,10,Away Win,2,1,Home Win
+17/09/2021,F1,Strasbourg,Metz,3,0,NG,Yes,3,0,Home Win,3,7,10,Away Win,2,4,Away Win
+18/09/2021,F1,Lens,Lille,1,0,NG,No,0,0,Draw,4,3,7,Home Win,2,2,Draw
+18/09/2021,F1,St Etienne,Bordeaux,1,2,GG,Yes,0,1,Away Win,7,2,9,Home Win,1,4,Away Win
+19/09/2021,F1,Nice,Monaco,2,2,GG,Yes,0,1,Away Win,5,2,7,Home Win,2,3,Away Win
+19/09/2021,F1,Angers,Nantes,1,4,GG,Yes,1,3,Away Win,10,5,15,Home Win,2,2,Draw
+19/09/2021,F1,Clermont,Brest,1,1,GG,No,0,0,Draw,3,5,8,Away Win,1,1,Draw
+19/09/2021,F1,Reims,Lorient,0,0,NG,No,0,0,Draw,5,6,11,Away Win,2,3,Away Win
+19/09/2021,F1,Troyes,Montpellier,1,1,GG,No,1,0,Home Win,1,6,7,Away Win,4,4,Draw
+19/09/2021,F1,Marseille,Rennes,2,0,NG,No,0,0,Draw,6,7,13,Away Win,0,2,Away Win
+19/09/2021,F1,PSG,Lyon,2,1,GG,Yes,0,0,Draw,10,4,14,Home Win,3,1,Home Win
+22/09/2021,F1,Lille,Reims,2,1,GG,Yes,2,0,Home Win,4,4,8,Draw,2,1,Home Win
+22/09/2021,F1,Monaco,St Etienne,3,1,GG,Yes,1,1,Draw,6,3,9,Home Win,1,1,Draw
+22/09/2021,F1,Montpellier,Bordeaux,3,3,GG,Yes,1,2,Away Win,6,6,12,Draw,0,2,Away Win
+22/09/2021,F1,Nantes,Brest,3,1,GG,Yes,1,0,Home Win,4,4,8,Draw,1,2,Away Win
+22/09/2021,F1,Rennes,Clermont,6,0,NG,Yes,2,0,Home Win,5,7,12,Away Win,2,1,Home Win
+22/09/2021,F1,Angers,Marseille,0,0,NG,No,0,0,Draw,4,2,6,Home Win,1,3,Away Win
+22/09/2021,F1,Lens,Strasbourg,0,1,NG,No,0,0,Draw,7,3,10,Home Win,2,3,Away Win
+22/09/2021,F1,Lorient,Nice,1,0,NG,No,1,0,Home Win,6,5,11,Home Win,2,4,Away Win
+22/09/2021,F1,Lyon,Troyes,3,1,GG,Yes,0,1,Away Win,7,3,10,Home Win,1,3,Away Win
+22/09/2021,F1,Metz,PSG,1,2,GG,Yes,1,1,Draw,3,3,6,Draw,6,2,Home Win
+25/09/2021,F1,St Etienne,Nice,0,3,NG,Yes,0,1,Away Win,2,9,11,Away Win,0,2,Away Win
+25/09/2021,F1,Strasbourg,Lille,1,2,GG,Yes,0,1,Away Win,8,8,16,Draw,4,4,Draw
+25/09/2021,F1,Lyon,Lorient,1,1,GG,No,0,1,Away Win,9,3,12,Home Win,1,2,Away Win
+25/09/2021,F1,PSG,Montpellier,2,0,NG,No,1,0,Home Win,8,7,15,Home Win,0,1,Away Win
+26/09/2021,F1,Bordeaux,Rennes,1,1,GG,No,0,0,Draw,8,6,14,Home Win,1,4,Away Win
+26/09/2021,F1,Brest,Metz,1,2,GG,Yes,0,1,Away Win,4,3,7,Home Win,3,2,Home Win
+26/09/2021,F1,Reims,Nantes,3,1,GG,Yes,0,0,Draw,3,7,10,Away Win,1,1,Draw
+26/09/2021,F1,Troyes,Angers,1,1,GG,No,1,0,Home Win,2,9,11,Away Win,4,2,Home Win
+26/09/2021,F1,Clermont,Monaco,1,3,GG,Yes,1,1,Draw,5,1,6,Home Win,2,4,Away Win
+26/09/2021,F1,Marseille,Lens,2,3,GG,Yes,2,2,Draw,5,7,12,Away Win,2,1,Home Win
+01/10/2021,F1,Lens,Reims,2,0,NG,No,1,0,Home Win,5,3,8,Home Win,3,1,Home Win
+02/10/2021,F1,Montpellier,Strasbourg,1,1,GG,No,1,1,Draw,3,4,7,Away Win,2,0,Home Win
+02/10/2021,F1,Nice,Brest,2,1,GG,Yes,1,0,Home Win,6,2,8,Home Win,1,1,Draw
+03/10/2021,F1,Rennes,PSG,2,0,NG,No,1,0,Home Win,4,4,8,Draw,2,3,Away Win
+03/10/2021,F1,Angers,Metz,3,2,GG,Yes,0,1,Away Win,12,2,14,Home Win,1,3,Away Win
+03/10/2021,F1,Lorient,Clermont,1,1,GG,No,0,1,Away Win,4,4,8,Draw,2,1,Home Win
+03/10/2021,F1,Monaco,Bordeaux,3,0,NG,Yes,1,0,Home Win,10,2,12,Home Win,2,1,Home Win
+03/10/2021,F1,Nantes,Troyes,2,0,NG,No,0,0,Draw,3,7,10,Away Win,2,2,Draw
+03/10/2021,F1,Lille,Marseille,2,0,NG,No,1,0,Home Win,3,5,8,Away Win,2,3,Away Win
+03/10/2021,F1,St Etienne,Lyon,1,1,GG,No,0,1,Away Win,6,4,10,Home Win,2,3,Away Win
+15/10/2021,F1,PSG,Angers,2,1,GG,Yes,0,1,Away Win,6,5,11,Home Win,1,2,Away Win
+16/10/2021,F1,Clermont,Lille,1,0,NG,No,1,0,Home Win,6,9,15,Away Win,1,2,Away Win
+16/10/2021,F1,Lyon,Monaco,2,0,NG,No,0,0,Draw,2,4,6,Away Win,1,2,Away Win
+17/10/2021,F1,Troyes,Nice,1,0,NG,No,1,0,Home Win,3,3,6,Draw,2,1,Home Win
+17/10/2021,F1,Bordeaux,Nantes,1,1,GG,No,0,0,Draw,2,5,7,Away Win,2,3,Away Win
+17/10/2021,F1,Brest,Reims,1,1,GG,No,0,1,Away Win,7,7,14,Draw,3,4,Away Win
+17/10/2021,F1,Metz,Rennes,0,3,NG,Yes,0,3,Away Win,4,10,14,Away Win,3,1,Home Win
+17/10/2021,F1,Strasbourg,St Etienne,5,1,GG,Yes,2,1,Home Win,7,4,11,Home Win,3,2,Home Win
+17/10/2021,F1,Montpellier,Lens,1,0,NG,No,0,0,Draw,3,2,5,Home Win,4,4,Draw
+17/10/2021,F1,Marseille,Lorient,4,1,GG,Yes,1,1,Draw,6,4,10,Home Win,0,1,Away Win
+22/10/2021,F1,St Etienne,Angers,2,2,GG,Yes,0,1,Away Win,6,1,7,Home Win,0,3,Away Win
+23/10/2021,F1,Nantes,Clermont,2,1,GG,Yes,1,0,Home Win,1,3,4,Away Win,1,0,Home Win
+23/10/2021,F1,Lille,Brest,1,1,GG,No,1,1,Draw,5,4,9,Home Win,1,2,Away Win
+24/10/2021,F1,Nice,Lyon,3,2,GG,Yes,0,1,Away Win,3,2,5,Home Win,1,0,Home Win
+24/10/2021,F1,Lens,Metz,4,1,GG,Yes,2,1,Home Win,5,6,11,Away Win,2,3,Away Win
+24/10/2021,F1,Lorient,Bordeaux,1,1,GG,No,0,0,Draw,9,4,13,Home Win,4,2,Home Win
+24/10/2021,F1,Reims,Troyes,1,2,GG,Yes,1,1,Draw,7,1,8,Home Win,4,2,Home Win
+24/10/2021,F1,Rennes,Strasbourg,1,0,NG,No,0,0,Draw,11,6,17,Home Win,1,2,Away Win
+24/10/2021,F1,Monaco,Montpellier,3,1,GG,Yes,2,0,Home Win,4,4,8,Draw,1,4,Away Win
+24/10/2021,F1,Marseille,PSG,0,0,NG,No,0,0,Draw,4,5,9,Away Win,1,2,Away Win
+27/10/2021,F1,Nice,Marseille,1,1,GG,No,1,1,Draw,6,5,11,Home Win,2,2,Draw
+29/10/2021,F1,PSG,Lille,2,1,GG,Yes,0,1,Away Win,4,5,9,Away Win,1,5,Away Win
+30/10/2021,F1,Metz,St Etienne,1,1,GG,No,1,1,Draw,5,8,13,Away Win,0,3,Away Win
+30/10/2021,F1,Lyon,Lens,2,1,GG,Yes,2,0,Home Win,3,5,8,Away Win,1,2,Away Win
+31/10/2021,F1,Angers,Nice,1,2,GG,Yes,1,0,Home Win,3,8,11,Away Win,1,2,Away Win
+31/10/2021,F1,Bordeaux,Reims,3,2,GG,Yes,0,1,Away Win,12,2,14,Home Win,3,2,Home Win
+31/10/2021,F1,Montpellier,Nantes,2,0,NG,No,0,0,Draw,5,5,10,Draw,3,5,Away Win
+31/10/2021,F1,Strasbourg,Lorient,4,0,NG,Yes,3,0,Home Win,6,3,9,Home Win,1,0,Home Win
+31/10/2021,F1,Troyes,Rennes,2,2,GG,Yes,2,1,Home Win,5,12,17,Away Win,0,1,Away Win
+31/10/2021,F1,Brest,Monaco,2,0,NG,No,1,0,Home Win,2,5,7,Away Win,1,5,Away Win
+31/10/2021,F1,Clermont,Marseille,0,1,NG,No,0,1,Away Win,4,2,6,Home Win,1,4,Away Win
+05/11/2021,F1,Lens,Troyes,4,0,NG,Yes,3,0,Home Win,4,2,6,Home Win,1,1,Draw
+06/11/2021,F1,Lille,Angers,1,1,GG,No,1,0,Home Win,4,8,12,Away Win,2,2,Draw
+06/11/2021,F1,Bordeaux,PSG,2,3,GG,Yes,0,2,Away Win,10,5,15,Home Win,2,1,Home Win
+07/11/2021,F1,Marseille,Metz,0,0,NG,No,0,0,Draw,9,7,16,Home Win,1,3,Away Win
+07/11/2021,F1,Lorient,Brest,1,2,GG,Yes,1,0,Home Win,3,6,9,Away Win,1,1,Draw
+07/11/2021,F1,Nantes,Strasbourg,2,2,GG,Yes,1,1,Draw,9,5,14,Home Win,2,1,Home Win
+07/11/2021,F1,Reims,Monaco,0,0,NG,No,0,0,Draw,5,6,11,Away Win,0,2,Away Win
+07/11/2021,F1,St Etienne,Clermont,3,2,GG,Yes,0,0,Draw,9,2,11,Home Win,1,1,Draw
+07/11/2021,F1,Nice,Montpellier,0,1,NG,No,0,0,Draw,8,2,10,Home Win,2,0,Home Win
+07/11/2021,F1,Rennes,Lyon,4,1,GG,Yes,1,0,Home Win,7,2,9,Home Win,2,2,Draw
+19/11/2021,F1,Monaco,Lille,2,2,GG,Yes,1,2,Away Win,6,5,11,Home Win,3,5,Away Win
+20/11/2021,F1,PSG,Nantes,3,1,GG,Yes,1,0,Home Win,4,3,7,Home Win,1,2,Away Win
+20/11/2021,F1,Rennes,Montpellier,2,0,NG,No,2,0,Home Win,8,2,10,Home Win,1,3,Away Win
+21/11/2021,F1,Brest,Lens,4,0,NG,Yes,3,0,Home Win,5,5,10,Draw,1,2,Away Win
+21/11/2021,F1,Angers,Lorient,1,0,NG,No,0,0,Draw,6,3,9,Home Win,4,0,Home Win
+21/11/2021,F1,Metz,Bordeaux,3,3,GG,Yes,1,2,Away Win,2,4,6,Away Win,2,2,Draw
+21/11/2021,F1,Strasbourg,Reims,1,1,GG,No,0,1,Away Win,5,4,9,Home Win,1,4,Away Win
+21/11/2021,F1,Troyes,St Etienne,0,1,NG,No,0,0,Draw,6,8,14,Away Win,1,4,Away Win
+21/11/2021,F1,Clermont,Nice,1,2,GG,Yes,1,0,Home Win,3,5,8,Away Win,1,4,Away Win
+26/11/2021,F1,Lens,Angers,2,2,GG,Yes,0,1,Away Win,5,5,10,Draw,2,0,Home Win
+27/11/2021,F1,Lille,Nantes,1,1,GG,No,1,1,Draw,12,1,13,Home Win,1,2,Away Win
+27/11/2021,F1,Nice,Metz,0,1,NG,No,0,1,Away Win,8,1,9,Home Win,2,2,Draw
+28/11/2021,F1,St Etienne,PSG,1,3,GG,Yes,1,1,Draw,5,5,10,Draw,3,1,Home Win
+28/11/2021,F1,Bordeaux,Brest,1,2,GG,Yes,1,0,Home Win,5,2,7,Home Win,3,1,Home Win
+28/11/2021,F1,Lorient,Rennes,0,2,NG,No,0,0,Draw,3,4,7,Away Win,0,2,Away Win
+28/11/2021,F1,Monaco,Strasbourg,1,1,GG,No,1,0,Home Win,4,3,7,Home Win,2,1,Home Win
+28/11/2021,F1,Reims,Clermont,1,0,NG,No,0,0,Draw,4,1,5,Home Win,2,2,Draw
+28/11/2021,F1,Montpellier,Lyon,0,1,NG,No,0,1,Away Win,8,5,13,Home Win,1,4,Away Win
+28/11/2021,F1,Marseille,Troyes,1,0,NG,No,0,0,Draw,7,3,10,Home Win,1,4,Away Win
+01/12/2021,F1,Angers,Monaco,1,3,GG,Yes,0,2,Away Win,4,4,8,Draw,1,2,Away Win
+01/12/2021,F1,Brest,St Etienne,1,0,NG,No,0,0,Draw,1,3,4,Away Win,2,3,Away Win
+01/12/2021,F1,Metz,Montpellier,1,3,GG,Yes,0,2,Away Win,7,4,11,Home Win,2,2,Draw
+01/12/2021,F1,Strasbourg,Bordeaux,5,2,GG,Yes,3,1,Home Win,5,2,7,Home Win,2,3,Away Win
+01/12/2021,F1,Troyes,Lorient,2,0,NG,No,2,0,Home Win,4,3,7,Home Win,1,1,Draw
+01/12/2021,F1,Clermont,Lens,2,2,GG,Yes,1,1,Draw,5,3,8,Home Win,4,5,Away Win
+01/12/2021,F1,Lyon,Reims,1,2,GG,Yes,0,0,Draw,3,4,7,Away Win,3,2,Home Win
+01/12/2021,F1,Nantes,Marseille,0,1,NG,No,0,1,Away Win,4,6,10,Away Win,3,2,Home Win
+01/12/2021,F1,PSG,Nice,0,0,NG,No,0,0,Draw,6,5,11,Home Win,2,2,Draw
+01/12/2021,F1,Rennes,Lille,1,2,GG,Yes,0,2,Away Win,3,1,4,Home Win,2,1,Home Win
+04/12/2021,F1,Marseille,Brest,1,2,GG,Yes,1,0,Home Win,5,0,5,Home Win,1,2,Away Win
+04/12/2021,F1,Lille,Troyes,2,1,GG,Yes,0,1,Away Win,8,6,14,Home Win,3,4,Away Win
+04/12/2021,F1,Lens,PSG,1,1,GG,No,0,0,Draw,8,5,13,Home Win,2,2,Draw
+05/12/2021,F1,St Etienne,Rennes,0,5,NG,Yes,0,3,Away Win,7,2,9,Home Win,1,0,Home Win
+05/12/2021,F1,Lorient,Nantes,0,1,NG,No,0,0,Draw,8,3,11,Home Win,1,3,Away Win
+05/12/2021,F1,Monaco,Metz,4,0,NG,Yes,2,0,Home Win,5,4,9,Home Win,1,2,Away Win
+05/12/2021,F1,Montpellier,Clermont,1,0,NG,No,1,0,Home Win,1,3,4,Away Win,3,3,Draw
+05/12/2021,F1,Reims,Angers,1,2,GG,Yes,0,0,Draw,7,4,11,Home Win,4,3,Home Win
+05/12/2021,F1,Nice,Strasbourg,0,3,NG,Yes,0,1,Away Win,9,4,13,Home Win,3,3,Draw
+05/12/2021,F1,Bordeaux,Lyon,2,2,GG,Yes,1,2,Away Win,3,8,11,Away Win,0,0,Draw
+10/12/2021,F1,Nantes,Lens,3,2,GG,Yes,0,2,Away Win,8,2,10,Home Win,3,3,Draw
+11/12/2021,F1,Brest,Montpellier,0,4,NG,Yes,0,1,Away Win,8,2,10,Home Win,2,1,Home Win
+11/12/2021,F1,Reims,St Etienne,2,0,NG,No,1,0,Home Win,11,5,16,Home Win,2,2,Draw
+12/12/2021,F1,Lille,Lyon,0,0,NG,No,0,0,Draw,4,3,7,Home Win,2,6,Away Win
+12/12/2021,F1,Angers,Clermont,0,1,NG,No,0,0,Draw,8,3,11,Home Win,1,2,Away Win
+12/12/2021,F1,Metz,Lorient,4,1,GG,Yes,3,0,Home Win,3,8,11,Away Win,2,2,Draw
+12/12/2021,F1,Rennes,Nice,1,2,GG,Yes,0,1,Away Win,11,6,17,Home Win,1,4,Away Win
+12/12/2021,F1,Troyes,Bordeaux,1,2,GG,Yes,1,1,Draw,8,1,9,Home Win,3,3,Draw
+12/12/2021,F1,Strasbourg,Marseille,0,2,NG,No,0,0,Draw,8,3,11,Home Win,2,1,Home Win
+12/12/2021,F1,PSG,Monaco,2,0,NG,No,2,0,Home Win,1,6,7,Away Win,3,4,Away Win
+22/12/2021,F1,Bordeaux,Lille,2,3,GG,Yes,2,1,Home Win,5,6,11,Away Win,1,3,Away Win
+22/12/2021,F1,Lorient,PSG,1,1,GG,No,1,0,Home Win,6,8,14,Away Win,1,3,Away Win
+22/12/2021,F1,Lyon,Metz,1,1,GG,No,0,0,Draw,13,2,15,Home Win,2,3,Away Win
+22/12/2021,F1,Marseille,Reims,1,1,GG,No,0,0,Draw,7,4,11,Home Win,4,4,Draw
+22/12/2021,F1,Monaco,Rennes,2,1,GG,Yes,1,1,Draw,7,5,12,Home Win,2,1,Home Win
+22/12/2021,F1,Montpellier,Angers,4,1,GG,Yes,2,1,Home Win,1,6,7,Away Win,1,1,Draw
+22/12/2021,F1,Nice,Lens,2,1,GG,Yes,0,1,Away Win,5,4,9,Home Win,0,2,Away Win
+22/12/2021,F1,St Etienne,Nantes,0,1,NG,No,0,0,Draw,5,4,9,Home Win,1,1,Draw
+22/12/2021,F1,Troyes,Brest,1,1,GG,No,0,1,Away Win,9,0,9,Home Win,4,1,Home Win
+07/01/2022,F1,Bordeaux,Marseille,0,1,NG,No,0,1,Away Win,3,9,12,Away Win,1,1,Draw
+08/01/2022,F1,Lens,Rennes,1,0,NG,No,0,0,Draw,12,1,13,Home Win,1,1,Draw
+09/01/2022,F1,Brest,Nice,0,3,NG,Yes,0,1,Away Win,14,3,17,Home Win,0,3,Away Win
+09/01/2022,F1,Clermont,Reims,0,0,NG,No,0,0,Draw,6,2,8,Home Win,1,3,Away Win
+09/01/2022,F1,Metz,Strasbourg,0,2,NG,No,0,0,Draw,4,3,7,Home Win,1,1,Draw
+09/01/2022,F1,Nantes,Monaco,0,0,NG,No,0,0,Draw,5,2,7,Home Win,1,2,Away Win
+09/01/2022,F1,Lyon,PSG,1,1,GG,No,1,0,Home Win,2,7,9,Away Win,2,2,Draw
+14/01/2022,F1,Nice,Nantes,2,1,GG,Yes,1,1,Draw,3,5,8,Away Win,2,1,Home Win
+15/01/2022,F1,St Etienne,Lens,1,2,GG,Yes,1,0,Home Win,6,6,12,Draw,1,1,Draw
+15/01/2022,F1,PSG,Brest,2,0,NG,No,1,0,Home Win,9,6,15,Home Win,5,3,Home Win
+16/01/2022,F1,Rennes,Bordeaux,6,0,NG,Yes,2,0,Home Win,9,1,10,Home Win,1,5,Away Win
+16/01/2022,F1,Lorient,Angers,0,0,NG,No,0,0,Draw,6,1,7,Home Win,3,1,Home Win
+16/01/2022,F1,Monaco,Clermont,4,0,NG,Yes,1,0,Home Win,6,1,7,Home Win,0,1,Away Win
+16/01/2022,F1,Reims,Metz,0,1,NG,No,0,0,Draw,11,4,15,Home Win,4,4,Draw
+16/01/2022,F1,Strasbourg,Montpellier,3,1,GG,Yes,0,1,Away Win,7,3,10,Home Win,2,2,Draw
+16/01/2022,F1,Troyes,Lyon,0,1,NG,No,0,1,Away Win,4,7,11,Away Win,2,1,Home Win
+16/01/2022,F1,Marseille,Lille,1,1,GG,No,0,1,Away Win,15,2,17,Home Win,1,5,Away Win
+19/01/2022,F1,Clermont,Strasbourg,0,2,NG,No,0,1,Away Win,6,4,10,Home Win,2,0,Home Win
+19/01/2022,F1,Lille,Lorient,3,1,GG,Yes,3,0,Home Win,4,2,6,Home Win,0,0,Draw
+19/01/2022,F1,Montpellier,Troyes,0,1,NG,No,0,0,Draw,5,4,9,Home Win,5,1,Home Win
+21/01/2022,F1,Lyon,St Etienne,1,0,NG,No,1,0,Home Win,2,2,4,Draw,1,4,Away Win
+22/01/2022,F1,Brest,Lille,2,0,NG,No,1,0,Home Win,5,10,15,Away Win,2,3,Away Win
+22/01/2022,F1,Lens,Marseille,0,2,NG,No,0,1,Away Win,8,5,13,Home Win,3,2,Home Win
+23/01/2022,F1,Metz,Nice,0,2,NG,No,0,0,Draw,3,4,7,Away Win,3,1,Home Win
+23/01/2022,F1,Angers,Troyes,2,1,GG,Yes,2,1,Home Win,3,3,6,Draw,1,3,Away Win
+23/01/2022,F1,Bordeaux,Strasbourg,4,3,GG,Yes,3,1,Home Win,1,3,4,Away Win,5,2,Home Win
+23/01/2022,F1,Clermont,Rennes,2,1,GG,Yes,0,1,Away Win,4,6,10,Away Win,2,3,Away Win
+23/01/2022,F1,Nantes,Lorient,4,2,GG,Yes,1,0,Home Win,7,6,13,Home Win,3,0,Home Win
+23/01/2022,F1,Montpellier,Monaco,3,2,GG,Yes,2,1,Home Win,5,10,15,Away Win,2,2,Draw
+23/01/2022,F1,PSG,Reims,4,0,NG,Yes,1,0,Home Win,14,0,14,Home Win,0,1,Away Win
+26/01/2022,F1,Angers,St Etienne,0,1,NG,No,0,1,Away Win,3,1,4,Home Win,1,1,Draw
+01/02/2022,F1,Lyon,Marseille,2,1,GG,Yes,0,1,Away Win,4,6,10,Away Win,0,0,Draw
+04/02/2022,F1,Marseille,Angers,5,2,GG,Yes,2,2,Draw,6,2,8,Home Win,0,3,Away Win
+05/02/2022,F1,St Etienne,Montpellier,3,1,GG,Yes,0,1,Away Win,11,0,11,Home Win,1,0,Home Win
+05/02/2022,F1,Monaco,Lyon,2,0,NG,No,2,0,Home Win,3,4,7,Away Win,1,2,Away Win
+06/02/2022,F1,Lorient,Lens,2,0,NG,No,1,0,Home Win,1,4,5,Away Win,0,3,Away Win
+06/02/2022,F1,Nice,Clermont,0,1,NG,No,0,0,Draw,5,3,8,Home Win,1,1,Draw
+06/02/2022,F1,Reims,Bordeaux,5,0,NG,Yes,1,0,Home Win,7,4,11,Home Win,0,1,Away Win
+06/02/2022,F1,Strasbourg,Nantes,1,0,NG,No,0,0,Draw,7,9,16,Away Win,3,3,Draw
+06/02/2022,F1,Troyes,Metz,0,0,NG,No,0,0,Draw,6,7,13,Away Win,1,2,Away Win
+06/02/2022,F1,Rennes,Brest,2,0,NG,No,1,0,Home Win,6,1,7,Home Win,3,1,Home Win
+06/02/2022,F1,Lille,PSG,1,5,GG,Yes,1,3,Away Win,4,3,7,Home Win,2,1,Home Win
+11/02/2022,F1,PSG,Rennes,1,0,NG,No,0,0,Draw,5,3,8,Home Win,2,1,Home Win
+12/02/2022,F1,Montpellier,Lille,0,1,NG,No,0,0,Draw,6,4,10,Home Win,3,4,Away Win
+12/02/2022,F1,Lyon,Nice,2,0,NG,No,1,0,Home Win,4,1,5,Home Win,0,1,Away Win
+13/02/2022,F1,Monaco,Lorient,0,0,NG,No,0,0,Draw,11,2,13,Home Win,3,2,Home Win
+13/02/2022,F1,Angers,Strasbourg,0,1,NG,No,0,1,Away Win,5,3,8,Home Win,3,1,Home Win
+13/02/2022,F1,Brest,Troyes,5,1,GG,Yes,2,1,Home Win,1,5,6,Away Win,1,1,Draw
+13/02/2022,F1,Clermont,St Etienne,1,2,GG,Yes,1,0,Home Win,6,3,9,Home Win,4,1,Home Win
+13/02/2022,F1,Nantes,Reims,1,0,NG,No,1,0,Home Win,5,5,10,Draw,1,0,Home Win
+13/02/2022,F1,Lens,Bordeaux,3,2,GG,Yes,3,1,Home Win,6,2,8,Home Win,3,2,Home Win
+13/02/2022,F1,Metz,Marseille,1,2,GG,Yes,0,1,Away Win,3,8,11,Away Win,2,2,Draw
+18/02/2022,F1,Lille,Metz,0,0,NG,No,0,0,Draw,11,1,12,Home Win,4,4,Draw
+19/02/2022,F1,Lens,Lyon,1,1,GG,No,1,1,Draw,4,4,8,Draw,0,2,Away Win
+19/02/2022,F1,Nantes,PSG,3,1,GG,Yes,3,0,Home Win,5,7,12,Away Win,2,6,Away Win
+20/02/2022,F1,Nice,Angers,1,0,NG,No,1,0,Home Win,4,5,9,Away Win,2,2,Draw
+20/02/2022,F1,Lorient,Montpellier,0,1,NG,No,0,0,Draw,8,5,13,Home Win,2,2,Draw
+20/02/2022,F1,Reims,Brest,1,1,GG,No,1,1,Draw,1,6,7,Away Win,1,2,Away Win
+20/02/2022,F1,Rennes,Troyes,4,1,GG,Yes,2,1,Home Win,6,7,13,Away Win,1,4,Away Win
+20/02/2022,F1,St Etienne,Strasbourg,2,2,GG,Yes,2,2,Draw,3,4,7,Away Win,3,2,Home Win
+20/02/2022,F1,Bordeaux,Monaco,1,1,GG,No,1,0,Home Win,2,7,9,Away Win,3,4,Away Win
+20/02/2022,F1,Marseille,Clermont,0,2,NG,No,0,1,Away Win,8,3,11,Home Win,2,2,Draw
+25/02/2022,F1,Montpellier,Rennes,2,4,GG,Yes,2,2,Draw,7,1,8,Home Win,3,2,Home Win
+26/02/2022,F1,Strasbourg,Nice,0,0,NG,No,0,0,Draw,8,2,10,Home Win,1,2,Away Win
+26/02/2022,F1,PSG,St Etienne,3,1,GG,Yes,1,1,Draw,8,3,11,Home Win,2,1,Home Win
+27/02/2022,F1,Monaco,Reims,1,2,GG,Yes,0,0,Draw,10,3,13,Home Win,3,2,Home Win
+27/02/2022,F1,Angers,Lens,1,2,GG,Yes,0,0,Draw,7,3,10,Home Win,4,3,Home Win
+27/02/2022,F1,Brest,Lorient,0,1,NG,No,0,0,Draw,4,6,10,Away Win,2,4,Away Win
+27/02/2022,F1,Clermont,Bordeaux,1,1,GG,No,1,1,Draw,6,6,12,Draw,1,2,Away Win
+27/02/2022,F1,Metz,Nantes,0,0,NG,No,0,0,Draw,3,4,7,Away Win,1,2,Away Win
+27/02/2022,F1,Troyes,Marseille,1,1,GG,No,0,1,Away Win,4,8,12,Away Win,5,3,Home Win
+27/02/2022,F1,Lyon,Lille,0,1,NG,No,0,1,Away Win,7,3,10,Home Win,3,2,Home Win
+04/03/2022,F1,Lorient,Lyon,1,4,GG,Yes,0,2,Away Win,8,3,11,Home Win,1,0,Home Win
+05/03/2022,F1,Lens,Brest,0,1,NG,No,0,0,Draw,4,0,4,Home Win,1,1,Draw
+05/03/2022,F1,Nice,PSG,1,0,NG,No,0,0,Draw,3,4,7,Away Win,1,0,Home Win
+06/03/2022,F1,St Etienne,Metz,1,0,NG,No,0,0,Draw,12,3,15,Home Win,3,4,Away Win
+06/03/2022,F1,Bordeaux,Troyes,0,2,NG,No,0,1,Away Win,6,2,8,Home Win,6,1,Home Win
+06/03/2022,F1,Nantes,Montpellier,2,0,NG,No,0,0,Draw,6,4,10,Home Win,1,1,Draw
+06/03/2022,F1,Reims,Strasbourg,1,1,GG,No,0,0,Draw,2,4,6,Away Win,0,2,Away Win
+06/03/2022,F1,Rennes,Angers,2,0,NG,No,1,0,Home Win,7,7,14,Draw,1,1,Draw
+06/03/2022,F1,Lille,Clermont,4,0,NG,Yes,1,0,Home Win,3,2,5,Home Win,1,3,Away Win
+06/03/2022,F1,Marseille,Monaco,0,1,NG,No,0,0,Draw,10,3,13,Home Win,2,1,Home Win
+11/03/2022,F1,Lille,St Etienne,0,0,NG,No,0,0,Draw,2,3,5,Away Win,1,1,Draw
+12/03/2022,F1,Montpellier,Nice,0,0,NG,No,0,0,Draw,13,1,14,Home Win,3,2,Home Win
+12/03/2022,F1,Troyes,Nantes,1,0,NG,No,1,0,Home Win,8,4,12,Home Win,1,1,Draw
+13/03/2022,F1,PSG,Bordeaux,3,0,NG,Yes,1,0,Home Win,2,4,6,Away Win,1,2,Away Win
+13/03/2022,F1,Angers,Reims,0,1,NG,No,0,1,Away Win,4,2,6,Home Win,6,3,Home Win
+13/03/2022,F1,Clermont,Lorient,0,2,NG,No,0,0,Draw,2,2,4,Draw,1,2,Away Win
+13/03/2022,F1,Metz,Lens,0,0,NG,No,0,0,Draw,5,4,9,Home Win,5,2,Home Win
+13/03/2022,F1,Strasbourg,Monaco,1,0,NG,No,1,0,Home Win,6,7,13,Away Win,1,2,Away Win
+13/03/2022,F1,Lyon,Rennes,2,4,GG,Yes,0,3,Away Win,8,2,10,Home Win,2,3,Away Win
+13/03/2022,F1,Brest,Marseille,1,4,GG,Yes,0,1,Away Win,1,3,4,Away Win,1,4,Away Win
+18/03/2022,F1,St Etienne,Troyes,1,1,GG,No,0,1,Away Win,1,4,5,Away Win,2,2,Draw
+19/03/2022,F1,Lens,Clermont,3,1,GG,Yes,2,1,Home Win,7,2,9,Home Win,1,1,Draw
+19/03/2022,F1,Nantes,Lille,0,1,NG,No,0,1,Away Win,7,7,14,Draw,3,4,Away Win
+20/03/2022,F1,Monaco,PSG,3,0,NG,Yes,1,0,Home Win,6,7,13,Away Win,3,3,Draw
+20/03/2022,F1,Angers,Brest,1,0,NG,No,1,0,Home Win,6,11,17,Away Win,2,1,Home Win
+20/03/2022,F1,Bordeaux,Montpellier,0,2,NG,No,0,2,Away Win,11,4,15,Home Win,3,0,Home Win
+20/03/2022,F1,Lorient,Strasbourg,0,0,NG,No,0,0,Draw,6,5,11,Home Win,2,2,Draw
+20/03/2022,F1,Rennes,Metz,6,1,GG,Yes,3,0,Home Win,10,1,11,Home Win,1,2,Away Win
+20/03/2022,F1,Reims,Lyon,0,0,NG,No,0,0,Draw,7,3,10,Home Win,0,3,Away Win
+20/03/2022,F1,Marseille,Nice,2,1,GG,Yes,1,0,Home Win,3,2,5,Home Win,2,2,Draw
+02/04/2022,F1,Nice,Rennes,1,1,GG,No,0,0,Draw,7,11,18,Away Win,2,1,Home Win
+02/04/2022,F1,Lille,Bordeaux,0,0,NG,No,0,0,Draw,7,2,9,Home Win,2,4,Away Win
+03/04/2022,F1,Strasbourg,Lens,1,0,NG,No,0,0,Draw,2,6,8,Away Win,3,1,Home Win
+03/04/2022,F1,Clermont,Nantes,2,3,GG,Yes,0,1,Away Win,5,6,11,Away Win,5,1,Home Win
+03/04/2022,F1,Metz,Monaco,1,2,GG,Yes,0,0,Draw,3,6,9,Away Win,0,0,Draw
+03/04/2022,F1,Montpellier,Brest,1,2,GG,Yes,0,0,Draw,7,5,12,Home Win,2,4,Away Win
+03/04/2022,F1,St Etienne,Marseille,2,4,GG,Yes,1,1,Draw,2,9,11,Away Win,2,1,Home Win
+03/04/2022,F1,Troyes,Reims,1,0,NG,No,0,0,Draw,6,3,9,Home Win,1,4,Away Win
+03/04/2022,F1,Lyon,Angers,3,2,GG,Yes,1,0,Home Win,9,2,11,Home Win,1,1,Draw
+03/04/2022,F1,PSG,Lorient,5,1,GG,Yes,2,0,Home Win,3,1,4,Home Win,2,1,Home Win
+08/04/2022,F1,Lorient,St Etienne,6,2,GG,Yes,2,2,Draw,2,3,5,Away Win,2,5,Away Win
+09/04/2022,F1,Reims,Rennes,2,3,GG,Yes,0,2,Away Win,2,6,8,Away Win,2,0,Home Win
+09/04/2022,F1,Clermont,PSG,1,6,GG,Yes,1,2,Away Win,2,5,7,Away Win,1,1,Draw
+10/04/2022,F1,Bordeaux,Metz,3,1,GG,Yes,0,1,Away Win,5,6,11,Away Win,3,2,Home Win
+10/04/2022,F1,Angers,Lille,1,1,GG,No,0,0,Draw,6,7,13,Away Win,3,2,Home Win
+10/04/2022,F1,Brest,Nantes,1,1,GG,No,0,1,Away Win,4,5,9,Away Win,1,3,Away Win
+10/04/2022,F1,Monaco,Troyes,2,1,GG,Yes,1,1,Draw,10,1,11,Home Win,2,2,Draw
+10/04/2022,F1,Lens,Nice,3,0,NG,Yes,0,0,Draw,1,7,8,Away Win,2,4,Away Win
+10/04/2022,F1,Strasbourg,Lyon,1,1,GG,No,1,0,Home Win,5,3,8,Home Win,3,1,Home Win
+10/04/2022,F1,Marseille,Montpellier,2,0,NG,No,2,0,Home Win,0,8,8,Away Win,0,2,Away Win
+15/04/2022,F1,Rennes,Monaco,2,3,GG,Yes,1,1,Draw,6,0,6,Home Win,1,3,Away Win
+16/04/2022,F1,St Etienne,Brest,2,1,GG,Yes,2,1,Home Win,7,3,10,Home Win,0,2,Away Win
+16/04/2022,F1,Lille,Lens,1,2,GG,Yes,1,2,Away Win,13,7,20,Home Win,3,2,Home Win
+17/04/2022,F1,Nice,Lorient,2,1,GG,Yes,0,0,Draw,5,1,6,Home Win,2,1,Home Win
+17/04/2022,F1,Metz,Clermont,1,1,GG,No,1,1,Draw,0,9,9,Away Win,1,1,Draw
+17/04/2022,F1,Montpellier,Reims,0,0,NG,No,0,0,Draw,9,6,15,Home Win,0,3,Away Win
+17/04/2022,F1,Nantes,Angers,1,1,GG,No,0,1,Away Win,14,5,19,Home Win,4,1,Home Win
+17/04/2022,F1,Troyes,Strasbourg,1,1,GG,No,0,0,Draw,5,9,14,Away Win,1,2,Away Win
+17/04/2022,F1,Lyon,Bordeaux,6,1,GG,Yes,3,0,Home Win,3,5,8,Away Win,0,0,Draw
+17/04/2022,F1,PSG,Marseille,2,1,GG,Yes,2,1,Home Win,3,4,7,Away Win,6,1,Home Win
+20/04/2022,F1,Bordeaux,St Etienne,2,2,GG,Yes,2,1,Home Win,5,4,9,Home Win,5,6,Away Win
+20/04/2022,F1,Lorient,Metz,1,0,NG,No,0,0,Draw,10,12,22,Away Win,2,2,Draw
+20/04/2022,F1,Monaco,Nice,1,0,NG,No,1,0,Home Win,7,10,17,Away Win,5,2,Home Win
+20/04/2022,F1,Reims,Lille,2,1,GG,Yes,1,0,Home Win,5,2,7,Home Win,1,1,Draw
+20/04/2022,F1,Troyes,Clermont,0,1,NG,No,0,0,Draw,5,2,7,Home Win,3,6,Away Win
+20/04/2022,F1,Angers,PSG,0,3,NG,Yes,0,2,Away Win,3,7,10,Away Win,1,2,Away Win
+20/04/2022,F1,Brest,Lyon,2,1,GG,Yes,1,0,Home Win,2,2,4,Draw,2,2,Draw
+20/04/2022,F1,Lens,Montpellier,2,0,NG,No,1,0,Home Win,5,3,8,Home Win,1,0,Home Win
+20/04/2022,F1,Marseille,Nantes,3,2,GG,Yes,1,2,Away Win,7,3,10,Home Win,2,5,Away Win
+20/04/2022,F1,Strasbourg,Rennes,2,1,GG,Yes,1,0,Home Win,2,7,9,Away Win,1,2,Away Win
+23/04/2022,F1,Lyon,Montpellier,5,2,GG,Yes,2,2,Draw,8,2,10,Home Win,2,2,Draw
+23/04/2022,F1,St Etienne,Monaco,1,4,GG,Yes,1,2,Away Win,1,1,2,Draw,2,3,Away Win
+23/04/2022,F1,PSG,Lens,1,1,GG,No,0,0,Draw,4,3,7,Home Win,4,2,Home Win
+24/04/2022,F1,Rennes,Lorient,5,0,NG,Yes,2,0,Home Win,2,4,6,Away Win,1,0,Home Win
+24/04/2022,F1,Clermont,Angers,2,2,GG,Yes,0,2,Away Win,4,4,8,Draw,0,6,Away Win
+24/04/2022,F1,Metz,Brest,0,1,NG,No,0,1,Away Win,4,7,11,Away Win,4,0,Home Win
+24/04/2022,F1,Nantes,Bordeaux,5,3,GG,Yes,0,2,Away Win,6,4,10,Home Win,1,1,Draw
+24/04/2022,F1,Nice,Troyes,1,0,NG,No,0,0,Draw,7,3,10,Home Win,0,1,Away Win
+24/04/2022,F1,Lille,Strasbourg,1,0,NG,No,0,0,Draw,4,6,10,Away Win,2,3,Away Win
+24/04/2022,F1,Reims,Marseille,0,1,NG,No,0,0,Draw,3,4,7,Away Win,1,1,Draw
+29/04/2022,F1,Strasbourg,PSG,3,3,GG,Yes,1,1,Draw,2,5,7,Away Win,3,3,Draw
+30/04/2022,F1,Lens,Nantes,2,2,GG,Yes,0,2,Away Win,6,5,11,Home Win,0,5,Away Win
+30/04/2022,F1,Rennes,St Etienne,2,0,NG,No,1,0,Home Win,4,3,7,Home Win,1,4,Away Win
+01/05/2022,F1,Troyes,Lille,3,0,NG,Yes,1,0,Home Win,1,4,5,Away Win,0,4,Away Win
+01/05/2022,F1,Brest,Clermont,2,0,NG,No,0,0,Draw,5,13,18,Away Win,2,2,Draw
+01/05/2022,F1,Lorient,Reims,1,2,GG,Yes,1,1,Draw,7,3,10,Home Win,2,1,Home Win
+01/05/2022,F1,Monaco,Angers,2,0,NG,No,1,0,Home Win,8,5,13,Home Win,2,2,Draw
+01/05/2022,F1,Montpellier,Metz,2,2,GG,Yes,0,1,Away Win,8,1,9,Home Win,2,3,Away Win
+01/05/2022,F1,Bordeaux,Nice,0,1,NG,No,0,0,Draw,2,5,7,Away Win,1,2,Away Win
+01/05/2022,F1,Marseille,Lyon,0,3,NG,Yes,0,0,Draw,3,6,9,Away Win,2,1,Home Win
+06/05/2022,F1,Lille,Monaco,1,2,GG,Yes,0,1,Away Win,3,5,8,Away Win,4,1,Home Win
+07/05/2022,F1,Brest,Strasbourg,0,1,NG,No,0,0,Draw,5,5,10,Draw,1,2,Away Win
+08/05/2022,F1,Metz,Lyon,3,2,GG,Yes,2,1,Home Win,3,7,10,Away Win,3,2,Home Win
+08/05/2022,F1,Angers,Bordeaux,4,1,GG,Yes,2,0,Home Win,6,3,9,Home Win,1,5,Away Win
+08/05/2022,F1,Clermont,Montpellier,2,1,GG,Yes,1,1,Draw,5,3,8,Home Win,2,4,Away Win
+08/05/2022,F1,Reims,Lens,1,2,GG,Yes,1,0,Home Win,3,10,13,Away Win,1,2,Away Win
+08/05/2022,F1,Lorient,Marseille,0,3,NG,Yes,0,1,Away Win,4,8,12,Away Win,1,1,Draw
+08/05/2022,F1,PSG,Troyes,2,2,GG,Yes,2,1,Home Win,7,4,11,Home Win,1,2,Away Win
+11/05/2022,F1,Nice,St Etienne,4,2,GG,Yes,0,2,Away Win,2,2,4,Draw,2,3,Away Win
+11/05/2022,F1,Nantes,Rennes,2,1,GG,Yes,1,1,Draw,5,5,10,Draw,2,1,Home Win
+14/05/2022,F1,Bordeaux,Lorient,0,0,NG,No,0,0,Draw,3,1,4,Home Win,4,4,Draw
+14/05/2022,F1,Lyon,Nantes,3,2,GG,Yes,1,0,Home Win,5,6,11,Away Win,1,0,Home Win
+14/05/2022,F1,Metz,Angers,1,0,NG,No,0,0,Draw,1,4,5,Away Win,3,1,Home Win
+14/05/2022,F1,Monaco,Brest,4,2,GG,Yes,1,2,Away Win,10,5,15,Home Win,2,1,Home Win
+14/05/2022,F1,Montpellier,PSG,0,4,NG,Yes,0,3,Away Win,0,2,2,Away Win,2,4,Away Win
+14/05/2022,F1,Nice,Lille,1,3,GG,Yes,1,0,Home Win,10,3,13,Home Win,2,3,Away Win
+14/05/2022,F1,Rennes,Marseille,2,0,NG,No,2,0,Home Win,6,1,7,Home Win,1,2,Away Win
+14/05/2022,F1,St Etienne,Reims,1,2,GG,Yes,1,1,Draw,3,2,5,Home Win,1,0,Home Win
+14/05/2022,F1,Strasbourg,Clermont,1,0,NG,No,1,0,Home Win,3,2,5,Home Win,1,2,Away Win
+14/05/2022,F1,Troyes,Lens,1,3,GG,Yes,1,2,Away Win,5,7,12,Away Win,1,2,Away Win
+21/05/2022,F1,Angers,Montpellier,2,0,NG,No,1,0,Home Win,4,3,7,Home Win,1,4,Away Win
+21/05/2022,F1,Brest,Bordeaux,2,4,GG,Yes,2,2,Draw,10,1,11,Home Win,1,0,Home Win
+21/05/2022,F1,Clermont,Lyon,1,2,GG,Yes,0,1,Away Win,10,4,14,Home Win,2,2,Draw
+21/05/2022,F1,Lens,Monaco,2,2,GG,Yes,1,1,Draw,10,8,18,Home Win,2,3,Away Win
+21/05/2022,F1,Lille,Rennes,2,2,GG,Yes,1,1,Draw,7,4,11,Home Win,2,2,Draw
+21/05/2022,F1,Lorient,Troyes,1,1,GG,No,0,1,Away Win,6,4,10,Home Win,2,2,Draw
+21/05/2022,F1,Marseille,Strasbourg,4,0,NG,Yes,1,0,Home Win,7,3,10,Home Win,2,1,Home Win
+21/05/2022,F1,Nantes,St Etienne,1,1,GG,No,1,0,Home Win,5,5,10,Draw,2,0,Home Win
+21/05/2022,F1,PSG,Metz,5,0,NG,Yes,3,0,Home Win,4,2,6,Home Win,1,2,Away Win
+21/05/2022,F1,Reims,Nice,2,3,GG,Yes,2,0,Home Win,2,7,9,Away Win,0,2,Away Win
+05/08/2022,F1,Lyon,Ajaccio,2,1,GG,Yes,2,1,Home Win,4,3,7,Home Win,1,6,Away Win
+06/08/2022,F1,Strasbourg,Monaco,1,2,GG,Yes,0,1,Away Win,3,7,10,Away Win,0,2,Away Win
+06/08/2022,F1,Clermont,PSG,0,5,NG,Yes,0,3,Away Win,0,6,6,Away Win,2,1,Home Win
+07/08/2022,F1,Toulouse,Nice,1,1,GG,No,1,0,Home Win,6,3,9,Home Win,1,2,Away Win
+07/08/2022,F1,Angers,Nantes,0,0,NG,No,0,0,Draw,3,6,9,Away Win,3,3,Draw
+07/08/2022,F1,Lens,Brest,3,2,GG,Yes,1,0,Home Win,6,3,9,Home Win,2,4,Away Win
+07/08/2022,F1,Lille,Auxerre,4,1,GG,Yes,3,0,Home Win,7,2,9,Home Win,2,1,Home Win
+07/08/2022,F1,Montpellier,Troyes,3,2,GG,Yes,2,2,Draw,3,6,9,Away Win,1,0,Home Win
+07/08/2022,F1,Rennes,Lorient,0,1,NG,No,0,0,Draw,7,2,9,Home Win,3,1,Home Win
+07/08/2022,F1,Marseille,Reims,4,1,GG,Yes,2,0,Home Win,6,7,13,Away Win,2,0,Home Win
+12/08/2022,F1,Nantes,Lille,1,1,GG,No,1,0,Home Win,5,11,16,Away Win,1,4,Away Win
+13/08/2022,F1,Monaco,Rennes,1,1,GG,No,0,0,Draw,1,6,7,Away Win,0,3,Away Win
+13/08/2022,F1,PSG,Montpellier,5,2,GG,Yes,2,0,Home Win,11,0,11,Home Win,2,1,Home Win
+14/08/2022,F1,Ajaccio,Lens,0,0,NG,No,0,0,Draw,1,3,4,Away Win,5,2,Home Win
+14/08/2022,F1,Auxerre,Angers,2,2,GG,Yes,2,1,Home Win,4,5,9,Away Win,5,3,Home Win
+14/08/2022,F1,Reims,Clermont,2,4,GG,Yes,2,0,Home Win,1,6,7,Away Win,3,3,Draw
+14/08/2022,F1,Troyes,Toulouse,0,3,NG,Yes,0,1,Away Win,6,6,12,Draw,2,1,Home Win
+14/08/2022,F1,Nice,Strasbourg,1,1,GG,No,1,0,Home Win,7,3,10,Home Win,1,4,Away Win
+14/08/2022,F1,Brest,Marseille,1,1,GG,No,0,1,Away Win,7,5,12,Home Win,1,4,Away Win
+19/08/2022,F1,Lyon,Troyes,4,1,GG,Yes,1,1,Draw,4,5,9,Away Win,0,1,Away Win
+20/08/2022,F1,Monaco,Lens,1,4,GG,Yes,1,2,Away Win,3,5,8,Away Win,4,0,Home Win
+20/08/2022,F1,Marseille,Nantes,2,1,GG,Yes,0,0,Draw,7,4,11,Home Win,5,1,Home Win
+21/08/2022,F1,Strasbourg,Reims,1,1,GG,No,1,0,Home Win,5,4,9,Home Win,1,4,Away Win
+21/08/2022,F1,Angers,Brest,1,3,GG,Yes,0,2,Away Win,3,6,9,Away Win,2,0,Home Win
+21/08/2022,F1,Clermont,Nice,1,0,NG,No,1,0,Home Win,3,6,9,Away Win,1,2,Away Win
+21/08/2022,F1,Montpellier,Auxerre,1,2,GG,Yes,1,0,Home Win,7,2,9,Home Win,1,3,Away Win
+21/08/2022,F1,Toulouse,Lorient,2,2,GG,Yes,1,1,Draw,3,6,9,Away Win,2,1,Home Win
+21/08/2022,F1,Rennes,Ajaccio,2,1,GG,Yes,1,0,Home Win,4,8,12,Away Win,5,2,Home Win
+21/08/2022,F1,Lille,PSG,1,7,GG,Yes,0,4,Away Win,2,4,6,Away Win,2,1,Home Win
+26/08/2022,F1,Ajaccio,Lille,1,3,GG,Yes,0,2,Away Win,6,0,6,Home Win,3,2,Home Win
+27/08/2022,F1,Auxerre,Strasbourg,1,0,NG,No,1,0,Home Win,2,5,7,Away Win,0,1,Away Win
+27/08/2022,F1,Lens,Rennes,2,1,GG,Yes,0,0,Draw,7,2,9,Home Win,0,1,Away Win
+28/08/2022,F1,Nantes,Toulouse,3,1,GG,Yes,0,1,Away Win,4,5,9,Away Win,0,3,Away Win
+28/08/2022,F1,Brest,Montpellier,0,7,NG,Yes,0,5,Away Win,5,4,9,Home Win,0,2,Away Win
+28/08/2022,F1,Lorient,Clermont,2,1,GG,Yes,2,0,Home Win,3,4,7,Away Win,1,3,Away Win
+28/08/2022,F1,Nice,Marseille,0,3,NG,Yes,0,3,Away Win,7,5,12,Home Win,1,1,Draw
+28/08/2022,F1,Troyes,Angers,3,1,GG,Yes,1,0,Home Win,8,3,11,Home Win,2,3,Away Win
+28/08/2022,F1,Reims,Lyon,1,1,GG,No,1,0,Home Win,2,7,9,Away Win,1,1,Draw
+28/08/2022,F1,PSG,Monaco,1,1,GG,No,0,1,Away Win,4,3,7,Home Win,4,4,Draw
+31/08/2022,F1,Angers,Reims,2,4,GG,Yes,0,2,Away Win,4,3,7,Home Win,1,6,Away Win
+31/08/2022,F1,Lyon,Auxerre,2,1,GG,Yes,1,0,Home Win,9,3,12,Home Win,0,2,Away Win
+31/08/2022,F1,Monaco,Troyes,2,4,GG,Yes,1,2,Away Win,8,6,14,Home Win,3,1,Home Win
+31/08/2022,F1,Montpellier,Ajaccio,2,0,NG,No,1,0,Home Win,3,8,11,Away Win,2,4,Away Win
+31/08/2022,F1,Strasbourg,Nantes,1,1,GG,No,1,0,Home Win,3,6,9,Away Win,0,3,Away Win
+31/08/2022,F1,Lens,Lorient,5,2,GG,Yes,2,1,Home Win,4,5,9,Away Win,1,3,Away Win
+31/08/2022,F1,Lille,Nice,1,2,GG,Yes,1,2,Away Win,6,3,9,Home Win,1,4,Away Win
+31/08/2022,F1,Marseille,Clermont,1,0,NG,No,0,0,Draw,7,1,8,Home Win,2,2,Draw
+31/08/2022,F1,Rennes,Brest,3,1,GG,Yes,0,0,Draw,7,3,10,Home Win,2,0,Home Win
+31/08/2022,F1,Toulouse,PSG,0,3,NG,Yes,0,1,Away Win,3,9,12,Away Win,1,0,Home Win
+03/09/2022,F1,Auxerre,Marseille,0,2,NG,No,0,1,Away Win,4,1,5,Home Win,1,1,Draw
+03/09/2022,F1,Lyon,Angers,5,0,NG,Yes,2,0,Home Win,13,3,16,Home Win,2,1,Home Win
+03/09/2022,F1,Nantes,PSG,0,3,NG,Yes,0,1,Away Win,1,7,8,Away Win,1,4,Away Win
+04/09/2022,F1,Montpellier,Lille,1,3,GG,Yes,1,1,Draw,1,9,10,Away Win,0,4,Away Win
+04/09/2022,F1,Ajaccio,Lorient,0,1,NG,No,0,0,Draw,3,3,6,Draw,4,1,Home Win
+04/09/2022,F1,Brest,Strasbourg,1,1,GG,No,1,1,Draw,7,3,10,Home Win,3,1,Home Win
+04/09/2022,F1,Clermont,Toulouse,2,0,NG,No,0,0,Draw,4,6,10,Away Win,4,1,Home Win
+04/09/2022,F1,Reims,Lens,1,1,GG,No,0,0,Draw,4,4,8,Draw,2,2,Draw
+04/09/2022,F1,Troyes,Rennes,1,1,GG,No,1,0,Home Win,3,5,8,Away Win,2,2,Draw
+04/09/2022,F1,Nice,Monaco,0,1,NG,No,0,0,Draw,3,6,9,Away Win,2,1,Home Win
+07/09/2022,F1,Lorient,Lyon,3,1,GG,Yes,2,1,Home Win,1,6,7,Away Win,1,3,Away Win
+09/09/2022,F1,Lens,Troyes,1,0,NG,No,1,0,Home Win,9,1,10,Home Win,2,1,Home Win
+10/09/2022,F1,PSG,Brest,1,0,NG,No,1,0,Home Win,3,5,8,Away Win,4,2,Home Win
+10/09/2022,F1,Marseille,Lille,2,1,GG,Yes,1,1,Draw,4,3,7,Home Win,5,1,Home Win
+11/09/2022,F1,Strasbourg,Clermont,0,0,NG,No,0,0,Draw,3,5,8,Away Win,4,2,Home Win
+11/09/2022,F1,Ajaccio,Nice,0,1,NG,No,0,0,Draw,2,3,5,Away Win,1,5,Away Win
+11/09/2022,F1,Angers,Montpellier,2,1,GG,Yes,1,1,Draw,2,5,7,Away Win,2,4,Away Win
+11/09/2022,F1,Lorient,Nantes,3,2,GG,Yes,1,1,Draw,2,5,7,Away Win,2,3,Away Win
+11/09/2022,F1,Toulouse,Reims,1,0,NG,No,1,0,Home Win,4,6,10,Away Win,2,2,Draw
+11/09/2022,F1,Rennes,Auxerre,5,0,NG,Yes,1,0,Home Win,2,1,3,Home Win,1,0,Home Win
+11/09/2022,F1,Monaco,Lyon,2,1,GG,Yes,0,0,Draw,1,6,7,Away Win,1,2,Away Win
+16/09/2022,F1,Auxerre,Lorient,1,3,GG,Yes,0,3,Away Win,9,5,14,Home Win,3,1,Home Win
+17/09/2022,F1,Montpellier,Strasbourg,2,1,GG,Yes,1,0,Home Win,8,6,14,Home Win,4,4,Draw
+17/09/2022,F1,Lille,Toulouse,2,1,GG,Yes,1,0,Home Win,5,7,12,Away Win,2,0,Home Win
+18/09/2022,F1,Reims,Monaco,0,3,NG,Yes,0,0,Draw,5,4,9,Home Win,3,3,Draw
+18/09/2022,F1,Brest,Ajaccio,0,1,NG,No,0,0,Draw,6,2,8,Home Win,2,2,Draw
+18/09/2022,F1,Clermont,Troyes,1,3,GG,Yes,1,1,Draw,5,1,6,Home Win,0,3,Away Win
+18/09/2022,F1,Marseille,Rennes,1,1,GG,No,0,1,Away Win,11,7,18,Home Win,3,4,Away Win
+18/09/2022,F1,Nice,Angers,0,1,NG,No,0,1,Away Win,5,4,9,Home Win,0,4,Away Win
+18/09/2022,F1,Nantes,Lens,0,0,NG,No,0,0,Draw,3,7,10,Away Win,1,1,Draw
+18/09/2022,F1,Lyon,PSG,0,1,NG,No,0,1,Away Win,3,7,10,Away Win,0,2,Away Win
+30/09/2022,F1,Angers,Marseille,0,3,NG,Yes,0,1,Away Win,6,3,9,Home Win,0,0,Draw
+01/10/2022,F1,Strasbourg,Rennes,1,3,GG,Yes,0,1,Away Win,1,5,6,Away Win,0,2,Away Win
+01/10/2022,F1,PSG,Nice,2,1,GG,Yes,1,0,Home Win,4,0,4,Home Win,1,1,Draw
+02/10/2022,F1,Lorient,Lille,2,1,GG,Yes,1,0,Home Win,0,14,14,Away Win,3,3,Draw
+02/10/2022,F1,Ajaccio,Clermont,1,3,GG,Yes,0,1,Away Win,4,4,8,Draw,3,3,Draw
+02/10/2022,F1,Auxerre,Brest,1,1,GG,No,0,0,Draw,0,6,6,Away Win,4,4,Draw
+02/10/2022,F1,Toulouse,Montpellier,4,2,GG,Yes,3,1,Home Win,3,12,15,Away Win,5,4,Home Win
+02/10/2022,F1,Troyes,Reims,2,2,GG,Yes,0,1,Away Win,10,2,12,Home Win,4,2,Home Win
+02/10/2022,F1,Monaco,Nantes,4,1,GG,Yes,3,0,Home Win,7,7,14,Draw,0,1,Away Win
+02/10/2022,F1,Lens,Lyon,1,0,NG,No,0,0,Draw,6,2,8,Home Win,2,2,Draw
+07/10/2022,F1,Lyon,Toulouse,1,1,GG,No,1,0,Home Win,4,5,9,Away Win,2,2,Draw
+08/10/2022,F1,Marseille,Ajaccio,1,2,GG,Yes,1,1,Draw,11,2,13,Home Win,0,2,Away Win
+08/10/2022,F1,Reims,PSG,0,0,NG,No,0,0,Draw,7,3,10,Home Win,3,5,Away Win
+09/10/2022,F1,Montpellier,Monaco,0,2,NG,No,0,1,Away Win,7,2,9,Home Win,2,3,Away Win
+09/10/2022,F1,Angers,Strasbourg,2,3,GG,Yes,1,2,Away Win,6,6,12,Draw,1,1,Draw
+09/10/2022,F1,Brest,Lorient,1,2,GG,Yes,1,1,Draw,7,8,15,Away Win,3,1,Home Win
+09/10/2022,F1,Clermont,Auxerre,2,1,GG,Yes,0,0,Draw,4,4,8,Draw,0,0,Draw
+09/10/2022,F1,Nice,Troyes,3,2,GG,Yes,2,0,Home Win,5,5,10,Draw,1,1,Draw
+09/10/2022,F1,Rennes,Nantes,3,0,NG,Yes,1,0,Home Win,4,3,7,Home Win,1,0,Home Win
+09/10/2022,F1,Lille,Lens,1,0,NG,No,1,0,Home Win,5,9,14,Away Win,3,5,Away Win
+14/10/2022,F1,Strasbourg,Lille,0,3,NG,Yes,0,1,Away Win,3,0,3,Home Win,3,1,Home Win
+15/10/2022,F1,Lorient,Reims,0,0,NG,No,0,0,Draw,2,2,4,Draw,1,3,Away Win
+15/10/2022,F1,Lens,Montpellier,1,0,NG,No,0,0,Draw,4,5,9,Away Win,2,2,Draw
+16/10/2022,F1,Toulouse,Angers,3,2,GG,Yes,2,1,Home Win,2,8,10,Away Win,3,2,Home Win
+16/10/2022,F1,Auxerre,Nice,1,1,GG,No,1,1,Draw,2,6,8,Away Win,0,0,Draw
+16/10/2022,F1,Nantes,Brest,4,1,GG,Yes,2,1,Home Win,7,5,12,Home Win,0,2,Away Win
+16/10/2022,F1,Rennes,Lyon,3,2,GG,Yes,1,1,Draw,3,2,5,Home Win,2,2,Draw
+16/10/2022,F1,Troyes,Ajaccio,1,1,GG,No,0,0,Draw,3,5,8,Away Win,2,1,Home Win
+16/10/2022,F1,Monaco,Clermont,1,1,GG,No,1,0,Home Win,3,4,7,Away Win,2,4,Away Win
+16/10/2022,F1,PSG,Marseille,1,0,NG,No,1,0,Home Win,7,6,13,Home Win,1,0,Home Win
+21/10/2022,F1,Ajaccio,PSG,0,3,NG,Yes,0,1,Away Win,3,8,11,Away Win,0,1,Away Win
+22/10/2022,F1,Montpellier,Lyon,1,2,GG,Yes,0,1,Away Win,4,7,11,Away Win,2,2,Draw
+22/10/2022,F1,Marseille,Lens,0,1,NG,No,0,0,Draw,7,3,10,Home Win,3,3,Draw
+23/10/2022,F1,Angers,Rennes,1,2,GG,Yes,0,1,Away Win,5,6,11,Away Win,2,2,Draw
+23/10/2022,F1,Clermont,Brest,1,3,GG,Yes,0,1,Away Win,7,4,11,Home Win,4,1,Home Win
+23/10/2022,F1,Reims,Auxerre,2,1,GG,Yes,1,1,Draw,8,2,10,Home Win,4,0,Home Win
+23/10/2022,F1,Toulouse,Strasbourg,2,2,GG,Yes,1,0,Home Win,6,6,12,Draw,2,1,Home Win
+23/10/2022,F1,Troyes,Lorient,2,2,GG,Yes,1,0,Home Win,3,6,9,Away Win,2,0,Home Win
+23/10/2022,F1,Nice,Nantes,1,1,GG,No,0,0,Draw,7,3,10,Home Win,3,4,Away Win
+23/10/2022,F1,Lille,Monaco,4,3,GG,Yes,2,2,Draw,6,6,12,Draw,1,2,Away Win
+28/10/2022,F1,Lens,Toulouse,3,0,NG,Yes,0,0,Draw,6,8,14,Away Win,2,1,Home Win
+29/10/2022,F1,PSG,Troyes,4,3,GG,Yes,1,1,Draw,8,4,12,Home Win,0,3,Away Win
+29/10/2022,F1,Strasbourg,Marseille,2,2,GG,Yes,0,2,Away Win,3,0,3,Home Win,0,2,Away Win
+30/10/2022,F1,Auxerre,Ajaccio,1,0,NG,No,1,0,Home Win,5,5,10,Draw,1,1,Draw
+30/10/2022,F1,Brest,Reims,0,0,NG,No,0,0,Draw,5,5,10,Draw,1,1,Draw
+30/10/2022,F1,Monaco,Angers,2,0,NG,No,0,0,Draw,7,0,7,Home Win,3,3,Draw
+30/10/2022,F1,Nantes,Clermont,1,1,GG,No,0,0,Draw,2,2,4,Draw,0,2,Away Win
+30/10/2022,F1,Rennes,Montpellier,3,0,NG,Yes,2,0,Home Win,3,4,7,Away Win,1,2,Away Win
+30/10/2022,F1,Lorient,Nice,1,2,GG,Yes,1,0,Home Win,8,3,11,Home Win,0,1,Away Win
+30/10/2022,F1,Lyon,Lille,1,0,NG,No,0,0,Draw,3,6,9,Away Win,3,1,Home Win
+04/11/2022,F1,Troyes,Auxerre,1,1,GG,No,1,0,Home Win,10,5,15,Home Win,2,0,Home Win
+05/11/2022,F1,Ajaccio,Strasbourg,4,2,GG,Yes,4,2,Home Win,4,3,7,Home Win,0,4,Away Win
+05/11/2022,F1,Angers,Lens,1,2,GG,Yes,0,1,Away Win,3,4,7,Away Win,1,2,Away Win
+06/11/2022,F1,Lorient,PSG,1,2,GG,Yes,0,1,Away Win,5,8,13,Away Win,1,1,Draw
+06/11/2022,F1,Clermont,Montpellier,1,1,GG,No,0,1,Away Win,5,1,6,Home Win,1,2,Away Win
+06/11/2022,F1,Nice,Brest,1,0,NG,No,0,0,Draw,2,6,8,Away Win,1,1,Draw
+06/11/2022,F1,Reims,Nantes,1,0,NG,No,0,0,Draw,10,4,14,Home Win,2,4,Away Win
+06/11/2022,F1,Toulouse,Monaco,0,2,NG,No,0,0,Draw,7,6,13,Home Win,0,1,Away Win
+06/11/2022,F1,Lille,Rennes,1,1,GG,No,1,0,Home Win,6,2,8,Home Win,4,1,Home Win
+06/11/2022,F1,Marseille,Lyon,1,0,NG,No,1,0,Home Win,6,4,10,Home Win,0,1,Away Win
+11/11/2022,F1,Lyon,Nice,1,1,GG,No,0,1,Away Win,3,4,7,Away Win,1,0,Home Win
+12/11/2022,F1,Lens,Clermont,2,1,GG,Yes,0,1,Away Win,5,3,8,Home Win,1,3,Away Win
+12/11/2022,F1,Rennes,Toulouse,2,1,GG,Yes,1,0,Home Win,4,4,8,Draw,0,0,Draw
+13/11/2022,F1,PSG,Auxerre,5,0,NG,Yes,1,0,Home Win,3,7,10,Away Win,0,0,Draw
+13/11/2022,F1,Brest,Troyes,2,1,GG,Yes,0,0,Draw,5,5,10,Draw,3,2,Home Win
+13/11/2022,F1,Lille,Angers,1,0,NG,No,1,0,Home Win,2,6,8,Away Win,3,1,Home Win
+13/11/2022,F1,Montpellier,Reims,1,1,GG,No,0,0,Draw,11,7,18,Home Win,2,2,Draw
+13/11/2022,F1,Nantes,Ajaccio,2,2,GG,Yes,0,0,Draw,9,6,15,Home Win,3,3,Draw
+13/11/2022,F1,Strasbourg,Lorient,1,1,GG,No,0,1,Away Win,4,2,6,Home Win,4,1,Home Win
+13/11/2022,F1,Monaco,Marseille,2,3,GG,Yes,1,1,Draw,5,4,9,Home Win,3,1,Home Win
+28/12/2022,F1,Ajaccio,Angers,1,0,NG,No,1,0,Home Win,3,5,8,Away Win,1,0,Home Win
+28/12/2022,F1,Troyes,Nantes,0,0,NG,No,0,0,Draw,4,4,8,Draw,0,2,Away Win
+28/12/2022,F1,Auxerre,Monaco,2,3,GG,Yes,1,1,Draw,1,3,4,Away Win,1,0,Home Win
+28/12/2022,F1,Clermont,Lille,0,2,NG,No,0,0,Draw,3,3,6,Draw,4,2,Home Win
+28/12/2022,F1,Brest,Lyon,2,4,GG,Yes,1,3,Away Win,6,6,12,Draw,2,2,Draw
+28/12/2022,F1,PSG,Strasbourg,2,1,GG,Yes,1,0,Home Win,8,3,11,Home Win,4,1,Home Win
+29/12/2022,F1,Lorient,Montpellier,0,2,NG,No,0,2,Away Win,5,2,7,Home Win,3,4,Away Win
+29/12/2022,F1,Reims,Rennes,3,1,GG,Yes,2,1,Home Win,4,6,10,Away Win,2,2,Draw
+29/12/2022,F1,Marseille,Toulouse,6,1,GG,Yes,2,0,Home Win,1,6,7,Away Win,1,2,Away Win
+29/12/2022,F1,Nice,Lens,0,0,NG,No,0,0,Draw,4,6,10,Away Win,2,3,Away Win
+01/01/2023,F1,Angers,Lorient,1,2,GG,Yes,1,0,Home Win,7,7,14,Draw,3,0,Home Win
+01/01/2023,F1,Monaco,Brest,1,0,NG,No,0,0,Draw,7,5,12,Home Win,3,4,Away Win
+01/01/2023,F1,Nantes,Auxerre,1,0,NG,No,0,0,Draw,3,7,10,Away Win,1,2,Away Win
+01/01/2023,F1,Toulouse,Ajaccio,2,0,NG,No,0,0,Draw,5,2,7,Home Win,3,1,Home Win
+01/01/2023,F1,Lyon,Clermont,0,1,NG,No,0,0,Draw,7,4,11,Home Win,1,3,Away Win
+01/01/2023,F1,Lens,PSG,3,1,GG,Yes,2,1,Home Win,3,7,10,Away Win,2,3,Away Win
+02/01/2023,F1,Strasbourg,Troyes,2,3,GG,Yes,1,2,Away Win,3,1,4,Home Win,1,2,Away Win
+02/01/2023,F1,Lille,Reims,1,1,GG,No,1,0,Home Win,5,1,6,Home Win,1,1,Draw
+02/01/2023,F1,Montpellier,Marseille,1,2,GG,Yes,0,0,Draw,5,7,12,Away Win,2,2,Draw
+02/01/2023,F1,Rennes,Nice,2,1,GG,Yes,1,1,Draw,5,2,7,Home Win,1,1,Draw
+11/01/2023,F1,Ajaccio,Reims,0,1,NG,No,0,1,Away Win,2,2,4,Draw,3,3,Draw
+11/01/2023,F1,Auxerre,Toulouse,0,5,NG,Yes,0,3,Away Win,7,4,11,Home Win,3,1,Home Win
+11/01/2023,F1,Brest,Lille,0,0,NG,No,0,0,Draw,0,8,8,Away Win,0,1,Away Win
+11/01/2023,F1,Clermont,Rennes,2,1,GG,Yes,1,0,Home Win,4,1,5,Home Win,0,2,Away Win
+11/01/2023,F1,Nantes,Lyon,0,0,NG,No,0,0,Draw,6,1,7,Home Win,2,3,Away Win
+11/01/2023,F1,Lorient,Monaco,2,2,GG,Yes,0,0,Draw,3,4,7,Away Win,1,1,Draw
+11/01/2023,F1,Nice,Montpellier,6,1,GG,Yes,2,0,Home Win,3,4,7,Away Win,1,1,Draw
+11/01/2023,F1,PSG,Angers,2,0,NG,No,1,0,Home Win,5,1,6,Home Win,1,2,Away Win
+11/01/2023,F1,Strasbourg,Lens,2,2,GG,Yes,2,2,Draw,3,4,7,Away Win,1,1,Draw
+11/01/2023,F1,Troyes,Marseille,0,2,NG,No,0,1,Away Win,4,7,11,Away Win,2,3,Away Win
+14/01/2023,F1,Lens,Auxerre,1,0,NG,No,0,0,Draw,9,2,11,Home Win,2,4,Away Win
+14/01/2023,F1,Marseille,Lorient,3,1,GG,Yes,1,1,Draw,6,3,9,Home Win,1,0,Home Win
+14/01/2023,F1,Lyon,Strasbourg,1,2,GG,Yes,1,2,Away Win,14,2,16,Home Win,1,3,Away Win
+15/01/2023,F1,Lille,Troyes,5,1,GG,Yes,2,0,Home Win,7,2,9,Home Win,1,0,Home Win
+15/01/2023,F1,Angers,Clermont,1,2,GG,Yes,0,1,Away Win,3,1,4,Home Win,2,2,Draw
+15/01/2023,F1,Montpellier,Nantes,0,3,NG,Yes,0,1,Away Win,3,5,8,Away Win,1,2,Away Win
+15/01/2023,F1,Reims,Nice,0,0,NG,No,0,0,Draw,5,3,8,Home Win,1,1,Draw
+15/01/2023,F1,Toulouse,Brest,1,1,GG,No,0,1,Away Win,10,5,15,Home Win,2,2,Draw
+15/01/2023,F1,Monaco,Ajaccio,7,1,GG,Yes,5,1,Home Win,3,3,6,Draw,1,2,Away Win
+15/01/2023,F1,Rennes,PSG,1,0,NG,No,0,0,Draw,4,5,9,Away Win,0,0,Draw
+27/01/2023,F1,Lorient,Rennes,2,1,GG,Yes,2,0,Home Win,2,10,12,Away Win,1,1,Draw
+28/01/2023,F1,Troyes,Lens,1,1,GG,No,0,0,Draw,3,11,14,Away Win,2,2,Draw
+28/01/2023,F1,Marseille,Monaco,1,1,GG,No,0,1,Away Win,6,3,9,Home Win,2,2,Draw
+29/01/2023,F1,Nice,Lille,1,0,NG,No,1,0,Home Win,5,7,12,Away Win,3,2,Home Win
+29/01/2023,F1,Auxerre,Montpellier,0,2,NG,No,0,0,Draw,5,3,8,Home Win,1,3,Away Win
+29/01/2023,F1,Brest,Angers,4,0,NG,Yes,2,0,Home Win,4,5,9,Away Win,0,2,Away Win
+29/01/2023,F1,Clermont,Nantes,0,0,NG,No,0,0,Draw,9,1,10,Home Win,2,1,Home Win
+29/01/2023,F1,Strasbourg,Toulouse,1,2,GG,Yes,1,1,Draw,4,2,6,Home Win,2,2,Draw
+29/01/2023,F1,Ajaccio,Lyon,0,2,NG,No,0,1,Away Win,5,1,6,Home Win,2,3,Away Win
+29/01/2023,F1,PSG,Reims,1,1,GG,No,0,0,Draw,3,3,6,Draw,2,1,Home Win
+01/02/2023,F1,Angers,Ajaccio,1,2,GG,Yes,1,0,Home Win,2,6,8,Away Win,1,2,Away Win
+01/02/2023,F1,Lille,Clermont,0,0,NG,No,0,0,Draw,8,3,11,Home Win,0,1,Away Win
+01/02/2023,F1,Nantes,Marseille,0,2,NG,No,0,0,Draw,5,7,12,Away Win,4,3,Home Win
+01/02/2023,F1,Reims,Lorient,4,2,GG,Yes,1,2,Away Win,5,7,12,Away Win,1,0,Home Win
+01/02/2023,F1,Toulouse,Troyes,4,1,GG,Yes,2,1,Home Win,8,0,8,Home Win,2,3,Away Win
+01/02/2023,F1,Lens,Nice,0,1,NG,No,0,0,Draw,5,3,8,Home Win,0,2,Away Win
+01/02/2023,F1,Lyon,Brest,0,0,NG,No,0,0,Draw,15,2,17,Home Win,0,0,Draw
+01/02/2023,F1,Monaco,Auxerre,3,2,GG,Yes,2,0,Home Win,5,4,9,Home Win,0,0,Draw
+01/02/2023,F1,Montpellier,PSG,1,3,GG,Yes,0,0,Draw,1,3,4,Away Win,1,1,Draw
+01/02/2023,F1,Rennes,Strasbourg,3,0,NG,Yes,2,0,Home Win,4,0,4,Home Win,0,1,Away Win
+04/02/2023,F1,PSG,Toulouse,2,1,GG,Yes,1,1,Draw,6,2,8,Home Win,2,2,Draw
+04/02/2023,F1,Troyes,Lyon,1,3,GG,Yes,0,1,Away Win,5,6,11,Away Win,0,1,Away Win
+04/02/2023,F1,Rennes,Lille,1,3,GG,Yes,1,0,Home Win,2,1,3,Home Win,1,2,Away Win
+05/02/2023,F1,Clermont,Monaco,0,2,NG,No,0,2,Away Win,2,4,6,Away Win,1,2,Away Win
+05/02/2023,F1,Ajaccio,Nantes,0,2,NG,No,0,0,Draw,2,2,4,Draw,2,1,Home Win
+05/02/2023,F1,Auxerre,Reims,0,0,NG,No,0,0,Draw,4,5,9,Away Win,2,0,Home Win
+05/02/2023,F1,Lorient,Angers,0,0,NG,No,0,0,Draw,8,6,14,Home Win,2,4,Away Win
+05/02/2023,F1,Strasbourg,Montpellier,2,0,NG,No,2,0,Home Win,4,7,11,Away Win,3,1,Home Win
+05/02/2023,F1,Brest,Lens,1,1,GG,No,0,0,Draw,11,5,16,Home Win,4,2,Home Win
+05/02/2023,F1,Marseille,Nice,1,3,GG,Yes,0,2,Away Win,9,1,10,Home Win,0,1,Away Win
+10/02/2023,F1,Nice,Ajaccio,3,0,NG,Yes,1,0,Home Win,5,5,10,Draw,1,0,Home Win
+11/02/2023,F1,Monaco,PSG,3,1,GG,Yes,3,1,Home Win,3,2,5,Home Win,0,1,Away Win
+11/02/2023,F1,Clermont,Marseille,0,2,NG,No,0,1,Away Win,3,4,7,Away Win,4,3,Home Win
+12/02/2023,F1,Toulouse,Rennes,3,1,GG,Yes,3,0,Home Win,2,7,9,Away Win,1,1,Draw
+12/02/2023,F1,Angers,Auxerre,1,1,GG,No,1,1,Draw,6,4,10,Home Win,2,0,Home Win
+12/02/2023,F1,Lille,Strasbourg,2,0,NG,No,2,0,Home Win,5,4,9,Home Win,1,2,Away Win
+12/02/2023,F1,Montpellier,Brest,3,0,NG,Yes,2,0,Home Win,4,3,7,Home Win,1,2,Away Win
+12/02/2023,F1,Reims,Troyes,4,0,NG,Yes,2,0,Home Win,5,2,7,Home Win,1,2,Away Win
+12/02/2023,F1,Nantes,Lorient,1,0,NG,No,0,0,Draw,7,3,10,Home Win,0,0,Draw
+12/02/2023,F1,Lyon,Lens,2,1,GG,Yes,1,1,Draw,2,5,7,Away Win,1,1,Draw
+17/02/2023,F1,Auxerre,Lyon,2,1,GG,Yes,0,1,Away Win,6,4,10,Home Win,4,2,Home Win
+18/02/2023,F1,Nice,Reims,0,0,NG,No,0,0,Draw,9,0,9,Home Win,1,1,Draw
+18/02/2023,F1,Strasbourg,Angers,2,1,GG,Yes,2,0,Home Win,4,5,9,Away Win,3,3,Draw
+19/02/2023,F1,PSG,Lille,4,3,GG,Yes,2,1,Home Win,3,6,9,Away Win,2,4,Away Win
+19/02/2023,F1,Brest,Monaco,1,2,GG,Yes,0,1,Away Win,5,5,10,Draw,1,2,Away Win
+19/02/2023,F1,Lorient,Ajaccio,3,0,NG,Yes,2,0,Home Win,2,2,4,Draw,0,2,Away Win
+19/02/2023,F1,Rennes,Clermont,2,0,NG,No,1,0,Home Win,2,7,9,Away Win,0,2,Away Win
+19/02/2023,F1,Troyes,Montpellier,0,1,NG,No,0,0,Draw,2,10,12,Away Win,2,1,Home Win
+19/02/2023,F1,Lens,Nantes,3,1,GG,Yes,2,1,Home Win,2,5,7,Away Win,0,0,Draw
+19/02/2023,F1,Toulouse,Marseille,2,3,GG,Yes,1,0,Home Win,3,10,13,Away Win,0,2,Away Win
+24/02/2023,F1,Lille,Brest,2,1,GG,Yes,0,1,Away Win,11,2,13,Home Win,2,2,Draw
+25/02/2023,F1,Angers,Lyon,1,3,GG,Yes,0,1,Away Win,2,2,4,Draw,0,0,Draw
+25/02/2023,F1,Montpellier,Lens,1,1,GG,No,0,1,Away Win,4,6,10,Away Win,0,3,Away Win
+26/02/2023,F1,Lorient,Auxerre,0,1,NG,No,0,0,Draw,10,0,10,Home Win,2,3,Away Win
+26/02/2023,F1,Ajaccio,Troyes,2,1,GG,Yes,0,1,Away Win,6,3,9,Home Win,2,2,Draw
+26/02/2023,F1,Clermont,Strasbourg,1,1,GG,No,0,1,Away Win,7,2,9,Home Win,1,4,Away Win
+26/02/2023,F1,Nantes,Rennes,0,1,NG,No,0,1,Away Win,12,4,16,Home Win,2,2,Draw
+26/02/2023,F1,Reims,Toulouse,3,0,NG,Yes,2,0,Home Win,4,2,6,Home Win,0,0,Draw
+26/02/2023,F1,Monaco,Nice,0,3,NG,Yes,0,3,Away Win,5,3,8,Home Win,0,1,Away Win
+26/02/2023,F1,Marseille,PSG,0,3,NG,Yes,0,2,Away Win,7,4,11,Home Win,0,0,Draw
+03/03/2023,F1,Nice,Auxerre,1,1,GG,No,1,1,Draw,8,0,8,Home Win,0,1,Away Win
+04/03/2023,F1,Lens,Lille,1,1,GG,No,1,0,Home Win,10,3,13,Home Win,2,4,Away Win
+04/03/2023,F1,PSG,Nantes,4,2,GG,Yes,2,2,Draw,4,6,10,Away Win,0,2,Away Win
+05/03/2023,F1,Troyes,Monaco,2,2,GG,Yes,1,0,Home Win,3,4,7,Away Win,0,1,Away Win
+05/03/2023,F1,Montpellier,Angers,5,0,NG,Yes,3,0,Home Win,6,5,11,Home Win,1,4,Away Win
+05/03/2023,F1,Reims,Ajaccio,1,0,NG,No,0,0,Draw,2,1,3,Home Win,3,3,Draw
+05/03/2023,F1,Strasbourg,Brest,0,1,NG,No,0,1,Away Win,9,2,11,Home Win,2,1,Home Win
+05/03/2023,F1,Toulouse,Clermont,0,1,NG,No,0,0,Draw,4,5,9,Away Win,4,1,Home Win
+05/03/2023,F1,Lyon,Lorient,0,0,NG,No,0,0,Draw,6,5,11,Home Win,1,0,Home Win
+05/03/2023,F1,Rennes,Marseille,0,1,NG,No,0,0,Draw,4,3,7,Home Win,1,1,Draw
+10/03/2023,F1,Lille,Lyon,3,3,GG,Yes,0,0,Draw,4,0,4,Home Win,5,4,Home Win
+11/03/2023,F1,Auxerre,Rennes,0,0,NG,No,0,0,Draw,8,0,8,Home Win,2,2,Draw
+11/03/2023,F1,Brest,PSG,1,2,GG,Yes,1,1,Draw,6,3,9,Home Win,1,1,Draw
+12/03/2023,F1,Clermont,Lens,0,4,NG,Yes,0,3,Away Win,6,4,10,Home Win,1,2,Away Win
+12/03/2023,F1,Ajaccio,Montpellier,0,1,NG,No,0,0,Draw,1,3,4,Away Win,2,2,Draw
+12/03/2023,F1,Angers,Toulouse,0,2,NG,No,0,1,Away Win,6,8,14,Away Win,0,1,Away Win
+12/03/2023,F1,Lorient,Troyes,2,0,NG,No,1,0,Home Win,1,4,5,Away Win,0,2,Away Win
+12/03/2023,F1,Nantes,Nice,2,2,GG,Yes,1,1,Draw,1,10,11,Away Win,1,1,Draw
+12/03/2023,F1,Monaco,Reims,0,1,NG,No,0,0,Draw,3,3,6,Draw,1,2,Away Win
+12/03/2023,F1,Marseille,Strasbourg,2,2,GG,Yes,0,0,Draw,1,8,9,Away Win,0,4,Away Win
+17/03/2023,F1,Lyon,Nantes,1,1,GG,No,1,1,Draw,5,2,7,Home Win,0,1,Away Win
+18/03/2023,F1,Toulouse,Lille,0,2,NG,No,0,0,Draw,12,8,20,Home Win,2,0,Home Win
+18/03/2023,F1,Lens,Angers,3,0,NG,Yes,2,0,Home Win,4,4,8,Draw,0,0,Draw
+19/03/2023,F1,Ajaccio,Monaco,0,2,NG,No,0,1,Away Win,1,4,5,Away Win,2,1,Home Win
+19/03/2023,F1,Montpellier,Clermont,2,1,GG,Yes,0,1,Away Win,11,4,15,Home Win,3,1,Home Win
+19/03/2023,F1,Nice,Lorient,1,1,GG,No,0,1,Away Win,10,2,12,Home Win,0,2,Away Win
+19/03/2023,F1,Strasbourg,Auxerre,2,0,NG,No,1,0,Home Win,5,4,9,Home Win,2,1,Home Win
+19/03/2023,F1,Troyes,Brest,2,2,GG,Yes,2,1,Home Win,7,4,11,Home Win,1,1,Draw
+19/03/2023,F1,PSG,Rennes,0,2,NG,No,0,1,Away Win,6,3,9,Home Win,1,1,Draw
+19/03/2023,F1,Reims,Marseille,1,2,GG,Yes,1,2,Away Win,6,5,11,Home Win,2,3,Away Win
+31/03/2023,F1,Marseille,Montpellier,1,1,GG,No,1,1,Draw,1,3,4,Away Win,2,2,Draw
+01/04/2023,F1,Auxerre,Troyes,1,0,NG,No,0,0,Draw,4,5,9,Away Win,0,0,Draw
+01/04/2023,F1,Rennes,Lens,0,1,NG,No,0,1,Away Win,5,5,10,Draw,2,2,Draw
+02/04/2023,F1,Lille,Lorient,3,1,GG,Yes,1,0,Home Win,5,1,6,Home Win,3,3,Draw
+02/04/2023,F1,Angers,Nice,1,1,GG,No,1,1,Draw,5,2,7,Home Win,1,1,Draw
+02/04/2023,F1,Brest,Toulouse,3,1,GG,Yes,1,1,Draw,4,2,6,Home Win,2,5,Away Win
+02/04/2023,F1,Clermont,Ajaccio,2,1,GG,Yes,0,1,Away Win,5,1,6,Home Win,2,5,Away Win
+02/04/2023,F1,Nantes,Reims,0,3,NG,Yes,0,2,Away Win,3,4,7,Away Win,1,2,Away Win
+02/04/2023,F1,Monaco,Strasbourg,4,3,GG,Yes,1,2,Away Win,3,3,6,Draw,3,1,Home Win
+02/04/2023,F1,PSG,Lyon,0,1,NG,No,0,0,Draw,7,1,8,Home Win,3,3,Draw
+07/04/2023,F1,Lens,Strasbourg,2,1,GG,Yes,1,0,Home Win,5,1,6,Home Win,1,5,Away Win
+08/04/2023,F1,Angers,Lille,1,0,NG,No,0,0,Draw,3,6,9,Away Win,2,3,Away Win
+08/04/2023,F1,Nice,PSG,0,2,NG,No,0,1,Away Win,10,5,15,Home Win,1,0,Home Win
+09/04/2023,F1,Lyon,Rennes,3,1,GG,Yes,0,1,Away Win,7,2,9,Home Win,2,2,Draw
+09/04/2023,F1,Ajaccio,Auxerre,0,3,NG,Yes,0,3,Away Win,7,5,12,Home Win,1,3,Away Win
+09/04/2023,F1,Montpellier,Toulouse,1,2,GG,Yes,0,1,Away Win,4,3,7,Home Win,0,2,Away Win
+09/04/2023,F1,Reims,Brest,1,1,GG,No,0,1,Away Win,6,3,9,Home Win,0,1,Away Win
+09/04/2023,F1,Troyes,Clermont,0,2,NG,No,0,2,Away Win,3,2,5,Home Win,3,2,Home Win
+09/04/2023,F1,Nantes,Monaco,2,2,GG,Yes,0,2,Away Win,6,8,14,Away Win,3,1,Home Win
+09/04/2023,F1,Lorient,Marseille,0,0,NG,No,0,0,Draw,3,6,9,Away Win,0,2,Away Win
+14/04/2023,F1,Toulouse,Lyon,1,2,GG,Yes,1,1,Draw,8,5,13,Home Win,1,4,Away Win
+15/04/2023,F1,Rennes,Reims,3,0,NG,Yes,2,0,Home Win,6,4,10,Home Win,1,2,Away Win
+15/04/2023,F1,PSG,Lens,3,1,GG,Yes,3,0,Home Win,3,10,13,Away Win,0,0,Draw
+16/04/2023,F1,Lille,Montpellier,2,1,GG,Yes,0,1,Away Win,8,4,12,Home Win,1,3,Away Win
+16/04/2023,F1,Auxerre,Nantes,2,1,GG,Yes,2,0,Home Win,3,6,9,Away Win,2,2,Draw
+16/04/2023,F1,Brest,Nice,1,0,NG,No,1,0,Home Win,3,5,8,Away Win,1,3,Away Win
+16/04/2023,F1,Clermont,Angers,2,1,GG,Yes,2,1,Home Win,6,6,12,Draw,1,3,Away Win
+16/04/2023,F1,Strasbourg,Ajaccio,3,1,GG,Yes,1,0,Home Win,5,0,5,Home Win,2,5,Away Win
+16/04/2023,F1,Monaco,Lorient,3,1,GG,Yes,2,0,Home Win,5,3,8,Home Win,0,1,Away Win
+16/04/2023,F1,Marseille,Troyes,3,1,GG,Yes,2,0,Home Win,8,1,9,Home Win,0,2,Away Win
+21/04/2023,F1,Angers,PSG,1,2,GG,Yes,0,2,Away Win,5,8,13,Away Win,0,0,Draw
+22/04/2023,F1,Auxerre,Lille,1,1,GG,No,0,1,Away Win,4,4,8,Draw,0,1,Away Win
+22/04/2023,F1,Lens,Monaco,3,0,NG,Yes,2,0,Home Win,2,4,6,Away Win,0,2,Away Win
+23/04/2023,F1,Reims,Strasbourg,0,2,NG,No,0,2,Away Win,6,4,10,Home Win,2,1,Home Win
+23/04/2023,F1,Ajaccio,Brest,0,0,NG,No,0,0,Draw,4,4,8,Draw,2,2,Draw
+23/04/2023,F1,Lorient,Toulouse,0,1,NG,No,0,0,Draw,2,7,9,Away Win,3,2,Home Win
+23/04/2023,F1,Nantes,Troyes,2,2,GG,Yes,1,0,Home Win,13,4,17,Home Win,1,0,Home Win
+23/04/2023,F1,Nice,Clermont,1,2,GG,Yes,1,1,Draw,6,2,8,Home Win,1,2,Away Win
+23/04/2023,F1,Montpellier,Rennes,1,0,NG,No,0,0,Draw,4,4,8,Draw,3,2,Home Win
+23/04/2023,F1,Lyon,Marseille,1,2,GG,Yes,0,1,Away Win,5,3,8,Home Win,2,1,Home Win
+28/04/2023,F1,Strasbourg,Lyon,1,2,GG,Yes,1,2,Away Win,5,4,9,Home Win,2,4,Away Win
+29/04/2023,F1,Lille,Ajaccio,3,0,NG,Yes,3,0,Home Win,9,0,9,Home Win,1,2,Away Win
+30/04/2023,F1,Monaco,Montpellier,0,4,NG,Yes,0,1,Away Win,3,11,14,Away Win,2,1,Home Win
+30/04/2023,F1,Clermont,Reims,1,0,NG,No,1,0,Home Win,5,6,11,Away Win,0,2,Away Win
+30/04/2023,F1,Rennes,Angers,4,2,GG,Yes,2,2,Draw,7,5,12,Home Win,1,2,Away Win
+30/04/2023,F1,Troyes,Nice,0,1,NG,No,0,1,Away Win,3,14,17,Away Win,0,2,Away Win
+30/04/2023,F1,PSG,Lorient,1,3,GG,Yes,1,2,Away Win,2,3,5,Away Win,4,3,Home Win
+30/04/2023,F1,Marseille,Auxerre,2,1,GG,Yes,0,1,Away Win,12,1,13,Home Win,1,0,Home Win
+02/05/2023,F1,Toulouse,Lens,0,1,NG,No,0,1,Away Win,5,0,5,Home Win,1,2,Away Win
+03/05/2023,F1,Brest,Nantes,2,0,NG,No,2,0,Home Win,2,4,6,Away Win,0,1,Away Win
+06/05/2023,F1,Nice,Rennes,2,1,GG,Yes,0,0,Draw,4,7,11,Away Win,0,1,Away Win
+06/05/2023,F1,Reims,Lille,1,0,NG,No,1,0,Home Win,4,7,11,Away Win,2,3,Away Win
+06/05/2023,F1,Lens,Marseille,2,1,GG,Yes,1,0,Home Win,7,7,14,Draw,5,2,Home Win
+07/05/2023,F1,Angers,Monaco,1,2,GG,Yes,0,1,Away Win,4,3,7,Home Win,3,2,Home Win
+07/05/2023,F1,Ajaccio,Toulouse,0,0,NG,No,0,0,Draw,4,7,11,Away Win,3,0,Home Win
+07/05/2023,F1,Auxerre,Clermont,1,1,GG,No,1,0,Home Win,2,2,4,Draw,1,0,Home Win
+07/05/2023,F1,Lorient,Brest,2,1,GG,Yes,1,0,Home Win,4,6,10,Away Win,3,2,Home Win
+07/05/2023,F1,Nantes,Strasbourg,0,2,NG,No,0,1,Away Win,11,1,12,Home Win,3,1,Home Win
+07/05/2023,F1,Lyon,Montpellier,5,4,GG,Yes,1,2,Away Win,3,5,8,Away Win,0,3,Away Win
+07/05/2023,F1,Troyes,PSG,1,3,GG,Yes,0,1,Away Win,6,6,12,Draw,1,0,Home Win
+12/05/2023,F1,Lens,Reims,2,1,GG,Yes,1,1,Draw,0,14,14,Away Win,1,3,Away Win
+13/05/2023,F1,Strasbourg,Nice,2,0,NG,No,1,0,Home Win,2,3,5,Away Win,1,1,Draw
+13/05/2023,F1,PSG,Ajaccio,5,0,NG,Yes,2,0,Home Win,8,3,11,Home Win,1,1,Draw
+14/05/2023,F1,Clermont,Lyon,2,1,GG,Yes,1,1,Draw,5,2,7,Home Win,3,3,Draw
+14/05/2023,F1,Brest,Auxerre,1,0,NG,No,0,0,Draw,6,0,6,Home Win,0,0,Draw
+14/05/2023,F1,Montpellier,Lorient,1,1,GG,No,0,0,Draw,11,5,16,Home Win,2,3,Away Win
+14/05/2023,F1,Rennes,Troyes,4,0,NG,Yes,1,0,Home Win,9,1,10,Home Win,0,1,Away Win
+14/05/2023,F1,Toulouse,Nantes,0,0,NG,No,0,0,Draw,10,5,15,Home Win,1,1,Draw
+14/05/2023,F1,Monaco,Lille,0,0,NG,No,0,0,Draw,3,4,7,Away Win,0,2,Away Win
+14/05/2023,F1,Marseille,Angers,3,1,GG,Yes,1,1,Draw,7,0,7,Home Win,1,2,Away Win
+19/05/2023,F1,Lyon,Monaco,3,1,GG,Yes,1,1,Draw,2,8,10,Away Win,0,3,Away Win
+20/05/2023,F1,Nantes,Montpellier,0,3,NG,Yes,0,1,Away Win,10,6,16,Home Win,4,0,Home Win
+20/05/2023,F1,Lille,Marseille,2,1,GG,Yes,0,1,Away Win,3,4,7,Away Win,3,2,Home Win
+21/05/2023,F1,Ajaccio,Rennes,0,5,NG,Yes,0,4,Away Win,2,5,7,Away Win,1,2,Away Win
+21/05/2023,F1,Brest,Clermont,2,1,GG,Yes,1,1,Draw,7,1,8,Home Win,3,4,Away Win
+21/05/2023,F1,Nice,Toulouse,0,0,NG,No,0,0,Draw,6,3,9,Home Win,2,2,Draw
+21/05/2023,F1,Reims,Angers,2,2,GG,Yes,1,0,Home Win,7,3,10,Home Win,0,2,Away Win
+21/05/2023,F1,Troyes,Strasbourg,1,1,GG,No,0,1,Away Win,4,6,10,Away Win,1,1,Draw
+21/05/2023,F1,Lorient,Lens,1,3,GG,Yes,1,2,Away Win,3,5,8,Away Win,2,2,Draw
+21/05/2023,F1,Auxerre,PSG,1,2,GG,Yes,0,2,Away Win,4,6,10,Away Win,1,0,Home Win
+27/05/2023,F1,Angers,Troyes,2,1,GG,Yes,1,1,Draw,14,3,17,Home Win,1,1,Draw
+27/05/2023,F1,Clermont,Lorient,2,0,NG,No,1,0,Home Win,9,1,10,Home Win,0,0,Draw
+27/05/2023,F1,Lens,Ajaccio,3,0,NG,Yes,3,0,Home Win,9,2,11,Home Win,1,2,Away Win
+27/05/2023,F1,Lille,Nantes,2,1,GG,Yes,0,1,Away Win,5,3,8,Home Win,2,4,Away Win
+27/05/2023,F1,Lyon,Reims,3,0,NG,Yes,2,0,Home Win,7,4,11,Home Win,1,1,Draw
+27/05/2023,F1,Marseille,Brest,1,2,GG,Yes,0,0,Draw,3,5,8,Away Win,2,2,Draw
+27/05/2023,F1,Montpellier,Nice,2,3,GG,Yes,2,0,Home Win,2,10,12,Away Win,0,3,Away Win
+27/05/2023,F1,Rennes,Monaco,2,0,NG,No,0,0,Draw,7,3,10,Home Win,0,3,Away Win
+27/05/2023,F1,Strasbourg,PSG,1,1,GG,No,0,0,Draw,4,2,6,Home Win,1,2,Away Win
+27/05/2023,F1,Toulouse,Auxerre,1,1,GG,No,1,1,Draw,6,3,9,Home Win,1,3,Away Win
+03/06/2023,F1,Ajaccio,Marseille,1,0,NG,No,0,0,Draw,2,3,5,Away Win,1,1,Draw
+03/06/2023,F1,Auxerre,Lens,1,3,GG,Yes,0,1,Away Win,5,5,10,Draw,1,3,Away Win
+03/06/2023,F1,Brest,Rennes,1,2,GG,Yes,1,2,Away Win,3,3,6,Draw,2,4,Away Win
+03/06/2023,F1,Lorient,Strasbourg,2,1,GG,Yes,2,0,Home Win,4,4,8,Draw,1,1,Draw
+03/06/2023,F1,Monaco,Toulouse,1,2,GG,Yes,0,0,Draw,4,7,11,Away Win,1,2,Away Win
+03/06/2023,F1,Nantes,Angers,1,0,NG,No,1,0,Home Win,8,1,9,Home Win,1,0,Home Win
+03/06/2023,F1,Nice,Lyon,3,1,GG,Yes,3,1,Home Win,3,2,5,Home Win,0,1,Away Win
+03/06/2023,F1,PSG,Clermont,2,3,GG,Yes,2,2,Draw,6,2,8,Home Win,2,1,Home Win
+03/06/2023,F1,Reims,Montpellier,1,3,GG,Yes,1,0,Home Win,4,7,11,Away Win,1,2,Away Win
+03/06/2023,F1,Troyes,Lille,1,1,GG,No,0,0,Draw,2,8,10,Away Win,0,4,Away Win
+11/08/2023,F1,Nice,Lille,1,1,GG,No,1,0,Home Win,3,3,6,Draw,3,2,Home Win
+12/08/2023,F1,Marseille,Reims,2,1,GG,Yes,1,1,Draw,10,10,20,Draw,1,3,Away Win
+12/08/2023,F1,PSG,Lorient,0,0,NG,No,0,0,Draw,9,2,11,Home Win,0,0,Draw
+13/08/2023,F1,Brest,Lens,3,2,GG,Yes,1,2,Away Win,6,8,14,Away Win,2,3,Away Win
+13/08/2023,F1,Clermont,Monaco,2,4,GG,Yes,1,2,Away Win,6,2,8,Home Win,0,4,Away Win
+13/08/2023,F1,Montpellier,Le Havre,2,2,GG,Yes,0,1,Away Win,5,2,7,Home Win,1,2,Away Win
+13/08/2023,F1,Nantes,Toulouse,1,2,GG,Yes,1,0,Home Win,7,5,12,Home Win,2,2,Draw
+13/08/2023,F1,Rennes,Metz,5,1,GG,Yes,1,1,Draw,5,4,9,Home Win,0,2,Away Win
+13/08/2023,F1,Strasbourg,Lyon,2,1,GG,Yes,0,0,Draw,1,6,7,Away Win,2,2,Draw
+18/08/2023,F1,Metz,Marseille,2,2,GG,Yes,0,1,Away Win,4,9,13,Away Win,3,2,Home Win
+19/08/2023,F1,Lyon,Montpellier,1,4,GG,Yes,0,2,Away Win,6,2,8,Home Win,4,1,Home Win
+19/08/2023,F1,Toulouse,PSG,1,1,GG,No,0,0,Draw,5,5,10,Draw,0,3,Away Win
+20/08/2023,F1,Lille,Nantes,2,0,NG,No,0,0,Draw,7,5,12,Home Win,0,2,Away Win
+20/08/2023,F1,Le Havre,Brest,1,2,GG,Yes,0,1,Away Win,5,3,8,Home Win,0,2,Away Win
+20/08/2023,F1,Lorient,Nice,1,1,GG,No,0,0,Draw,0,9,9,Away Win,1,1,Draw
+20/08/2023,F1,Reims,Clermont,2,0,NG,No,1,0,Home Win,3,10,13,Away Win,0,0,Draw
+20/08/2023,F1,Monaco,Strasbourg,3,0,NG,Yes,2,0,Home Win,4,3,7,Home Win,2,1,Home Win
+20/08/2023,F1,Lens,Rennes,1,1,GG,No,1,0,Home Win,11,0,11,Home Win,2,1,Home Win
+25/08/2023,F1,Nantes,Monaco,3,3,GG,Yes,2,1,Home Win,1,10,11,Away Win,2,2,Draw
+26/08/2023,F1,Marseille,Brest,2,0,NG,No,1,0,Home Win,3,10,13,Away Win,0,1,Away Win
+26/08/2023,F1,PSG,Lens,3,1,GG,Yes,1,0,Home Win,5,5,10,Draw,0,5,Away Win
+27/08/2023,F1,Rennes,Le Havre,2,2,GG,Yes,2,1,Home Win,5,2,7,Home Win,1,2,Away Win
+27/08/2023,F1,Clermont,Metz,0,1,NG,No,0,0,Draw,10,2,12,Home Win,1,1,Draw
+27/08/2023,F1,Montpellier,Reims,1,3,GG,Yes,1,2,Away Win,5,3,8,Home Win,1,1,Draw
+27/08/2023,F1,Strasbourg,Toulouse,2,0,NG,No,0,0,Draw,3,3,6,Draw,1,3,Away Win
+27/08/2023,F1,Lorient,Lille,4,1,GG,Yes,2,0,Home Win,5,8,13,Away Win,2,4,Away Win
+27/08/2023,F1,Nice,Lyon,0,0,NG,No,0,0,Draw,7,2,9,Home Win,1,4,Away Win
+01/09/2023,F1,Nantes,Marseille,1,1,GG,No,1,1,Draw,2,7,9,Away Win,0,2,Away Win
+02/09/2023,F1,Brest,Rennes,0,0,NG,No,0,0,Draw,7,5,12,Home Win,3,1,Home Win
+02/09/2023,F1,Monaco,Lens,3,0,NG,Yes,2,0,Home Win,5,2,7,Home Win,4,2,Home Win
+03/09/2023,F1,Toulouse,Clermont,2,2,GG,Yes,2,1,Home Win,0,8,8,Away Win,1,3,Away Win
+03/09/2023,F1,Le Havre,Lorient,3,0,NG,Yes,0,0,Draw,5,4,9,Home Win,0,0,Draw
+03/09/2023,F1,Lille,Montpellier,1,0,NG,No,1,0,Home Win,5,5,10,Draw,2,1,Home Win
+03/09/2023,F1,Metz,Reims,2,2,GG,Yes,1,1,Draw,4,1,5,Home Win,0,4,Away Win
+03/09/2023,F1,Nice,Strasbourg,2,0,NG,No,1,0,Home Win,5,2,7,Home Win,2,1,Home Win
+03/09/2023,F1,Lyon,PSG,1,4,GG,Yes,0,4,Away Win,5,2,7,Home Win,2,2,Draw
+15/09/2023,F1,PSG,Nice,2,3,GG,Yes,1,1,Draw,4,3,7,Home Win,2,5,Away Win
+16/09/2023,F1,Rennes,Lille,2,2,GG,Yes,0,1,Away Win,5,2,7,Home Win,1,4,Away Win
+16/09/2023,F1,Lens,Metz,0,1,NG,No,0,1,Away Win,9,1,10,Home Win,1,2,Away Win
+17/09/2023,F1,Lorient,Monaco,2,2,GG,Yes,1,1,Draw,8,6,14,Home Win,0,1,Away Win
+17/09/2023,F1,Clermont,Nantes,0,1,NG,No,0,0,Draw,6,3,9,Home Win,2,2,Draw
+17/09/2023,F1,Reims,Brest,1,2,GG,Yes,1,0,Home Win,8,8,16,Draw,2,4,Away Win
+17/09/2023,F1,Strasbourg,Montpellier,2,2,GG,Yes,0,2,Away Win,2,4,6,Away Win,4,6,Away Win
+17/09/2023,F1,Marseille,Toulouse,0,0,NG,No,0,0,Draw,6,1,7,Home Win,2,5,Away Win
+17/09/2023,F1,Lyon,Le Havre,0,0,NG,No,0,0,Draw,6,1,7,Home Win,3,2,Home Win
+22/09/2023,F1,Monaco,Nice,0,1,NG,No,0,0,Draw,5,2,7,Home Win,1,1,Draw
+23/09/2023,F1,Nantes,Lorient,5,3,GG,Yes,1,1,Draw,4,2,6,Home Win,1,3,Away Win
+23/09/2023,F1,Brest,Lyon,1,0,NG,No,0,0,Draw,10,1,11,Home Win,3,1,Home Win
+24/09/2023,F1,Metz,Strasbourg,0,1,NG,No,0,0,Draw,1,1,2,Draw,2,0,Home Win
+24/09/2023,F1,Le Havre,Clermont,2,1,GG,Yes,2,1,Home Win,1,3,4,Away Win,2,3,Away Win
+24/09/2023,F1,Lens,Toulouse,2,1,GG,Yes,1,1,Draw,9,4,13,Home Win,2,1,Home Win
+24/09/2023,F1,Montpellier,Rennes,0,0,NG,No,0,0,Draw,3,6,9,Away Win,2,1,Home Win
+24/09/2023,F1,PSG,Marseille,4,0,NG,Yes,2,0,Home Win,8,3,11,Home Win,0,3,Away Win
+26/09/2023,F1,Lille,Reims,1,2,GG,Yes,0,2,Away Win,4,2,6,Home Win,1,2,Away Win
+29/09/2023,F1,Strasbourg,Lens,0,1,NG,No,0,1,Away Win,2,3,5,Away Win,2,4,Away Win
+30/09/2023,F1,Clermont,PSG,0,0,NG,No,0,0,Draw,6,9,15,Away Win,2,3,Away Win
+30/09/2023,F1,Monaco,Marseille,3,2,GG,Yes,2,2,Draw,2,6,8,Away Win,4,4,Draw
+01/10/2023,F1,Reims,Lyon,2,0,NG,No,1,0,Home Win,1,5,6,Away Win,2,2,Draw
+01/10/2023,F1,Le Havre,Lille,0,2,NG,No,0,1,Away Win,6,6,12,Draw,0,0,Draw
+01/10/2023,F1,Nice,Brest,0,0,NG,No,0,0,Draw,6,4,10,Home Win,1,3,Away Win
+01/10/2023,F1,Toulouse,Metz,3,0,NG,Yes,2,0,Home Win,4,6,10,Away Win,3,0,Home Win
+01/10/2023,F1,Lorient,Montpellier,0,3,NG,Yes,0,1,Away Win,8,3,11,Home Win,2,1,Home Win
+01/10/2023,F1,Rennes,Nantes,3,1,GG,Yes,1,1,Draw,6,4,10,Home Win,3,6,Away Win
+06/10/2023,F1,Strasbourg,Nantes,1,2,GG,Yes,0,0,Draw,3,11,14,Away Win,4,0,Home Win
+07/10/2023,F1,Metz,Nice,0,1,NG,No,0,1,Away Win,1,4,5,Away Win,0,1,Away Win
+07/10/2023,F1,Reims,Monaco,1,3,GG,Yes,0,1,Away Win,10,5,15,Home Win,0,3,Away Win
+08/10/2023,F1,Marseille,Le Havre,3,0,NG,Yes,2,0,Home Win,4,3,7,Home Win,0,3,Away Win
+08/10/2023,F1,Brest,Toulouse,1,1,GG,No,0,1,Away Win,3,5,8,Away Win,2,2,Draw
+08/10/2023,F1,Lyon,Lorient,3,3,GG,Yes,3,1,Home Win,5,2,7,Home Win,0,0,Draw
+08/10/2023,F1,Lens,Lille,1,1,GG,No,0,1,Away Win,8,5,13,Home Win,2,4,Away Win
+08/10/2023,F1,Rennes,PSG,1,3,GG,Yes,0,2,Away Win,1,7,8,Away Win,1,0,Home Win
+20/10/2023,F1,Le Havre,Lens,0,0,NG,No,0,0,Draw,3,3,6,Draw,2,3,Away Win
+21/10/2023,F1,PSG,Strasbourg,3,0,NG,Yes,2,0,Home Win,1,6,7,Away Win,2,0,Home Win
+21/10/2023,F1,Nice,Marseille,1,0,NG,No,0,0,Draw,4,2,6,Home Win,4,3,Home Win
+22/10/2023,F1,Lorient,Rennes,2,1,GG,Yes,2,1,Home Win,6,16,22,Away Win,0,2,Away Win
+22/10/2023,F1,Lille,Brest,1,0,NG,No,1,0,Home Win,3,5,8,Away Win,2,3,Away Win
+22/10/2023,F1,Nantes,Montpellier,2,0,NG,No,1,0,Home Win,4,3,7,Home Win,2,1,Home Win
+22/10/2023,F1,Toulouse,Reims,1,1,GG,No,0,0,Draw,5,7,12,Away Win,2,0,Home Win
+22/10/2023,F1,Monaco,Metz,2,1,GG,Yes,1,1,Draw,10,2,12,Home Win,1,3,Away Win
+22/10/2023,F1,Lyon,Clermont,1,2,GG,Yes,0,2,Away Win,10,3,13,Home Win,4,6,Away Win
+27/10/2023,F1,Clermont,Nice,0,1,NG,No,0,0,Draw,2,2,4,Draw,0,2,Away Win
+28/10/2023,F1,Reims,Lorient,1,0,NG,No,0,0,Draw,4,4,8,Draw,1,3,Away Win
+28/10/2023,F1,Lens,Nantes,4,0,NG,Yes,1,0,Home Win,4,1,5,Home Win,1,2,Away Win
+29/10/2023,F1,Brest,PSG,2,3,GG,Yes,1,2,Away Win,9,5,14,Home Win,3,4,Away Win
+29/10/2023,F1,Lille,Monaco,2,0,NG,No,2,0,Home Win,2,8,10,Away Win,1,2,Away Win
+29/10/2023,F1,Metz,Le Havre,0,0,NG,No,0,0,Draw,5,6,11,Away Win,2,2,Draw
+29/10/2023,F1,Montpellier,Toulouse,3,0,NG,Yes,1,0,Home Win,3,4,7,Away Win,2,3,Away Win
+29/10/2023,F1,Rennes,Strasbourg,1,1,GG,No,1,0,Home Win,7,5,12,Home Win,2,2,Draw
+03/11/2023,F1,PSG,Montpellier,3,0,NG,Yes,1,0,Home Win,9,2,11,Home Win,1,0,Home Win
+04/11/2023,F1,Lorient,Lens,0,0,NG,No,0,0,Draw,1,5,6,Away Win,3,3,Draw
+04/11/2023,F1,Marseille,Lille,0,0,NG,No,0,0,Draw,2,8,10,Away Win,2,3,Away Win
+05/11/2023,F1,Lyon,Metz,1,1,GG,No,0,0,Draw,4,9,13,Away Win,1,1,Draw
+05/11/2023,F1,Nantes,Reims,0,1,NG,No,0,0,Draw,10,6,16,Home Win,1,2,Away Win
+05/11/2023,F1,Strasbourg,Clermont,0,0,NG,No,0,0,Draw,4,6,10,Away Win,2,0,Home Win
+05/11/2023,F1,Toulouse,Le Havre,1,2,GG,Yes,0,0,Draw,4,6,10,Away Win,2,2,Draw
+05/11/2023,F1,Monaco,Brest,2,0,NG,No,1,0,Home Win,6,4,10,Home Win,2,4,Away Win
+05/11/2023,F1,Nice,Rennes,2,0,NG,No,1,0,Home Win,2,1,3,Home Win,0,2,Away Win
+10/11/2023,F1,Montpellier,Nice,0,0,NG,No,0,0,Draw,3,7,10,Away Win,0,4,Away Win
+11/11/2023,F1,Reims,PSG,0,3,NG,Yes,0,1,Away Win,8,4,12,Home Win,1,0,Home Win
+11/11/2023,F1,Le Havre,Monaco,0,0,NG,No,0,0,Draw,2,4,6,Away Win,2,3,Away Win
+12/11/2023,F1,Clermont,Lorient,1,0,NG,No,0,0,Draw,5,4,9,Home Win,3,2,Home Win
+12/11/2023,F1,Lille,Toulouse,1,1,GG,No,1,0,Home Win,11,1,12,Home Win,3,4,Away Win
+12/11/2023,F1,Metz,Nantes,3,1,GG,Yes,2,1,Home Win,2,5,7,Away Win,0,0,Draw
+12/11/2023,F1,Rennes,Lyon,0,1,NG,No,0,0,Draw,6,9,15,Away Win,3,1,Home Win
+12/11/2023,F1,Lens,Marseille,1,0,NG,No,0,0,Draw,4,5,9,Away Win,2,2,Draw
+24/11/2023,F1,PSG,Monaco,5,2,GG,Yes,2,1,Home Win,2,10,12,Away Win,0,1,Away Win
+25/11/2023,F1,Clermont,Lens,0,3,NG,Yes,0,1,Away Win,2,4,6,Away Win,2,3,Away Win
+25/11/2023,F1,Strasbourg,Marseille,1,1,GG,No,1,1,Draw,7,11,18,Away Win,1,2,Away Win
+26/11/2023,F1,Nice,Toulouse,1,0,NG,No,0,0,Draw,4,2,6,Home Win,0,4,Away Win
+26/11/2023,F1,Lorient,Metz,2,3,GG,Yes,2,1,Home Win,5,6,11,Away Win,2,1,Home Win
+26/11/2023,F1,Montpellier,Brest,1,3,GG,Yes,0,1,Away Win,9,1,10,Home Win,2,2,Draw
+26/11/2023,F1,Nantes,Le Havre,0,0,NG,No,0,0,Draw,10,5,15,Home Win,1,2,Away Win
+26/11/2023,F1,Rennes,Reims,3,1,GG,Yes,1,1,Draw,1,8,9,Away Win,2,2,Draw
+26/11/2023,F1,Lyon,Lille,0,2,NG,No,0,2,Away Win,3,5,8,Away Win,2,2,Draw
+29/11/2023,F1,Montpellier,Clermont,1,1,GG,No,0,1,Away Win,8,0,8,Home Win,3,4,Away Win
+01/12/2023,F1,Reims,Strasbourg,2,1,GG,Yes,2,0,Home Win,4,5,9,Away Win,1,1,Draw
+02/12/2023,F1,Lens,Lyon,3,2,GG,Yes,1,1,Draw,3,6,9,Away Win,2,0,Home Win
+02/12/2023,F1,Nantes,Nice,1,0,NG,No,1,0,Home Win,5,6,11,Away Win,3,0,Home Win
+03/12/2023,F1,Le Havre,PSG,0,2,NG,No,0,1,Away Win,9,2,11,Home Win,2,1,Home Win
+03/12/2023,F1,Brest,Clermont,3,0,NG,Yes,2,0,Home Win,4,2,6,Home Win,1,2,Away Win
+03/12/2023,F1,Monaco,Montpellier,2,0,NG,No,1,0,Home Win,8,2,10,Home Win,2,3,Away Win
+03/12/2023,F1,Toulouse,Lorient,1,1,GG,No,0,0,Draw,3,4,7,Away Win,2,4,Away Win
+03/12/2023,F1,Lille,Metz,2,0,NG,No,2,0,Home Win,6,1,7,Home Win,0,0,Draw
+03/12/2023,F1,Marseille,Rennes,2,0,NG,No,1,0,Home Win,1,6,7,Away Win,1,3,Away Win
+06/12/2023,F1,Marseille,Lyon,3,0,NG,Yes,2,0,Home Win,10,3,13,Home Win,1,2,Away Win
+07/12/2023,F1,Brest,Strasbourg,1,1,GG,No,1,0,Home Win,6,0,6,Home Win,1,0,Home Win
+08/12/2023,F1,Montpellier,Lens,0,0,NG,No,0,0,Draw,4,3,7,Home Win,2,3,Away Win
+09/12/2023,F1,Rennes,Monaco,1,2,GG,Yes,0,0,Draw,5,5,10,Draw,3,6,Away Win
+09/12/2023,F1,PSG,Nantes,2,1,GG,Yes,1,0,Home Win,5,3,8,Home Win,1,3,Away Win
+10/12/2023,F1,Nice,Reims,2,1,GG,Yes,0,0,Draw,9,0,9,Home Win,2,3,Away Win
+10/12/2023,F1,Clermont,Lille,0,0,NG,No,0,0,Draw,3,6,9,Away Win,2,2,Draw
+10/12/2023,F1,Metz,Brest,0,1,NG,No,0,0,Draw,3,2,5,Home Win,3,2,Home Win
+10/12/2023,F1,Strasbourg,Le Havre,2,1,GG,Yes,1,0,Home Win,4,3,7,Home Win,3,1,Home Win
+10/12/2023,F1,Lyon,Toulouse,3,0,NG,Yes,2,0,Home Win,2,1,3,Home Win,2,3,Away Win
+10/12/2023,F1,Lorient,Marseille,2,4,GG,Yes,1,4,Away Win,4,6,10,Away Win,5,3,Home Win
+15/12/2023,F1,Monaco,Lyon,0,1,NG,No,0,0,Draw,6,1,7,Home Win,1,2,Away Win
+16/12/2023,F1,Le Havre,Nice,3,1,GG,Yes,2,0,Home Win,2,9,11,Away Win,3,2,Home Win
+16/12/2023,F1,Lens,Reims,2,0,NG,No,1,0,Home Win,4,7,11,Away Win,0,1,Away Win
+17/12/2023,F1,Nantes,Brest,0,2,NG,No,0,0,Draw,4,3,7,Home Win,1,3,Away Win
+17/12/2023,F1,Lorient,Strasbourg,1,2,GG,Yes,0,1,Away Win,6,1,7,Home Win,3,2,Home Win
+17/12/2023,F1,Metz,Montpellier,0,1,NG,No,0,1,Away Win,12,5,17,Home Win,2,2,Draw
+17/12/2023,F1,Toulouse,Rennes,0,0,NG,No,0,0,Draw,4,4,8,Draw,3,2,Home Win
+17/12/2023,F1,Marseille,Clermont,2,1,GG,Yes,2,0,Home Win,4,1,5,Home Win,0,3,Away Win
+17/12/2023,F1,Lille,PSG,1,1,GG,No,0,0,Draw,8,8,16,Draw,1,1,Draw
+20/12/2023,F1,Brest,Lorient,4,0,NG,Yes,4,0,Home Win,1,0,1,Home Win,1,2,Away Win
+20/12/2023,F1,Clermont,Rennes,1,3,GG,Yes,1,0,Home Win,4,5,9,Away Win,0,3,Away Win
+20/12/2023,F1,Lyon,Nantes,1,0,NG,No,0,0,Draw,7,7,14,Draw,1,2,Away Win
+20/12/2023,F1,Montpellier,Marseille,1,1,GG,No,1,0,Home Win,5,10,15,Away Win,2,1,Home Win
+20/12/2023,F1,Nice,Lens,2,0,NG,No,0,0,Draw,5,6,11,Away Win,2,2,Draw
+20/12/2023,F1,PSG,Metz,3,1,GG,Yes,0,0,Draw,5,5,10,Draw,0,1,Away Win
+20/12/2023,F1,Reims,Le Havre,1,0,NG,No,1,0,Home Win,6,2,8,Home Win,1,1,Draw
+20/12/2023,F1,Strasbourg,Lille,2,1,GG,Yes,1,1,Draw,6,5,11,Home Win,1,2,Away Win
+20/12/2023,F1,Toulouse,Monaco,1,2,GG,Yes,1,2,Away Win,4,5,9,Away Win,2,3,Away Win
+12/01/2024,F1,Marseille,Strasbourg,1,1,GG,No,1,0,Home Win,6,4,10,Home Win,3,2,Home Win
+13/01/2024,F1,Monaco,Reims,1,3,GG,Yes,0,1,Away Win,6,6,12,Draw,3,2,Home Win
+13/01/2024,F1,Rennes,Nice,2,0,NG,No,1,0,Home Win,6,6,12,Draw,1,0,Home Win
+14/01/2024,F1,Lille,Lorient,3,0,NG,Yes,1,0,Home Win,7,1,8,Home Win,1,4,Away Win
+14/01/2024,F1,Brest,Montpellier,2,0,NG,No,0,0,Draw,3,3,6,Draw,1,2,Away Win
+14/01/2024,F1,Metz,Toulouse,0,1,NG,No,0,1,Away Win,5,2,7,Home Win,3,2,Home Win
+14/01/2024,F1,Nantes,Clermont,1,2,GG,Yes,0,1,Away Win,11,5,16,Home Win,1,1,Draw
+14/01/2024,F1,Le Havre,Lyon,3,1,GG,Yes,1,0,Home Win,3,7,10,Away Win,1,0,Home Win
+14/01/2024,F1,Lens,PSG,0,2,NG,No,0,1,Away Win,5,6,11,Away Win,0,1,Away Win
+26/01/2024,F1,Lyon,Rennes,2,3,GG,Yes,0,3,Away Win,3,2,5,Home Win,2,2,Draw
+27/01/2024,F1,Nice,Metz,1,0,NG,No,0,0,Draw,5,2,7,Home Win,1,1,Draw
+27/01/2024,F1,Marseille,Monaco,2,2,GG,Yes,1,2,Away Win,10,1,11,Home Win,1,3,Away Win
+28/01/2024,F1,Montpellier,Lille,0,0,NG,No,0,0,Draw,5,2,7,Home Win,4,3,Home Win
+28/01/2024,F1,Clermont,Strasbourg,1,1,GG,No,0,1,Away Win,5,2,7,Home Win,1,3,Away Win
+28/01/2024,F1,Lorient,Le Havre,3,3,GG,Yes,1,1,Draw,1,4,5,Away Win,4,4,Draw
+28/01/2024,F1,Reims,Nantes,0,0,NG,No,0,0,Draw,6,2,8,Home Win,3,2,Home Win
+28/01/2024,F1,Toulouse,Lens,0,2,NG,No,0,1,Away Win,10,7,17,Home Win,3,3,Draw
+28/01/2024,F1,PSG,Brest,2,2,GG,Yes,2,0,Home Win,7,0,7,Home Win,5,3,Home Win
+02/02/2024,F1,Strasbourg,PSG,1,2,GG,Yes,0,1,Away Win,3,4,7,Away Win,3,1,Home Win
+03/02/2024,F1,Rennes,Montpellier,2,1,GG,Yes,1,0,Home Win,5,3,8,Home Win,4,3,Home Win
+03/02/2024,F1,Nantes,Lens,0,1,NG,No,0,0,Draw,2,3,5,Away Win,2,2,Draw
+04/02/2024,F1,Monaco,Le Havre,1,1,GG,No,0,0,Draw,9,4,13,Home Win,3,2,Home Win
+04/02/2024,F1,Lille,Clermont,4,0,NG,Yes,4,0,Home Win,12,1,13,Home Win,0,1,Away Win
+04/02/2024,F1,Metz,Lorient,1,2,GG,Yes,1,1,Draw,4,3,7,Home Win,3,1,Home Win
+04/02/2024,F1,Reims,Toulouse,2,3,GG,Yes,0,3,Away Win,10,6,16,Home Win,2,3,Away Win
+04/02/2024,F1,Brest,Nice,0,0,NG,No,0,0,Draw,3,5,8,Away Win,3,1,Home Win
+04/02/2024,F1,Lyon,Marseille,1,0,NG,No,1,0,Home Win,3,2,5,Home Win,2,1,Home Win
+09/02/2024,F1,Marseille,Metz,1,1,GG,No,0,0,Draw,6,3,9,Home Win,2,0,Home Win
+10/02/2024,F1,Lens,Strasbourg,3,1,GG,Yes,2,1,Home Win,4,5,9,Away Win,2,1,Home Win
+10/02/2024,F1,PSG,Lille,3,1,GG,Yes,2,1,Home Win,6,8,14,Away Win,2,3,Away Win
+11/02/2024,F1,Le Havre,Rennes,0,1,NG,No,0,0,Draw,5,1,6,Home Win,2,1,Home Win
+11/02/2024,F1,Clermont,Brest,1,1,GG,No,0,0,Draw,2,4,6,Away Win,2,4,Away Win
+11/02/2024,F1,Lorient,Reims,2,0,NG,No,0,0,Draw,1,7,8,Away Win,1,1,Draw
+11/02/2024,F1,Toulouse,Nantes,1,2,GG,Yes,0,1,Away Win,12,0,12,Home Win,2,1,Home Win
+11/02/2024,F1,Montpellier,Lyon,1,2,GG,Yes,1,0,Home Win,1,5,6,Away Win,1,2,Away Win
+11/02/2024,F1,Nice,Monaco,2,3,GG,Yes,1,1,Draw,8,2,10,Home Win,5,4,Home Win
+16/02/2024,F1,Lyon,Nice,1,0,NG,No,1,0,Home Win,4,9,13,Away Win,0,1,Away Win
+17/02/2024,F1,Lille,Le Havre,3,0,NG,Yes,2,0,Home Win,1,3,4,Away Win,2,3,Away Win
+17/02/2024,F1,Nantes,PSG,0,2,NG,No,0,0,Draw,3,8,11,Away Win,1,0,Home Win
+18/02/2024,F1,Strasbourg,Lorient,1,3,GG,Yes,0,2,Away Win,9,4,13,Home Win,3,1,Home Win
+18/02/2024,F1,Monaco,Toulouse,1,2,GG,Yes,0,1,Away Win,4,6,10,Away Win,1,3,Away Win
+18/02/2024,F1,Montpellier,Metz,3,0,NG,Yes,1,0,Home Win,7,4,11,Home Win,3,3,Draw
+18/02/2024,F1,Rennes,Clermont,3,1,GG,Yes,1,0,Home Win,4,4,8,Draw,1,0,Home Win
+18/02/2024,F1,Reims,Lens,1,1,GG,No,1,1,Draw,3,2,5,Home Win,2,2,Draw
+18/02/2024,F1,Brest,Marseille,1,0,NG,No,0,0,Draw,6,4,10,Home Win,3,1,Home Win
+23/02/2024,F1,Metz,Lyon,1,2,GG,Yes,1,1,Draw,4,3,7,Home Win,1,2,Away Win
+24/02/2024,F1,Lorient,Nantes,0,1,NG,No,0,0,Draw,3,8,11,Away Win,0,2,Away Win
+24/02/2024,F1,Strasbourg,Brest,0,3,NG,Yes,0,2,Away Win,0,4,4,Away Win,3,0,Home Win
+25/02/2024,F1,Lens,Monaco,2,3,GG,Yes,1,2,Away Win,9,3,12,Home Win,6,3,Home Win
+25/02/2024,F1,Le Havre,Reims,1,2,GG,Yes,0,0,Draw,5,5,10,Draw,3,3,Draw
+25/02/2024,F1,Nice,Clermont,0,0,NG,No,0,0,Draw,8,1,9,Home Win,2,1,Home Win
+25/02/2024,F1,Toulouse,Lille,3,1,GG,Yes,0,1,Away Win,6,8,14,Away Win,2,0,Home Win
+25/02/2024,F1,PSG,Rennes,1,1,GG,No,0,1,Away Win,4,0,4,Home Win,5,3,Home Win
+25/02/2024,F1,Marseille,Montpellier,4,1,GG,Yes,2,1,Home Win,7,4,11,Home Win,2,4,Away Win
+01/03/2024,F1,Monaco,PSG,0,0,NG,No,0,0,Draw,5,6,11,Away Win,0,0,Draw
+02/03/2024,F1,Reims,Lille,0,1,NG,No,0,0,Draw,4,4,8,Draw,3,2,Home Win
+02/03/2024,F1,Clermont,Marseille,1,5,GG,Yes,0,1,Away Win,7,4,11,Home Win,2,1,Home Win
+03/03/2024,F1,Toulouse,Nice,2,1,GG,Yes,0,1,Away Win,7,6,13,Home Win,2,2,Draw
+03/03/2024,F1,Brest,Le Havre,1,0,NG,No,1,0,Home Win,0,2,2,Away Win,4,1,Home Win
+03/03/2024,F1,Montpellier,Strasbourg,2,2,GG,Yes,0,0,Draw,8,4,12,Home Win,1,3,Away Win
+03/03/2024,F1,Nantes,Metz,0,2,NG,No,0,0,Draw,10,3,13,Home Win,3,2,Home Win
+03/03/2024,F1,Rennes,Lorient,1,2,GG,Yes,0,0,Draw,6,3,9,Home Win,1,2,Away Win
+03/03/2024,F1,Lyon,Lens,0,3,NG,Yes,0,1,Away Win,2,4,6,Away Win,0,2,Away Win
+08/03/2024,F1,Nice,Montpellier,1,2,GG,Yes,1,2,Away Win,8,5,13,Home Win,1,2,Away Win
+09/03/2024,F1,Lorient,Lyon,0,2,NG,No,0,0,Draw,4,7,11,Away Win,0,0,Draw
+09/03/2024,F1,Lens,Brest,1,0,NG,No,1,0,Home Win,2,4,6,Away Win,1,2,Away Win
+10/03/2024,F1,PSG,Reims,2,2,GG,Yes,2,2,Draw,7,2,9,Home Win,2,2,Draw
+10/03/2024,F1,Le Havre,Toulouse,1,0,NG,No,0,0,Draw,3,3,6,Draw,1,1,Draw
+10/03/2024,F1,Metz,Clermont,1,0,NG,No,1,0,Home Win,5,7,12,Away Win,1,3,Away Win
+10/03/2024,F1,Strasbourg,Monaco,0,1,NG,No,0,0,Draw,5,8,13,Away Win,1,3,Away Win
+10/03/2024,F1,Lille,Rennes,2,2,GG,Yes,0,2,Away Win,6,3,9,Home Win,5,2,Home Win
+10/03/2024,F1,Marseille,Nantes,2,0,NG,No,1,0,Home Win,2,8,10,Away Win,2,3,Away Win
+15/03/2024,F1,Toulouse,Lyon,2,3,GG,Yes,0,1,Away Win,5,3,8,Home Win,2,2,Draw
+16/03/2024,F1,Nantes,Strasbourg,1,3,GG,Yes,1,1,Draw,4,5,9,Away Win,2,3,Away Win
+16/03/2024,F1,Lens,Nice,1,3,GG,Yes,0,1,Away Win,11,3,14,Home Win,4,3,Home Win
+17/03/2024,F1,Brest,Lille,1,1,GG,No,0,0,Draw,3,3,6,Draw,3,0,Home Win
+17/03/2024,F1,Clermont,Le Havre,2,1,GG,Yes,2,1,Home Win,3,5,8,Away Win,3,5,Away Win
+17/03/2024,F1,Monaco,Lorient,2,2,GG,Yes,1,1,Draw,10,8,18,Home Win,3,1,Home Win
+17/03/2024,F1,Reims,Metz,2,1,GG,Yes,1,1,Draw,7,7,14,Draw,4,4,Draw
+17/03/2024,F1,Rennes,Marseille,2,0,NG,No,1,0,Home Win,4,5,9,Away Win,1,3,Away Win
+17/03/2024,F1,Montpellier,PSG,2,6,GG,Yes,2,2,Draw,7,4,11,Home Win,0,3,Away Win
+29/03/2024,F1,Lille,Lens,2,1,GG,Yes,1,0,Home Win,5,5,10,Draw,3,3,Draw
+30/03/2024,F1,Metz,Monaco,2,5,GG,Yes,0,3,Away Win,5,5,10,Draw,0,0,Draw
+30/03/2024,F1,Lyon,Reims,1,1,GG,No,0,0,Draw,7,8,15,Away Win,2,3,Away Win
+31/03/2024,F1,Lorient,Brest,0,1,NG,No,0,0,Draw,6,4,10,Home Win,1,3,Away Win
+31/03/2024,F1,Clermont,Toulouse,0,3,NG,Yes,0,1,Away Win,12,3,15,Home Win,3,1,Home Win
+31/03/2024,F1,Le Havre,Montpellier,0,2,NG,No,0,0,Draw,6,6,12,Draw,2,2,Draw
+31/03/2024,F1,Nice,Nantes,1,2,GG,Yes,0,1,Away Win,9,3,12,Home Win,2,5,Away Win
+31/03/2024,F1,Strasbourg,Rennes,2,0,NG,No,0,0,Draw,4,5,9,Away Win,1,2,Away Win
+31/03/2024,F1,Marseille,PSG,0,2,NG,No,0,0,Draw,5,3,8,Home Win,0,4,Away Win
+05/04/2024,F1,Lille,Marseille,3,1,GG,Yes,0,0,Draw,4,2,6,Home Win,1,6,Away Win
+06/04/2024,F1,Lens,Le Havre,1,1,GG,No,0,0,Draw,7,4,11,Home Win,2,5,Away Win
+06/04/2024,F1,PSG,Clermont,1,1,GG,No,0,1,Away Win,17,2,19,Home Win,1,0,Home Win
+07/04/2024,F1,Brest,Metz,4,3,GG,Yes,3,1,Home Win,8,5,13,Home Win,0,1,Away Win
+07/04/2024,F1,Montpellier,Lorient,2,0,NG,No,0,0,Draw,5,7,12,Away Win,3,6,Away Win
+07/04/2024,F1,Reims,Nice,0,0,NG,No,0,0,Draw,2,5,7,Away Win,2,1,Home Win
+07/04/2024,F1,Toulouse,Strasbourg,0,0,NG,No,0,0,Draw,4,3,7,Home Win,2,0,Home Win
+07/04/2024,F1,Monaco,Rennes,1,0,NG,No,1,0,Home Win,6,3,9,Home Win,3,1,Home Win
+07/04/2024,F1,Nantes,Lyon,1,3,GG,Yes,1,0,Home Win,5,5,10,Draw,2,2,Draw
+12/04/2024,F1,Metz,Lens,2,1,GG,Yes,2,1,Home Win,5,2,7,Home Win,2,5,Away Win
+13/04/2024,F1,Strasbourg,Reims,3,1,GG,Yes,1,1,Draw,5,4,9,Home Win,1,3,Away Win
+13/04/2024,F1,Rennes,Toulouse,1,2,GG,Yes,1,2,Away Win,8,4,12,Home Win,3,3,Draw
+14/04/2024,F1,Le Havre,Nantes,0,1,NG,No,0,0,Draw,6,7,13,Away Win,3,2,Home Win
+14/04/2024,F1,Clermont,Montpellier,1,1,GG,No,1,0,Home Win,3,4,7,Away Win,1,1,Draw
+14/04/2024,F1,Lyon,Brest,4,3,GG,Yes,1,0,Home Win,10,7,17,Home Win,5,5,Draw
+19/04/2024,F1,Nice,Lorient,3,0,NG,Yes,1,0,Home Win,2,3,5,Away Win,0,2,Away Win
+20/04/2024,F1,Nantes,Rennes,0,3,NG,Yes,0,0,Draw,3,7,10,Away Win,1,4,Away Win
+20/04/2024,F1,Lens,Clermont,1,0,NG,No,1,0,Home Win,4,3,7,Home Win,1,4,Away Win
+21/04/2024,F1,Le Havre,Metz,0,1,NG,No,0,0,Draw,4,2,6,Home Win,2,3,Away Win
+21/04/2024,F1,Lille,Strasbourg,1,0,NG,No,1,0,Home Win,4,4,8,Draw,2,3,Away Win
+21/04/2024,F1,Reims,Montpellier,1,2,GG,Yes,0,1,Away Win,8,4,12,Home Win,3,3,Draw
+21/04/2024,F1,Brest,Monaco,0,2,NG,No,0,1,Away Win,7,4,11,Home Win,5,2,Home Win
+21/04/2024,F1,Toulouse,Marseille,2,2,GG,Yes,1,1,Draw,7,4,11,Home Win,1,2,Away Win
+21/04/2024,F1,PSG,Lyon,4,1,GG,Yes,4,1,Home Win,4,10,14,Away Win,0,0,Draw
+24/04/2024,F1,Lorient,PSG,1,4,GG,Yes,0,2,Away Win,3,6,9,Away Win,1,1,Draw
+24/04/2024,F1,Marseille,Nice,2,2,GG,Yes,1,1,Draw,3,2,5,Home Win,2,3,Away Win
+24/04/2024,F1,Monaco,Lille,1,0,NG,No,0,0,Draw,7,5,12,Home Win,1,2,Away Win
+26/04/2024,F1,Montpellier,Nantes,1,1,GG,No,1,1,Draw,3,6,9,Away Win,2,1,Home Win
+27/04/2024,F1,PSG,Le Havre,3,3,GG,Yes,1,2,Away Win,11,2,13,Home Win,2,1,Home Win
+28/04/2024,F1,Metz,Lille,1,2,GG,Yes,1,2,Away Win,2,4,6,Away Win,1,2,Away Win
+28/04/2024,F1,Clermont,Reims,4,1,GG,Yes,1,1,Draw,5,5,10,Draw,0,3,Away Win
+28/04/2024,F1,Lorient,Toulouse,1,2,GG,Yes,1,0,Home Win,5,1,6,Home Win,1,3,Away Win
+28/04/2024,F1,Strasbourg,Nice,1,3,GG,Yes,1,1,Draw,2,3,5,Away Win,2,3,Away Win
+28/04/2024,F1,Rennes,Brest,4,5,GG,Yes,2,1,Home Win,7,4,11,Home Win,4,1,Home Win
+28/04/2024,F1,Lyon,Monaco,3,2,GG,Yes,2,1,Home Win,3,3,6,Draw,1,3,Away Win
+28/04/2024,F1,Marseille,Lens,2,1,GG,Yes,1,0,Home Win,3,11,14,Away Win,2,2,Draw
+03/05/2024,F1,Toulouse,Montpellier,1,2,GG,Yes,1,1,Draw,8,0,8,Home Win,3,4,Away Win
+03/05/2024,F1,Lens,Lorient,2,0,NG,No,0,0,Draw,4,4,8,Draw,1,2,Away Win
+04/05/2024,F1,Le Havre,Strasbourg,3,1,GG,Yes,1,0,Home Win,3,2,5,Home Win,3,1,Home Win
+04/05/2024,F1,Monaco,Clermont,4,1,GG,Yes,2,1,Home Win,4,4,8,Draw,3,1,Home Win
+04/05/2024,F1,Metz,Rennes,2,3,GG,Yes,2,1,Home Win,2,5,7,Away Win,2,3,Away Win
+04/05/2024,F1,Brest,Nantes,0,0,NG,No,0,0,Draw,6,0,6,Home Win,3,2,Home Win
+06/05/2024,F1,Lille,Lyon,3,4,GG,Yes,2,0,Home Win,4,4,8,Draw,3,1,Home Win
+10/05/2024,F1,Brest,Reims,1,1,GG,No,1,1,Draw,3,4,7,Away Win,2,3,Away Win
+10/05/2024,F1,Nice,Le Havre,1,0,NG,No,1,0,Home Win,6,1,7,Home Win,2,0,Home Win
+12/05/2024,F1,Clermont,Lyon,0,1,NG,No,0,0,Draw,7,2,9,Home Win,1,2,Away Win
+12/05/2024,F1,Marseille,Lorient,3,1,GG,Yes,2,1,Home Win,9,5,14,Home Win,3,4,Away Win
+12/05/2024,F1,Montpellier,Monaco,0,2,NG,No,0,0,Draw,3,3,6,Draw,1,1,Draw
+12/05/2024,F1,Nantes,Lille,1,2,GG,Yes,0,2,Away Win,5,4,9,Home Win,4,2,Home Win
+12/05/2024,F1,PSG,Toulouse,1,3,GG,Yes,1,1,Draw,4,6,10,Away Win,0,0,Draw
+12/05/2024,F1,Rennes,Lens,1,1,GG,No,0,0,Draw,4,3,7,Home Win,2,3,Away Win
+12/05/2024,F1,Strasbourg,Metz,2,1,GG,Yes,0,0,Draw,3,6,9,Away Win,2,2,Draw
+15/05/2024,F1,Nice,PSG,1,2,GG,Yes,1,2,Away Win,7,2,9,Home Win,1,3,Away Win
+15/05/2024,F1,Reims,Marseille,1,0,NG,No,1,0,Home Win,3,10,13,Away Win,3,1,Home Win
+19/05/2024,F1,Le Havre,Marseille,1,2,GG,Yes,0,0,Draw,5,3,8,Home Win,1,0,Home Win
+19/05/2024,F1,Lens,Montpellier,2,2,GG,Yes,2,0,Home Win,1,0,1,Home Win,0,1,Away Win
+19/05/2024,F1,Lille,Nice,2,2,GG,Yes,0,1,Away Win,3,5,8,Away Win,3,3,Draw
+19/05/2024,F1,Lorient,Clermont,5,0,NG,Yes,2,0,Home Win,9,2,11,Home Win,3,3,Draw
+19/05/2024,F1,Lyon,Strasbourg,2,1,GG,Yes,1,0,Home Win,7,2,9,Home Win,1,0,Home Win
+19/05/2024,F1,Metz,PSG,0,2,NG,No,0,2,Away Win,1,11,12,Away Win,2,1,Home Win
+19/05/2024,F1,Monaco,Nantes,4,0,NG,Yes,3,0,Home Win,2,2,4,Draw,1,2,Away Win
+19/05/2024,F1,Reims,Rennes,2,1,GG,Yes,0,0,Draw,2,4,6,Away Win,1,1,Draw
+19/05/2024,F1,Toulouse,Brest,0,3,NG,Yes,0,0,Draw,6,2,8,Home Win,1,2,Away Win
+16/08/2024,F1,Le Havre,PSG,1,4,GG,Yes,0,1,Away Win,2,8,10,Away Win,3,0,Home Win
+17/08/2024,F1,Brest,Marseille,1,5,GG,Yes,1,3,Away Win,5,0,5,Home Win,4,1,Home Win
+17/08/2024,F1,Reims,Lille,0,2,NG,No,0,1,Away Win,0,8,8,Away Win,2,2,Draw
+17/08/2024,F1,Monaco,St Etienne,1,0,NG,No,1,0,Home Win,5,4,9,Home Win,1,1,Draw
+18/08/2024,F1,Auxerre,Nice,2,1,GG,Yes,1,1,Draw,3,5,8,Away Win,0,0,Draw
+18/08/2024,F1,Angers,Lens,0,1,NG,No,0,1,Away Win,7,3,10,Home Win,1,0,Home Win
+18/08/2024,F1,Montpellier,Strasbourg,1,1,GG,No,0,0,Draw,6,4,10,Home Win,4,3,Home Win
+18/08/2024,F1,Toulouse,Nantes,0,0,NG,No,0,0,Draw,10,5,15,Home Win,1,3,Away Win
+18/08/2024,F1,Rennes,Lyon,3,0,NG,Yes,2,0,Home Win,7,7,14,Draw,2,1,Home Win
+23/08/2024,F1,PSG,Montpellier,6,0,NG,Yes,2,0,Home Win,10,2,12,Home Win,1,4,Away Win
+24/08/2024,F1,Lyon,Monaco,0,2,NG,No,0,0,Draw,0,6,6,Away Win,0,0,Draw
+24/08/2024,F1,Lille,Angers,2,0,NG,No,1,0,Home Win,3,2,5,Home Win,1,2,Away Win
+24/08/2024,F1,St Etienne,Le Havre,0,2,NG,No,0,0,Draw,2,4,6,Away Win,3,3,Draw
+25/08/2024,F1,Lens,Brest,2,0,NG,No,2,0,Home Win,5,2,7,Home Win,0,0,Draw
+25/08/2024,F1,Nantes,Auxerre,2,0,NG,No,1,0,Home Win,3,12,15,Away Win,0,0,Draw
+25/08/2024,F1,Nice,Toulouse,1,1,GG,No,0,0,Draw,4,4,8,Draw,4,1,Home Win
+25/08/2024,F1,Strasbourg,Rennes,3,1,GG,Yes,1,0,Home Win,2,5,7,Away Win,2,4,Away Win
+25/08/2024,F1,Marseille,Reims,2,2,GG,Yes,1,0,Home Win,2,4,6,Away Win,1,1,Draw
+30/08/2024,F1,Lyon,Strasbourg,4,3,GG,Yes,1,1,Draw,9,2,11,Home Win,3,2,Home Win
+31/08/2024,F1,Brest,St Etienne,4,0,NG,Yes,2,0,Home Win,7,2,9,Home Win,0,5,Away Win
+31/08/2024,F1,Montpellier,Nantes,1,3,GG,Yes,1,2,Away Win,8,3,11,Home Win,2,2,Draw
+31/08/2024,F1,Toulouse,Marseille,1,3,GG,Yes,0,2,Away Win,2,3,5,Away Win,4,2,Home Win
+01/09/2024,F1,Monaco,Lens,1,1,GG,No,0,0,Draw,7,7,14,Draw,1,4,Away Win
+01/09/2024,F1,Angers,Nice,1,4,GG,Yes,0,2,Away Win,4,7,11,Away Win,6,4,Home Win
+01/09/2024,F1,Le Havre,Auxerre,3,1,GG,Yes,1,1,Draw,2,2,4,Draw,1,5,Away Win
+01/09/2024,F1,Reims,Rennes,2,1,GG,Yes,1,1,Draw,3,5,8,Away Win,2,1,Home Win
+01/09/2024,F1,Lille,PSG,1,3,GG,Yes,0,2,Away Win,3,1,4,Home Win,3,2,Home Win
+13/09/2024,F1,St Etienne,Lille,1,0,NG,No,1,0,Home Win,2,7,9,Away Win,1,1,Draw
+14/09/2024,F1,Marseille,Nice,2,0,NG,No,1,0,Home Win,1,2,3,Away Win,5,2,Home Win
+14/09/2024,F1,Auxerre,Monaco,0,3,NG,Yes,0,2,Away Win,1,6,7,Away Win,3,0,Home Win
+14/09/2024,F1,PSG,Brest,3,1,GG,Yes,1,1,Draw,9,1,10,Home Win,2,3,Away Win
+15/09/2024,F1,Rennes,Montpellier,3,0,NG,Yes,2,0,Home Win,3,4,7,Away Win,1,3,Away Win
+15/09/2024,F1,Nantes,Reims,1,2,GG,Yes,1,1,Draw,6,3,9,Home Win,3,1,Home Win
+15/09/2024,F1,Strasbourg,Angers,1,1,GG,No,1,0,Home Win,6,9,15,Away Win,4,1,Home Win
+15/09/2024,F1,Toulouse,Le Havre,2,0,NG,No,0,0,Draw,6,5,11,Home Win,1,1,Draw
+15/09/2024,F1,Lens,Lyon,0,0,NG,No,0,0,Draw,5,8,13,Away Win,0,0,Draw
+20/09/2024,F1,Nice,St Etienne,8,0,NG,Yes,6,0,Home Win,3,2,5,Home Win,0,1,Away Win
+21/09/2024,F1,Lille,Strasbourg,3,3,GG,Yes,2,2,Draw,9,5,14,Home Win,2,2,Draw
+21/09/2024,F1,Rennes,Lens,1,1,GG,No,1,0,Home Win,4,3,7,Home Win,2,4,Away Win
+21/09/2024,F1,Reims,PSG,1,1,GG,No,1,0,Home Win,3,5,8,Away Win,2,1,Home Win
+22/09/2024,F1,Monaco,Le Havre,3,1,GG,Yes,1,1,Draw,6,4,10,Home Win,1,3,Away Win
+22/09/2024,F1,Angers,Nantes,1,1,GG,No,1,1,Draw,3,6,9,Away Win,1,4,Away Win
+22/09/2024,F1,Brest,Toulouse,2,0,NG,No,1,0,Home Win,4,3,7,Home Win,1,1,Draw
+22/09/2024,F1,Montpellier,Auxerre,3,2,GG,Yes,0,1,Away Win,11,5,16,Home Win,3,4,Away Win
+22/09/2024,F1,Lyon,Marseille,2,3,GG,Yes,0,0,Draw,10,3,13,Home Win,4,3,Home Win
+27/09/2024,F1,Auxerre,Brest,3,0,NG,Yes,2,0,Home Win,2,3,5,Away Win,2,0,Home Win
+27/09/2024,F1,PSG,Rennes,3,1,GG,Yes,1,0,Home Win,6,4,10,Home Win,1,3,Away Win
+28/09/2024,F1,Lens,Nice,0,0,NG,No,0,0,Draw,11,4,15,Home Win,4,2,Home Win
+28/09/2024,F1,Le Havre,Lille,0,3,NG,Yes,0,2,Away Win,1,5,6,Away Win,2,1,Home Win
+28/09/2024,F1,Monaco,Montpellier,2,1,GG,Yes,1,1,Draw,6,2,8,Home Win,4,3,Home Win
+29/09/2024,F1,Toulouse,Lyon,1,2,GG,Yes,1,1,Draw,3,4,7,Away Win,2,2,Draw
+29/09/2024,F1,Angers,Reims,1,3,GG,Yes,0,2,Away Win,5,4,9,Home Win,0,3,Away Win
+29/09/2024,F1,Nantes,St Etienne,2,2,GG,Yes,1,0,Home Win,8,4,12,Home Win,2,2,Draw
+29/09/2024,F1,Strasbourg,Marseille,1,0,NG,No,1,0,Home Win,8,3,11,Home Win,2,1,Home Win
+04/10/2024,F1,Marseille,Angers,1,1,GG,No,0,0,Draw,9,3,12,Home Win,4,0,Home Win
+05/10/2024,F1,St Etienne,Auxerre,3,1,GG,Yes,1,0,Home Win,5,4,9,Home Win,3,1,Home Win
+05/10/2024,F1,Lille,Toulouse,2,1,GG,Yes,0,1,Away Win,4,6,10,Away Win,3,2,Home Win
+05/10/2024,F1,Rennes,Monaco,1,2,GG,Yes,1,2,Away Win,10,4,14,Home Win,2,4,Away Win
+06/10/2024,F1,Lyon,Nantes,2,0,NG,No,1,0,Home Win,6,9,15,Away Win,1,2,Away Win
+06/10/2024,F1,Brest,Le Havre,2,0,NG,No,1,0,Home Win,1,9,10,Away Win,4,0,Home Win
+06/10/2024,F1,Reims,Montpellier,4,2,GG,Yes,2,1,Home Win,4,4,8,Draw,3,5,Away Win
+06/10/2024,F1,Strasbourg,Lens,2,2,GG,Yes,1,2,Away Win,3,5,8,Away Win,2,4,Away Win
+06/10/2024,F1,Nice,PSG,1,1,GG,No,1,0,Home Win,5,15,20,Away Win,1,2,Away Win
+18/10/2024,F1,Monaco,Lille,0,0,NG,No,0,0,Draw,6,1,7,Home Win,1,5,Away Win
+19/10/2024,F1,Brest,Rennes,1,1,GG,No,0,0,Draw,2,4,6,Away Win,2,2,Draw
+19/10/2024,F1,St Etienne,Lens,0,2,NG,No,0,1,Away Win,2,7,9,Away Win,1,2,Away Win
+19/10/2024,F1,PSG,Strasbourg,4,2,GG,Yes,1,0,Home Win,5,5,10,Draw,2,2,Draw
+20/10/2024,F1,Le Havre,Lyon,0,4,NG,Yes,0,1,Away Win,4,6,10,Away Win,3,4,Away Win
+20/10/2024,F1,Auxerre,Reims,2,1,GG,Yes,1,0,Home Win,5,9,14,Away Win,2,3,Away Win
+20/10/2024,F1,Nantes,Nice,1,1,GG,No,0,0,Draw,4,8,12,Away Win,2,1,Home Win
+20/10/2024,F1,Toulouse,Angers,1,1,GG,No,0,1,Away Win,8,2,10,Home Win,2,4,Away Win
+20/10/2024,F1,Montpellier,Marseille,0,5,NG,Yes,0,3,Away Win,3,2,5,Home Win,1,3,Away Win
+25/10/2024,F1,Rennes,Le Havre,1,0,NG,No,0,0,Draw,14,0,14,Home Win,2,4,Away Win
+26/10/2024,F1,Angers,St Etienne,4,2,GG,Yes,2,1,Home Win,2,3,5,Away Win,1,3,Away Win
+26/10/2024,F1,Reims,Brest,1,2,GG,Yes,1,2,Away Win,7,3,10,Home Win,3,2,Home Win
+26/10/2024,F1,Lens,Lille,0,2,NG,No,0,0,Draw,8,2,10,Home Win,4,4,Draw
+27/10/2024,F1,Lyon,Auxerre,2,2,GG,Yes,1,0,Home Win,5,4,9,Home Win,0,4,Away Win
+27/10/2024,F1,Montpellier,Toulouse,0,3,NG,Yes,0,3,Away Win,1,3,4,Away Win,1,2,Away Win
+27/10/2024,F1,Nice,Monaco,2,1,GG,Yes,1,1,Draw,6,6,12,Draw,2,5,Away Win
+27/10/2024,F1,Strasbourg,Nantes,3,1,GG,Yes,1,0,Home Win,5,4,9,Home Win,2,3,Away Win
+27/10/2024,F1,Marseille,PSG,0,3,NG,Yes,0,3,Away Win,1,2,3,Away Win,1,0,Home Win
+01/11/2024,F1,Monaco,Angers,0,1,NG,No,0,1,Away Win,4,4,8,Draw,1,1,Draw
+01/11/2024,F1,Lille,Lyon,1,1,GG,No,1,0,Home Win,4,9,13,Away Win,3,1,Home Win
+02/11/2024,F1,PSG,Lens,1,0,NG,No,1,0,Home Win,7,4,11,Home Win,1,5,Away Win
+02/11/2024,F1,Brest,Nice,0,1,NG,No,0,1,Away Win,6,2,8,Home Win,0,2,Away Win
+02/11/2024,F1,St Etienne,Strasbourg,2,0,NG,No,0,0,Draw,2,3,5,Away Win,2,1,Home Win
+03/11/2024,F1,Toulouse,Reims,1,0,NG,No,0,0,Draw,6,7,13,Away Win,0,3,Away Win
+03/11/2024,F1,Auxerre,Rennes,4,0,NG,Yes,2,0,Home Win,3,8,11,Away Win,0,2,Away Win
+03/11/2024,F1,Le Havre,Montpellier,1,0,NG,No,0,0,Draw,2,10,12,Away Win,2,1,Home Win
+03/11/2024,F1,Nantes,Marseille,1,2,GG,Yes,1,1,Draw,2,5,7,Away Win,1,1,Draw
+08/11/2024,F1,Marseille,Auxerre,1,3,GG,Yes,0,3,Away Win,5,3,8,Home Win,3,2,Home Win
+09/11/2024,F1,Strasbourg,Monaco,1,3,GG,Yes,1,0,Home Win,1,2,3,Away Win,5,2,Home Win
+09/11/2024,F1,Lens,Nantes,3,2,GG,Yes,1,1,Draw,6,1,7,Home Win,2,0,Home Win
+09/11/2024,F1,Angers,PSG,2,4,GG,Yes,0,4,Away Win,6,8,14,Away Win,0,3,Away Win
+10/11/2024,F1,Nice,Lille,2,2,GG,Yes,0,1,Away Win,6,2,8,Home Win,2,2,Draw
+10/11/2024,F1,Le Havre,Reims,0,3,NG,Yes,0,2,Away Win,8,7,15,Home Win,1,4,Away Win
+10/11/2024,F1,Montpellier,Brest,3,1,GG,Yes,2,0,Home Win,3,7,10,Away Win,5,1,Home Win
+10/11/2024,F1,Rennes,Toulouse,0,2,NG,No,0,2,Away Win,5,3,8,Home Win,3,1,Home Win
+10/11/2024,F1,Lyon,St Etienne,1,0,NG,No,1,0,Home Win,7,6,13,Home Win,3,2,Home Win
+22/11/2024,F1,Monaco,Brest,3,2,GG,Yes,2,0,Home Win,2,8,10,Away Win,2,2,Draw
+22/11/2024,F1,PSG,Toulouse,3,0,NG,Yes,1,0,Home Win,7,5,12,Home Win,1,2,Away Win
+23/11/2024,F1,Lens,Marseille,1,3,GG,Yes,0,0,Draw,6,0,6,Home Win,3,3,Draw
+23/11/2024,F1,St Etienne,Montpellier,1,0,NG,No,0,0,Draw,5,11,16,Away Win,3,5,Away Win
+23/11/2024,F1,Reims,Lyon,1,1,GG,No,0,1,Away Win,4,2,6,Home Win,2,0,Home Win
+24/11/2024,F1,Lille,Rennes,1,0,NG,No,1,0,Home Win,3,3,6,Draw,3,2,Home Win
+24/11/2024,F1,Auxerre,Angers,1,0,NG,No,0,0,Draw,2,2,4,Draw,4,1,Home Win
+24/11/2024,F1,Nantes,Le Havre,0,2,NG,No,0,1,Away Win,9,2,11,Home Win,2,1,Home Win
+24/11/2024,F1,Nice,Strasbourg,2,1,GG,Yes,0,1,Away Win,4,7,11,Away Win,2,0,Home Win
+29/11/2024,F1,Reims,Lens,0,2,NG,No,0,1,Away Win,3,1,4,Home Win,1,2,Away Win
+30/11/2024,F1,Rennes,St Etienne,5,0,NG,Yes,2,0,Home Win,6,1,7,Home Win,0,1,Away Win
+30/11/2024,F1,Brest,Strasbourg,3,1,GG,Yes,2,0,Home Win,4,3,7,Home Win,3,2,Home Win
+30/11/2024,F1,PSG,Nantes,1,1,GG,No,1,1,Draw,9,3,12,Home Win,0,0,Draw
+01/12/2024,F1,Montpellier,Lille,2,2,GG,Yes,1,1,Draw,7,2,9,Home Win,4,5,Away Win
+01/12/2024,F1,Le Havre,Angers,0,1,NG,No,0,0,Draw,2,4,6,Away Win,2,0,Home Win
+01/12/2024,F1,Lyon,Nice,4,1,GG,Yes,3,1,Home Win,5,4,9,Home Win,1,2,Away Win
+01/12/2024,F1,Toulouse,Auxerre,2,0,NG,No,2,0,Home Win,6,2,8,Home Win,0,0,Draw
+01/12/2024,F1,Marseille,Monaco,2,1,GG,Yes,0,1,Away Win,5,3,8,Home Win,0,1,Away Win
+06/12/2024,F1,Lille,Brest,3,1,GG,Yes,2,0,Home Win,2,1,3,Home Win,1,1,Draw
+06/12/2024,F1,Auxerre,PSG,0,0,NG,No,0,0,Draw,3,15,18,Away Win,2,1,Home Win
+07/12/2024,F1,Monaco,Toulouse,2,0,NG,No,0,0,Draw,2,3,5,Away Win,2,2,Draw
+07/12/2024,F1,Nice,Le Havre,2,1,GG,Yes,0,0,Draw,5,8,13,Away Win,3,2,Home Win
+07/12/2024,F1,Angers,Lyon,0,3,NG,Yes,0,1,Away Win,2,7,9,Away Win,0,2,Away Win
+08/12/2024,F1,Lens,Montpellier,2,0,NG,No,1,0,Home Win,6,3,9,Home Win,2,3,Away Win
+08/12/2024,F1,Nantes,Rennes,1,0,NG,No,0,0,Draw,5,4,9,Home Win,1,1,Draw
+08/12/2024,F1,Strasbourg,Reims,0,0,NG,No,0,0,Draw,3,2,5,Home Win,1,2,Away Win
+08/12/2024,F1,St Etienne,Marseille,0,2,NG,No,0,1,Away Win,0,9,9,Away Win,1,1,Draw
+13/12/2024,F1,Toulouse,St Etienne,2,1,GG,Yes,0,0,Draw,2,3,5,Away Win,3,4,Away Win
+14/12/2024,F1,Marseille,Lille,1,1,GG,No,1,0,Home Win,3,8,11,Away Win,1,3,Away Win
+14/12/2024,F1,Auxerre,Lens,2,2,GG,Yes,1,2,Away Win,3,5,8,Away Win,3,1,Home Win
+14/12/2024,F1,Reims,Monaco,0,0,NG,No,0,0,Draw,1,4,5,Away Win,1,3,Away Win
+15/12/2024,F1,Montpellier,Nice,2,2,GG,Yes,1,2,Away Win,9,4,13,Home Win,1,2,Away Win
+15/12/2024,F1,Brest,Nantes,4,1,GG,Yes,2,0,Home Win,0,5,5,Away Win,3,3,Draw
+15/12/2024,F1,Le Havre,Strasbourg,0,3,NG,Yes,0,2,Away Win,3,2,5,Home Win,0,1,Away Win
+15/12/2024,F1,Rennes,Angers,2,0,NG,No,1,0,Home Win,2,1,3,Home Win,3,1,Home Win
+15/12/2024,F1,PSG,Lyon,3,1,GG,Yes,2,1,Home Win,4,3,7,Home Win,2,3,Away Win
+18/12/2024,F1,Monaco,PSG,2,4,GG,Yes,0,1,Away Win,1,9,10,Away Win,2,0,Home Win
+03/01/2025,F1,Nice,Rennes,3,2,GG,Yes,3,1,Home Win,3,3,6,Draw,3,3,Draw
+04/01/2025,F1,St Etienne,Reims,3,1,GG,Yes,0,1,Away Win,6,9,15,Away Win,2,1,Home Win
+04/01/2025,F1,Lille,Nantes,1,1,GG,No,1,0,Home Win,2,0,2,Home Win,1,2,Away Win
+04/01/2025,F1,Lyon,Montpellier,1,0,NG,No,0,0,Draw,3,5,8,Away Win,1,2,Away Win
+05/01/2025,F1,Angers,Brest,2,0,NG,No,1,0,Home Win,2,4,6,Away Win,2,1,Home Win
+05/01/2025,F1,Lens,Toulouse,0,1,NG,No,0,0,Draw,7,1,8,Home Win,5,2,Home Win
+05/01/2025,F1,Strasbourg,Auxerre,3,1,GG,Yes,1,1,Draw,4,3,7,Home Win,1,2,Away Win
+05/01/2025,F1,Marseille,Le Havre,5,1,GG,Yes,3,0,Home Win,4,0,4,Home Win,1,0,Home Win
+10/01/2025,F1,Nantes,Monaco,2,2,GG,Yes,1,0,Home Win,3,11,14,Away Win,3,0,Home Win
+10/01/2025,F1,Auxerre,Lille,0,0,NG,No,0,0,Draw,6,10,16,Away Win,0,4,Away Win
+11/01/2025,F1,Brest,Lyon,2,1,GG,Yes,2,1,Home Win,4,7,11,Away Win,1,2,Away Win
+11/01/2025,F1,Reims,Nice,2,4,GG,Yes,1,2,Away Win,6,3,9,Home Win,4,2,Home Win
+11/01/2025,F1,Rennes,Marseille,1,2,GG,Yes,1,1,Draw,2,3,5,Away Win,2,2,Draw
+12/01/2025,F1,Le Havre,Lens,1,2,GG,Yes,1,1,Draw,3,8,11,Away Win,2,2,Draw
+12/01/2025,F1,Montpellier,Angers,1,3,GG,Yes,0,1,Away Win,3,3,6,Draw,6,2,Home Win
+12/01/2025,F1,Toulouse,Strasbourg,1,2,GG,Yes,1,2,Away Win,3,2,5,Home Win,1,4,Away Win
+12/01/2025,F1,PSG,St Etienne,2,1,GG,Yes,2,0,Home Win,7,3,10,Home Win,1,2,Away Win
+17/01/2025,F1,Montpellier,Monaco,2,1,GG,Yes,0,1,Away Win,4,16,20,Away Win,1,2,Away Win
+17/01/2025,F1,Lille,Nice,2,1,GG,Yes,0,1,Away Win,7,7,14,Draw,1,3,Away Win
+18/01/2025,F1,Lens,PSG,1,2,GG,Yes,1,0,Home Win,6,1,7,Home Win,2,2,Draw
+18/01/2025,F1,Rennes,Brest,1,2,GG,Yes,0,1,Away Win,4,4,8,Draw,2,3,Away Win
+18/01/2025,F1,Lyon,Toulouse,0,0,NG,No,0,0,Draw,8,5,13,Home Win,1,0,Home Win
+19/01/2025,F1,St Etienne,Nantes,1,1,GG,No,0,1,Away Win,7,7,14,Draw,2,1,Home Win
+19/01/2025,F1,Angers,Auxerre,2,0,NG,No,1,0,Home Win,4,2,6,Home Win,2,1,Home Win
+19/01/2025,F1,Reims,Le Havre,1,1,GG,No,1,0,Home Win,6,6,12,Draw,2,2,Draw
+19/01/2025,F1,Marseille,Strasbourg,1,1,GG,No,0,1,Away Win,9,3,12,Home Win,3,3,Draw
+24/01/2025,F1,Auxerre,St Etienne,1,1,GG,No,1,1,Draw,3,4,7,Away Win,2,0,Home Win
+25/01/2025,F1,Monaco,Rennes,3,2,GG,Yes,1,1,Draw,4,2,6,Home Win,3,3,Draw
+25/01/2025,F1,Strasbourg,Lille,2,1,GG,Yes,0,1,Away Win,6,7,13,Away Win,4,2,Home Win
+25/01/2025,F1,PSG,Reims,1,1,GG,No,0,0,Draw,8,1,9,Home Win,2,2,Draw
+26/01/2025,F1,Le Havre,Brest,0,1,NG,No,0,1,Away Win,6,6,12,Draw,2,3,Away Win
+26/01/2025,F1,Lens,Angers,1,0,NG,No,0,0,Draw,4,4,8,Draw,1,1,Draw
+26/01/2025,F1,Nantes,Lyon,1,1,GG,No,0,1,Away Win,4,8,12,Away Win,3,1,Home Win
+26/01/2025,F1,Toulouse,Montpellier,1,2,GG,Yes,0,0,Draw,6,2,8,Home Win,1,2,Away Win
+26/01/2025,F1,Nice,Marseille,2,0,NG,No,1,0,Home Win,6,12,18,Away Win,1,1,Draw
+31/01/2025,F1,Montpellier,Lens,0,2,NG,No,0,1,Away Win,4,5,9,Away Win,4,3,Home Win
+01/02/2025,F1,Brest,PSG,2,5,GG,Yes,0,1,Away Win,4,7,11,Away Win,1,0,Home Win
+01/02/2025,F1,Monaco,Auxerre,4,2,GG,Yes,1,2,Away Win,5,4,9,Home Win,2,2,Draw
+01/02/2025,F1,Lille,St Etienne,4,1,GG,Yes,1,1,Draw,7,1,8,Home Win,1,1,Draw
+02/02/2025,F1,Toulouse,Nice,1,1,GG,No,0,1,Away Win,7,2,9,Home Win,2,2,Draw
+02/02/2025,F1,Angers,Le Havre,1,1,GG,No,0,0,Draw,4,2,6,Home Win,2,4,Away Win
+02/02/2025,F1,Reims,Nantes,1,2,GG,Yes,1,1,Draw,9,3,12,Home Win,3,3,Draw
+02/02/2025,F1,Rennes,Strasbourg,1,0,NG,No,0,0,Draw,6,2,8,Home Win,3,3,Draw
+02/02/2025,F1,Marseille,Lyon,3,2,GG,Yes,0,0,Draw,6,2,8,Home Win,4,1,Home Win
+07/02/2025,F1,Nantes,Brest,0,2,NG,No,0,1,Away Win,12,4,16,Home Win,3,2,Home Win
+07/02/2025,F1,PSG,Monaco,4,1,GG,Yes,1,1,Draw,1,1,2,Draw,1,0,Home Win
+08/02/2025,F1,Nice,Lens,2,0,NG,No,1,0,Home Win,7,3,10,Home Win,1,4,Away Win
+08/02/2025,F1,Lille,Le Havre,1,2,GG,Yes,0,1,Away Win,8,10,18,Away Win,2,1,Home Win
+08/02/2025,F1,St Etienne,Rennes,0,2,NG,No,0,1,Away Win,2,4,6,Away Win,1,5,Away Win
+09/02/2025,F1,Lyon,Reims,4,0,NG,Yes,1,0,Home Win,6,6,12,Draw,0,0,Draw
+09/02/2025,F1,Auxerre,Toulouse,2,2,GG,Yes,0,0,Draw,3,5,8,Away Win,1,1,Draw
+09/02/2025,F1,Strasbourg,Montpellier,2,0,NG,No,1,0,Home Win,6,2,8,Home Win,1,4,Away Win
+09/02/2025,F1,Angers,Marseille,0,2,NG,No,0,0,Draw,1,7,8,Away Win,1,2,Away Win
+14/02/2025,F1,Brest,Auxerre,2,2,GG,Yes,0,1,Away Win,6,4,10,Home Win,2,2,Draw
+15/02/2025,F1,Marseille,St Etienne,5,1,GG,Yes,1,0,Home Win,14,3,17,Home Win,1,1,Draw
+15/02/2025,F1,Monaco,Nantes,7,1,GG,Yes,2,1,Home Win,9,1,10,Home Win,1,1,Draw
+15/02/2025,F1,Toulouse,PSG,0,1,NG,No,0,0,Draw,5,2,7,Home Win,2,0,Home Win
+16/02/2025,F1,Montpellier,Lyon,1,4,GG,Yes,1,1,Draw,7,4,11,Home Win,3,1,Home Win
+16/02/2025,F1,Le Havre,Nice,1,3,GG,Yes,1,2,Away Win,6,2,8,Home Win,2,2,Draw
+16/02/2025,F1,Lens,Strasbourg,0,2,NG,No,0,0,Draw,7,3,10,Home Win,4,2,Home Win
+16/02/2025,F1,Reims,Angers,0,1,NG,No,0,1,Away Win,1,4,5,Away Win,2,1,Home Win
+16/02/2025,F1,Rennes,Lille,0,2,NG,No,0,0,Draw,4,8,12,Away Win,2,1,Home Win
+21/02/2025,F1,Rennes,Reims,1,0,NG,No,1,0,Home Win,9,2,11,Home Win,1,2,Away Win
+22/02/2025,F1,Lille,Monaco,2,1,GG,Yes,2,1,Home Win,1,6,7,Away Win,4,2,Home Win
+22/02/2025,F1,St Etienne,Angers,3,3,GG,Yes,1,2,Away Win,4,3,7,Home Win,3,0,Home Win
+22/02/2025,F1,Auxerre,Marseille,3,0,NG,Yes,1,0,Home Win,2,5,7,Away Win,1,3,Away Win
+23/02/2025,F1,Nantes,Lens,3,1,GG,Yes,1,0,Home Win,2,11,13,Away Win,2,4,Away Win
+23/02/2025,F1,Le Havre,Toulouse,1,4,GG,Yes,0,1,Away Win,5,3,8,Home Win,0,2,Away Win
+23/02/2025,F1,Nice,Montpellier,2,0,NG,No,1,0,Home Win,8,5,13,Home Win,1,1,Draw
+23/02/2025,F1,Strasbourg,Brest,0,0,NG,No,0,0,Draw,1,8,9,Away Win,3,1,Home Win
+23/02/2025,F1,Lyon,PSG,2,3,GG,Yes,0,0,Draw,5,4,9,Home Win,1,1,Draw
+28/02/2025,F1,Monaco,Reims,3,0,NG,Yes,2,0,Home Win,7,2,9,Home Win,0,0,Draw
+01/03/2025,F1,St Etienne,Nice,1,3,GG,Yes,1,1,Draw,3,4,7,Away Win,2,1,Home Win
+01/03/2025,F1,Lens,Le Havre,3,4,GG,Yes,2,2,Draw,9,2,11,Home Win,2,2,Draw
+01/03/2025,F1,PSG,Lille,4,1,GG,Yes,4,0,Home Win,9,3,12,Home Win,0,1,Away Win
+02/03/2025,F1,Lyon,Brest,2,1,GG,Yes,1,1,Draw,2,5,7,Away Win,2,1,Home Win
+02/03/2025,F1,Angers,Toulouse,0,4,NG,Yes,0,0,Draw,4,9,13,Away Win,3,3,Draw
+02/03/2025,F1,Auxerre,Strasbourg,0,1,NG,No,0,0,Draw,5,3,8,Home Win,1,3,Away Win
+02/03/2025,F1,Montpellier,Rennes,0,4,NG,Yes,0,1,Away Win,6,5,11,Home Win,2,1,Home Win
+02/03/2025,F1,Marseille,Nantes,2,0,NG,No,0,0,Draw,3,2,5,Home Win,1,2,Away Win
+07/03/2025,F1,Toulouse,Monaco,1,1,GG,No,0,1,Away Win,3,5,8,Away Win,1,3,Away Win
+08/03/2025,F1,Rennes,PSG,1,4,GG,Yes,0,1,Away Win,3,2,5,Home Win,2,3,Away Win
+08/03/2025,F1,Lille,Montpellier,1,0,NG,No,0,0,Draw,7,1,8,Home Win,2,3,Away Win
+08/03/2025,F1,Marseille,Lens,0,1,NG,No,0,0,Draw,7,0,7,Home Win,3,1,Home Win
+09/03/2025,F1,Brest,Angers,2,0,NG,No,1,0,Home Win,6,6,12,Draw,1,1,Draw
+09/03/2025,F1,Le Havre,St Etienne,1,1,GG,No,1,1,Draw,5,6,11,Away Win,2,3,Away Win
+09/03/2025,F1,Nantes,Strasbourg,0,1,NG,No,0,0,Draw,3,9,12,Away Win,1,1,Draw
+09/03/2025,F1,Reims,Auxerre,0,2,NG,No,0,2,Away Win,6,12,18,Away Win,1,1,Draw
+09/03/2025,F1,Nice,Lyon,0,2,NG,No,0,0,Draw,9,2,11,Home Win,1,2,Away Win
+14/03/2025,F1,Nice,Auxerre,1,1,GG,No,1,0,Home Win,7,3,10,Home Win,1,3,Away Win
+15/03/2025,F1,Nantes,Lille,1,0,NG,No,0,0,Draw,3,5,8,Away Win,2,3,Away Win
+15/03/2025,F1,Angers,Monaco,0,2,NG,No,0,0,Draw,0,9,9,Away Win,1,2,Away Win
+15/03/2025,F1,Lens,Rennes,1,0,NG,No,0,0,Draw,5,4,9,Home Win,1,1,Draw
+16/03/2025,F1,Lyon,Le Havre,4,2,GG,Yes,1,2,Away Win,4,1,5,Home Win,2,3,Away Win
+16/03/2025,F1,Brest,Reims,0,0,NG,No,0,0,Draw,4,4,8,Draw,1,3,Away Win
+16/03/2025,F1,Montpellier,St Etienne,0,2,NG,No,0,1,Away Win,4,6,10,Away Win,1,3,Away Win
+16/03/2025,F1,Strasbourg,Toulouse,2,1,GG,Yes,0,1,Away Win,4,3,7,Home Win,0,2,Away Win
+16/03/2025,F1,PSG,Marseille,3,1,GG,Yes,2,0,Home Win,5,5,10,Draw,1,0,Home Win
+28/03/2025,F1,Strasbourg,Lyon,4,2,GG,Yes,0,0,Draw,6,5,11,Home Win,2,2,Draw
+29/03/2025,F1,Reims,Marseille,3,1,GG,Yes,1,0,Home Win,0,12,12,Away Win,0,0,Draw
+29/03/2025,F1,St Etienne,PSG,1,6,GG,Yes,1,1,Draw,3,6,9,Away Win,2,0,Home Win
+29/03/2025,F1,Monaco,Nice,2,1,GG,Yes,0,1,Away Win,7,4,11,Home Win,2,4,Away Win
+30/03/2025,F1,Toulouse,Brest,2,4,GG,Yes,0,2,Away Win,10,3,13,Home Win,0,5,Away Win
+30/03/2025,F1,Angers,Rennes,0,3,NG,Yes,0,1,Away Win,6,5,11,Home Win,1,0,Home Win
+30/03/2025,F1,Auxerre,Montpellier,1,0,NG,No,0,0,Draw,10,6,16,Home Win,3,1,Home Win
+30/03/2025,F1,Le Havre,Nantes,3,2,GG,Yes,2,1,Home Win,3,4,7,Away Win,1,2,Away Win
+30/03/2025,F1,Lille,Lens,1,0,NG,No,1,0,Home Win,6,2,8,Home Win,1,3,Away Win
+04/04/2025,F1,Nice,Nantes,1,2,GG,Yes,1,2,Away Win,11,2,13,Home Win,1,1,Draw
+05/04/2025,F1,PSG,Angers,1,0,NG,No,0,0,Draw,5,1,6,Home Win,0,3,Away Win
+05/04/2025,F1,Brest,Monaco,2,1,GG,Yes,1,0,Home Win,2,9,11,Away Win,3,2,Home Win
+05/04/2025,F1,Lyon,Lille,2,1,GG,Yes,1,1,Draw,1,3,4,Away Win,3,2,Home Win
+06/04/2025,F1,Lens,St Etienne,1,0,NG,No,0,0,Draw,6,3,9,Home Win,3,2,Home Win
+06/04/2025,F1,Montpellier,Le Havre,0,2,NG,No,0,2,Away Win,5,2,7,Home Win,1,1,Draw
+06/04/2025,F1,Reims,Strasbourg,0,1,NG,No,0,1,Away Win,4,7,11,Away Win,2,2,Draw
+06/04/2025,F1,Rennes,Auxerre,0,1,NG,No,0,0,Draw,8,5,13,Home Win,0,0,Draw
+06/04/2025,F1,Marseille,Toulouse,3,2,GG,Yes,1,1,Draw,5,1,6,Home Win,2,3,Away Win
+11/04/2025,F1,Lens,Reims,0,2,NG,No,0,1,Away Win,9,2,11,Home Win,1,0,Home Win
+12/04/2025,F1,Monaco,Marseille,3,0,NG,Yes,1,0,Home Win,4,4,8,Draw,2,1,Home Win
+12/04/2025,F1,Toulouse,Lille,1,2,GG,Yes,1,2,Away Win,4,2,6,Home Win,1,2,Away Win
+12/04/2025,F1,Strasbourg,Nice,2,2,GG,Yes,0,1,Away Win,2,9,11,Away Win,1,2,Away Win
+13/04/2025,F1,St Etienne,Brest,3,3,GG,Yes,2,3,Away Win,7,9,16,Away Win,2,4,Away Win
+13/04/2025,F1,Angers,Montpellier,2,0,NG,No,2,0,Home Win,6,1,7,Home Win,0,2,Away Win
+13/04/2025,F1,Le Havre,Rennes,1,5,GG,Yes,1,3,Away Win,4,3,7,Home Win,2,3,Away Win
+13/04/2025,F1,Auxerre,Lyon,1,3,GG,Yes,0,0,Draw,3,6,9,Away Win,3,1,Home Win
+18/04/2025,F1,Rennes,Nantes,2,1,GG,Yes,1,0,Home Win,10,2,12,Home Win,3,5,Away Win
+19/04/2025,F1,PSG,Le Havre,2,1,GG,Yes,1,0,Home Win,7,3,10,Home Win,0,0,Draw
+19/04/2025,F1,Monaco,Strasbourg,0,0,NG,No,0,0,Draw,3,2,5,Home Win,3,3,Draw
+19/04/2025,F1,Marseille,Montpellier,5,1,GG,Yes,1,0,Home Win,7,2,9,Home Win,2,2,Draw
+20/04/2025,F1,Lille,Auxerre,3,1,GG,Yes,2,0,Home Win,8,4,12,Home Win,1,2,Away Win
+20/04/2025,F1,Brest,Lens,1,3,GG,Yes,1,2,Away Win,7,6,13,Home Win,0,0,Draw
+20/04/2025,F1,Nice,Angers,2,1,GG,Yes,1,0,Home Win,4,2,6,Home Win,1,1,Draw
+20/04/2025,F1,Reims,Toulouse,1,0,NG,No,1,0,Home Win,0,9,9,Away Win,1,0,Home Win
+20/04/2025,F1,St Etienne,Lyon,2,1,GG,Yes,1,0,Home Win,8,6,14,Home Win,3,4,Away Win
+22/04/2025,F1,Nantes,PSG,1,1,GG,No,0,1,Away Win,4,4,8,Draw,2,0,Home Win
+25/04/2025,F1,PSG,Nice,1,3,GG,Yes,1,1,Draw,17,0,17,Home Win,3,1,Home Win
+26/04/2025,F1,Strasbourg,St Etienne,3,1,GG,Yes,1,1,Draw,5,8,13,Away Win,1,0,Home Win
+26/04/2025,F1,Le Havre,Monaco,1,1,GG,No,1,0,Home Win,3,6,9,Away Win,1,0,Home Win
+26/04/2025,F1,Lyon,Rennes,4,1,GG,Yes,3,0,Home Win,7,2,9,Home Win,0,0,Draw
+27/04/2025,F1,Angers,Lille,0,2,NG,No,0,1,Away Win,7,2,9,Home Win,1,5,Away Win
+27/04/2025,F1,Lens,Auxerre,0,4,NG,Yes,0,3,Away Win,8,1,9,Home Win,4,4,Draw
+27/04/2025,F1,Montpellier,Reims,0,0,NG,No,0,0,Draw,5,5,10,Draw,3,3,Draw
+27/04/2025,F1,Nantes,Toulouse,0,0,NG,No,0,0,Draw,3,5,8,Away Win,2,3,Away Win
+27/04/2025,F1,Marseille,Brest,4,1,GG,Yes,3,1,Home Win,4,3,7,Home Win,1,4,Away Win
+02/05/2025,F1,Nice,Reims,1,0,NG,No,1,0,Home Win,5,3,8,Home Win,2,2,Draw
+03/05/2025,F1,Strasbourg,PSG,2,1,GG,Yes,2,0,Home Win,6,2,8,Home Win,1,2,Away Win
+03/05/2025,F1,Toulouse,Rennes,2,1,GG,Yes,1,0,Home Win,6,5,11,Home Win,2,2,Draw
+03/05/2025,F1,St Etienne,Monaco,1,3,GG,Yes,0,1,Away Win,6,5,11,Home Win,0,0,Draw
+04/05/2025,F1,Nantes,Angers,0,1,NG,No,0,0,Draw,4,6,10,Away Win,2,3,Away Win
+04/05/2025,F1,Auxerre,Le Havre,1,2,GG,Yes,0,0,Draw,0,9,9,Away Win,2,1,Home Win
+04/05/2025,F1,Brest,Montpellier,1,0,NG,No,1,0,Home Win,4,6,10,Away Win,1,2,Away Win
+04/05/2025,F1,Lyon,Lens,1,2,GG,Yes,0,1,Away Win,8,2,10,Home Win,2,3,Away Win
+04/05/2025,F1,Lille,Marseille,1,1,GG,No,0,0,Draw,2,5,7,Away Win,2,2,Draw
+10/05/2025,F1,Angers,Strasbourg,2,1,GG,Yes,1,1,Draw,2,6,8,Away Win,2,2,Draw
+10/05/2025,F1,Auxerre,Nantes,1,1,GG,No,1,0,Home Win,7,3,10,Home Win,3,1,Home Win
+10/05/2025,F1,Brest,Lille,2,0,NG,No,1,0,Home Win,3,7,10,Away Win,1,1,Draw
+10/05/2025,F1,Le Havre,Marseille,1,3,GG,Yes,0,0,Draw,2,9,11,Away Win,2,2,Draw
+10/05/2025,F1,Monaco,Lyon,2,0,NG,No,0,0,Draw,3,5,8,Away Win,2,4,Away Win
+10/05/2025,F1,Montpellier,PSG,1,4,GG,Yes,0,1,Away Win,5,4,9,Home Win,1,1,Draw
+10/05/2025,F1,Reims,St Etienne,0,2,NG,No,0,2,Away Win,4,5,9,Away Win,1,0,Home Win
+10/05/2025,F1,Rennes,Nice,2,0,NG,No,1,0,Home Win,1,5,6,Away Win,1,1,Draw
+10/05/2025,F1,Toulouse,Lens,1,1,GG,No,0,0,Draw,2,1,3,Home Win,2,5,Away Win
+17/05/2025,F1,Lens,Monaco,4,0,NG,Yes,1,0,Home Win,5,4,9,Home Win,1,1,Draw
+17/05/2025,F1,Lille,Reims,2,1,GG,Yes,1,0,Home Win,10,3,13,Home Win,0,1,Away Win
+17/05/2025,F1,Lyon,Angers,2,0,NG,No,0,0,Draw,8,8,16,Draw,1,3,Away Win
+17/05/2025,F1,Marseille,Rennes,4,2,GG,Yes,3,1,Home Win,5,5,10,Draw,3,3,Draw
+17/05/2025,F1,Nantes,Montpellier,3,0,NG,Yes,2,0,Home Win,7,2,9,Home Win,3,1,Home Win
+17/05/2025,F1,Nice,Brest,6,0,NG,Yes,3,0,Home Win,5,2,7,Home Win,0,5,Away Win
+17/05/2025,F1,PSG,Auxerre,3,1,GG,Yes,0,1,Away Win,5,2,7,Home Win,1,2,Away Win
+17/05/2025,F1,St Etienne,Toulouse,2,3,GG,Yes,1,2,Away Win,7,6,13,Home Win,3,2,Home Win
+17/05/2025,F1,Strasbourg,Le Havre,2,3,GG,Yes,1,1,Draw,4,3,7,Home Win,2,0,Home Win
