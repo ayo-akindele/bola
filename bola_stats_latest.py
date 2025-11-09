@@ -1,9 +1,12 @@
-
 """
 BolaPredict — Fixtures (min H2H threshold for trends)
 -----------------------------------------------------
 - MIN_H2H = 4 (set to 5 if you want stricter). Any metric needs at least MIN_H2H valid games.
-- Everything else unchanged from previous build.
+- Added Ligue 1 (France) support using:
+    • Results:    F1 Historical Data.xlsx
+    • Fixtures:   F1_upcoming_fixtures.csv
+- More robust loader that accepts both CSV and Excel (first sheet).
+- Smarter column normalization for varied provider schemas.
 """
 
 import os
@@ -22,11 +25,16 @@ LEAGUE_FILES: Dict[str, Dict[str, str]] = {
     "La Liga": {"results": "SP1 Historical Data.csv", "fixtures": "SP1_upcoming_fixtures.csv"},
     "Serie A": {"results": "I1 Historical Data.csv", "fixtures": "I1_upcoming_fixtures.csv"},
     "Bundesliga": {"results": "D1 Historical Data.csv", "fixtures": "D1_upcoming_fixtures.csv"},
+    # NEW — France Ligue 1 (code F1)
+    "Ligue 1": {"results": "F1 Historical Data.xlsx", "fixtures": "F1_upcoming_fixtures.csv"},
 }
 
 st.set_page_config(page_title="BolaPredict — Fixtures", layout="centered")
 st.title("📅 BolaPredict Fixtures")
-st.caption("⚡ Quick stats that matter. Trends in the most recent H2H meetings across EPL, La Liga, Bundesliga & Serie A. Fixtures are listed strictly by kick‑off time (Africa/Lagos).")
+st.caption(
+    "⚡ Quick stats that matter. Trends in the most recent H2H meetings across EPL, La Liga, Bundesliga, Serie A & Ligue 1. "
+    "Fixtures are listed strictly by kick‑off time (Africa/Lagos)."
+)
 
 # Chip styling
 st.markdown(
@@ -56,52 +64,177 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def _load_csv_nearby(filename: str) -> pd.DataFrame:
+# -------------------- IO helpers --------------------
+
+def _exists_nearby(filename: str) -> Optional[str]:
     for path in [filename, os.path.join(os.path.dirname(__file__), filename)]:
         if os.path.exists(path):
-            return pd.read_csv(path)
-    raise FileNotFoundError(f"File not found: {filename}")
+            return path
+    return None
 
-def _normalize(df: pd.DataFrame) -> pd.DataFrame:
+
+def _load_table_nearby(filename: str) -> pd.DataFrame:
+    """Load CSV or Excel from current dir or module dir.
+    - For Excel, use the first sheet.
+    - Keep raw columns; normalization done separately.
+    """
+    path = _exists_nearby(filename)
+    if not path:
+        raise FileNotFoundError(f"File not found: {filename}")
+
+    ext = os.path.splitext(path)[1].lower()
+    if ext in [".csv", ".txt", ".tsv"]:
+        # Allow for weird encodings silently
+        try:
+            return pd.read_csv(path)
+        except UnicodeDecodeError:
+            return pd.read_csv(path, encoding="latin-1")
+    elif ext in [".xlsx", ".xlsm", ".xls"]:
+        try:
+            return pd.read_excel(path)
+        except Exception:
+            # some providers require engine explicitly
+            return pd.read_excel(path, engine="openpyxl")
+    else:
+        raise ValueError(f"Unsupported file extension for {filename}")
+
+
+def _normalize_cols(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df.columns = [c.strip().lower().replace(" ", "_") for c in df.columns]
     return df
 
+
+# -------------------- Schema mappers --------------------
+
+RESULTS_MAP = {
+    # canonical : list of known variants
+    "match_date": ["match_date", "date", "matchdate"],
+    "home_team": ["home_team", "home", "hometeam", "home_team_name", "home_club"],
+    "away_team": ["away_team", "away", "awayteam", "away_team_name", "away_club"],
+    "home_score": ["home_score", "hs", "fthg", "home_goals", "home_goal", "hg"],
+    "away_score": ["away_score", "as", "ftag", "away_goals", "away_goal", "ag"],
+    "home_corners": ["home_corners", "homecorner", "corners_home", "hc", "home_c"],
+    "away_corners": ["away_corners", "awaycorner", "corners_away", "ac", "away_c"],
+    "total_corners": ["total_corners", "corners_total", "totalcorner", "corner_total", "corners"],
+    "first_half_home": [
+        "first_half_home", "h1_home", "fh_home", "ht_home_goals", "home_ht_goals", "home_first_half_goals", "h1hg"
+    ],
+    "first_half_away": [
+        "first_half_away", "h1_away", "fh_away", "ht_away_goals", "away_ht_goals", "away_first_half_goals", "h1ag"
+    ],
+}
+
+
+def _standardize_results(df_raw: pd.DataFrame) -> pd.DataFrame:
+    df = _normalize_cols(df_raw)
+
+    # Map to canonical names where present
+    colmap = {}
+    for canon, variants in RESULTS_MAP.items():
+        for v in variants:
+            if v in df.columns:
+                colmap[v] = canon
+                break
+    df = df.rename(columns=colmap)
+
+    # Compute missing derived fields
+    if "match_date" in df.columns:
+        df["match_date"] = pd.to_datetime(df["match_date"], errors="coerce")
+
+    # If home/away score split not present but total goals or result code exist, try to infer (best‑effort)
+    # We keep it simple: rely on common fields; otherwise leave as NaN.
+
+    # Total corners from components
+    if "total_corners" not in df.columns:
+        if {"home_corners", "away_corners"}.issubset(df.columns):
+            df["total_corners"] = pd.to_numeric(df["home_corners"], errors="coerce") + pd.to_numeric(
+                df["away_corners"], errors="coerce"
+            )
+
+    # First‑half goals from halves if provider used H1HG/H1AG numeric fields
+    if "first_half_home" not in df.columns and "h1hg" in df_raw.columns:
+        df["first_half_home"] = pd.to_numeric(df_raw["h1hg"], errors="coerce")
+    if "first_half_away" not in df.columns and "h1ag" in df_raw.columns:
+        df["first_half_away"] = pd.to_numeric(df_raw["h1ag"], errors="coerce")
+
+    # Ensure numeric types for core metrics
+    for c in ["home_score", "away_score", "home_corners", "away_corners", "total_corners", "first_half_home", "first_half_away"]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    return df
+
+
+def _standardize_fixtures(df_raw: pd.DataFrame) -> pd.DataFrame:
+    df = _normalize_cols(df_raw)
+
+    # Normalize key names
+    rename_pairs = {}
+    for c in list(df.columns):
+        lc = c.lower()
+        if lc in {"home team", "hometeam"}:
+            rename_pairs[c] = "home_team"
+        elif lc in {"away team", "awayteam"}:
+            rename_pairs[c] = "away_team"
+        elif lc in {"round_no", "rnd", "round"}:
+            rename_pairs[c] = "round_number"
+    if rename_pairs:
+        df = df.rename(columns=rename_pairs)
+
+    # Parse kickoff datetime in local TZ
+    df = _parse_fixtures_datetime(df)
+    return df
+
+
+# -------------------- Datetime helpers --------------------
+
 def _parse_fixtures_datetime(fixtures_df: pd.DataFrame) -> pd.DataFrame:
     df = fixtures_df.copy()
+    # Date
     if "date" in df.columns:
-        date_parsed = pd.to_datetime(df["date"].astype(str).str.strip(), errors="coerce", dayfirst=True, infer_datetime_format=True)
+        date_parsed = pd.to_datetime(
+            df["date"].astype(str).str.strip(), errors="coerce", dayfirst=True, infer_datetime_format=True
+        )
+    elif "match_date" in df.columns:
+        date_parsed = pd.to_datetime(df["match_date"], errors="coerce")
     else:
         date_parsed = pd.to_datetime(pd.NaT)
-    time_col = next((c for c in ["time","kickoff_time","kick_off_time","ko","kickoff"] if c in df.columns), None)
+
+    # Time
+    time_col = next((c for c in ["time", "kickoff_time", "kick_off_time", "ko", "kickoff"] if c in df.columns), None)
     if time_col:
         t = df[time_col].astype(str).str.strip()
-        combo = pd.to_datetime(date_parsed.dt.strftime("%Y-%m-%d") + " " + t, errors="coerce", infer_datetime_format=True)
+        combo = pd.to_datetime(
+            date_parsed.dt.strftime("%Y-%m-%d") + " " + t, errors="coerce", infer_datetime_format=True
+        )
         kickoff = combo.where(combo.notna(), date_parsed)
     else:
         kickoff = date_parsed
+
     try:
         kickoff = kickoff.dt.tz_localize(LOCAL_TZ)
     except TypeError:
         kickoff = kickoff.dt.tz_convert(LOCAL_TZ)
+
     df["kickoff_dt"] = kickoff
     return df
 
+
+# -------------------- Loaders --------------------
+
 def load_league(league: str):
     conf = LEAGUE_FILES.get(league, {})
-    res = _normalize(_load_csv_nearby(conf["results"]))
-    fix = _normalize(_load_csv_nearby(conf["fixtures"]))
-    for col in list(fix.columns):
-        if col.lower() == "home team":
-            fix = fix.rename(columns={col: "home_team"})
-        if col.lower() == "away team":
-            fix = fix.rename(columns={col: "away_team"})
-        if col.lower() in {"round_no","rnd"}:
-            fix = fix.rename(columns={col: "round_number"})
-    if "match_date" in res.columns:
-        res["match_date"] = pd.to_datetime(res["match_date"], errors="coerce")
-    fix = _parse_fixtures_datetime(fix)
+    if not conf:
+        return None, None
+    res_raw = _load_table_nearby(conf["results"])  # CSV or Excel
+    fix_raw = _load_table_nearby(conf["fixtures"])  # CSV
+
+    res = _standardize_results(res_raw)
+    fix = _standardize_fixtures(fix_raw)
+
     return res, fix
+
 
 def pick_current_round(fixtures: pd.DataFrame) -> Optional[int]:
     if "round_number" not in fixtures.columns or "kickoff_dt" not in fixtures.columns:
@@ -113,13 +246,15 @@ def pick_current_round(fixtures: pd.DataFrame) -> Optional[int]:
             return r
     return grp.index.max() if len(grp) else None
 
+
 def next_friday_window(now: pd.Timestamp):
     now = now.tz_convert(LOCAL_TZ)
     days_ahead = (4 - now.weekday()) % 7  # 4=Fri
     fri = (now + timedelta(days=days_ahead)).date()
-    start = pd.Timestamp.combine(fri, dtime(0,0)).tz_localize(LOCAL_TZ)
-    end   = start + timedelta(days=3, hours=23, minutes=59, seconds=59)
+    start = pd.Timestamp.combine(fri, dtime(0, 0)).tz_localize(LOCAL_TZ)
+    end = start + timedelta(days=3, hours=23, minutes=59, seconds=59)
     return start, end
+
 
 def date_mask(df: pd.DataFrame, window: str, now: pd.Timestamp) -> pd.Series:
     if "kickoff_dt" not in df.columns:
@@ -134,6 +269,7 @@ def date_mask(df: pd.DataFrame, window: str, now: pd.Timestamp) -> pd.Series:
         return (df["kickoff_dt"] >= start) & (df["kickoff_dt"] <= end)
     return pd.Series(True, index=df.index)
 
+
 def format_ko(ts: Optional[pd.Timestamp]) -> str:
     if ts is None or pd.isna(ts):
         return ""
@@ -142,7 +278,9 @@ def format_ko(ts: Optional[pd.Timestamp]) -> str:
     except Exception:
         return str(ts)
 
-# --------- trends ---------
+
+# -------------------- Trends engine --------------------
+
 def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple[float, str]]:
     """Return list of (pct, text) trends (>=0.80), sorted desc. Uses last up to 5 H2H in past 3 seasons.
        Any metric needs at least MIN_H2H valid games to be considered.
@@ -152,10 +290,15 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
         return trends
 
     three_years_ago = datetime.today().year - 3
-    h2h = results_df[((results_df["home_team"] == home) & (results_df["away_team"] == away)) |
-                     ((results_df["home_team"] == away) & (results_df["away_team"] == home))].copy()
+    h2h = results_df[
+        ((results_df.get("home_team") == home) & (results_df.get("away_team") == away))
+        | ((results_df.get("home_team") == away) & (results_df.get("away_team") == home))
+    ].copy()
+
     if "match_date" in h2h.columns:
-        h2h = h2h[h2h["match_date"].dt.year >= three_years_ago].sort_values("match_date", ascending=False).head(5)
+        h2h = h2h[pd.to_datetime(h2h["match_date"], errors="coerce").dt.year >= three_years_ago]
+        h2h = h2h.sort_values("match_date", ascending=False).head(5)
+
     if len(h2h) < MIN_H2H:
         return trends
 
@@ -165,7 +308,7 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
             return
         pct = float(valid.mean())
         if pct >= 0.80:
-            trends.append((pct, f"{label} in {int(round(pct*len(valid)))}/{len(valid)} games"))
+            trends.append((pct, f"{label} in {int(round(pct * len(valid)))}/{len(valid)} games"))
 
     # Goals
     hs = pd.to_numeric(h2h.get("home_score"), errors="coerce")
@@ -183,7 +326,7 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     wins_home_team = []
     wins_away_team = []
     for _, row in h2h.iterrows():
-        rh, ra = row["home_team"], row["away_team"]
+        rh, ra = row.get("home_team"), row.get("away_team")
         hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
         asc = pd.to_numeric(row.get("away_score"), errors="coerce")
         if pd.isna(hsc) or pd.isna(asc) or hsc == asc:
@@ -194,11 +337,11 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     if len(wins_home_team) >= MIN_H2H:
         pct = sum(bool(x) for x in wins_home_team) / len(wins_home_team)
         if pct >= 0.80:
-            trends.append((pct, f"{home} won {int(round(pct*len(wins_home_team)))}/{len(wins_home_team)} recent meetings"))
+            trends.append((pct, f"{home} won {int(round(pct * len(wins_home_team)))}/{len(wins_home_team)} recent meetings"))
     if len(wins_away_team) >= MIN_H2H:
         pct = sum(bool(x) for x in wins_away_team) / len(wins_away_team)
         if pct >= 0.80:
-            trends.append((pct, f"{away} won {int(round(pct*len(wins_away_team)))}/{len(wins_away_team)} recent meetings"))
+            trends.append((pct, f"{away} won {int(round(pct * len(wins_away_team)))}/{len(wins_away_team)} recent meetings"))
 
     # Corners total O/U 9.5
     tc = pd.to_numeric(h2h.get("total_corners"), errors="coerce")
@@ -208,10 +351,10 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
 
     # Corner dominance (venue-aware; ignore ties & NaNs)
     corner_pairs = [
-        ("home_corners","away_corners"),
-        ("home_corner","away_corner"),
-        ("homecorner","awaycorner"),
-        ("corners_home","corners_away"),
+        ("home_corners", "away_corners"),
+        ("home_corner", "away_corner"),
+        ("homecorner", "awaycorner"),
+        ("corners_home", "corners_away"),
     ]
     for hc_col, ac_col in corner_pairs:
         if {hc_col, ac_col}.issubset(h2h.columns):
@@ -234,7 +377,7 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     cs_home = []
     cs_away = []
     for _, row in h2h.iterrows():
-        rh, ra = row["home_team"], row["away_team"]
+        rh, ra = row.get("home_team"), row.get("away_team")
         hsc = pd.to_numeric(row.get("home_score"), errors="coerce")
         asc = pd.to_numeric(row.get("away_score"), errors="coerce")
         if pd.isna(hsc) or pd.isna(asc):
@@ -250,11 +393,11 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     if len(cs_home) >= MIN_H2H:
         pct = sum(bool(x) for x in cs_home) / len(cs_home)
         if pct >= 0.80:
-            trends.append((pct, f"{home} kept a clean sheet in {int(round(pct*len(cs_home)))}/{len(cs_home)} games"))
+            trends.append((pct, f"{home} kept a clean sheet in {int(round(pct * len(cs_home)))}/{len(cs_home)} games"))
     if len(cs_away) >= MIN_H2H:
         pct = sum(bool(x) for x in cs_away) / len(cs_away)
         if pct >= 0.80:
-            trends.append((pct, f"{away} kept a clean sheet in {int(round(pct*len(cs_away)))}/{len(cs_away)} games"))
+            trends.append((pct, f"{away} kept a clean sheet in {int(round(pct * len(cs_away)))}/{len(cs_away)} games"))
 
     # First‑half goals (informational)
     fh_home = pd.to_numeric(h2h.get("first_half_home"), errors="coerce")
@@ -266,22 +409,33 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
 
     return sorted(trends, key=lambda x: x[0], reverse=True)
 
-# --------- controls ---------
+
+# -------------------- UI --------------------
+
 league_choice = st.selectbox("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
 time_window = st.radio("Time window", ["Today", "Tomorrow", "Weekend (Fri–Mon)", "All in round"], horizontal=True, index=3)
 
 now = pd.Timestamp.now(tz=LOCAL_TZ)
 leagues = list(LEAGUE_FILES.keys()) if league_choice == "All" else [league_choice]
 
+
 def header_text(lg: str, rnd: Optional[int]) -> str:
     return f"{lg} — {'Gameweek ' + str(rnd) if time_window == 'All in round' and rnd is not None else time_window}"
+
 
 def pick_round(fixtures: pd.DataFrame) -> Optional[int]:
     return pick_current_round(fixtures)
 
-# --------- content ---------
+
+# -------------------- Content --------------------
+
 for lg in leagues:
-    res_df, fx_df = load_league(lg)
+    try:
+        res_df, fx_df = load_league(lg)
+    except Exception as e:
+        st.warning(f"{lg}: {e}")
+        continue
+
     if res_df is None or fx_df is None or fx_df.empty:
         continue
 
@@ -295,14 +449,14 @@ for lg in leagues:
     if view.empty:
         continue
 
-    view = view.sort_values(by=["kickoff_dt","home_team","away_team"], ascending=[True,True,True], kind="mergesort")
+    view = view.sort_values(by=["kickoff_dt", "home_team", "away_team"], ascending=[True, True, True], kind="mergesort")
 
     st.markdown(f"<div class='league-header'>{header_text(lg, round_id)}</div>", unsafe_allow_html=True)
 
     for _, r in view.iterrows():
-        home = str(r.get("home_team","")).strip()
-        away = str(r.get("away_team","")).strip()
-        ko   = r.get("kickoff_dt")
+        home = str(r.get("home_team", "")).strip()
+        away = str(r.get("away_team", "")).strip()
+        ko = r.get("kickoff_dt")
         header = f"{format_ko(ko)} — {home} vs {away}" if ko is not None else f"{home} vs {away}"
         with st.expander(header, expanded=True):
             trends = compute_trends(res_df, home, away)
