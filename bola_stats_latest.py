@@ -40,6 +40,27 @@ st.caption("Head-to-head trends and fixtures. Times in Africa/Lagos.")
 st.markdown(
     """
     <style>
+/* FORCE ALL INPUT WIDGETS TO LIGHT MODE */
+.stSelectbox, .stSelectbox > div, .stSelectbox div[data-baseweb="select"] {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+.stSelectbox div[role="listbox"] {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+.stSelectbox svg {
+    stroke: #1f2937 !important;
+}
+.stSelectbox label, .stSelectbox p {
+    color: #1f2937 !important;
+    font-weight: 600;
+}
+.stSelectbox div[data-baseweb="select"] > div {
+    border: 1.5px solid #ef4444 !important;
+    border-radius: 10px !important;
+}
+
     /* Force light theme even when device is in dark mode */
     html, body, .block-container {
       background-color: #ffffff !important;
