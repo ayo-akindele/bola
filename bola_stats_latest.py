@@ -344,7 +344,9 @@ for lg in leagues:
     league_data[lg] = (res_df, fx_df)
 
 # -------------------- Highlights (GG / Over 2.5 / 1st-half) --------------------
-highlight_rows = []  # collect tuples for quick header section
+
+# -------------------- Highlights (GG / Over 2.5 / 1st-half) --------------------
+highlight_rows = []  # (ko, title, lg, pills_html, score)
 for lg in leagues:
     res_df, fx_df = league_data.get(lg, (None, None))
     if res_df is None or fx_df is None or fx_df.empty:
@@ -366,21 +368,25 @@ for lg in leagues:
         away = str(r.get("away_team", "")).strip()
         ko = r.get("kickoff_dt")
         tlist = compute_trends(res_df, home, away)
-        tags = set([t[2] for t in tlist])
-        has_any = any(tag in tags for tag in ["gg","over25","firsthalf"])
-        if has_any:
-            # Choose small pills
+        tags = set(t[2] for t in tlist)  # available tags
+        # Focus tags of interest
+        wanted = {"gg","over25","firsthalf"}
+        present = tags.intersection(wanted)
+        score = len(present)  # how many of the 3 are present?
+        if score >= 2:
             pills = []
-            if "gg" in tags: pills.append('<span class="pill pill-goals">GG</span>')
-            if "over25" in tags: pills.append('<span class="pill pill-over">O2.5</span>')
-            if "firsthalf" in tags: pills.append('<span class="pill pill-fh">1st Half</span>')
-            highlight_rows.append((ko, f"{home} vs {away}", lg, " ".join(pills)))
+            if "gg" in present: pills.append('<span class="pill pill-goals">GG</span>')
+            if "over25" in present: pills.append('<span class="pill pill-over">O2.5</span>')
+            if "firsthalf" in present: pills.append('<span class="pill pill-fh">1st Half</span>')
+            # badge showing count
+            pills.append(f'<span class="pill"> {score}/3 </span>')
+            highlight_rows.append((ko, f"{home} vs {away}", lg, " ".join(pills), score))
 
 if highlight_rows:
-    # sort by kickoff time
-    highlight_rows.sort(key=lambda x: (pd.NaT if x[0] is None else x[0]))
-    st.subheader("✨ Highlights (GG / O2.5 / 1st‑Half Goals)")
-    for ko, title, lg, pills in highlight_rows[:24]:  # cap to avoid long list
+    # Sort: (1) by score desc (3/3 first), (2) by kickoff time
+    highlight_rows.sort(key=lambda x: (-x[4], pd.NaT if x[0] is None else x[0]))
+    st.subheader("✨ Highlights — GG / O2.5 / 1st‑Half (≥2/3)")
+    for ko, title, lg, pills, score in highlight_rows[:24]:
         ko_txt = format_ko(ko)
         st.markdown(f"- **{title}** — {ko_txt} · _{lg}_ {pills}", unsafe_allow_html=True)
     st.markdown("---")
