@@ -108,6 +108,25 @@ st.markdown(
     .pill-goals { background: rgba(34,197,94,0.12); }
     .pill-fh { background: rgba(59,130,246,0.12); }
     .pill-over { background: rgba(250,204,21,0.18); }
+    
+/* --- Strong override for selectbox visibility on mobile dark mode --- */
+.stSelectbox div[data-baseweb="select"] {
+    background-color: #111827 !important;  /* dark slate */
+    color: #f9fafb !important;             /* almost white text */
+}
+.stSelectbox div[role="listbox"],
+.stSelectbox div[role="option"] {
+    background-color: #111827 !important;
+    color: #f9fafb !important;
+}
+.stSelectbox * {
+    color: #f9fafb !important;
+}
+/* Put label back to dark so it stays readable on white page */
+.stSelectbox label {
+    color: #111827 !important;
+}
+
     </style>
     """,
     unsafe_allow_html=True,
