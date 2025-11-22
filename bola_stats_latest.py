@@ -40,26 +40,36 @@ st.caption("Head-to-head trends and fixtures. Times in Africa/Lagos.")
 st.markdown(
     """
     <style>
-/* FORCE ALL INPUT WIDGETS TO LIGHT MODE */
-.stSelectbox, .stSelectbox > div, .stSelectbox div[data-baseweb="select"] {
+/* FIX SELECTBOX TEXT VISIBILITY FOR DARK MODE */
+/* Closed state */
+.stSelectbox div[data-baseweb="select"] {
     background-color: #ffffff !important;
-    color: #1f2937 !important;
+    color: #000000 !important;
 }
+
+/* Open dropdown items */
 .stSelectbox div[role="listbox"] {
-    background-color: #ffffff !important;
-    color: #1f2937 !important;
+    background-color: #1f2937 !important;  /* dark background */
+    color: #ffffff !important; /* white text */
 }
+
+.stSelectbox div[role="option"] {
+    background-color: #1f2937 !important;
+    color: #ffffff !important;
+}
+
+/* Chevron icon */
 .stSelectbox svg {
-    stroke: #1f2937 !important;
+    stroke: #000000 !important;
 }
+
+/* Label */
 .stSelectbox label, .stSelectbox p {
     color: #1f2937 !important;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
-.stSelectbox div[data-baseweb="select"] > div {
-    border: 1.5px solid #ef4444 !important;
-    border-radius: 10px !important;
-}
+
+
 
     /* Force light theme even when device is in dark mode */
     html, body, .block-container {
