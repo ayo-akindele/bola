@@ -379,17 +379,15 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
     return sorted(trends, key=lambda x: x[0], reverse=True)
 
 # -------------------- Top Controls --------------------
-col1, col2 = st.columns([1.3, 1])
-with col1:
-    league_choice = st.selectbox("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
-with col2:
-    time_window = st.selectbox("When", ["All in round", "Today", "Tomorrow", "Weekend (Fri–Mon)", "All"], index=0)
+
+# League & time filters (radio buttons for mobile safety)
+league_choice = st.radio("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
+time_window = st.radio("When", ["All in round", "Today", "Tomorrow", "Weekend (Fri–Mon)", "All"], index=0, horizontal=True)
 
 # Fixed defaults for clean UI
 max_trends = 3       # bullets per match
 max_fixtures = 15    # fixtures per league
 show_debug = False   # hide debug info
-
 now = pd.Timestamp.now(tz=LOCAL_TZ)
 leagues = list(LEAGUE_FILES.keys()) if league_choice == "All" else [league_choice]
 
