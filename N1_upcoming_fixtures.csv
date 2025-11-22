@@ -1,0 +1,307 @@
+Round Number,Date,Home Team,Away Team,Time
+1,08/08/2025 20:00,For Sittard,Go Ahead Eagles,20:00:00
+1,09/08/2025 16:30,Nijmegen,Excelsior,16:30:00
+1,09/08/2025 18:45,Feyenoord,NAC Breda,18:45:00
+1,09/08/2025 20:00,Heerenveen,Volendam,20:00:00
+1,09/08/2025 21:00,PSV Eindhoven,Sparta Rotterdam,21:00:00
+1,10/08/2025 12:15,Zwolle,Twente,12:15:00
+1,10/08/2025 14:30,AZ Alkmaar,Groningen,14:30:00
+1,10/08/2025 14:30,Ajax,Telstar,14:30:00
+1,10/08/2025 16:45,Utrecht,Heracles,16:45:00
+2,15/08/2025 20:00,Telstar,Zwolle,20:00:00
+2,16/08/2025 18:45,Excelsior,Feyenoord,18:45:00
+2,16/08/2025 20:00,Heracles,Nijmegen,20:00:00
+2,16/08/2025 21:00,Groningen,Heerenveen,21:00:00
+2,17/08/2025 12:15,Go Ahead Eagles,Ajax,12:15:00
+2,17/08/2025 14:30,Sparta Rotterdam,Utrecht,14:30:00
+2,17/08/2025 14:30,Twente,PSV Eindhoven,14:30:00
+2,17/08/2025 16:45,Volendam,AZ Alkmaar,16:45:00
+2,17/08/2025 20:00,NAC Breda,For Sittard,20:00:00
+3,23/08/2025 16:30,Go Ahead Eagles,Sparta Rotterdam,16:30:00
+3,23/08/2025 18:45,PSV Eindhoven,Groningen,18:45:00
+3,23/08/2025 21:00,Telstar,Volendam,21:00:00
+3,24/08/2025 12:15,Heerenveen,Twente,12:15:00
+3,24/08/2025 14:30,Nijmegen,NAC Breda,14:30:00
+3,24/08/2025 14:30,Utrecht,Excelsior,14:30:00
+3,24/08/2025 16:45,Ajax,Heracles,16:45:00
+3,17/09/2025 20:00,Feyenoord,For Sittard,20:00:00
+3,24/09/2025 20:00,AZ Alkmaar,Zwolle,20:00:00
+4,29/08/2025 20:00,Groningen,Heracles,20:00:00
+4,30/08/2025 16:30,Volendam,Ajax,16:30:00
+4,30/08/2025 18:45,Heerenveen,Go Ahead Eagles,18:45:00
+4,30/08/2025 20:00,PSV Eindhoven,Telstar,20:00:00
+4,30/08/2025 21:00,Excelsior,Twente,21:00:00
+4,31/08/2025 12:15,For Sittard,Nijmegen,12:15:00
+4,31/08/2025 14:30,Sparta Rotterdam,Feyenoord,14:30:00
+4,31/08/2025 14:30,Zwolle,Utrecht,14:30:00
+4,31/08/2025 16:45,NAC Breda,AZ Alkmaar,16:45:00
+5,13/09/2025 16:30,Ajax,Zwolle,16:30:00
+5,13/09/2025 18:45,Nijmegen,PSV Eindhoven,18:45:00
+5,13/09/2025 19:10,Go Ahead Eagles,Volendam,19:10:00
+5,13/09/2025 21:00,Twente,NAC Breda,21:00:00
+5,13/09/2025 21:00,Feyenoord,Heerenveen,21:00:00
+5,14/09/2025 12:15,Excelsior,Sparta Rotterdam,12:15:00
+5,14/09/2025 14:30,Utrecht,Groningen,14:30:00
+5,14/09/2025 14:30,Heracles,AZ Alkmaar,14:30:00
+5,14/09/2025 16:45,Telstar,For Sittard,16:45:00
+6,19/09/2025 20:00,Sparta Rotterdam,Twente,20:00:00
+6,20/09/2025 16:30,Volendam,Excelsior,16:30:00
+6,20/09/2025 18:45,Groningen,Telstar,18:45:00
+6,20/09/2025 20:00,For Sittard,Utrecht,20:00:00
+6,20/09/2025 21:00,NAC Breda,Heracles,21:00:00
+6,21/09/2025 12:15,Zwolle,Go Ahead Eagles,12:15:00
+6,21/09/2025 14:30,PSV Eindhoven,Ajax,14:30:00
+6,21/09/2025 14:30,Heerenveen,Nijmegen,14:30:00
+6,21/09/2025 16:45,AZ Alkmaar,Feyenoord,16:45:00
+7,26/09/2025 20:00,Twente,For Sittard,20:00:00
+7,27/09/2025 16:30,Ajax,NAC Breda,16:30:00
+7,27/09/2025 18:45,Volendam,Zwolle,18:45:00
+7,27/09/2025 20:00,Excelsior,PSV Eindhoven,20:00:00
+7,27/09/2025 21:00,Heracles,Sparta Rotterdam,21:00:00
+7,28/09/2025 12:15,Nijmegen,AZ Alkmaar,12:15:00
+7,28/09/2025 14:30,Groningen,Feyenoord,14:30:00
+7,28/09/2025 14:30,Utrecht,Heerenveen,14:30:00
+7,28/09/2025 16:45,Telstar,Go Ahead Eagles,16:45:00
+8,03/10/2025 20:00,NAC Breda,Groningen,20:00:00
+8,04/10/2025 16:30,Sparta Rotterdam,Ajax,16:30:00
+8,04/10/2025 18:45,For Sittard,Volendam,18:45:00
+8,04/10/2025 20:00,Zwolle,PSV Eindhoven,20:00:00
+8,04/10/2025 21:00,Heerenveen,Excelsior,21:00:00
+8,05/10/2025 12:15,Twente,Heracles,12:15:00
+8,05/10/2025 14:30,Feyenoord,Utrecht,14:30:00
+8,05/10/2025 16:45,AZ Alkmaar,Telstar,16:45:00
+8,05/10/2025 20:00,Go Ahead Eagles,Nijmegen,20:00:00
+9,18/10/2025 16:45,Nijmegen,Twente,16:45:00
+9,18/10/2025 18:45,PSV Eindhoven,Go Ahead Eagles,18:45:00
+9,18/10/2025 18:45,Utrecht,Volendam,18:45:00
+9,18/10/2025 21:00,Ajax,AZ Alkmaar,21:00:00
+9,18/10/2025 21:00,NAC Breda,Zwolle,21:00:00
+9,19/10/2025 12:15,Telstar,Heerenveen,12:15:00
+9,19/10/2025 14:30,Excelsior,For Sittard,14:30:00
+9,19/10/2025 14:30,Groningen,Sparta Rotterdam,14:30:00
+9,19/10/2025 16:45,Heracles,Feyenoord,16:45:00
+10,24/10/2025 20:00,Heerenveen,NAC Breda,20:00:00
+10,25/10/2025 16:40,For Sittard,Groningen,16:40:00
+10,25/10/2025 18:45,Sparta Rotterdam,Telstar,18:45:00
+10,25/10/2025 20:00,Volendam,Heracles,20:00:00
+10,25/10/2025 21:00,Zwolle,Nijmegen,21:00:00
+10,26/10/2025 12:15,Twente,Ajax,12:15:00
+10,26/10/2025 14:30,Feyenoord,PSV Eindhoven,14:30:00
+10,26/10/2025 16:45,AZ Alkmaar,Utrecht,16:45:00
+10,26/10/2025 20:00,Go Ahead Eagles,Excelsior,20:00:00
+11,31/10/2025 20:00,PSV Eindhoven,For Sittard,20:00:00
+11,01/11/2025 16:30,Ajax,Heerenveen,16:30:00
+11,01/11/2025 18:45,NAC Breda,Go Ahead Eagles,18:45:00
+11,01/11/2025 20:00,Feyenoord,Volendam,20:00:00
+11,01/11/2025 21:00,Telstar,Excelsior,21:00:00
+11,02/11/2025 12:15,Heracles,Zwolle,12:15:00
+11,02/11/2025 14:30,Groningen,Twente,14:30:00
+11,02/11/2025 14:30,Sparta Rotterdam,AZ Alkmaar,14:30:00
+11,02/11/2025 16:45,Utrecht,Nijmegen,16:45:00
+12,07/11/2025 20:00,Twente,Telstar,20:00:00
+12,08/11/2025 16:30,Excelsior,Heracles,16:30:00
+12,08/11/2025 18:45,Volendam,NAC Breda,18:45:00
+12,08/11/2025 20:00,For Sittard,Heerenveen,20:00:00
+12,08/11/2025 21:00,Zwolle,Sparta Rotterdam,21:00:00
+12,09/11/2025 12:15,Utrecht,Ajax,12:15:00
+12,09/11/2025 14:30,Nijmegen,Groningen,14:30:00
+12,09/11/2025 16:45,AZ Alkmaar,PSV Eindhoven,16:45:00
+12,09/11/2025 20:00,Go Ahead Eagles,Feyenoord,20:00:00
+13,22/11/2025 16:30,NAC Breda,PSV Eindhoven,16:30:00
+13,22/11/2025 18:45,Ajax,Excelsior,18:45:00
+13,22/11/2025 18:45,Volendam,Twente,18:45:00
+13,22/11/2025 21:00,Heracles,Go Ahead Eagles,21:00:00
+13,22/11/2025 21:00,Sparta Rotterdam,For Sittard,21:00:00
+13,23/11/2025 12:15,Heerenveen,AZ Alkmaar,12:15:00
+13,23/11/2025 14:30,Feyenoord,Nijmegen,14:30:00
+13,23/11/2025 14:30,Telstar,Utrecht,14:30:00
+13,23/11/2025 16:45,Groningen,Zwolle,16:45:00
+14,28/11/2025 20:00,Zwolle,Heerenveen,20:00:00
+14,29/11/2025 16:30,Excelsior,NAC Breda,16:30:00
+14,29/11/2025 18:45,For Sittard,Heracles,18:45:00
+14,29/11/2025 21:00,Nijmegen,Sparta Rotterdam,21:00:00
+14,30/11/2025 12:15,PSV Eindhoven,Volendam,12:15:00
+14,30/11/2025 14:30,Telstar,Feyenoord,14:30:00
+14,30/11/2025 14:30,Go Ahead Eagles,Utrecht,14:30:00
+14,30/11/2025 16:45,Twente,AZ Alkmaar,16:45:00
+14,30/11/2025 20:00,Ajax,Groningen,20:00:00
+15,05/12/2025 20:00,Excelsior,Groningen,20:00:00
+15,06/12/2025 16:30,Heerenveen,PSV Eindhoven,16:30:00
+15,06/12/2025 18:45,For Sittard,Ajax,18:45:00
+15,06/12/2025 20:00,Heracles,Telstar,20:00:00
+15,06/12/2025 21:00,Feyenoord,Zwolle,21:00:00
+15,07/12/2025 12:15,Utrecht,Twente,12:15:00
+15,07/12/2025 14:30,AZ Alkmaar,Go Ahead Eagles,14:30:00
+15,07/12/2025 14:30,Volendam,Nijmegen,14:30:00
+15,07/12/2025 16:45,Sparta Rotterdam,NAC Breda,16:45:00
+16,13/12/2025 16:30,Telstar,Nijmegen,16:30:00
+16,13/12/2025 18:45,Groningen,Volendam,18:45:00
+16,13/12/2025 20:00,PSV Eindhoven,Heracles,20:00:00
+16,13/12/2025 21:00,Zwolle,For Sittard,21:00:00
+16,14/12/2025 12:15,Sparta Rotterdam,Heerenveen,12:15:00
+16,14/12/2025 14:30,Ajax,Feyenoord,14:30:00
+16,14/12/2025 14:30,Twente,Go Ahead Eagles,14:30:00
+16,14/12/2025 16:45,AZ Alkmaar,Excelsior,16:45:00
+16,14/12/2025 16:45,NAC Breda,Utrecht,16:45:00
+17,19/12/2025 20:00,Heracles,Heerenveen,20:00:00
+17,20/12/2025 16:30,Volendam,Sparta Rotterdam,16:30:00
+17,20/12/2025 18:45,Excelsior,Zwolle,18:45:00
+17,20/12/2025 20:00,Nijmegen,Ajax,20:00:00
+17,20/12/2025 21:00,NAC Breda,Telstar,21:00:00
+17,21/12/2025 12:15,Utrecht,PSV Eindhoven,12:15:00
+17,21/12/2025 14:30,Feyenoord,Twente,14:30:00
+17,21/12/2025 14:30,Go Ahead Eagles,Groningen,14:30:00
+17,21/12/2025 16:45,For Sittard,AZ Alkmaar,16:45:00
+18,09/01/2026 20:00,Nijmegen,Utrecht,20:00:00
+18,10/01/2026 16:30,AZ Alkmaar,Volendam,16:30:00
+18,10/01/2026 18:45,Twente,Zwolle,18:45:00
+18,10/01/2026 20:00,PSV Eindhoven,Excelsior,20:00:00
+18,10/01/2026 21:00,Groningen,NAC Breda,21:00:00
+18,11/01/2026 12:15,Heerenveen,Feyenoord,12:15:00
+18,11/01/2026 14:30,Telstar,Ajax,14:30:00
+18,11/01/2026 14:30,Go Ahead Eagles,For Sittard,14:30:00
+18,11/01/2026 16:45,Sparta Rotterdam,Heracles,16:45:00
+19,16/01/2026 20:00,Excelsior,Telstar,20:00:00
+19,17/01/2026 16:30,Ajax,Go Ahead Eagles,16:30:00
+19,17/01/2026 18:45,Zwolle,AZ Alkmaar,18:45:00
+19,17/01/2026 20:00,For Sittard,PSV Eindhoven,20:00:00
+19,17/01/2026 21:00,NAC Breda,Nijmegen,21:00:00
+19,18/01/2026 12:15,Heerenveen,Groningen,12:15:00
+19,18/01/2026 14:30,Volendam,Utrecht,14:30:00
+19,18/01/2026 14:30,Heracles,Twente,14:30:00
+19,18/01/2026 16:45,Feyenoord,Sparta Rotterdam,16:45:00
+20,24/01/2026 16:30,Ajax,Volendam,16:30:00
+20,24/01/2026 18:45,Nijmegen,Zwolle,18:45:00
+20,24/01/2026 20:00,PSV Eindhoven,NAC Breda,20:00:00
+20,24/01/2026 21:00,Twente,Excelsior,21:00:00
+20,25/01/2026 12:15,Telstar,AZ Alkmaar,12:15:00
+20,25/01/2026 14:30,Groningen,For Sittard,14:30:00
+20,25/01/2026 16:45,Feyenoord,Heracles,16:45:00
+20,25/01/2026 16:45,Utrecht,Sparta Rotterdam,16:45:00
+20,25/01/2026 20:00,Go Ahead Eagles,Heerenveen,20:00:00
+21,30/01/2026 20:00,NAC Breda,Twente,20:00:00
+21,31/01/2026 16:30,AZ Alkmaar,Nijmegen,16:30:00
+21,31/01/2026 18:45,Zwolle,Telstar,18:45:00
+21,31/01/2026 21:00,Sparta Rotterdam,Groningen,21:00:00
+21,01/02/2026 12:15,Excelsior,Ajax,12:15:00
+21,01/02/2026 14:30,Heracles,For Sittard,14:30:00
+21,01/02/2026 14:30,PSV Eindhoven,Feyenoord,14:30:00
+21,01/02/2026 16:45,Heerenveen,Utrecht,16:45:00
+21,01/02/2026 20:00,Volendam,Go Ahead Eagles,20:00:00
+22,07/02/2026 01:00,Twente,Heerenveen,01:00:00
+22,07/02/2026 01:00,Go Ahead Eagles,Telstar,01:00:00
+22,07/02/2026 01:00,AZ Alkmaar,Ajax,01:00:00
+22,07/02/2026 01:00,Utrecht,Feyenoord,01:00:00
+22,07/02/2026 01:00,Zwolle,Volendam,01:00:00
+22,07/02/2026 01:00,Groningen,PSV Eindhoven,01:00:00
+22,07/02/2026 01:00,Nijmegen,Heracles,01:00:00
+22,07/02/2026 01:00,For Sittard,Sparta Rotterdam,01:00:00
+22,07/02/2026 01:00,NAC Breda,Excelsior,01:00:00
+23,14/02/2026 01:00,Ajax,For Sittard,01:00:00
+23,14/02/2026 01:00,Sparta Rotterdam,Nijmegen,01:00:00
+23,14/02/2026 01:00,Telstar,Twente,01:00:00
+23,14/02/2026 01:00,Heracles,NAC Breda,01:00:00
+23,14/02/2026 01:00,Groningen,Utrecht,01:00:00
+23,14/02/2026 01:00,Excelsior,AZ Alkmaar,01:00:00
+23,14/02/2026 01:00,Volendam,PSV Eindhoven,01:00:00
+23,14/02/2026 01:00,Feyenoord,Go Ahead Eagles,01:00:00
+23,14/02/2026 01:00,Heerenveen,Zwolle,01:00:00
+24,21/02/2026 01:00,Twente,Groningen,01:00:00
+24,21/02/2026 01:00,Feyenoord,Telstar,01:00:00
+24,21/02/2026 01:00,For Sittard,Excelsior,01:00:00
+24,21/02/2026 01:00,AZ Alkmaar,Sparta Rotterdam,01:00:00
+24,21/02/2026 01:00,Ajax,Nijmegen,01:00:00
+24,21/02/2026 01:00,Go Ahead Eagles,Heracles,01:00:00
+24,21/02/2026 01:00,NAC Breda,Volendam,01:00:00
+24,21/02/2026 01:00,Utrecht,Zwolle,01:00:00
+24,21/02/2026 01:00,PSV Eindhoven,Heerenveen,01:00:00
+25,28/02/2026 01:00,Heracles,PSV Eindhoven,01:00:00
+25,28/02/2026 01:00,Utrecht,AZ Alkmaar,01:00:00
+25,28/02/2026 01:00,Zwolle,Ajax,01:00:00
+25,28/02/2026 01:00,Nijmegen,For Sittard,01:00:00
+25,28/02/2026 01:00,Telstar,NAC Breda,01:00:00
+25,28/02/2026 01:00,Heerenveen,Sparta Rotterdam,01:00:00
+25,28/02/2026 01:00,Excelsior,Go Ahead Eagles,01:00:00
+25,28/02/2026 01:00,Volendam,Groningen,01:00:00
+25,28/02/2026 01:00,Twente,Feyenoord,01:00:00
+26,07/03/2026 01:00,Nijmegen,Volendam,01:00:00
+26,07/03/2026 01:00,Go Ahead Eagles,Twente,01:00:00
+26,07/03/2026 01:00,Groningen,Ajax,01:00:00
+26,07/03/2026 01:00,Sparta Rotterdam,Zwolle,01:00:00
+26,07/03/2026 01:00,Excelsior,Heerenveen,01:00:00
+26,07/03/2026 01:00,NAC Breda,Feyenoord,01:00:00
+26,07/03/2026 01:00,Heracles,Utrecht,01:00:00
+26,07/03/2026 01:00,PSV Eindhoven,AZ Alkmaar,01:00:00
+26,07/03/2026 01:00,For Sittard,Telstar,01:00:00
+27,14/03/2026 01:00,AZ Alkmaar,Heracles,01:00:00
+27,14/03/2026 01:00,Feyenoord,Excelsior,01:00:00
+27,14/03/2026 01:00,Volendam,For Sittard,01:00:00
+27,14/03/2026 01:00,Ajax,Sparta Rotterdam,01:00:00
+27,14/03/2026 01:00,Twente,Utrecht,01:00:00
+27,14/03/2026 01:00,Go Ahead Eagles,NAC Breda,01:00:00
+27,14/03/2026 01:00,PSV Eindhoven,Nijmegen,01:00:00
+27,14/03/2026 01:00,Zwolle,Groningen,01:00:00
+27,14/03/2026 01:00,Heerenveen,Telstar,01:00:00
+28,21/03/2026 01:00,Heracles,Excelsior,01:00:00
+28,21/03/2026 01:00,Zwolle,NAC Breda,01:00:00
+28,21/03/2026 01:00,Groningen,AZ Alkmaar,01:00:00
+28,21/03/2026 01:00,Utrecht,Go Ahead Eagles,01:00:00
+28,21/03/2026 01:00,Feyenoord,Ajax,01:00:00
+28,21/03/2026 01:00,For Sittard,Twente,01:00:00
+28,21/03/2026 01:00,Sparta Rotterdam,Volendam,01:00:00
+28,21/03/2026 01:00,Nijmegen,Heerenveen,01:00:00
+28,21/03/2026 01:00,Telstar,PSV Eindhoven,01:00:00
+29,04/04/2026 02:00,AZ Alkmaar,For Sittard,02:00:00
+29,04/04/2026 02:00,Heerenveen,Heracles,02:00:00
+29,04/04/2026 02:00,PSV Eindhoven,Utrecht,02:00:00
+29,04/04/2026 02:00,Excelsior,Nijmegen,02:00:00
+29,04/04/2026 02:00,Volendam,Feyenoord,02:00:00
+29,04/04/2026 02:00,Telstar,Groningen,02:00:00
+29,04/04/2026 02:00,Go Ahead Eagles,Zwolle,02:00:00
+29,04/04/2026 02:00,NAC Breda,Sparta Rotterdam,02:00:00
+29,04/04/2026 02:00,Ajax,Twente,02:00:00
+30,11/04/2026 02:00,Heracles,Ajax,02:00:00
+30,11/04/2026 02:00,Sparta Rotterdam,PSV Eindhoven,02:00:00
+30,11/04/2026 02:00,Groningen,Go Ahead Eagles,02:00:00
+30,11/04/2026 02:00,Utrecht,Telstar,02:00:00
+30,11/04/2026 02:00,Zwolle,Excelsior,02:00:00
+30,11/04/2026 02:00,For Sittard,NAC Breda,02:00:00
+30,11/04/2026 02:00,Nijmegen,Feyenoord,02:00:00
+30,11/04/2026 02:00,AZ Alkmaar,Heerenveen,02:00:00
+30,11/04/2026 02:00,Twente,Volendam,02:00:00
+31,23/04/2026 02:00,Go Ahead Eagles,AZ Alkmaar,02:00:00
+31,23/04/2026 02:00,Feyenoord,Groningen,02:00:00
+31,23/04/2026 02:00,NAC Breda,Ajax,02:00:00
+31,23/04/2026 02:00,Twente,Nijmegen,02:00:00
+31,23/04/2026 02:00,Heracles,Volendam,02:00:00
+31,23/04/2026 02:00,Heerenveen,For Sittard,02:00:00
+31,23/04/2026 02:00,PSV Eindhoven,Zwolle,02:00:00
+31,23/04/2026 02:00,Excelsior,Utrecht,02:00:00
+31,23/04/2026 02:00,Telstar,Sparta Rotterdam,02:00:00
+32,02/05/2026 02:00,For Sittard,Feyenoord,02:00:00
+32,02/05/2026 02:00,Ajax,PSV Eindhoven,02:00:00
+32,02/05/2026 02:00,Groningen,Excelsior,02:00:00
+32,02/05/2026 02:00,Sparta Rotterdam,Go Ahead Eagles,02:00:00
+32,02/05/2026 02:00,Utrecht,NAC Breda,02:00:00
+32,02/05/2026 02:00,Nijmegen,Telstar,02:00:00
+32,02/05/2026 02:00,Zwolle,Heracles,02:00:00
+32,02/05/2026 02:00,AZ Alkmaar,Twente,02:00:00
+32,02/05/2026 02:00,Volendam,Heerenveen,02:00:00
+33,10/05/2026 16:45,Groningen,Nijmegen,16:45:00
+33,10/05/2026 16:45,For Sittard,Zwolle,16:45:00
+33,10/05/2026 16:45,Go Ahead Eagles,PSV Eindhoven,16:45:00
+33,10/05/2026 16:45,Ajax,Utrecht,16:45:00
+33,10/05/2026 16:45,Twente,Sparta Rotterdam,16:45:00
+33,10/05/2026 16:45,NAC Breda,Heerenveen,16:45:00
+33,10/05/2026 16:45,Telstar,Heracles,16:45:00
+33,10/05/2026 16:45,Feyenoord,AZ Alkmaar,16:45:00
+33,10/05/2026 16:45,Excelsior,Volendam,16:45:00
+34,17/05/2026 14:30,Heracles,Groningen,14:30:00
+34,17/05/2026 14:30,Sparta Rotterdam,Excelsior,14:30:00
+34,17/05/2026 14:30,Nijmegen,Go Ahead Eagles,14:30:00
+34,17/05/2026 14:30,Volendam,Telstar,14:30:00
+34,17/05/2026 14:30,Zwolle,Feyenoord,14:30:00
+34,17/05/2026 14:30,Utrecht,For Sittard,14:30:00
+34,17/05/2026 14:30,Heerenveen,Ajax,14:30:00
+34,17/05/2026 14:30,PSV Eindhoven,Twente,14:30:00
+34,17/05/2026 14:30,AZ Alkmaar,NAC Breda,14:30:00

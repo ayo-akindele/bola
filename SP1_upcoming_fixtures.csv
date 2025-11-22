@@ -1,4 +1,4 @@
-Round_Number,Date,Home Team,Away_Team,Time
+Round Number,Date,Home Team,Away Team,Time
 1,15/08/2025 17:00,Girona,Vallecano,17:00:00
 1,15/08/2025 19:30,Villarreal,Real Oviedo,19:30:00
 1,16/08/2025 17:30,Mallorca,Barcelona,17:30:00
@@ -19,7 +19,6 @@ Round_Number,Date,Home Team,Away_Team,Time
 2,24/08/2025 19:30,Real Oviedo,Real Madrid,19:30:00
 2,25/08/2025 17:30,Ath Bilbao,Vallecano,17:30:00
 2,25/08/2025 19:30,Sevilla,Getafe,19:30:00
-3,27/08/2025 19:00,Celta,Betis,19:00:00
 3,29/08/2025 17:30,Elche,Levante,17:30:00
 3,29/08/2025 19:30,Valencia,Getafe,19:30:00
 3,30/08/2025 15:00,Alaves,Ath Madrid,15:00:00
@@ -29,7 +28,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 3,31/08/2025 15:00,Celta,Villarreal,15:00:00
 3,31/08/2025 17:00,Betis,Ath Bilbao,17:00:00
 3,31/08/2025 17:30,Espanol,Osasuna,17:30:00
-4,31/08/2025 19:30,Vallecano,Barcelona,19:30:00
+3,31/08/2025 19:30,Vallecano,Barcelona,19:30:00
 4,12/09/2025 19:00,Sevilla,Elche,19:00:00
 4,13/09/2025 12:00,Getafe,Real Oviedo,12:00:00
 4,13/09/2025 14:15,Sociedad,Real Madrid,14:15:00
@@ -39,7 +38,7 @@ Round_Number,Date,Home Team,Away_Team,Time
 4,14/09/2025 14:15,Levante,Betis,14:15:00
 4,14/09/2025 16:30,Osasuna,Vallecano,16:30:00
 4,14/09/2025 19:00,Barcelona,Valencia,19:00:00
-5,15/09/2025 19:00,Espanol,Mallorca,19:00:00
+4,15/09/2025 19:00,Espanol,Mallorca,19:00:00
 5,19/09/2025 19:00,Betis,Sociedad,19:00:00
 5,20/09/2025 12:00,Girona,Levante,12:00:00
 5,20/09/2025 14:15,Real Madrid,Espanol,14:15:00
@@ -49,7 +48,8 @@ Round_Number,Date,Home Team,Away_Team,Time
 5,21/09/2025 12:00,Vallecano,Celta,12:00:00
 5,21/09/2025 14:15,Mallorca,Ath Madrid,14:15:00
 5,21/09/2025 16:15,Elche,Real Oviedo,16:15:00
-6,21/09/2025 19:00,Barcelona,Getafe,19:00:00
+5,21/09/2025 19:00,Barcelona,Getafe,19:00:00
+6,27/08/2025 19:00,Celta,Betis,19:00:00
 6,23/09/2025 17:00,Ath Bilbao,Girona,17:00:00
 6,23/09/2025 17:00,Espanol,Valencia,17:00:00
 6,23/09/2025 19:30,Levante,Real Madrid,19:30:00
@@ -109,46 +109,46 @@ Round_Number,Date,Home Team,Away_Team,Time
 11,02/11/2025 17:30,Barcelona,Elche,17:30:00
 11,02/11/2025 20:00,Betis,Mallorca,20:00:00
 11,03/11/2025 20:00,Real Oviedo,Osasuna,20:00:00
-12,09/11/2025 20:00,Ath Bilbao,Real Oviedo,20:00:00
-12,09/11/2025 20:00,Ath Madrid,Levante,20:00:00
-12,09/11/2025 20:00,Elche,Sociedad,20:00:00
-12,09/11/2025 20:00,Espanol,Villarreal,20:00:00
-12,09/11/2025 20:00,Vallecano,Real Madrid,20:00:00
-12,09/11/2025 20:00,Girona,Alaves,20:00:00
+12,07/11/2025 20:00,Elche,Sociedad,20:00:00
+12,08/11/2025 13:00,Girona,Alaves,13:00:00
+12,08/11/2025 15:15,Sevilla,Osasuna,15:15:00
+12,08/11/2025 17:30,Ath Madrid,Levante,17:30:00
+12,08/11/2025 20:00,Espanol,Villarreal,20:00:00
+12,09/11/2025 13:00,Ath Bilbao,Real Oviedo,13:00:00
+12,09/11/2025 15:15,Vallecano,Real Madrid,15:15:00
+12,09/11/2025 17:30,Valencia,Betis,17:30:00
+12,09/11/2025 17:30,Mallorca,Getafe,17:30:00
 12,09/11/2025 20:00,Celta,Barcelona,20:00:00
-12,09/11/2025 20:00,Valencia,Betis,20:00:00
-12,09/11/2025 20:00,Mallorca,Getafe,20:00:00
-12,09/11/2025 20:00,Sevilla,Osasuna,20:00:00
-13,23/11/2025 20:00,Alaves,Celta,20:00:00
-13,23/11/2025 20:00,Betis,Girona,20:00:00
+13,21/11/2025 20:00,Valencia,Levante,20:00:00
+13,22/11/2025 13:00,Alaves,Celta,13:00:00
+13,22/11/2025 15:15,Barcelona,Ath Bilbao,15:15:00
+13,22/11/2025 17:30,Osasuna,Sociedad,17:30:00
+13,22/11/2025 20:00,Villarreal,Mallorca,20:00:00
+13,23/11/2025 13:00,Real Oviedo,Vallecano,13:00:00
+13,23/11/2025 15:15,Betis,Girona,15:15:00
+13,23/11/2025 17:30,Getafe,Ath Madrid,17:30:00
 13,23/11/2025 20:00,Elche,Real Madrid,20:00:00
-13,23/11/2025 20:00,Espanol,Sevilla,20:00:00
-13,23/11/2025 20:00,Osasuna,Sociedad,20:00:00
-13,23/11/2025 20:00,Real Oviedo,Vallecano,20:00:00
-13,23/11/2025 20:00,Barcelona,Ath Bilbao,20:00:00
-13,23/11/2025 20:00,Getafe,Ath Madrid,20:00:00
-13,23/11/2025 20:00,Valencia,Levante,20:00:00
-13,23/11/2025 20:00,Villarreal,Mallorca,20:00:00
-14,30/11/2025 20:00,Ath Madrid,Real Oviedo,20:00:00
-14,30/11/2025 20:00,Celta,Espanol,20:00:00
+13,24/11/2025 20:00,Espanol,Sevilla,20:00:00
+14,28/11/2025 20:00,Getafe,Elche,20:00:00
+14,29/11/2025 13:00,Mallorca,Osasuna,13:00:00
+14,29/11/2025 15:15,Barcelona,Alaves,15:15:00
+14,29/11/2025 17:30,Levante,Ath Bilbao,17:30:00
+14,29/11/2025 20:00,Ath Madrid,Real Oviedo,20:00:00
+14,30/11/2025 13:00,Sociedad,Villarreal,13:00:00
+14,30/11/2025 15:15,Sevilla,Betis,15:15:00
+14,30/11/2025 17:30,Celta,Espanol,17:30:00
 14,30/11/2025 20:00,Girona,Real Madrid,20:00:00
-14,30/11/2025 20:00,Mallorca,Osasuna,20:00:00
-14,30/11/2025 20:00,Vallecano,Valencia,20:00:00
-14,30/11/2025 20:00,Sociedad,Villarreal,20:00:00
-14,30/11/2025 20:00,Barcelona,Alaves,20:00:00
-14,30/11/2025 20:00,Levante,Ath Bilbao,20:00:00
-14,30/11/2025 20:00,Sevilla,Betis,20:00:00
-14,30/11/2025 20:00,Getafe,Elche,20:00:00
-15,07/12/2025 20:00,Alaves,Sociedad,20:00:00
-15,07/12/2025 20:00,Ath Bilbao,Ath Madrid,20:00:00
-15,07/12/2025 20:00,Elche,Girona,20:00:00
-15,07/12/2025 20:00,Espanol,Vallecano,20:00:00
-15,07/12/2025 20:00,Betis,Barcelona,20:00:00
+14,01/12/2025 20:00,Vallecano,Valencia,20:00:00
+15,05/12/2025 20:00,Real Oviedo,Mallorca,20:00:00
+15,06/12/2025 13:00,Villarreal,Getafe,13:00:00
+15,06/12/2025 15:15,Alaves,Sociedad,15:15:00
+15,06/12/2025 17:30,Betis,Barcelona,17:30:00
+15,06/12/2025 20:00,Ath Bilbao,Ath Madrid,20:00:00
+15,07/12/2025 13:00,Elche,Girona,13:00:00
+15,07/12/2025 15:15,Valencia,Sevilla,15:15:00
+15,07/12/2025 17:30,Espanol,Vallecano,17:30:00
 15,07/12/2025 20:00,Real Madrid,Celta,20:00:00
-15,07/12/2025 20:00,Villarreal,Getafe,20:00:00
-15,07/12/2025 20:00,Osasuna,Levante,20:00:00
-15,07/12/2025 20:00,Real Oviedo,Mallorca,20:00:00
-15,07/12/2025 20:00,Valencia,Sevilla,20:00:00
+15,08/12/2025 20:00,Osasuna,Levante,20:00:00
 16,14/12/2025 20:00,Alaves,Real Madrid,20:00:00
 16,14/12/2025 20:00,Ath Madrid,Valencia,20:00:00
 16,14/12/2025 20:00,Barcelona,Osasuna,20:00:00
@@ -179,11 +179,11 @@ Round_Number,Date,Home Team,Away_Team,Time
 18,04/01/2026 20:00,Vallecano,Getafe,20:00:00
 18,04/01/2026 20:00,Mallorca,Girona,20:00:00
 18,04/01/2026 20:00,Sevilla,Levante,20:00:00
-19,11/01/2026 20:00,Ath Bilbao,Real Madrid,20:00:00
+19,02/12/2025 20:00,Barcelona,Ath Madrid,20:00:00
+19,03/12/2025 18:00,Ath Bilbao,Real Madrid,18:00:00
 19,11/01/2026 20:00,Getafe,Sociedad,20:00:00
 19,11/01/2026 20:00,Girona,Osasuna,20:00:00
 19,11/01/2026 20:00,Villarreal,Alaves,20:00:00
-19,11/01/2026 20:00,Barcelona,Ath Madrid,20:00:00
 19,11/01/2026 20:00,Real Oviedo,Betis,20:00:00
 19,11/01/2026 20:00,Sevilla,Celta,20:00:00
 19,11/01/2026 20:00,Valencia,Elche,20:00:00
