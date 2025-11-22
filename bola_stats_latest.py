@@ -1,13 +1,13 @@
 
 """
-BolaPredict — Fixtures (Mobile-First, Inline Trends)
-----------------------------------------------------
-- Adds Netherlands Eredivisie (N1)
+BolaPredict — Fixtures (Mobile-First, Inline Trends, Highlights)
+----------------------------------------------------------------
+- Netherlands Eredivisie (N1) supported
   • Results:  N1 Historical Data.csv
   • Fixtures: N1_upcoming_fixtures.csv
-- Mobile-friendly layout (single column, larger tap targets, compact spacing)
-- Inline trends (no expanders) → fewer clicks
-- Optional 🎲 Randomizer Clusters (compact, inline)
+- Mobile-friendly, single-column cards with inline trends
+- NEW: Highlights section (GG, Over 2.5, First-half goals)
+- Randomizer removed (not fit for purpose)
 """
 
 import os
@@ -17,7 +17,6 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import numpy as np
 import streamlit as st
-from random import Random
 
 # -------------------- Config --------------------
 LOCAL_TZ = "Africa/Lagos"
@@ -35,16 +34,14 @@ LEAGUE_FILES: Dict[str, Dict[str, str]] = {
 # -------------------- Page Setup --------------------
 st.set_page_config(page_title="BolaPredict — Fixtures", layout="centered")
 st.title("⚡ BolaPredict — Quick Stats That Matter")
-st.caption("Head‑to‑head trends and fixtures. Times in Africa/Lagos.")
+st.caption("Head-to-head trends and fixtures. Times in Africa/Lagos.")
 
 # Mobile-friendly CSS tweaks
 st.markdown(
     """
     <style>
-    /* Tighten layout for small screens */
     .block-container { padding-top: 0.6rem; padding-bottom: 2rem; max-width: 700px; }
     h1, h2, h3, h4 { line-height: 1.2; }
-    /* League header chip */
     .league-header {
       margin-top: 12px;
       margin-bottom: 6px;
@@ -56,7 +53,6 @@ st.markdown(
       color: #b91c1c;
       display: inline-block;
     }
-    /* Fixture card */
     .fixture-card {
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: 12px;
@@ -64,18 +60,14 @@ st.markdown(
       margin-bottom: 10px;
       background: white;
     }
-    .fixture-title {
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+    .fixture-title { font-weight: 700; margin-bottom: 6px; }
     .fixture-sub { color: #6b7280; font-size: 0.95rem; margin-bottom: 6px; }
     .trend-bullets { margin: 0 0 2px 0; padding-left: 18px; }
     .trend-bullets li { margin: 2px 0; }
-    /* Buttons become full-width on mobile */
-    @media (max-width: 480px) {
-      button[kind="secondary"] { width: 100%; }
-      .block-container { padding-left: 0.6rem; padding-right: 0.6rem; }
-    }
+    .pill { display:inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.8rem; margin-right: 6px; border:1px solid rgba(0,0,0,0.12); }
+    .pill-goals { background: rgba(34,197,94,0.12); }
+    .pill-fh { background: rgba(59,130,246,0.12); }
+    .pill-over { background: rgba(250,204,21,0.18); }
     </style>
     """,
     unsafe_allow_html=True,
@@ -254,7 +246,7 @@ def format_ko(ts: Optional[pd.Timestamp]) -> str:
 def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple[float, str, str]]:
     """Return list of (pct, text, tag) 'strong' trends (>=0.80), sorted desc.
        Uses last up to 5 H2H in past 3 seasons. Needs at least MIN_H2H valid games.
-       tag ∈ {"goals","corners","firsthalf","wins"}
+       tag ∈ {"gg","over25","firsthalf","wins","corners"}
     """
     trends: List[Tuple[float, str, str]] = []
     if results_df is None or results_df.empty:
@@ -281,15 +273,15 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
         if pct >= 0.80:
             trends.append((pct, f"{label} in {int(round(pct * len(valid)))}/{len(valid)} games", tag))
 
-    # Goals / GG
+    # Goals / GG / Over 2.5
     hs = pd.to_numeric(h2h.get("home_score"), errors="coerce")
     as_ = pd.to_numeric(h2h.get("away_score"), errors="coerce")
     gg = (hs > 0) & (as_ > 0)
     gg = gg.where(~(hs.isna() | as_.isna()), pd.NA)
-    add_bool(gg, "Both teams scored (GG)", "goals")
+    add_bool(gg, "Both teams scored (GG)", "gg")
 
     total = hs + as_
-    add_bool((total > 2.5).where(~total.isna(), pd.NA), "Over 2.5 goals", "goals")
+    add_bool((total > 2.5).where(~total.isna(), pd.NA), "Over 2.5 goals", "over25")
 
     # Win dominance
     wins_home_team = []
@@ -327,14 +319,13 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
 
     return sorted(trends, key=lambda x: x[0], reverse=True)
 
-# -------------------- Top Controls (no sidebar for mobile) --------------------
+# -------------------- Top Controls --------------------
 col1, col2 = st.columns([1.3, 1])
 with col1:
     league_choice = st.selectbox("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
 with col2:
     time_window = st.selectbox("When", ["All in round", "Today", "Tomorrow", "Weekend (Fri–Mon)", "All"], index=0)
 
-# Secondary toggles (compact)
 col3, col4, col5 = st.columns([1,1,1])
 with col3:
     max_trends = st.select_slider("Trends/Match", options=[1,2,3,4,5], value=3, help="Limit bullets per match")
@@ -342,18 +333,6 @@ with col4:
     max_fixtures = st.select_slider("Max/League", options=[5,10,15,30,100], value=15, help="Limit to keep it snappy")
 with col5:
     show_debug = st.toggle("Debug", value=False)
-
-# Randomizer (inline + compact)
-with st.expander("🎲 Randomizer Clusters (optional)", expanded=False):
-    colr1, colr2, colr3, colr4 = st.columns(4)
-    with colr1:
-        clusters_on = st.checkbox("Enable", value=False)
-    with colr2:
-        num_clusters = st.select_slider("Clusters", options=[1,2,3,4,5], value=3)
-    with colr3:
-        focus_goals = st.checkbox("Bias to goals", value=True)
-    with colr4:
-        seed = st.number_input("Seed", min_value=0, value=0, step=1)
 
 now = pd.Timestamp.now(tz=LOCAL_TZ)
 leagues = list(LEAGUE_FILES.keys()) if league_choice == "All" else [league_choice]
@@ -364,7 +343,49 @@ for lg in leagues:
     res_df, fx_df = load_league(lg)
     league_data[lg] = (res_df, fx_df)
 
-# -------------------- Render Fixtures (inline cards, zero extra clicks) --------------------
+# -------------------- Highlights (GG / Over 2.5 / 1st-half) --------------------
+highlight_rows = []  # collect tuples for quick header section
+for lg in leagues:
+    res_df, fx_df = league_data.get(lg, (None, None))
+    if res_df is None or fx_df is None or fx_df.empty:
+        continue
+
+    view = fx_df.copy()
+    round_id = pick_current_round(view)
+    if time_window == "All in round" and round_id is not None and "round_number" in view.columns:
+        view = view[view["round_number"] == round_id].copy()
+    if time_window in {"Today", "Tomorrow", "Weekend (Fri–Mon)", "All"}:
+        m = date_mask(view, time_window if time_window != "All" else "__ALL__", now)
+        view = view[m] if m.any() else view.iloc[0:0]
+
+    if view.empty:
+        continue
+
+    for _, r in view.iterrows():
+        home = str(r.get("home_team", "")).strip()
+        away = str(r.get("away_team", "")).strip()
+        ko = r.get("kickoff_dt")
+        tlist = compute_trends(res_df, home, away)
+        tags = set([t[2] for t in tlist])
+        has_any = any(tag in tags for tag in ["gg","over25","firsthalf"])
+        if has_any:
+            # Choose small pills
+            pills = []
+            if "gg" in tags: pills.append('<span class="pill pill-goals">GG</span>')
+            if "over25" in tags: pills.append('<span class="pill pill-over">O2.5</span>')
+            if "firsthalf" in tags: pills.append('<span class="pill pill-fh">1st Half</span>')
+            highlight_rows.append((ko, f"{home} vs {away}", lg, " ".join(pills)))
+
+if highlight_rows:
+    # sort by kickoff time
+    highlight_rows.sort(key=lambda x: (pd.NaT if x[0] is None else x[0]))
+    st.subheader("✨ Highlights (GG / O2.5 / 1st‑Half Goals)")
+    for ko, title, lg, pills in highlight_rows[:24]:  # cap to avoid long list
+        ko_txt = format_ko(ko)
+        st.markdown(f"- **{title}** — {ko_txt} · _{lg}_ {pills}", unsafe_allow_html=True)
+    st.markdown("---")
+
+# -------------------- Render Fixtures (inline cards) --------------------
 for lg in leagues:
     res_df, fx_df = league_data.get(lg, (None, None))
     if res_df is None or fx_df is None or fx_df.empty:
@@ -390,7 +411,6 @@ for lg in leagues:
     hdr = f"{lg} — {'Gameweek ' + str(round_id) if round_id is not None else 'Fixtures'}"
     st.markdown(f"<div class='league-header'>{hdr}</div>", unsafe_allow_html=True)
 
-    # Inline fixture cards
     for _, r in view.iterrows():
         home = str(r.get("home_team", "")).strip()
         away = str(r.get("away_team", "")).strip()
@@ -398,14 +418,17 @@ for lg in leagues:
         title = f"{home} vs {away}"
         sub = f"{format_ko(ko)}"
 
-        # Compute and show trends inline (no expanders)
         trends = compute_trends(res_df, home, away)
         bullets = [t[1] for t in trends[:max_trends]]
         if not bullets:
             bullets = ["No strong trends (need ≥4 H2H in last 3 seasons with data)."]
 
-        # Render
-        st.markdown(f"<div class='fixture-card'><div class='fixture-title'>{title}</div><div class='fixture-sub'>{sub}</div><ul class='trend-bullets'>" + "".join([f"<li>{b}</li>" for b in bullets]) + "</ul></div>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div class='fixture-card'><div class='fixture-title'>{title}</div>"
+            f"<div class='fixture-sub'>{sub}</div>"
+            f"<ul class='trend-bullets'>{''.join([f'<li>{b}</li>' for b in bullets])}</ul></div>",
+            unsafe_allow_html=True,
+        )
 
     if show_debug:
         with st.expander(f"🔎 {lg} debug"):
@@ -413,52 +436,3 @@ for lg in leagues:
             st.dataframe(res_df.head(3))
             st.write("Fixtures columns:", list(fx_df.columns))
             st.dataframe(fx_df.head(3))
-
-# -------------------- Randomizer Clusters (inline) --------------------
-if 'clusters_rendered' not in st.session_state:
-    st.session_state['clusters_rendered'] = False
-
-if clusters_on:
-    pool = []
-    for lg in leagues:
-        res_df, fx_df = league_data.get(lg, (None, None))
-        if res_df is None or fx_df is None or fx_df.empty:
-            continue
-        view = fx_df.copy()
-        round_id = pick_current_round(view)
-        if time_window == "All in round" and round_id is not None and "round_number" in view.columns:
-            view = view[view["round_number"] == round_id].copy()
-        if time_window in {"Today", "Tomorrow", "Weekend (Fri–Mon)", "All"}:
-            m = date_mask(view, time_window if time_window != "All" else "__ALL__", now)
-            view = view[m] if m.any() else view.iloc[0:0]
-        if view.empty:
-            continue
-
-        for _, rr in view.iterrows():
-            home = str(rr.get("home_team", "")).strip()
-            away = str(rr.get("away_team", "")).strip()
-            ko = rr.get("kickoff_dt")
-            tlist = compute_trends(res_df, home, away)
-            if focus_goals:
-                tlist = [t for t in tlist if t[2] == "goals"] or tlist  # fallback
-            if tlist:
-                pool.append({"league": lg, "home": home, "away": away, "ko": ko, "trends": tlist[:2]})
-
-    if pool:
-        rnd = Random(seed or None)
-        rnd.shuffle(pool)
-        st.subheader("🎲 Randomizer Clusters")
-        total_needed = num_clusters * 3
-        sample = pool[:total_needed]
-        for i in range(num_clusters):
-            chunk = sample[i*3:(i+1)*3]
-            if not chunk:
-                break
-            st.markdown(f"**Cluster {i+1}**")
-            for item in chunk:
-                st.markdown(f"- {format_ko(item['ko'])} — {item['home']} vs {item['away']} ({item['league']})")
-                for _, text, tag in item["trends"]:
-                    st.markdown(f"  • {text}")
-            st.markdown("---")
-    else:
-        st.info("No fixtures with strong trends available for clustering under current filters.")
