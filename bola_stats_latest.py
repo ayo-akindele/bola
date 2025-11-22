@@ -40,6 +40,15 @@ st.caption("Head-to-head trends and fixtures. Times in Africa/Lagos.")
 st.markdown(
     """
     <style>
+    /* Force light theme even when device is in dark mode */
+    html, body, .block-container {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    /* Ensure text is always readable */
+    * {
+      color: #1f2937 !important;
+    }
     .block-container { padding-top: 0.6rem; padding-bottom: 2rem; max-width: 700px; }
     h1, h2, h3, h4 { line-height: 1.2; }
     .league-header {
@@ -326,13 +335,10 @@ with col1:
 with col2:
     time_window = st.selectbox("When", ["All in round", "Today", "Tomorrow", "Weekend (Fri–Mon)", "All"], index=0)
 
-col3, col4, col5 = st.columns([1,1,1])
-with col3:
-    max_trends = st.select_slider("Trends/Match", options=[1,2,3,4,5], value=3, help="Limit bullets per match")
-with col4:
-    max_fixtures = st.select_slider("Max/League", options=[5,10,15,30,100], value=15, help="Limit to keep it snappy")
-with col5:
-    show_debug = st.toggle("Debug", value=False)
+# Fixed defaults for clean UI
+max_trends = 3       # bullets per match
+max_fixtures = 15    # fixtures per league
+show_debug = False   # hide debug info
 
 now = pd.Timestamp.now(tz=LOCAL_TZ)
 leagues = list(LEAGUE_FILES.keys()) if league_choice == "All" else [league_choice]
