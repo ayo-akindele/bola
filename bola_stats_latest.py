@@ -1,4 +1,3 @@
-
 """
 BolaPredict — Fixtures (Mobile-First, Inline Trends, Highlights)
 ----------------------------------------------------------------
@@ -384,6 +383,9 @@ def compute_trends(results_df: pd.DataFrame, home: str, away: str) -> List[Tuple
 league_choice = st.radio("League", ["All"] + list(LEAGUE_FILES.keys()), index=0)
 time_window = st.radio("When", ["All in round", "Today", "Tomorrow", "Weekend (Fri–Mon)", "All"], index=0, horizontal=True)
 
+# NEW: toggle to hide fixtures with no strong trends
+hide_no_trend = st.checkbox("Hide fixtures with no strong trends", value=False)
+
 # Fixed defaults for clean UI
 max_trends = 3       # bullets per match
 max_fixtures = 15    # fixtures per league
@@ -396,8 +398,6 @@ league_data = {}
 for lg in leagues:
     res_df, fx_df = load_league(lg)
     league_data[lg] = (res_df, fx_df)
-
-# -------------------- Highlights (GG / Over 2.5 / 1st-half) --------------------
 
 # -------------------- Highlights (GG / Over 2.5 / 1st-half) --------------------
 highlight_rows = []  # (ko, title, lg, pills_html, score)
@@ -439,7 +439,7 @@ for lg in leagues:
 if highlight_rows:
     # Sort: (1) by score desc (3/3 first), (2) by kickoff time
     highlight_rows.sort(key=lambda x: (-x[4], pd.NaT if x[0] is None else x[0]))
-    st.subheader("✨ Highlights — GG / O2.5 / 1st‑Half (≥2/3)")
+    st.subheader("✨ Highlights — GG / O2.5 / 1st-Half (≥2/3)")
     for ko, title, lg, pills, score in highlight_rows[:24]:
         ko_txt = format_ko(ko)
         st.markdown(f"- **{title}** — {ko_txt} · _{lg}_ {pills}", unsafe_allow_html=True)
@@ -479,9 +479,15 @@ for lg in leagues:
         sub = f"{format_ko(ko)}"
 
         trends = compute_trends(res_df, home, away)
+
+        # NEW: if user wants to hide no-trend games, skip these fixtures
+        if hide_no_trend and not trends:
+            continue
+
         bullets = [t[1] for t in trends[:max_trends]]
         if not bullets:
-            bullets = ["No strong trends (need ≥4 H2H in last 3 seasons with data)."]
+            # NEW: shorter message for no trend games
+            bullets = ["No strong trends"]
 
         st.markdown(
             f"<div class='fixture-card'><div class='fixture-title'>{title}</div>"
